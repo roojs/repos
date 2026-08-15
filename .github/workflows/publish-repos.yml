@@ -1,6 +1,6 @@
 name: Publish package repositories
 
-# Runs daily, on push to main, manually, or via repository_dispatch.
+# Polls upstream releases daily. Publishes only when packages or repo config change.
 on:
   schedule:
     - cron: '0 6 * * *'
@@ -12,6 +12,10 @@ on:
         description: Optional comma-separated upstream repos (empty = all in config/upstream-repos.json)
         required: false
         default: ''
+      force:
+        description: Publish even if upstream packages are unchanged
+        type: boolean
+        default: false
   repository_dispatch:
     types: [publish-repos]
 
@@ -38,17 +42,6 @@ jobs:
           ref: gh-pages
           fetch-depth: 0
           path: pages
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y reprepro createrepo-c gpg jq
-
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
 
       - name: Download upstream .deb release assets
         id: fetch-debs
@@ -82,7 +75,6 @@ jobs:
             "${GITHUB_WORKSPACE}/pages/incoming-rpms" \
             config/upstream-repos.json \
             "${{ inputs.repos }}"
-          status=$?
           set -e
           if compgen -G "${GITHUB_WORKSPACE}/pages/incoming-rpms/*.rpm" > /dev/null; then
             echo "found=true" >> "$GITHUB_OUTPUT"
@@ -97,10 +89,41 @@ jobs:
             exit 1
           fi
 
+      - name: Check for package changes
+        id: changes
+        run: |
+          python3 main/scripts/package-manifest.py \
+            --pages pages \
+            --debs pages/incoming-debs \
+            --rpms pages/incoming-rpms \
+            --distributions main/config/distributions \
+            --output /tmp/current-manifest.json
+
+      - name: Skip publish when unchanged
+        if: steps.changes.outputs.changed != 'true' && inputs.force != true
+        run: |
+          echo "No changes to publish."
+          rm -rf pages/incoming-debs pages/incoming-rpms
+
+      - name: Install dependencies
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y reprepro createrepo-c gpg jq
+
+      - name: Import GPG key
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+
       - name: Sync reprepro config
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
         run: cp main/config/distributions pages/conf/distributions
 
       - name: Export repository signing key
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
         working-directory: pages
         run: |
           set -euo pipefail
@@ -113,7 +136,7 @@ jobs:
           gpg --armor --export "${GPG_KEY_ID}" > KEY.gpg
 
       - name: Ingest packages with reprepro
-        if: steps.fetch-debs.outputs.found == 'true'
+        if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-debs.outputs.found == 'true'
         working-directory: pages
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
@@ -129,10 +152,9 @@ jobs:
               reprepro -b . includedeb "${distro}" "${deb}"
             done
           done
-          rm -rf incoming-debs/
 
       - name: Build DNF repositories
-        if: steps.fetch-rpms.outputs.found == 'true'
+        if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-rpms.outputs.found == 'true'
         working-directory: main
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
@@ -141,9 +163,17 @@ jobs:
           ./scripts/build-rpm-repos.sh \
             "${GITHUB_WORKSPACE}/pages/incoming-rpms" \
             "${GITHUB_WORKSPACE}/pages"
-          rm -rf "${GITHUB_WORKSPACE}/pages/incoming-rpms"
+
+      - name: Update publish manifest
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        run: cp /tmp/current-manifest.json pages/.publish-manifest.json
+
+      - name: Clean up incoming packages
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        run: rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update APT and DNF repositories"

@@ -128,41 +128,21 @@ After the first successful workflow run, the site will be at **https://roojs.git
 
 ## 5. Publish the repository
 
-**Automatic:** the workflow runs daily at 06:00 UTC and on every push to `main`.
+**Automatic:** the workflow checks upstream releases daily at 06:00 UTC and on every push to `main`. It only commits to `gh-pages` when a package or repository config file has changed.
 
-**Manual:** open **Actions → Publish package repositories → Run workflow** on `main`.
+**Manual:** open **Actions → Publish package repositories → Run workflow** on `main`. Enable **force** to republish even when upstream packages are unchanged.
 
 Optional manual input: comma-separated `repos` (e.g. `ibus-sherpa-onnx,sherpa-onnx`) to refresh only specific upstream projects.
 
 After a successful run, check **https://github.com/roojs/repos/tree/gh-pages** for `dists/`, `pool/`, and `KEY.gpg`.
 
-### Keeping scheduled runs alive
+### Scheduled workflows and repository activity
 
-GitHub **disables scheduled workflows** if the repository has had no commits, issues, PRs, or other activity for **60 days**.
-
-This repository uses three safeguards:
-
-1. **Daily publish** — successful runs commit to `gh-pages`, which counts as activity.
-2. **Keepalive workflow** — [`.github/workflows/keepalive.yml`](../.github/workflows/keepalive.yml) commits on the **1st and 15th** of each month.
-3. **Dependabot** — [`.github/dependabot.yml`](../.github/dependabot.yml) opens monthly PRs to bump GitHub Actions versions.
-
-**External backup (optional):** trigger a publish from outside GitHub if you ever need to wake the repo up manually:
+GitHub disables scheduled workflows after **60 days without any repository activity**. Successful publishes commit to `gh-pages`, which counts. If upstream packages change regularly, that should be enough. If everything goes quiet for a long time, run the workflow manually:
 
 ```bash
 gh workflow run publish-repos.yml -R roojs/repos
 ```
-
-Or send a `repository_dispatch` event (requires a token with `repo` scope):
-
-```bash
-curl -X POST \
-  -H "Authorization: Bearer YOUR_GITHUB_TOKEN" \
-  -H "Accept: application/vnd.github+json" \
-  https://api.github.com/repos/roojs/repos/dispatches \
-  -d '{"event_type":"publish-repos"}'
-```
-
-Any push, issue, or PR on the repository also re-enables schedules for the next run.
 
 ---
 

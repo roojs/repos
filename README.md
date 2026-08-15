@@ -200,14 +200,13 @@ dnf repo-pkgs roojs list
 | [webkitgtk-automation](https://github.com/roojs/webkitgtk-automation) | yes | — | `libwebkitgtk-6.0-*` (series-specific builds) |
 | [roobuilder](https://github.com/roojs/roobuilder) | yes | — | `roobuilder`, `roojspacker` |
 
-New releases appear after the [publish workflow](.github/workflows/publish-repos.yml) runs (daily, or on demand).
+New releases appear after the [publish workflow](.github/workflows/publish-repos.yml) detects a change in upstream packages (checked daily, or on demand).
 
 ---
 
 ## For maintainers
 
-- **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — polls upstream GitHub Releases daily at 06:00 UTC, publishes to `gh-pages`
-- **Keepalive:** [keepalive.yml](.github/workflows/keepalive.yml) — commits on the 1st and 15th so GitHub does not disable schedules after 60 days of inactivity
+- **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — checks upstream GitHub Releases daily; commits to `gh-pages` only when packages or repo config change
 - **Upstream list:** `config/upstream-repos.json`
 - **Setup guide:** [docs/setup.md](docs/setup.md)
 
