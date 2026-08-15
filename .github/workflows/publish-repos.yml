@@ -137,29 +137,11 @@ jobs:
 
       - name: Ingest packages with reprepro
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-debs.outputs.found == 'true'
-        working-directory: pages
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
         run: |
-          set -euo pipefail
-          sed -i "s/SignWith: default/SignWith: ${GPG_KEY_ID}/g" conf/distributions
-
-          shopt -s nullglob
-          debs=(incoming-debs/*.deb)
-          CODENAMES="trixie questing resolute"
-          for deb in "${debs[@]}"; do
-            for distro in ${CODENAMES}; do
-              if reprepro -b . includedeb "${distro}" "${deb}" 2>/tmp/reprepro.err; then
-                continue
-              fi
-              if grep -qiE 'already (exists|there|listed|in pool)|is already registered' /tmp/reprepro.err; then
-                echo "Already published: ${deb} (${distro})"
-                continue
-              fi
-              cat /tmp/reprepro.err >&2
-              exit 1
-            done
-          done
+          chmod +x main/scripts/reprepro-ingest-debs.sh main/scripts/deb-target-suites.sh
+          main/scripts/reprepro-ingest-debs.sh "${GITHUB_WORKSPACE}/pages" "${GPG_KEY_ID}"
 
       - name: Build DNF repositories
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-rpms.outputs.found == 'true'
