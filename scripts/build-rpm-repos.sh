@@ -45,10 +45,14 @@ for dir in "${repo_dirs[@]}"; do
 
   echo "Building repodata in ${dir} ..."
   if [[ -d "${dir}/repodata" ]]; then
-    createrepo_c --update --gpg-sign "${dir}"
+    createrepo_c --update "${dir}"
   else
-    createrepo_c --gpg-sign "${dir}"
+    createrepo_c "${dir}"
   fi
+
+  gpg --batch --yes --detach-sign --armor \
+    -o "${dir}/repodata/repomd.xml.asc" \
+    "${dir}/repodata/repomd.xml"
 done
 
 echo "RPM repositories:"

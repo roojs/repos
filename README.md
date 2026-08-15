@@ -99,11 +99,6 @@ Packages are built and released from individual project repositories, then aggre
 - [webkitgtk-automation](https://github.com/roojs/webkitgtk-automation)
 - [roobuilder](https://github.com/roojs/roobuilder)
 
-## DNF repository (planned)
-
-RPM publishing via a DNF/YUM repo on GitHub Pages will be added after the APT pipeline is stable.
-
-
 ## AI assistance
 
 This repository was developed with the assistance of artificial intelligence.
