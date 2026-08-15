@@ -1,17 +1,19 @@
 # roojs/repos
 
-Automated Debian/Ubuntu APT repository (and eventually DNF) for distributing packages built from other roojs projects.
+Automated APT and DNF repositories for distributing packages built from other roojs projects. Published on GitHub Pages from the `gh-pages` branch.
 
-## APT repository (GitHub Pages)
+Push to `main` (or run the workflow manually) to refresh both repos from upstream GitHub Releases.
 
-Published from the `gh-pages` branch using [reprepro](https://wiki.debian.org/DebianRepository/UseReprepro). The layout follows the standard Debian archive format:
+Setup: **[docs/setup.md](docs/setup.md)**
+
+## APT repository
+
+Uses [reprepro](https://wiki.debian.org/DebianRepository/UseReprepro):
 
 ```
 gh-pages/
 ├── KEY.gpg
 ├── conf/
-│   ├── distributions
-│   └── options
 ├── dists/
 └── pool/
 ```
@@ -26,13 +28,11 @@ gh-pages/
 
 Architectures: `amd64`, `arm64`.
 
-### Publishing workflow
+### Publishing
 
-Manual for now: push to `main` (or run the workflow by hand) to refresh the repo from upstream GitHub Releases.
+Workflow: [Publish package repositories](.github/workflows/publish-repos.yml)
 
-Setup (GPG key, GitHub secrets, Pages, first publish): **[docs/setup.md](docs/setup.md)**
-
-## Client installation
+## APT client installation
 
 Install the signing key:
 
@@ -57,6 +57,37 @@ Install packages as they are published, for example:
 sudo apt install ibus-sherpa-onnx
 ```
 
+## DNF repository
+
+Uses [createrepo_c](https://github.com/rpm-software-management/createrepo_c). RPMs are sorted by Fedora release and architecture from the package filename (e.g. `.fc44.x86_64.rpm` → `rpm/fc44/x86_64/`):
+
+```
+gh-pages/
+├── KEY.gpg
+├── rpm/
+│   ├── fc42/x86_64/
+│   └── fc44/x86_64/
+```
+
+Currently published from upstream releases: **app.RooTerm** (fc42), **ibus-sherpa-onnx** and **sherpa-onnx** (fc44). Debuginfo/debugsource RPMs are skipped.
+
+### DNF client installation
+
+```bash
+sudo curl -fsSL https://roojs.github.io/repos/KEY.gpg \
+  -o /etc/pki/rpm-gpg/RPM-GPG-KEY-roojs
+sudo cp docs/roojs.repo /etc/yum.repos.d/roojs.repo
+sudo dnf makecache
+```
+
+Install packages, for example:
+
+```bash
+sudo dnf install ibus-sherpa-onnx
+```
+
+`gpgcheck=0` because upstream CI RPMs are not individually signed; `repo_gpgcheck=1` verifies signed repository metadata.
+
 ## Source projects
 
 Packages are built and released from individual project repositories, then aggregated here. Upstream repos polled by the workflow (`config/upstream-repos.json`):
@@ -71,6 +102,7 @@ Packages are built and released from individual project repositories, then aggre
 ## DNF repository (planned)
 
 RPM publishing via a DNF/YUM repo on GitHub Pages will be added after the APT pipeline is stable.
+
 
 ## AI assistance
 

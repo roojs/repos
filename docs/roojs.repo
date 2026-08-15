@@ -1,0 +1,7 @@
+[roojs]
+name=roojs packages (Fedora $releasever)
+baseurl=https://roojs.github.io/repos/rpm/fc$releasever/$basearch/
+enabled=1
+gpgcheck=0
+repo_gpgcheck=1
+gpgkey=https://roojs.github.io/repos/KEY.gpg
