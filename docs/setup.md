@@ -136,6 +136,34 @@ Optional manual input: comma-separated `repos` (e.g. `ibus-sherpa-onnx,sherpa-on
 
 After a successful run, check **https://github.com/roojs/repos/tree/gh-pages** for `dists/`, `pool/`, and `KEY.gpg`.
 
+### Keeping scheduled runs alive
+
+GitHub **disables scheduled workflows** if the repository has had no commits, issues, PRs, or other activity for **60 days**.
+
+This repository uses three safeguards:
+
+1. **Daily publish** — successful runs commit to `gh-pages`, which counts as activity.
+2. **Keepalive workflow** — [`.github/workflows/keepalive.yml`](../.github/workflows/keepalive.yml) commits on the **1st and 15th** of each month.
+3. **Dependabot** — [`.github/dependabot.yml`](../.github/dependabot.yml) opens monthly PRs to bump GitHub Actions versions.
+
+**External backup (optional):** trigger a publish from outside GitHub if you ever need to wake the repo up manually:
+
+```bash
+gh workflow run publish-repos.yml -R roojs/repos
+```
+
+Or send a `repository_dispatch` event (requires a token with `repo` scope):
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer YOUR_GITHUB_TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/roojs/repos/dispatches \
+  -d '{"event_type":"publish-repos"}'
+```
+
+Any push, issue, or PR on the repository also re-enables schedules for the next run.
+
 ---
 
 ## 6. Test on a machine
@@ -143,9 +171,3 @@ After a successful run, check **https://github.com/roojs/repos/tree/gh-pages** f
 See [Client installation](../README.md#client-installation) in the README.
 
 On each machine, use only the suite that matches the OS (`trixie`, `questing`, or `resolute`).
-
----
-
-## Planned (not enabled)
-
-Daily polling of upstream GitHub Releases will be added later. For now, publishing is manual via workflow dispatch only.

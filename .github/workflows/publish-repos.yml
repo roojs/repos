@@ -1,6 +1,6 @@
 name: Publish package repositories
 
-# Runs daily, on push to main, or manually.
+# Runs daily, on push to main, manually, or via repository_dispatch.
 on:
   schedule:
     - cron: '0 6 * * *'
@@ -12,6 +12,8 @@ on:
         description: Optional comma-separated upstream repos (empty = all in config/upstream-repos.json)
         required: false
         default: ''
+  repository_dispatch:
+    types: [publish-repos]
 
 permissions:
   contents: write

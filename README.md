@@ -206,7 +206,8 @@ New releases appear after the [publish workflow](.github/workflows/publish-repos
 
 ## For maintainers
 
-- **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — polls upstream GitHub Releases, publishes to `gh-pages`
+- **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — polls upstream GitHub Releases daily at 06:00 UTC, publishes to `gh-pages`
+- **Keepalive:** [keepalive.yml](.github/workflows/keepalive.yml) — commits on the 1st and 15th so GitHub does not disable schedules after 60 days of inactivity
 - **Upstream list:** `config/upstream-repos.json`
 - **Setup guide:** [docs/setup.md](docs/setup.md)
 
