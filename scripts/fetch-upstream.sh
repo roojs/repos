@@ -63,7 +63,7 @@ while IFS= read -r repo; do
 
   packages="{}"
   shopt -s nullglob
-  for file in "${repo_dir}/${pattern}"; do
+  for file in "${repo_dir}"/*."${package_type}"; do
     [[ -f "$file" ]] || continue
     base="$(basename "$file")"
     if [[ "$package_type" == "rpm" ]] && [[ "$base" == *debuginfo* || "$base" == *debugsource* ]]; then
