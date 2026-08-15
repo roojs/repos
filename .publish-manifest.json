@@ -1,6 +1,7 @@
 {
   "debs": {
     "OLLMchat": {
+      "tag": "v1.2.4-alpha",
       "packages": {
         "ollmchat-remote-only_1.2.4.alpha-1_amd64.deb": {
           "sha256": "e4c0edd6bbed006fa0a6b8d144b99bbbe41fe88f86c09a579733cc3f5d22e2cb",
@@ -18,10 +19,10 @@
             "resolute"
           ]
         }
-      },
-      "tag": "v1.2.4-alpha"
+      }
     },
     "app.RooTerm": {
+      "tag": "v0.1.1",
       "packages": {
         "rooterm_0.1.1-1_amd64.deb": {
           "sha256": "a606d2e07378783b4ec6b83bad3c56b2334fbd30ce353ca1ff5414b27ac6cf56",
@@ -31,10 +32,10 @@
             "resolute"
           ]
         }
-      },
-      "tag": "v0.1.1"
+      }
     },
     "ibus-sherpa-onnx": {
+      "tag": "v0.3.3",
       "packages": {
         "ibus-sherpa-onnx_0.3.3-1_amd64.deb": {
           "sha256": "25b792a460b0a8538df3b8fb99f2725a105a8c51cdedddf65794250f5e6ea940",
@@ -44,31 +45,10 @@
             "resolute"
           ]
         }
-      },
-      "tag": "v0.3.3"
-    },
-    "roobuilder": {
-      "packages": {
-        "roobuilder_5.0.11_amd64.deb": {
-          "sha256": "89d8a673f654555f603429b661b1e3236eec58b3cfdcd9b900d34d4fd14c17bf",
-          "suites": [
-            "trixie",
-            "questing",
-            "resolute"
-          ]
-        },
-        "roojspacker_1.5.2_amd64.deb": {
-          "sha256": "44c603b71244343e03612562ab73c82a0d9a7f9986fbfccb3aca081f6b871874",
-          "suites": [
-            "trixie",
-            "questing",
-            "resolute"
-          ]
-        }
-      },
-      "tag": "release-5.0.11"
+      }
     },
     "sherpa-onnx": {
+      "tag": "v1.13.5-roojs2",
       "packages": {
         "libsherpa-onnx-c-api-dev_1.13.5-roojs2_amd64.deb": {
           "sha256": "80765e6141fae2f83185d36da237dfa8e75f2ec0c3e55b4185bbb28d91c565d6",
@@ -86,10 +66,10 @@
             "resolute"
           ]
         }
-      },
-      "tag": "v1.13.5-roojs2"
+      }
     },
     "webkitgtk-automation": {
+      "tag": "build-resolute-20260815-2",
       "packages": {
         "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": {
           "sha256": "bdcf81883df5eb241167a36ca6916494d4e9d85ed1441b47477ff2fe34e141d9",
@@ -103,30 +83,49 @@
             "resolute"
           ]
         }
-      },
-      "tag": "build-resolute-20260815-2"
+      }
+    },
+    "roobuilder": {
+      "tag": "release-5.0.11",
+      "packages": {
+        "roobuilder_5.0.11_amd64.deb": {
+          "sha256": "89d8a673f654555f603429b661b1e3236eec58b3cfdcd9b900d34d4fd14c17bf",
+          "suites": [
+            "trixie",
+            "questing",
+            "resolute"
+          ]
+        },
+        "roojspacker_1.5.2_amd64.deb": {
+          "sha256": "44c603b71244343e03612562ab73c82a0d9a7f9986fbfccb3aca081f6b871874",
+          "suites": [
+            "trixie",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
     }
   },
-  "distributions_sha256": "91dbb708b0c268206d7669c9c75690bad46da3a996d8fc6e248a323a72b6d590",
-  "repos_json_sha256": "c28d8890803b62c954cffe203156c2913e8f598217de0b96b16166b0494a2262",
   "rpms": {
     "app.RooTerm": {
+      "tag": "v0.1.1",
       "packages": {
         "rooterm-0.1.1-2.fc42.x86_64.rpm": {
           "sha256": "8a4c2cd61691d5cea2f7a67979bdcf20ac076b8722f2f2a3553d9c1d2e304406"
         }
-      },
-      "tag": "v0.1.1"
+      }
     },
     "ibus-sherpa-onnx": {
+      "tag": "v0.3.3",
       "packages": {
         "ibus-sherpa-onnx-0.3.3-1.fc44.x86_64.rpm": {
           "sha256": "eb9749f911f1b7697b419b0a09d810a7a0471efc6373bd8abb557c8d23d004a2"
         }
-      },
-      "tag": "v0.3.3"
+      }
     },
     "sherpa-onnx": {
+      "tag": "v1.13.5-roojs2",
       "packages": {
         "libsherpa-onnx-c-api-1.13.5-roojs2.fc44.x86_64.rpm": {
           "sha256": "798be80dadfcd609025c7b1a4c5fb06270b26ec76fc9075df7c695c55916962e"
@@ -134,8 +133,9 @@
         "libsherpa-onnx-c-api-devel-1.13.5-roojs2.fc44.x86_64.rpm": {
           "sha256": "0701b834ef4bf63dd21e0075626a51cfcb84a5d6c634efa14eb81d3f9d74d08c"
         }
-      },
-      "tag": "v1.13.5-roojs2"
+      }
     }
-  }
+  },
+  "repos_json_sha256": "c28d8890803b62c954cffe203156c2913e8f598217de0b96b16166b0494a2262",
+  "distributions_sha256": "9a034dd2199153ddf4db0eecc5edc6b5ac93544b9fd047ffb5cb57b334cb7d96"
 }
