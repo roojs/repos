@@ -128,7 +128,7 @@ After the first successful workflow run, the site will be at **https://roojs.git
 
 ## 5. Publish the repository
 
-**Automatic:** push any commit to `main` — the workflow runs and refreshes `gh-pages`.
+**Automatic:** the workflow runs daily at 06:00 UTC and on every push to `main`.
 
 **Manual:** open **Actions → Publish package repositories → Run workflow** on `main`.
 

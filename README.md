@@ -1,40 +1,51 @@
 # roojs/repos
 
-Automated APT and DNF repositories for distributing packages built from other roojs projects. Published on GitHub Pages from the `gh-pages` branch.
+Official APT and DNF package repositories for [roojs](https://github.com/roojs) desktop projects.
 
-Push to `main` (or run the workflow manually) to refresh both repos from upstream GitHub Releases.
+**Repository URL:** `https://roojs.github.io/repos/`
 
-Setup: **[docs/setup.md](docs/setup.md)**
+Packages are built and released from individual project repositories, then aggregated here. The repository is refreshed daily (and whenever `main` is updated).
 
-## APT repository
+Maintainer setup (GPG keys, GitHub secrets, Pages): **[docs/setup.md](docs/setup.md)**
 
-Uses [reprepro](https://wiki.debian.org/DebianRepository/UseReprepro):
+---
 
-```
-gh-pages/
-├── KEY.gpg
-├── conf/
-├── dists/
-└── pool/
-```
+## Supported platforms
 
-### Supported suites
+### APT (Debian / Ubuntu)
 
-| Codename | Distribution |
-|----------|--------------|
-| `trixie` | Debian 13 (current stable) |
+| Use this suite | Distribution |
+|----------------|--------------|
+| `trixie` | Debian 13 |
 | `questing` | Ubuntu 25.10 |
 | `resolute` | Ubuntu 26.04 LTS |
 
 Architectures: `amd64`, `arm64`.
 
-### Publishing
+Check your suite:
 
-Workflow: [Publish package repositories](.github/workflows/publish-repos.yml)
+```bash
+. /etc/os-release
+if [ -f /etc/debian_version ] && [ "$ID" = debian ]; then echo trixie; else echo "$VERSION_CODENAME"; fi
+```
 
-## APT client installation
+### DNF (Fedora)
 
-Install the signing key:
+Repositories are published per Fedora release under `rpm/fc<version>/<arch>/` (for example `rpm/fc44/x86_64/`).
+
+Check your Fedora version:
+
+```bash
+rpm -E %fedora
+```
+
+Currently published RPMs target **Fedora 42** (RooTerm) and **Fedora 44** (ibus-sherpa-onnx, sherpa-onnx libraries).
+
+---
+
+## Using the APT repository
+
+### 1. Install the signing key
 
 ```bash
 sudo install -d -m 0755 /etc/apt/keyrings
@@ -43,61 +54,161 @@ curl -fsSL https://roojs.github.io/repos/KEY.gpg \
 sudo chmod a+r /etc/apt/keyrings/roojs.gpg
 ```
 
-Add the repository ([DEB822](https://repolib.readthedocs.io/en/latest/deb822-format.html) format):
+### 2. Add the repository
+
+Create `/etc/apt/sources.list.d/roojs.sources` using **only the suite that matches your system**.
+
+**Debian 13 (trixie):**
+
+```
+Types: deb
+URIs: https://roojs.github.io/repos/
+Suites: trixie
+Components: main
+Signed-By: /etc/apt/keyrings/roojs.gpg
+```
+
+**Ubuntu 25.10 (questing):**
+
+```
+Types: deb
+URIs: https://roojs.github.io/repos/
+Suites: questing
+Components: main
+Signed-By: /etc/apt/keyrings/roojs.gpg
+```
+
+**Ubuntu 26.04 (resolute):**
+
+```
+Types: deb
+URIs: https://roojs.github.io/repos/
+Suites: resolute
+Components: main
+Signed-By: /etc/apt/keyrings/roojs.gpg
+```
+
+Or copy the template and edit the `Suites:` line:
 
 ```bash
-sudo cp docs/roojs.sources /etc/apt/sources.list.d/roojs.sources
-# or paste the contents of docs/roojs.sources manually
+curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs.sources \
+  | sudo tee /etc/apt/sources.list.d/roojs.sources
+# Edit Suites: to keep only your codename
+sudo nano /etc/apt/sources.list.d/roojs.sources
+```
+
+### 3. Update and install
+
+```bash
 sudo apt update
 ```
 
-Install packages as they are published, for example:
+Example installs:
 
 ```bash
-sudo apt install ibus-sherpa-onnx
+sudo apt install ibus-sherpa-onnx    # speech-to-text IBus engine
+sudo apt install ollmchat            # OLLMchat desktop app
+sudo apt install rooterm             # RooTerm terminal
 ```
 
-## DNF repository
+Search for available packages:
 
-Uses [createrepo_c](https://github.com/rpm-software-management/createrepo_c). RPMs are sorted by Fedora release and architecture from the package filename (e.g. `.fc44.x86_64.rpm` → `rpm/fc44/x86_64/`):
-
-```
-gh-pages/
-├── KEY.gpg
-├── rpm/
-│   ├── fc42/x86_64/
-│   └── fc44/x86_64/
+```bash
+apt-cache search '' | grep -E 'ibus-sherpa|ollmchat|rooterm|roobuilder|sherpa|webkitgtk'
 ```
 
-Currently published from upstream releases: **app.RooTerm** (fc42), **ibus-sherpa-onnx** and **sherpa-onnx** (fc44). Debuginfo/debugsource RPMs are skipped.
+### APT troubleshooting
 
-### DNF client installation
+| Problem | What to try |
+|---------|-------------|
+| `NO_PUBKEY` / signature errors | Re-run the signing key step; confirm `Signed-By:` points at `/etc/apt/keyrings/roojs.gpg` |
+| `404` on `apt update` | Confirm your suite name matches your OS (see table above) |
+| Package not found | The upstream project may not publish a `.deb` yet, or the daily sync has not run since the release |
+
+---
+
+## Using the DNF repository
+
+### 1. Install the signing key
 
 ```bash
 sudo curl -fsSL https://roojs.github.io/repos/KEY.gpg \
   -o /etc/pki/rpm-gpg/RPM-GPG-KEY-roojs
-sudo cp docs/roojs.repo /etc/yum.repos.d/roojs.repo
+```
+
+### 2. Add the repository
+
+Create `/etc/yum.repos.d/roojs.repo`:
+
+```ini
+[roojs]
+name=roojs packages (Fedora $releasever)
+baseurl=https://roojs.github.io/repos/rpm/fc$releasever/$basearch/
+enabled=1
+gpgcheck=0
+repo_gpgcheck=1
+gpgkey=https://roojs.github.io/repos/KEY.gpg
+```
+
+Or install the template from this repository:
+
+```bash
+sudo curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs.repo \
+  -o /etc/yum.repos.d/roojs.repo
+```
+
+`gpgcheck=0` because CI-built RPMs are not individually signed. `repo_gpgcheck=1` verifies signed repository metadata.
+
+### 3. Update and install
+
+```bash
 sudo dnf makecache
 ```
 
-Install packages, for example:
+Example installs:
 
 ```bash
 sudo dnf install ibus-sherpa-onnx
+sudo dnf install rooterm
+sudo dnf install libsherpa-onnx-c-api libsherpa-onnx-c-api-devel
 ```
 
-`gpgcheck=0` because upstream CI RPMs are not individually signed; `repo_gpgcheck=1` verifies signed repository metadata.
+List packages from this repo:
 
-## Source projects
+```bash
+dnf repo-pkgs roojs list
+```
 
-Packages are built and released from individual project repositories, then aggregated here. Upstream repos polled by the workflow (`config/upstream-repos.json`):
+### DNF troubleshooting
 
-- [OLLMchat](https://github.com/roojs/OLLMchat)
-- [app.RooTerm](https://github.com/roojs/app.RooTerm)
-- [ibus-sherpa-onnx](https://github.com/roojs/ibus-sherpa-onnx)
-- [sherpa-onnx](https://github.com/roojs/sherpa-onnx)
-- [webkitgtk-automation](https://github.com/roojs/webkitgtk-automation)
-- [roobuilder](https://github.com/roojs/roobuilder)
+| Problem | What to try |
+|---------|-------------|
+| `Status code: 404` on `dnf makecache` | No packages are published for your Fedora `$releasever` yet (check `rpm -E %fedora`) |
+| GPG / repomd errors | Re-download `KEY.gpg`; confirm `gpgkey=` URL is reachable |
+| Dependency errors on install | Install `libsherpa-onnx-c-api` from this repo before `ibus-sherpa-onnx` |
+
+---
+
+## Available packages (upstream sources)
+
+| Project | APT | DNF | Notes |
+|---------|-----|-----|-------|
+| [OLLMchat](https://github.com/roojs/OLLMchat) | yes | — | `ollmchat` |
+| [app.RooTerm](https://github.com/roojs/app.RooTerm) | yes | yes (fc42) | `rooterm` |
+| [ibus-sherpa-onnx](https://github.com/roojs/ibus-sherpa-onnx) | yes | yes (fc44) | IBus engine |
+| [sherpa-onnx](https://github.com/roojs/sherpa-onnx) | yes | yes (fc44) | `libsherpa-onnx-c-api*` libraries |
+| [webkitgtk-automation](https://github.com/roojs/webkitgtk-automation) | yes | — | `libwebkitgtk-6.0-*` (series-specific builds) |
+| [roobuilder](https://github.com/roojs/roobuilder) | yes | — | `roobuilder`, `roojspacker` |
+
+New releases appear after the [publish workflow](.github/workflows/publish-repos.yml) runs (daily, or on demand).
+
+---
+
+## For maintainers
+
+- **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — polls upstream GitHub Releases, publishes to `gh-pages`
+- **Upstream list:** `config/upstream-repos.json`
+- **Setup guide:** [docs/setup.md](docs/setup.md)
 
 ## AI assistance
 

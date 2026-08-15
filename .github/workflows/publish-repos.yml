@@ -1,7 +1,9 @@
 name: Publish package repositories
 
-# Runs on push to main, or manually. Daily polling is planned but not enabled.
+# Runs daily, on push to main, or manually.
 on:
+  schedule:
+    - cron: '0 6 * * *'
   push:
     branches: [main]
   workflow_dispatch:
@@ -13,6 +15,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: publish-repos
+  cancel-in-progress: false
 
 jobs:
   publish:
