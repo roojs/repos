@@ -126,14 +126,15 @@ After the first successful workflow run, the site will be at **https://roojs.git
 
 ---
 
-## 5. Publish the repository (manual)
+## 5. Publish the repository
 
-1. Open **https://github.com/roojs/repos/actions/workflows/deploy-apt.yml**
-2. Click **Run workflow** → branch `main` → **Run workflow**
-3. Wait for the job to finish green
-4. Check **https://github.com/roojs/repos/tree/gh-pages** for `dists/`, `pool/`, and `KEY.gpg`
+**Automatic:** push any commit to `main` — the workflow runs and refreshes `gh-pages`.
 
-Optional: use the `repos` input to refresh only specific upstream projects (e.g. `ibus-sherpa-onnx,sherpa-onnx`).
+**Manual:** open **Actions → Publish APT Repo via Reprepro → Run workflow** on `main`.
+
+Optional manual input: comma-separated `repos` (e.g. `ibus-sherpa-onnx,sherpa-onnx`) to refresh only specific upstream projects.
+
+After a successful run, check **https://github.com/roojs/repos/tree/gh-pages** for `dists/`, `pool/`, and `KEY.gpg`.
 
 ---
 

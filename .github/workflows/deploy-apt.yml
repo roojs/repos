@@ -1,8 +1,9 @@
 name: Publish APT Repo via Reprepro
 
-# Manual publish for now. Daily polling of upstream releases is planned but not
-# enabled yet — see the commented schedule block below.
+# Runs on push to main, or manually. Daily polling is planned but not enabled.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       repos:
@@ -57,6 +58,9 @@ jobs:
             config/upstream-repos.json \
             "${{ inputs.repos }}"
 
+      - name: Sync reprepro config
+        run: cp main/config/distributions apt-repo/conf/distributions
+
       - name: Ingest packages with reprepro
         working-directory: apt-repo
         env:
@@ -70,7 +74,6 @@ jobs:
             exit 1
           fi
 
-          sed -i "s/SignWith: APT_GPG_KEY_ID/SignWith: ${GPG_KEY_ID}/g" conf/distributions
           sed -i "s/SignWith: default/SignWith: ${GPG_KEY_ID}/g" conf/distributions
 
           gpg --armor --export "${GPG_KEY_ID}" > KEY.gpg

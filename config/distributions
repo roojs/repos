@@ -1,0 +1,23 @@
+Codename: trixie
+Origin: roojs
+Label: roojs
+Architectures: amd64 arm64
+Components: main
+Description: Official APT repository for roojs packages
+SignWith: default
+
+Codename: questing
+Origin: roojs
+Label: roojs
+Architectures: amd64 arm64
+Components: main
+Description: Official APT repository for roojs packages
+SignWith: default
+
+Codename: resolute
+Origin: roojs
+Label: roojs
+Architectures: amd64 arm64
+Components: main
+Description: Official APT repository for roojs packages
+SignWith: default

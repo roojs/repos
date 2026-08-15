@@ -28,15 +28,7 @@ Architectures: `amd64`, `arm64`.
 
 ### Publishing workflow
 
-Manual for now:
-
-1. Upstream projects publish `.deb` files on their own GitHub Releases (see [Source projects](#source-projects)).
-2. Go to **Actions → Publish APT Repo via Reprepro → Run workflow** on `main`.
-3. The workflow downloads the latest `.deb` assets from each repo listed in `config/upstream-repos.json`, ingests them with reprepro, exports `KEY.gpg`, and commits the updated `gh-pages` branch.
-
-Optional: pass a comma-separated `repos` input (e.g. `ibus-sherpa-onnx,sherpa-onnx`) to refresh only specific upstream projects.
-
-Daily polling of upstream releases is planned but **not enabled yet**.
+Manual for now: push to `main` (or run the workflow by hand) to refresh the repo from upstream GitHub Releases.
 
 Setup (GPG key, GitHub secrets, Pages, first publish): **[docs/setup.md](docs/setup.md)**
 
