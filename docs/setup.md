@@ -8,7 +8,7 @@ Work through one section at a time. Do not skip ahead.
 
 ## 1. Create the GPG signing key
 
-The APT repo must be signed. GitHub Actions holds the **private** key as a secret; clients download the **public** key from `KEY.gpg` on GitHub Pages.
+The APT repo must be signed. GitHub Actions holds the **private** key as a secret; clients download the **public** key from `key.gpg` on GitHub Pages.
 
 ### Step 1.1 — Start key generation
 
@@ -134,7 +134,7 @@ After the first successful workflow run, the site will be at **https://roojs.git
 
 Optional manual input: comma-separated `repos` (e.g. `ibus-sherpa-onnx,sherpa-onnx`) to refresh only specific upstream projects.
 
-After a successful run, check **https://github.com/roojs/repos/tree/gh-pages** for `dists/`, `pool/`, and `KEY.gpg`.
+After a successful run, check **https://github.com/roojs/repos/tree/gh-pages** for `dists/`, `pool/`, and `key.gpg`.
 
 ### Scheduled workflows and repository activity
 

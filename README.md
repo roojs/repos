@@ -4,7 +4,7 @@ Official APT and DNF package repositories for [roojs](https://github.com/roojs) 
 
 **Repository URL:** `https://roojs.github.io/repos/`
 
-Client setup files (`.sources`, `.repo`) are served from the same site as the packages and signing key. Source copies live in `docs/` on `main` and are synced to `gh-pages` on each publish run.
+Client setup files (`sources`, `repo`, `key.gpg`) are served from the same site as the packages. Source copies live in `docs/` on `main`.
 
 Packages are built and released from individual project repositories, then aggregated here. The repository is refreshed daily (and whenever `main` is updated).
 
@@ -40,43 +40,21 @@ Currently published RPMs target **Fedora 42** (RooTerm) and **Fedora 44** (ibus-
 
 ## Using the APT repository
 
-**1. Install the signing key**
-
 ```bash
 sudo install -d -m 0755 /etc/apt/keyrings
-curl -fsSL https://roojs.github.io/repos/KEY.gpg \
+curl -fsSL https://roojs.github.io/repos/key.gpg \
   | sudo gpg --dearmor -o /etc/apt/keyrings/roojs.gpg
-```
 
-**2. Add the repository** — `curl` the sources file for your OS into apt:
-
-Debian 13:
-
-```bash
-curl -fsSL https://roojs.github.io/repos/roojs-trixie.sources \
+. /etc/os-release
+curl -fsSL https://roojs.github.io/repos/sources \
+  | sed "s/@suite@/$VERSION_CODENAME/" \
   | sudo tee /etc/apt/sources.list.d/roojs.sources
-```
 
-Ubuntu 25.10:
-
-```bash
-curl -fsSL https://roojs.github.io/repos/roojs-questing.sources \
-  | sudo tee /etc/apt/sources.list.d/roojs.sources
-```
-
-Ubuntu 26.04:
-
-```bash
-curl -fsSL https://roojs.github.io/repos/roojs-resolute.sources \
-  | sudo tee /etc/apt/sources.list.d/roojs.sources
-```
-
-**3. Update and install**
-
-```bash
 sudo apt update
 sudo apt install ibus-sherpa-onnx ollmchat rooterm
 ```
+
+Template: [docs/sources](docs/sources) (`@suite@` is replaced with your `VERSION_CODENAME`).
 
 ### APT troubleshooting
 
@@ -90,62 +68,25 @@ sudo apt install ibus-sherpa-onnx ollmchat rooterm
 
 ## Using the DNF repository
 
-### 1. Install the signing key
-
 ```bash
-sudo curl -fsSL https://roojs.github.io/repos/KEY.gpg \
+sudo curl -fsSL https://roojs.github.io/repos/key.gpg \
   -o /etc/pki/rpm-gpg/RPM-GPG-KEY-roojs
-```
-
-### 2. Add the repository
-
-Create `/etc/yum.repos.d/roojs.repo`:
-
-```ini
-[roojs]
-name=roojs packages (Fedora $releasever)
-baseurl=https://roojs.github.io/repos/rpm/fc$releasever/$basearch/
-enabled=1
-gpgcheck=0
-repo_gpgcheck=1
-gpgkey=https://roojs.github.io/repos/KEY.gpg
-```
-
-Or install the template from this repository:
-
-```bash
-sudo curl -fsSL https://roojs.github.io/repos/roojs.repo \
+sudo curl -fsSL https://roojs.github.io/repos/repo \
   -o /etc/yum.repos.d/roojs.repo
+sudo dnf makecache
+sudo dnf install ibus-sherpa-onnx rooterm
 ```
 
 `gpgcheck=0` because CI-built RPMs are not individually signed. `repo_gpgcheck=1` verifies signed repository metadata.
 
-### 3. Update and install
-
-```bash
-sudo dnf makecache
-```
-
-Example installs:
-
-```bash
-sudo dnf install ibus-sherpa-onnx
-sudo dnf install rooterm
-sudo dnf install libsherpa-onnx-c-api libsherpa-onnx-c-api-devel
-```
-
-List packages from this repo:
-
-```bash
-dnf repo-pkgs roojs list
-```
+Template: [docs/repo](docs/repo).
 
 ### DNF troubleshooting
 
 | Problem | What to try |
 |---------|-------------|
 | `Status code: 404` on `dnf makecache` | No packages are published for your Fedora `$releasever` yet (check `rpm -E %fedora`) |
-| GPG / repomd errors | Re-download `KEY.gpg`; confirm `gpgkey=` URL is reachable |
+| GPG / repomd errors | Re-download `key.gpg`; confirm `gpgkey=` URL is reachable |
 | Dependency errors on install | Install `libsherpa-onnx-c-api` from this repo before `ibus-sherpa-onnx` |
 
 ---

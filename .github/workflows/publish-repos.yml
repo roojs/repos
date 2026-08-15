@@ -133,7 +133,7 @@ jobs:
             exit 1
           fi
           echo "GPG_KEY_ID=${GPG_KEY_ID}" >> "$GITHUB_ENV"
-          gpg --armor --export "${GPG_KEY_ID}" > KEY.gpg
+          gpg --armor --export "${GPG_KEY_ID}" > key.gpg
 
       - name: Ingest packages with reprepro
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-debs.outputs.found == 'true'
@@ -181,8 +181,7 @@ jobs:
         run: rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Sync client setup files to Pages
-        run: |
-          cp main/docs/roojs-*.sources main/docs/roojs.repo pages/
+        run: cp main/docs/sources main/docs/repo pages/
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
