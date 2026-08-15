@@ -1,0 +1,27 @@
+# Common settings for all distributions
+Origin: roojs
+Label: roojs
+Architectures: amd64 arm64 i386 source
+Components: main
+Description: Official APT repository for roojs packages
+SignWith: APT_GPG_KEY_ID
+
+Codename: bookworm
+Architectures: amd64 arm64
+Components: main
+SignWith: default
+
+Codename: trixie
+Architectures: amd64 arm64
+Components: main
+SignWith: default
+
+Codename: jammy
+Architectures: amd64 arm64
+Components: main
+SignWith: default
+
+Codename: noble
+Architectures: amd64 arm64
+Components: main
+SignWith: default
