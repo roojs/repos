@@ -18,12 +18,13 @@ gh-pages/
 
 ### Supported suites
 
+Ubuntu only for now (no Debian suites until there is a concrete need):
+
 | Codename | Distribution |
 |----------|--------------|
-| `bookworm` | Debian 12 |
-| `trixie` | Debian 13 |
-| `jammy` | Ubuntu 22.04 LTS |
 | `noble` | Ubuntu 24.04 LTS |
+| `questing` | Ubuntu 25.10 |
+| `resolute` | Ubuntu 26.04 LTS |
 
 Architectures: `amd64`, `arm64`.
 

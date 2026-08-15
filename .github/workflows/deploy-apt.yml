@@ -63,7 +63,7 @@ jobs:
             exit 1
           fi
 
-          CODENAMES="bookworm trixie jammy noble"
+          CODENAMES="noble questing resolute"
           for deb in "${debs[@]}"; do
             for distro in ${CODENAMES}; do
               reprepro -b . includedeb "${distro}" "${deb}"
