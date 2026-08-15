@@ -20,6 +20,6 @@ jobs:
         run: date -u +%Y-%m-%dT%H:%M:%SZ > .github/keepalive
 
       - name: Commit keepalive
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: repository keepalive"
