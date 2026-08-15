@@ -4,6 +4,8 @@ Official APT and DNF package repositories for [roojs](https://github.com/roojs) 
 
 **Repository URL:** `https://roojs.github.io/repos/`
 
+Client setup files (`.sources`, `.repo`) are served from the same site as the packages and signing key. Source copies live in `docs/` on `main` and are synced to `gh-pages` on each publish run.
+
 Packages are built and released from individual project repositories, then aggregated here. The repository is refreshed daily (and whenever `main` is updated).
 
 Maintainer setup (GPG keys, GitHub secrets, Pages): **[docs/setup.md](docs/setup.md)**
@@ -51,21 +53,21 @@ curl -fsSL https://roojs.github.io/repos/KEY.gpg \
 Debian 13:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs-trixie.sources \
+curl -fsSL https://roojs.github.io/repos/roojs-trixie.sources \
   | sudo tee /etc/apt/sources.list.d/roojs.sources
 ```
 
 Ubuntu 25.10:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs-questing.sources \
+curl -fsSL https://roojs.github.io/repos/roojs-questing.sources \
   | sudo tee /etc/apt/sources.list.d/roojs.sources
 ```
 
 Ubuntu 26.04:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs-resolute.sources \
+curl -fsSL https://roojs.github.io/repos/roojs-resolute.sources \
   | sudo tee /etc/apt/sources.list.d/roojs.sources
 ```
 
@@ -112,7 +114,7 @@ gpgkey=https://roojs.github.io/repos/KEY.gpg
 Or install the template from this repository:
 
 ```bash
-sudo curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs.repo \
+sudo curl -fsSL https://roojs.github.io/repos/roojs.repo \
   -o /etc/yum.repos.d/roojs.repo
 ```
 

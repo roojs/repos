@@ -180,10 +180,13 @@ jobs:
         if: steps.changes.outputs.changed == 'true' || inputs.force == true
         run: rm -rf pages/incoming-debs pages/incoming-rpms
 
+      - name: Sync client setup files to Pages
+        run: |
+          cp main/docs/roojs-*.sources main/docs/roojs.repo pages/
+
       - name: Commit and push changes
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update APT and DNF repositories"
+          commit_message: "chore: update package repositories"
           branch: gh-pages
           repository: pages
