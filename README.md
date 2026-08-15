@@ -20,6 +20,7 @@ gh-pages/
 
 | Codename | Distribution |
 |----------|--------------|
+| `trixie` | Debian 13 (current stable) |
 | `questing` | Ubuntu 25.10 |
 | `resolute` | Ubuntu 26.04 LTS |
 
