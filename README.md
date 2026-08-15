@@ -38,45 +38,49 @@ Currently published RPMs target **Fedora 42** (RooTerm) and **Fedora 44** (ibus-
 
 ## Using the APT repository
 
-**One-liner** (detects Debian/Ubuntu and configures apt):
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/install-apt.sh | sudo bash
-```
-
-Then install packages:
-
-```bash
-sudo apt install ibus-sherpa-onnx ollmchat rooterm
-```
-
-Supported: Debian 13 (`trixie`), Ubuntu 25.10 (`questing`), Ubuntu 26.04 (`resolute`).
-
-<details>
-<summary>Manual setup</summary>
+**1. Install the signing key**
 
 ```bash
 sudo install -d -m 0755 /etc/apt/keyrings
 curl -fsSL https://roojs.github.io/repos/KEY.gpg \
   | sudo gpg --dearmor -o /etc/apt/keyrings/roojs.gpg
-sudo tee /etc/apt/sources.list.d/roojs.sources <<'EOF'
-Types: deb
-URIs: https://roojs.github.io/repos/
-Suites: SUITE
-Components: main
-Signed-By: /etc/apt/keyrings/roojs.gpg
-EOF
 ```
 
-Replace `SUITE` with `trixie`, `questing`, or `resolute`, then `sudo apt update`.
+**2. Add the repository** — `curl` the sources file for your OS into apt:
 
-</details>
+Debian 13:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs-trixie.sources \
+  | sudo tee /etc/apt/sources.list.d/roojs.sources
+```
+
+Ubuntu 25.10:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs-questing.sources \
+  | sudo tee /etc/apt/sources.list.d/roojs.sources
+```
+
+Ubuntu 26.04:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs-resolute.sources \
+  | sudo tee /etc/apt/sources.list.d/roojs.sources
+```
+
+**3. Update and install**
+
+```bash
+sudo apt update
+sudo apt install ibus-sherpa-onnx ollmchat rooterm
+```
 
 ### APT troubleshooting
 
 | Problem | What to try |
 |---------|-------------|
-| `NO_PUBKEY` / signature errors | Re-run the one-liner install script |
+| `NO_PUBKEY` / signature errors | Re-run step 1 (signing key) |
 | `404` on `apt update` | Confirm your suite name matches your OS (see table above) |
 | Package not found | The upstream project may not publish a `.deb` yet, or the daily sync has not run since the release |
 

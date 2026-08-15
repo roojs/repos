@@ -1,5 +1,5 @@
 Types: deb
 URIs: https://roojs.github.io/repos/
-Suites: trixie questing resolute
+Suites: trixie
 Components: main
 Signed-By: /etc/apt/keyrings/roojs.gpg

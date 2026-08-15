@@ -148,6 +148,6 @@ gh workflow run publish-repos.yml -R roojs/repos
 
 ## 6. Test on a machine
 
-See [Client installation](../README.md#client-installation) in the README.
+See [Using the APT repository](../README.md#using-the-apt-repository) in the README.
 
 On each machine, use only the suite that matches the OS (`trixie`, `questing`, or `resolute`).
