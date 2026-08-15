@@ -45,7 +45,7 @@ jobs:
           sudo apt-get install -y reprepro createrepo-c gpg jq
 
       - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v6
+        uses: crazy-max/ghaction-import-gpg@v7
         with:
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
