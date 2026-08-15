@@ -130,7 +130,7 @@ After the first successful workflow run, the site will be at **https://roojs.git
 
 **Automatic:** push any commit to `main` — the workflow runs and refreshes `gh-pages`.
 
-**Manual:** open **Actions → Publish APT Repo via Reprepro → Run workflow** on `main`.
+**Manual:** open **Actions → Publish package repositories → Run workflow** on `main`.
 
 Optional manual input: comma-separated `repos` (e.g. `ibus-sherpa-onnx,sherpa-onnx`) to refresh only specific upstream projects.
 
