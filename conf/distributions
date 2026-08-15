@@ -1,22 +1,23 @@
-# Common settings for all distributions
+Codename: trixie
 Origin: roojs
 Label: roojs
-Architectures: amd64 arm64 i386 source
+Architectures: amd64 arm64
 Components: main
 Description: Official APT repository for roojs packages
-SignWith: APT_GPG_KEY_ID
-
-Codename: trixie
-Architectures: amd64 arm64
-Components: main
-SignWith: default
+SignWith: 0386143C63393470
 
 Codename: questing
+Origin: roojs
+Label: roojs
 Architectures: amd64 arm64
 Components: main
-SignWith: default
+Description: Official APT repository for roojs packages
+SignWith: 0386143C63393470
 
 Codename: resolute
+Origin: roojs
+Label: roojs
 Architectures: amd64 arm64
 Components: main
-SignWith: default
+Description: Official APT repository for roojs packages
+SignWith: 0386143C63393470
