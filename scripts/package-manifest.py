@@ -16,6 +16,10 @@ def package_hashes(directory: Path, suffix: str) -> dict[str, str]:
         return {}
     result: dict[str, str] = {}
     for path in sorted(directory.glob(f"*{suffix}")):
+        if suffix == ".rpm" and (
+            "debuginfo" in path.name or "debugsource" in path.name
+        ):
+            continue
         result[path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
     return result
 

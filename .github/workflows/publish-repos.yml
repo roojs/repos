@@ -181,7 +181,10 @@ jobs:
         run: rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Sync client setup files to Pages
-        run: cp main/docs/sources main/docs/repo pages/
+        run: |
+          test -f main/docs/sources
+          test -f main/docs/repo
+          cp -f main/docs/sources main/docs/repo pages/
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
