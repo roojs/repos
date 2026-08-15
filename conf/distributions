@@ -6,11 +6,6 @@ Components: main
 Description: Official APT repository for roojs packages
 SignWith: APT_GPG_KEY_ID
 
-Codename: noble
-Architectures: amd64 arm64
-Components: main
-SignWith: default
-
 Codename: questing
 Architectures: amd64 arm64
 Components: main
