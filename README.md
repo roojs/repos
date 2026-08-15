@@ -38,32 +38,7 @@ Optional: pass a comma-separated `repos` input (e.g. `ibus-sherpa-onnx,sherpa-on
 
 Daily polling of upstream releases is planned but **not enabled yet**.
 
-### Repository secrets
-
-Configure these secrets before the first publish:
-
-| Secret | Description |
-|--------|-------------|
-| `APT_GPG_PRIVATE_KEY` | Armor-encoded GPG private key used to sign the repository |
-| `APT_GPG_PASSPHRASE` | Passphrase for the signing key (leave empty if the key has none) |
-
-Generate a dedicated signing key (example):
-
-```bash
-gpg --full-generate-key
-gpg --armor --export-secret-keys YOUR_KEY_ID > signing-key.asc
-```
-
-Add `signing-key.asc` as `APT_GPG_PRIVATE_KEY` in the repository secrets.
-
-### GitHub Pages
-
-Enable GitHub Pages for this repository:
-
-- **Source:** Deploy from a branch
-- **Branch:** `gh-pages` / root
-
-The public URL is `https://roojs.github.io/repos/`.
+Setup (GPG key, GitHub secrets, Pages, first publish): **[docs/setup.md](docs/setup.md)**
 
 ## Client installation
 
