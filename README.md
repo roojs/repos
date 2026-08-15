@@ -22,13 +22,6 @@ Maintainer setup (GPG keys, GitHub secrets, Pages): **[docs/setup.md](docs/setup
 
 Architectures: `amd64`, `arm64`.
 
-Check your suite:
-
-```bash
-. /etc/os-release
-if [ -f /etc/debian_version ] && [ "$ID" = debian ]; then echo trixie; else echo "$VERSION_CODENAME"; fi
-```
-
 ### DNF (Fedora)
 
 Repositories are published per Fedora release under `rpm/fc<version>/<arch>/` (for example `rpm/fc44/x86_64/`).
@@ -45,83 +38,45 @@ Currently published RPMs target **Fedora 42** (RooTerm) and **Fedora 44** (ibus-
 
 ## Using the APT repository
 
-### 1. Install the signing key
+**One-liner** (detects Debian/Ubuntu and configures apt):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/install-apt.sh | sudo bash
+```
+
+Then install packages:
+
+```bash
+sudo apt install ibus-sherpa-onnx ollmchat rooterm
+```
+
+Supported: Debian 13 (`trixie`), Ubuntu 25.10 (`questing`), Ubuntu 26.04 (`resolute`).
+
+<details>
+<summary>Manual setup</summary>
 
 ```bash
 sudo install -d -m 0755 /etc/apt/keyrings
 curl -fsSL https://roojs.github.io/repos/KEY.gpg \
   | sudo gpg --dearmor -o /etc/apt/keyrings/roojs.gpg
-sudo chmod a+r /etc/apt/keyrings/roojs.gpg
-```
-
-### 2. Add the repository
-
-Create `/etc/apt/sources.list.d/roojs.sources` using **only the suite that matches your system**.
-
-**Debian 13 (trixie):**
-
-```
+sudo tee /etc/apt/sources.list.d/roojs.sources <<'EOF'
 Types: deb
 URIs: https://roojs.github.io/repos/
-Suites: trixie
+Suites: SUITE
 Components: main
 Signed-By: /etc/apt/keyrings/roojs.gpg
+EOF
 ```
 
-**Ubuntu 25.10 (questing):**
+Replace `SUITE` with `trixie`, `questing`, or `resolute`, then `sudo apt update`.
 
-```
-Types: deb
-URIs: https://roojs.github.io/repos/
-Suites: questing
-Components: main
-Signed-By: /etc/apt/keyrings/roojs.gpg
-```
-
-**Ubuntu 26.04 (resolute):**
-
-```
-Types: deb
-URIs: https://roojs.github.io/repos/
-Suites: resolute
-Components: main
-Signed-By: /etc/apt/keyrings/roojs.gpg
-```
-
-Or copy the template and edit the `Suites:` line:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/roojs/repos/main/docs/roojs.sources \
-  | sudo tee /etc/apt/sources.list.d/roojs.sources
-# Edit Suites: to keep only your codename
-sudo nano /etc/apt/sources.list.d/roojs.sources
-```
-
-### 3. Update and install
-
-```bash
-sudo apt update
-```
-
-Example installs:
-
-```bash
-sudo apt install ibus-sherpa-onnx    # speech-to-text IBus engine
-sudo apt install ollmchat            # OLLMchat desktop app
-sudo apt install rooterm             # RooTerm terminal
-```
-
-Search for available packages:
-
-```bash
-apt-cache search '' | grep -E 'ibus-sherpa|ollmchat|rooterm|roobuilder|sherpa|webkitgtk'
-```
+</details>
 
 ### APT troubleshooting
 
 | Problem | What to try |
 |---------|-------------|
-| `NO_PUBKEY` / signature errors | Re-run the signing key step; confirm `Signed-By:` points at `/etc/apt/keyrings/roojs.gpg` |
+| `NO_PUBKEY` / signature errors | Re-run the one-liner install script |
 | `404` on `apt update` | Confirm your suite name matches your OS (see table above) |
 | Package not found | The upstream project may not publish a `.deb` yet, or the daily sync has not run since the release |
 
