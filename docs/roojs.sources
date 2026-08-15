@@ -1,5 +1,5 @@
 Types: deb
 URIs: https://roojs.github.io/repos/
-Suites: noble questing resolute
+Suites: questing resolute
 Components: main
 Signed-By: /etc/apt/keyrings/roojs.gpg

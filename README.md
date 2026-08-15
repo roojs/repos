@@ -18,11 +18,8 @@ gh-pages/
 
 ### Supported suites
 
-Ubuntu only for now (no Debian suites until there is a concrete need):
-
 | Codename | Distribution |
 |----------|--------------|
-| `noble` | Ubuntu 24.04 LTS |
 | `questing` | Ubuntu 25.10 |
 | `resolute` | Ubuntu 26.04 LTS |
 
