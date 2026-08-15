@@ -28,9 +28,15 @@ Architectures: `amd64`, `arm64`.
 
 ### Publishing workflow
 
-1. Create a GitHub Release on this repository and attach one or more `.deb` files.
-2. The [Publish APT Repo via Reprepro](.github/workflows/deploy-apt.yml) workflow runs on `release: published` (or via `workflow_dispatch`).
-3. The workflow downloads release `.deb` assets, ingests them into every configured suite with reprepro, exports `KEY.gpg`, and commits the updated `gh-pages` branch.
+Manual for now:
+
+1. Upstream projects publish `.deb` files on their own GitHub Releases (see [Source projects](#source-projects)).
+2. Go to **Actions → Publish APT Repo via Reprepro → Run workflow** on `main`.
+3. The workflow downloads the latest `.deb` assets from each repo listed in `config/upstream-repos.json`, ingests them with reprepro, exports `KEY.gpg`, and commits the updated `gh-pages` branch.
+
+Optional: pass a comma-separated `repos` input (e.g. `ibus-sherpa-onnx,sherpa-onnx`) to refresh only specific upstream projects.
+
+Daily polling of upstream releases is planned but **not enabled yet**.
 
 ### Repository secrets
 
@@ -86,7 +92,7 @@ sudo apt install ibus-sherpa-onnx
 
 ## Source projects
 
-Packages are built and released from individual project repositories, then aggregated here for apt/dnf distribution. Planned sources include:
+Packages are built and released from individual project repositories, then aggregated here. Upstream repos polled by the workflow (`config/upstream-repos.json`):
 
 - [OLLMchat](https://github.com/roojs/OLLMchat)
 - [app.RooTerm](https://github.com/roojs/app.RooTerm)

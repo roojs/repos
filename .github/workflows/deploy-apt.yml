@@ -1,9 +1,19 @@
 name: Publish APT Repo via Reprepro
 
+# Manual publish for now. Daily polling of upstream releases is planned but not
+# enabled yet — see the commented schedule block below.
 on:
-  release:
-    types: [published]
   workflow_dispatch:
+    inputs:
+      repos:
+        description: Optional comma-separated upstream repos (empty = all in config/upstream-repos.json)
+        required: false
+        default: ''
+
+# Planned (not enabled):
+# on:
+#   schedule:
+#     - cron: '0 6 * * *'
 
 permissions:
   contents: write
@@ -13,16 +23,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          path: main
+
       - name: Checkout gh-pages
         uses: actions/checkout@v4
         with:
           ref: gh-pages
           fetch-depth: 0
+          path: apt-repo
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y reprepro gpg
+          sudo apt-get install -y reprepro gpg jq
 
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v6
@@ -30,16 +46,19 @@ jobs:
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
 
-      - name: Download .deb artifacts
-        uses: dsaltares/fetch-gh-release-asset@master
-        with:
-          version: latest
-          file: '.*\.deb$'
-          regex: true
-          target: incoming/
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download upstream .deb release assets
+        working-directory: main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          chmod +x scripts/fetch-upstream-debs.sh
+          ./scripts/fetch-upstream-debs.sh \
+            "${GITHUB_WORKSPACE}/apt-repo/incoming" \
+            config/upstream-repos.json \
+            "${{ inputs.repos }}"
 
       - name: Ingest packages with reprepro
+        working-directory: apt-repo
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
         run: |
@@ -59,7 +78,7 @@ jobs:
           shopt -s nullglob
           debs=(incoming/*.deb)
           if [ "${#debs[@]}" -eq 0 ]; then
-            echo "No .deb packages found in the release." >&2
+            echo "No .deb packages found to ingest." >&2
             exit 1
           fi
 
@@ -77,3 +96,4 @@ jobs:
         with:
           commit_message: "chore: update APT repository via reprepro"
           branch: gh-pages
+          repository: apt-repo

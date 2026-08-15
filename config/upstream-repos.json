@@ -1,0 +1,11 @@
+{
+  "owner": "roojs",
+  "repos": [
+    "OLLMchat",
+    "app.RooTerm",
+    "ibus-sherpa-onnx",
+    "sherpa-onnx",
+    "webkitgtk-automation",
+    "roobuilder"
+  ]
+}
