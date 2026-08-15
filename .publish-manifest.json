@@ -3,8 +3,8 @@
     "ibus-sherpa-onnx_0.3.3-1_amd64.deb": "25b792a460b0a8538df3b8fb99f2725a105a8c51cdedddf65794250f5e6ea940",
     "libsherpa-onnx-c-api-dev_1.13.5-roojs2_amd64.deb": "80765e6141fae2f83185d36da237dfa8e75f2ec0c3e55b4185bbb28d91c565d6",
     "libsherpa-onnx-c-api1_1.13.5-roojs2_amd64.deb": "71cb2d75c38f18696ec406e6c2222746690653880fbf38173eda6df3ede66bb1",
-    "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.24.04.2+webkitgtk1_amd64.deb": "757e3049d576c047fb532cba99139fd5d99217df6a35dd292897aa00cda571ca",
-    "libwebkitgtk-6.0-dev_2.52.3-0ubuntu0.24.04.2+webkitgtk1_amd64.deb": "fb423cd9943042d435812b27ac6612a8dd3963117b9af2d8e26a6fe54ae69065",
+    "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": "bdcf81883df5eb241167a36ca6916494d4e9d85ed1441b47477ff2fe34e141d9",
+    "libwebkitgtk-6.0-dev_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": "6318b5acf0eb0bf083baf773661a9e40c0747687576a252f3941266b9d0e04e1",
     "ollmchat-remote-only_1.2.4.alpha-1_amd64.deb": "e4c0edd6bbed006fa0a6b8d144b99bbbe41fe88f86c09a579733cc3f5d22e2cb",
     "ollmchat_1.2.4.alpha-1_amd64.deb": "06c5532495a8bc5aa58583ed21e0af13a9002ef07adf439276999e696f64f0c3",
     "roobuilder_5.0.11_amd64.deb": "89d8a673f654555f603429b661b1e3236eec58b3cfdcd9b900d34d4fd14c17bf",
@@ -15,11 +15,7 @@
   "rpms": {
     "ibus-sherpa-onnx-0.3.3-1.fc44.x86_64.rpm": "eb9749f911f1b7697b419b0a09d810a7a0471efc6373bd8abb557c8d23d004a2",
     "libsherpa-onnx-c-api-1.13.5-roojs2.fc44.x86_64.rpm": "798be80dadfcd609025c7b1a4c5fb06270b26ec76fc9075df7c695c55916962e",
-    "libsherpa-onnx-c-api-debuginfo-1.13.5-roojs2.fc44.x86_64.rpm": "60682506d63341a20c9477a332153b87d834812eb54f82c9f3eafe875be8c3c0",
     "libsherpa-onnx-c-api-devel-1.13.5-roojs2.fc44.x86_64.rpm": "0701b834ef4bf63dd21e0075626a51cfcb84a5d6c634efa14eb81d3f9d74d08c",
-    "rooterm-0.1.1-2.fc42.x86_64.rpm": "8a4c2cd61691d5cea2f7a67979bdcf20ac076b8722f2f2a3553d9c1d2e304406",
-    "rooterm-debuginfo-0.1.1-2.fc42.x86_64.rpm": "27e0b9a8dc2cfb9aa0d8bfef888a64c3c7ceec9b3f5f28315b309758310ba7b9",
-    "rooterm-debugsource-0.1.1-2.fc42.x86_64.rpm": "ee71289e8a3726d9d63c6e14859ee06157ba6c4ec731a9952974f03391cd412b",
-    "sherpa-onnx-debugsource-1.13.5-roojs2.fc44.x86_64.rpm": "7e71ad9d3bb96235d8bc66362538f62e23dc69bfdcc13b289fd963b3283e9ef9"
+    "rooterm-0.1.1-2.fc42.x86_64.rpm": "8a4c2cd61691d5cea2f7a67979bdcf20ac076b8722f2f2a3553d9c1d2e304406"
   }
 }
