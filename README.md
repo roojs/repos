@@ -109,7 +109,7 @@ New releases appear after the [publish workflow](.github/workflows/publish-repos
 ## For maintainers
 
 - **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — checks upstream GitHub Releases daily; commits to `gh-pages` only when packages or repo config change
-- **Upstream list:** `config/upstream-repos.json`
+- **Upstream list:** `config/repos.json` — projects, APT suites, and per-release suite rules
 - **Setup guide:** [docs/setup.md](docs/setup.md)
 
 ## AI assistance

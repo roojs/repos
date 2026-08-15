@@ -4,8 +4,8 @@ set -euo pipefail
 incoming_dir="${1:?incoming directory required}"
 repo_root="${2:?repo root required}"
 
-shopt -s nullglob
-rpms=("${incoming_dir}"/*.rpm)
+shopt -s nullglob globstar
+mapfile -t rpms < <(find "${incoming_dir}" -mindepth 2 -maxdepth 2 -type f -name '*.rpm' | sort)
 if [[ "${#rpms[@]}" -eq 0 ]]; then
   echo "No RPM packages to publish."
   exit 0

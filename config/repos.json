@@ -1,0 +1,23 @@
+{
+  "owner": "roojs",
+  "apt": {
+    "suites": ["trixie", "questing", "resolute"],
+    "architectures": ["amd64", "arm64"]
+  },
+  "projects": [
+    { "repo": "OLLMchat" },
+    { "repo": "app.RooTerm", "rpm": true },
+    { "repo": "ibus-sherpa-onnx", "rpm": true },
+    { "repo": "sherpa-onnx", "rpm": true },
+    {
+      "repo": "webkitgtk-automation",
+      "deb": {
+        "release_tags": {
+          "build-resolute-*": ["resolute"],
+          "build-questing-*": ["questing"]
+        }
+      }
+    },
+    { "repo": "roobuilder" }
+  ]
+}
