@@ -36,6 +36,10 @@ changed=false
 if ! jq -en --argjson current "$current" --argjson previous "$previous" '$current == $previous' >/dev/null; then
   changed=true
 fi
+if jq -en --argjson current "$current" --argjson previous "$previous" \
+  '(($previous.debs // {}) == {}) and (($current.debs // {}) != {})' >/dev/null; then
+  changed=true
+fi
 
 if [[ -n "$output" ]]; then
   printf '%s\n' "$current" | jq . > "$output"

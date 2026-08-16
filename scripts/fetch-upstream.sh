@@ -393,7 +393,109 @@ keep_previous_repo() {
   echo "$reason" >&2
   index="$(jq --arg repo "$repo" --argjson prev "$prev" '. + {($repo): $prev}' <<< "$index")"
   found=1
+  persist_package_index
   return 0
+}
+
+persist_package_index() {
+  jq . <<< "$index" > "${output}/.package-index.json"
+}
+
+merge_repo_index_entry() {
+  local repo="$1" tag="$2" packages="$3"
+  if jq -e --arg repo "$repo" 'has($repo)' <<< "$index" >/dev/null; then
+    index="$(jq \
+      --arg repo "$repo" \
+      --arg tag "$tag" \
+      --argjson packages "$packages" \
+      '
+        .[$repo].tag = (
+          if (.[$repo].tag | index($tag)) then .[$repo].tag
+          elif .[$repo].tag == "" then $tag
+          else .[$repo].tag + ";" + $tag
+          end
+        )
+        | .[$repo].packages += $packages
+      ' <<< "$index")"
+  else
+    index="$(jq \
+      --arg repo "$repo" \
+      --arg tag "$tag" \
+      --argjson packages "$packages" \
+      '. + {($repo): {tag: $tag, packages: $packages}}' \
+      <<< "$index")"
+  fi
+  found=1
+  persist_package_index
+}
+
+packages_from_repo_dir() {
+  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4"
+  local packages="{}"
+  local file base sha file_suites_json
+  shopt -s nullglob
+  for file in "${repo_dir}"/*."${package_type}"; do
+    [[ -f "$file" ]] || continue
+    base="$(basename "$file")"
+    if [[ "$package_type" == "rpm" ]] && [[ "$base" == *debuginfo* || "$base" == *debugsource* ]]; then
+      rm -f "$file"
+      echo "Skipping ${base}" >&2
+      continue
+    fi
+    if [[ -n "$release_json" ]] && ! jq -e --arg name "$base" --arg ext "$package_type" \
+      '[.assets[] | select(.name == $name and (.name | endswith("." + $ext)))] | length > 0' \
+      <<< "$release_json" >/dev/null; then
+      continue
+    fi
+    sha="$(sha256sum "$file" | awk '{print $1}')"
+    if [[ "$package_type" == "deb" ]]; then
+      file_suites_json="$suites_json"
+      if [[ -n "${pool_file_suites[$base]+x}" ]]; then
+        file_suites_json="$(printf '%s\n' ${pool_file_suites[$base]} | awk 'NF' | jq -R . | jq -s .)"
+      fi
+      packages="$(jq \
+        --arg name "$base" \
+        --arg sha "$sha" \
+        --argjson suites "$file_suites_json" \
+        '. + {($name): {sha256: $sha, suites: $suites}}' \
+        <<< "$packages")"
+    else
+      packages="$(jq \
+        --arg name "$base" \
+        --arg sha "$sha" \
+        '. + {($name): {sha256: $sha}}' \
+        <<< "$packages")"
+    fi
+  done
+  shopt -u nullglob
+  printf '%s\n' "$packages"
+}
+
+github_release_tag_for_pattern() {
+  local owner="$1" repo="$2" pattern="$3" tag
+  while IFS= read -r tag; do
+    [[ -n "$tag" ]] || continue
+    if [[ "$tag" == $pattern ]]; then
+      printf '%s\n' "$tag"
+      return 0
+    fi
+  done < <(gh release list -R "${owner}/${repo}" --limit 100 --json tagName -q '.[].tagName' 2>/dev/null || true)
+  return 1
+}
+
+github_release_tags_for_project() {
+  local owner="$1" repo="$2" project="$3" pattern tag
+  if jq -e '.deb.release_tags' >/dev/null <<< "$project"; then
+    while IFS= read -r pattern; do
+      [[ -n "$pattern" ]] || continue
+      tag="$(github_release_tag_for_pattern "$owner" "$repo" "$pattern")" || continue
+      printf '%s\n' "$tag"
+    done < <(jq -r '.deb.release_tags | keys[]' <<< "$project")
+    return 0
+  fi
+  tag="$(gh release view -R "${owner}/${repo}" --json tagName -q '.tagName // empty' 2>/dev/null || true)"
+  [[ -n "$tag" ]] || return 1
+  printf '%s\n' "$tag"
 }
 
 github_should_skip() {
@@ -419,24 +521,6 @@ github_should_skip() {
         )
     )
   ' >/dev/null
-}
-
-github_latest_release_tag() {
-  local owner="$1" repo="$2" project="$3" tag pattern
-  if jq -e '.deb.release_tags' >/dev/null <<< "$project"; then
-    while IFS= read -r tag; do
-      [[ -n "$tag" ]] || continue
-      while IFS= read -r pattern; do
-        [[ -n "$pattern" ]] || continue
-        if [[ "$tag" == $pattern ]]; then
-          printf '%s\n' "$tag"
-          return 0
-        fi
-      done < <(jq -r '.deb.release_tags | keys[]' <<< "$project")
-    done < <(gh release list -R "${owner}/${repo}" --limit 100 --json tagName --jq '.[].tagName')
-    return 1
-  fi
-  gh release view -R "${owner}/${repo}" --json tagName -q '.tagName // empty'
 }
 
 pool_should_skip() {
@@ -557,13 +641,8 @@ while IFS= read -r repo; do
       continue
     fi
   else
-    tag="$(github_latest_release_tag "$owner" "$repo" "$project")"
-    if [[ -n "$tag" ]]; then
-      release_json="$(gh release view "$tag" -R "${owner}/${repo}" --json tagName,assets 2>/dev/null || true)"
-    else
-      release_json=""
-    fi
-    if [[ -z "$tag" || -z "$release_json" ]]; then
+    mapfile -t release_tags < <(github_release_tags_for_project "$owner" "$repo" "$project" || true)
+    if [[ "${#release_tags[@]}" -eq 0 ]]; then
       if keep_previous_repo "$repo" "Keeping previously published ${owner}/${repo}: no latest release."; then
         continue
       fi
@@ -571,36 +650,56 @@ while IFS= read -r repo; do
       continue
     fi
 
-    if [[ "$package_type" == "deb" ]]; then
-      if ! suites="$(repos_config_deb_suites "$config" "$project" "$tag")"; then
-        echo "Skipping ${owner}/${repo}@${tag}: no deb suite mapping in config." >&2
+    for tag in "${release_tags[@]}"; do
+      [[ -n "$tag" ]] || continue
+      release_json="$(gh release view "$tag" -R "${owner}/${repo}" --json tagName,assets 2>/dev/null || true)"
+      if [[ -z "$release_json" ]]; then
+        echo "Skipping ${owner}/${repo}@${tag}: could not read release metadata." >&2
         continue
       fi
-      suites_json="$(printf '%s\n' "$suites" | jq -R . | jq -s .)"
-    else
-      suites_json="null"
-    fi
 
-    if github_should_skip "$(previous_repo_json "$repo")" "$release_json" "$package_type"; then
-      if keep_previous_repo "$repo" "Skipping download for ${owner}/${repo}@${tag}: already published."; then
+      if [[ "$package_type" == "deb" ]]; then
+        if ! suites="$(repos_config_deb_suites "$config" "$project" "$tag")"; then
+          echo "Skipping ${owner}/${repo}@${tag}: no deb suite mapping in config." >&2
+          continue
+        fi
+        suites_json="$(printf '%s\n' "$suites" | jq -R . | jq -s .)"
+      else
+        suites_json="null"
+      fi
+
+      if github_should_skip "$(previous_repo_json "$repo")" "$release_json" "$package_type"; then
+        if keep_previous_repo "$repo" "Skipping download for ${owner}/${repo}@${tag}: already published."; then
+          break
+        fi
+        echo "Skipping ${owner}/${repo}@${tag}: already published (no previous copy)." >&2
         continue
       fi
-    fi
 
-    pattern='*.deb'
-    [[ "$package_type" == "rpm" ]] && pattern='*.rpm'
+      pattern='*.deb'
+      [[ "$package_type" == "rpm" ]] && pattern='*.rpm'
 
-    echo "Downloading ${pattern} from ${owner}/${repo}@${tag} ..."
-    if ! gh release download -R "${owner}/${repo}" \
-      --pattern "$pattern" \
-      -D "$repo_dir" \
-      --clobber 2>/dev/null; then
-      if keep_previous_repo "$repo" "Keeping previously published ${owner}/${repo}@${tag}: no ${package_type} assets."; then
+      echo "Downloading ${pattern} from ${owner}/${repo}@${tag} ..."
+      if ! gh release download "$tag" -R "${owner}/${repo}" \
+        --pattern "$pattern" \
+        -D "$repo_dir" \
+        --clobber 2>/dev/null; then
+        if keep_previous_repo "$repo" "Keeping previously published ${owner}/${repo}@${tag}: no ${package_type} assets."; then
+          break
+        fi
+        echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} assets." >&2
         continue
       fi
-      echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} assets." >&2
-      continue
-    fi
+
+      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json")"
+      if [[ "$packages" == "{}" ]]; then
+        echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} files matched release assets." >&2
+        continue
+      fi
+
+      merge_repo_index_entry "$repo" "$tag" "$packages"
+    done
+    continue
   fi
 
   packages="{}"
@@ -645,6 +744,7 @@ while IFS= read -r repo; do
     '. + {($repo): {tag: $tag, packages: $packages}}' \
     <<< "$index")"
   found=1
+  persist_package_index
 done < <(repos_config_project_names "$config" "$repo_filter")
 
 if [[ -n "$repo_filter" ]]; then
@@ -657,9 +757,9 @@ if [[ -n "$repo_filter" ]]; then
   done < <(jq -r 'keys[]' <<< "$previous_index")
 fi
 
-printf '%s\n' "$index" | jq . > "${output}/.package-index.json"
+persist_package_index
 
-if [[ "$found" -eq 0 ]]; then
+if jq -e 'length == 0' <<< "$index" >/dev/null; then
   echo "No ${package_type} packages downloaded." >&2
   exit 1
 fi
