@@ -6,6 +6,14 @@ Components: main
 Description: Official APT repository for roojs packages
 SignWith: 0386143C63393470
 
+Codename: plucky
+Origin: roojs
+Label: roojs
+Architectures: amd64 arm64
+Components: main
+Description: Official APT repository for roojs packages
+SignWith: 0386143C63393470
+
 Codename: questing
 Origin: roojs
 Label: roojs

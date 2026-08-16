@@ -1,28 +1,28 @@
 Origin: roojs
 Label: roojs
 Codename: questing
-Date: Sat, 15 Aug 2026 23:03:39 UTC
+Date: Sun, 16 Aug 2026 04:56:13 UTC
 Architectures: amd64 arm64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 32608453410220883e2beba88b8af10f 13742 main/binary-amd64/Packages
- 82af4f969a6be10ed899e3e5aa2f5fc1 4437 main/binary-amd64/Packages.gz
+ d4f30f6be7e6826d9ae91a07bd598b86 23602 main/binary-amd64/Packages
+ 9f03270fef1200b40b5888eff96054ed 6505 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
- d41d8cd98f00b204e9800998ecf8427e 0 main/binary-arm64/Packages
- 7029066c27ac6f5ef18d660d5741979a 20 main/binary-arm64/Packages.gz
+ 6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
+ a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
  32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- aaf4809af80d24aae1d1800c986128ca1208a166 13742 main/binary-amd64/Packages
- 1febbb7aa8bb8205a6350fb0a18b48bfd9e35f15 4437 main/binary-amd64/Packages.gz
+ 20e0a8d4bc869794375c8b9070e915bcbacb9225 23602 main/binary-amd64/Packages
+ becfddadd18b040f23b28caa6229bf2b9424d76b 6505 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
- da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-arm64/Packages
- 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-arm64/Packages.gz
+ b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
+ 3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
  6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- e8640f258a1949439733260ee78072e9d863ce42db1d9d04a0828050864f02d3 13742 main/binary-amd64/Packages
- c7cf9c528354e55d28404703949977437be11cb99670c59b547655dd491b52bb 4437 main/binary-amd64/Packages.gz
+ 0fe780c2e0e6bc199f193eb82a48fad9c3e0a3c82ba48607b7e48acf616c9c14 23602 main/binary-amd64/Packages
+ caebd27894534e98ea3d355e2ba94c0aa599a0b9278a1f1f62c914a40dac6cbc 6505 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-arm64/Packages
- 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-arm64/Packages.gz
+ 0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
+ 71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
  46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release

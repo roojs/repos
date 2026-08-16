@@ -7,6 +7,7 @@
           "sha256": "e4c0edd6bbed006fa0a6b8d144b99bbbe41fe88f86c09a579733cc3f5d22e2cb",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -15,8 +16,126 @@
           "sha256": "06c5532495a8bc5aa58583ed21e0af13a9002ef07adf439276999e696f64f0c3",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
+          ]
+        }
+      }
+    },
+    "llama.cpp": {
+      "tag": "10271+dfsg-1",
+      "packages": {
+        "libggml-dev_0.18.1-1_amd64.deb": {
+          "sha256": "8eefaa5c748ed9096c805e5129b8bf7c99fdaa2af621688403044feac9ece5d0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml-dev_0.19.0-1_arm64.deb": {
+          "sha256": "98a11803bb4c5db5cb3cf8c83373a4cb42d9b66a215fc4169c4472ba19d19a85",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-blas_0.18.1-1_amd64.deb": {
+          "sha256": "c57a68863f49c2c4db2ad732aabc788c9d3afbe1ff8d6c4e1543d8e354bbad3a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-blas_0.19.0-1_arm64.deb": {
+          "sha256": "267b3653f6c0d0afed226a8038ff8c0d4b0e4d3806bcf4113e1b06bc848b1f98",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-rpc_0.18.1-1_amd64.deb": {
+          "sha256": "b42627ace2a8a3f3c58763ac67ce3b7388a376a6cdbd947c8a574de79c7a9ec1",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-rpc_0.19.0-1_arm64.deb": {
+          "sha256": "36fe1c5104c9d7a4f2b1d573ce0f174a936e5c9adab29421b224e200668b7bdf",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-vulkan_0.18.1-1_amd64.deb": {
+          "sha256": "22d6c18eb31d714e7fd866cea6449268aecdb587d554bad55780299228afc569",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-vulkan_0.19.0-1_arm64.deb": {
+          "sha256": "d5bdffd0b1e8d2f1d36491563b6409a1c46cbffcc3d9d4274c4b7e94f92d3f9c",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0_0.18.1-1_amd64.deb": {
+          "sha256": "bbfbfa4edb0271cc204a6d72e454d349697389ea4b04610a200d1af0ce510868",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0_0.19.0-1_arm64.deb": {
+          "sha256": "042bd56777de60d81c22a387e4469868d9b41a0ea3b3e8188bb4669c07c51e54",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama-dev_10271+dfsg-1_amd64.deb": {
+          "sha256": "9e4ec2d1482d3f95725025fd5be6da89739973022b817d171a1b6fd259898d79",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama-dev_10344+dfsg-1_arm64.deb": {
+          "sha256": "9c0dc188022678f9a85fae4658ac2b43f5944aec26989a6a3fb06a684708c003",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama0_10271+dfsg-1_amd64.deb": {
+          "sha256": "31e408cf608c27755dc3ec4e61e5ecc5ec65e7c28321e2dcc83df32e1d254930",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama0_10344+dfsg-1_arm64.deb": {
+          "sha256": "d63060a906a25660ef57701ba7aafcce0349820aae7b32fbf1da62c29b94c511",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
           ]
         }
       }
@@ -28,6 +147,7 @@
           "sha256": "a606d2e07378783b4ec6b83bad3c56b2334fbd30ce353ca1ff5414b27ac6cf56",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -35,12 +155,13 @@
       }
     },
     "ibus-sherpa-onnx": {
-      "tag": "v0.3.3",
+      "tag": "v0.3.2",
       "packages": {
-        "ibus-sherpa-onnx_0.3.3-1_amd64.deb": {
-          "sha256": "25b792a460b0a8538df3b8fb99f2725a105a8c51cdedddf65794250f5e6ea940",
+        "ibus-sherpa-onnx_0.3.2-1_amd64.deb": {
+          "sha256": "ef3ad96adb2e9a9d7ddda37ada9c5defa8020ec588df6ffe988b811f892268ca",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -54,6 +175,7 @@
           "sha256": "80765e6141fae2f83185d36da237dfa8e75f2ec0c3e55b4185bbb28d91c565d6",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -62,6 +184,7 @@
           "sha256": "71cb2d75c38f18696ec406e6c2222746690653880fbf38173eda6df3ede66bb1",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -92,6 +215,7 @@
           "sha256": "89d8a673f654555f603429b661b1e3236eec58b3cfdcd9b900d34d4fd14c17bf",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -100,6 +224,7 @@
           "sha256": "44c603b71244343e03612562ab73c82a0d9a7f9986fbfccb3aca081f6b871874",
           "suites": [
             "trixie",
+            "plucky",
             "questing",
             "resolute"
           ]
@@ -117,10 +242,10 @@
       }
     },
     "ibus-sherpa-onnx": {
-      "tag": "v0.3.3",
+      "tag": "v0.3.2",
       "packages": {
-        "ibus-sherpa-onnx-0.3.3-1.fc44.x86_64.rpm": {
-          "sha256": "eb9749f911f1b7697b419b0a09d810a7a0471efc6373bd8abb557c8d23d004a2"
+        "ibus-sherpa-onnx-0.3.2-1.fc44.x86_64.rpm": {
+          "sha256": "90b9a9e11761c1ed4cbb23778934a07bbfbc3852877b1dc423ee848f58d3e19e"
         }
       }
     },
@@ -136,6 +261,6 @@
       }
     }
   },
-  "repos_json_sha256": "c28d8890803b62c954cffe203156c2913e8f598217de0b96b16166b0494a2262",
-  "distributions_sha256": "9a034dd2199153ddf4db0eecc5edc6b5ac93544b9fd047ffb5cb57b334cb7d96"
+  "repos_json_sha256": "af13685f1344cc7dae7b16140d6f8202b5a13a2c184d6408acdffcbca5b4abc3",
+  "distributions_sha256": "c580b532db1b83d63610fdc454f54edb9153ff6e1951d0f033aa9986c9ecf729"
 }

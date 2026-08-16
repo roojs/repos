@@ -1,0 +1,435 @@
+Package: ibus-sherpa-onnx
+Version: 0.3.2-1
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 238
+Depends: libadwaita-1-0 (>= 1.6~beta), libarchive13t64 (>= 3.0.4), libc6 (>= 2.34), libgee-0.8-2 (>= 0.20.0), libglib2.0-0t64 (>= 2.50.0), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.0.0), libgtk-4-1 (>= 4.0.0), libibus-1.0-5 (>= 1.5.18), libicu76 (>= 76.1-1~), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), ibus, libsherpa-onnx-c-api1, gstreamer1.0-plugins-good, gstreamer1.0-plugins-base, gstreamer1.0-pipewire | gstreamer1.0-pulseaudio, pkexec, polkitd, libgtk-3-bin
+Homepage: https://github.com/roojs/ibus-sherpa-onnx
+Priority: optional
+Section: utils
+Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.2-1_amd64.deb
+Size: 66204
+SHA256: ef3ad96adb2e9a9d7ddda37ada9c5defa8020ec588df6ffe988b811f892268ca
+SHA1: ae97c1e5ee3492972762d8511a06fb86d7318678
+MD5sum: 3f528e66133c528da302658cf5b69b3f
+Description: IBus speech dictation engine using sherpa-onnx
+ Local streaming speech-to-text as an IBus input method, powered by
+ sherpa-onnx (Nemotron online transducer).
+ .
+ Install this package, then run ibus-setup-sherpa-onnx to pick a model.
+ Preferences downloads/extracts the model, installs it under
+ /usr/share/ibus-sherpa-onnx/models/ via polkit, and activates the IME.
+ .
+ ASR model weights are not included (~440 MB); download via Preferences.
+
+Package: libggml-dev
+Source: ggml
+Version: 0.18.1-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 244
+Depends: libggml0 (= 0.18.1-1)
+Breaks: libggml, libggml-blas, libggml-cpu, libggml-hip, libggml-vulkan
+Replaces: libggml, libggml-blas, libggml-cpu, libggml-hip, libggml-vulkan
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libdevel
+Filename: pool/main/g/ggml/libggml-dev_0.18.1-1_amd64.deb
+Size: 45576
+SHA256: 8eefaa5c748ed9096c805e5129b8bf7c99fdaa2af621688403044feac9ece5d0
+SHA1: 7d4eb5c032a01a053fc4753c0c6cb873b54f9768
+MD5sum: 87e132246d95f53f8962f6eb5aa8bfcd
+Description: Tensor library for machine learning - development files
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the development files.
+
+Package: libggml0
+Source: ggml
+Version: 0.18.1-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 12963
+Depends: libc6 (>= 2.38), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libstdc++6 (>= 11)
+Suggests: libggml0-backend-blas, libggml0-backend-cuda, libggml0-backend-hip, libggml0-backend-rpc, libggml0-backend-vulkan
+Breaks: libggml, libggml0-backend-cpu
+Replaces: libggml, libggml0-backend-cpu
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libs
+Filename: pool/main/g/ggml/libggml0_0.18.1-1_amd64.deb
+Size: 1451112
+SHA256: bbfbfa4edb0271cc204a6d72e454d349697389ea4b04610a200d1af0ce510868
+SHA1: b9db5f224b5c8223808d69dec53409a7c62cf375
+MD5sum: c5b20c2c9831bf232396f88ebe784d9b
+Description: Tensor library for machine learning - libraries
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the main libraries, and the CPU backend.
+
+Package: libggml0-backend-blas
+Source: ggml
+Version: 0.18.1-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 68
+Depends: libggml0 (= 0.18.1-1), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
+Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
+Provides: libggml0-backend (= 0.18.1-1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libs
+Filename: pool/main/g/ggml/libggml0-backend-blas_0.18.1-1_amd64.deb
+Size: 22344
+SHA256: c57a68863f49c2c4db2ad732aabc788c9d3afbe1ff8d6c4e1543d8e354bbad3a
+SHA1: 8ad62e0a3f26af14d18131244608e68745ce1af1
+MD5sum: 95eadc55ccf4825f9f0bf726bf7bba5d
+Description: Tensor library for machine learning - BLAS backend
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the BLAS backend.
+
+Package: libggml0-backend-rpc
+Source: ggml
+Version: 0.18.1-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 152
+Depends: libggml0 (= 0.18.1-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
+Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
+Provides: libggml0-backend (= 0.18.1-1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libs
+Filename: pool/main/g/ggml/libggml0-backend-rpc_0.18.1-1_amd64.deb
+Size: 52816
+SHA256: b42627ace2a8a3f3c58763ac67ce3b7388a376a6cdbd947c8a574de79c7a9ec1
+SHA1: f003dfb9ff382223016cf67914a72a59ee5760d9
+MD5sum: 2bd5a70a70f8e52044ee90fb728557ed
+Description: Tensor library for machine learning - RPC backend
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the RPC backend.
+
+Package: libggml0-backend-vulkan
+Source: ggml
+Version: 0.18.1-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 50163
+Depends: libggml0 (= 0.18.1-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
+Suggests: mesa-vulkan-drivers, nvidia-vulkan-icd
+Provides: libggml0-backend (= 0.18.1-1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libs
+Filename: pool/main/g/ggml/libggml0-backend-vulkan_0.18.1-1_amd64.deb
+Size: 5562948
+SHA256: 22d6c18eb31d714e7fd866cea6449268aecdb587d554bad55780299228afc569
+SHA1: 7ef481fb1945504519a96f8ceaea7b6ade45475a
+MD5sum: 4ee017c93fcc841a022f18bcf9376bc3
+Description: Tensor library for machine learning - Vulkan backend
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the Vulkan backend.
+
+Package: libllama-dev
+Source: llama.cpp
+Version: 10271+dfsg-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 155
+Depends: libllama0 (= 10271+dfsg-1), libggml-dev (>= 0.18.0)
+Breaks: llama.cpp (<< 5882+dfsg-3~exp1)
+Replaces: llama.cpp (<< 5882+dfsg-3~exp1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/llama.cpp/
+Priority: optional
+Section: libdevel
+Filename: pool/main/l/llama.cpp/libllama-dev_10271+dfsg-1_amd64.deb
+Size: 36316
+SHA256: 9e4ec2d1482d3f95725025fd5be6da89739973022b817d171a1b6fd259898d79
+SHA1: fb2748f3c1f4bd87ee0d8242440a7ce55c932e6f
+MD5sum: 8e39e73c3d8908096ee922c9fc5acb63
+Description: LLM inference in C/C++ - headers and development files
+ The main goal of llama.cpp is to enable LLM inference with minimal setup and
+ state-of-the-art performance on a wide range of hardware - locally and in the
+ cloud.
+ .
+  * Plain C/C++ implementation without any dependencies
+  * Apple silicon is a first-class citizen - optimized via ARM NEON, Accelerate
+    and Metal frameworks
+  * AVX, AVX2, AVX512 and AMX support for x86 architectures
+  * 1.5-bit, 2-bit, 3-bit, 4-bit, 5-bit, 6-bit, and 8-bit integer quantization
+    for faster inference and reduced memory use
+  * Custom CUDA kernels for running LLMs on NVIDIA GPUs (support for AMD GPUs
+    via HIP and Moore Threads MTT GPUs via MUSA)
+  * Vulkan and SYCL backend support
+  * CPU+GPU hybrid inference to partially accelerate models larger than the
+    total VRAM capacity
+ .
+ The compute functionality is provided by ggml. By default, ggml's CPU backend
+ is installed, but there are many other backends for CPUs and GPUs.
+ .
+ This package provides the llama.cpp library headers and development files.
+ Note that these libraries are not yet stable, so they are installed to
+ private directories for now.
+
+Package: libllama0
+Source: llama.cpp
+Version: 10271+dfsg-1
+Architecture: amd64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 9805
+Depends: libc6 (>= 2.38), libgcc-s1 (>= 3.4), libggml0 (>= 0.18.0), libssl3t64 (>= 3.3.0), libstdc++6 (>= 14)
+Breaks: llama.cpp (<< 5882+dfsg-3~exp1)
+Replaces: llama.cpp (<< 5882+dfsg-3~exp1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/llama.cpp/
+Priority: optional
+Section: libs
+Filename: pool/main/l/llama.cpp/libllama0_10271+dfsg-1_amd64.deb
+Size: 2776432
+SHA256: 31e408cf608c27755dc3ec4e61e5ecc5ec65e7c28321e2dcc83df32e1d254930
+SHA1: 5062132f693b4334395297c01819c097a36c9f5b
+MD5sum: 58a197d13f89b5bfaf85dcbba5402e74
+Description: LLM inference in C/C++ - libraries
+ The main goal of llama.cpp is to enable LLM inference with minimal setup and
+ state-of-the-art performance on a wide range of hardware - locally and in the
+ cloud.
+ .
+  * Plain C/C++ implementation without any dependencies
+  * Apple silicon is a first-class citizen - optimized via ARM NEON, Accelerate
+    and Metal frameworks
+  * AVX, AVX2, AVX512 and AMX support for x86 architectures
+  * 1.5-bit, 2-bit, 3-bit, 4-bit, 5-bit, 6-bit, and 8-bit integer quantization
+    for faster inference and reduced memory use
+  * Custom CUDA kernels for running LLMs on NVIDIA GPUs (support for AMD GPUs
+    via HIP and Moore Threads MTT GPUs via MUSA)
+  * Vulkan and SYCL backend support
+  * CPU+GPU hybrid inference to partially accelerate models larger than the
+    total VRAM capacity
+ .
+ The compute functionality is provided by ggml. By default, ggml's CPU backend
+ is installed, but there are many other backends for CPUs and GPUs.
+ .
+ This package contains the libllama and libmtmd libraries. Note that these
+ libraries are not yet stable, so they are installed to private directories
+ for now.
+
+Package: libsherpa-onnx-c-api-dev
+Source: sherpa-onnx
+Version: 1.13.5-roojs2
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 245
+Depends: libsherpa-onnx-c-api1 (= 1.13.5-roojs2), libonnxruntime-dev
+Homepage: https://github.com/roojs/sherpa-onnx
+Priority: optional
+Section: libdevel
+Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api-dev_1.13.5-roojs2_amd64.deb
+Size: 32590
+SHA256: 80765e6141fae2f83185d36da237dfa8e75f2ec0c3e55b4185bbb28d91c565d6
+SHA1: 9b8e71f46490432997f0f0470a91a1f734de66a6
+MD5sum: 007c89df6f7f15dbd1ebaeafd759cd17
+Description: Development files for sherpa-onnx C API
+ sherpa-onnx provides speech recognition and related APIs on top of
+ ONNX Runtime.
+ .
+ This package contains headers and pkg-config metadata for the C API.
+
+Package: libsherpa-onnx-c-api1
+Source: sherpa-onnx
+Version: 1.13.5-roojs2
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 2978
+Depends: libc6 (>= 2.38), libgcc-s1 (>= 3.3.1), libonnxruntime1.21 (>= 1.21.0), libstdc++6 (>= 14)
+Homepage: https://github.com/roojs/sherpa-onnx
+Priority: optional
+Section: libs
+Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api1_1.13.5-roojs2_amd64.deb
+Size: 1074532
+SHA256: 71cb2d75c38f18696ec406e6c2222746690653880fbf38173eda6df3ede66bb1
+SHA1: 9d61693afb26b3148b5a0d23340060d2fedbd312
+MD5sum: db9592f64264abb25a6bf3cf45cb61d4
+Description: sherpa-onnx C API shared library
+ sherpa-onnx provides speech recognition and related APIs on top of
+ ONNX Runtime.
+ .
+ This package contains the shared C (and C++) API libraries.
+
+Package: ollmchat
+Version: 1.2.4~alpha-1
+Architecture: amd64
+Maintainer: OLLMchat Maintainers <ollmchat@example.com>
+Installed-Size: 19344
+Depends: libadwaita-1-0 (>= 1.5~beta), libblas3 | libblas.so.3, libc6 (>= 2.38), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.14.0), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.79.2), libgomp1 (>= 6), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 3.23.90), libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libllama0 (>= 9601+dfsg), libpango-1.0-0 (>= 1.14.0), libseccomp2 (>= 2.5.0), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.6.11), libstdc++6 (>= 14), libtree-sitter0 (>= 0.19), libxml2 (>= 2.7.4)
+Conflicts: ollmchat-remote-only
+Homepage: https://github.com/roojs/OLLMchat
+Priority: optional
+Section: gnome
+Filename: pool/main/o/ollmchat/ollmchat_1.2.4~alpha-1_amd64.deb
+Size: 3266514
+SHA256: 06c5532495a8bc5aa58583ed21e0af13a9002ef07adf439276999e696f64f0c3
+SHA1: 88f05d28fb8249a08fe6a97d456c55fa7d71ea8a
+MD5sum: ee1cf5fb8147b51277bf18d2302bc9a5
+Description: OLLMchat - LLM chat application (all-in-one, local GGUF)
+ OLLMchat is a GTK chat application with LLM access, tool integration,
+ and embeddable libraries for other applications.
+ .
+ This all-in-one package bundles the application, shared libraries,
+ GObject introspection data, and command-line tools. It is built with
+ libllama for local GGUF embedding and chat in addition to Ollama,
+ OpenAI-compatible HTTP APIs, and other remote backends.
+ .
+ For remote backends only (no local GGUF), install ollmchat-remote-only
+ instead (see debian/README). Split library packages are available via
+ debian/use-split-packages when an apt repository is in place.
+
+Package: ollmchat-remote-only
+Source: ollmchat
+Version: 1.2.4~alpha-1
+Architecture: amd64
+Maintainer: OLLMchat Maintainers <ollmchat@example.com>
+Installed-Size: 19284
+Depends: libadwaita-1-0 (>= 1.5~beta), libblas3 | libblas.so.3, libc6 (>= 2.38), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.14.0), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.79.2), libgomp1 (>= 6), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 3.23.90), libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libpango-1.0-0 (>= 1.14.0), libseccomp2 (>= 2.5.0), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.6.11), libstdc++6 (>= 14), libtree-sitter0 (>= 0.19), libxml2 (>= 2.7.4)
+Conflicts: ollmchat
+Homepage: https://github.com/roojs/OLLMchat
+Priority: optional
+Section: gnome
+Filename: pool/main/o/ollmchat/ollmchat-remote-only_1.2.4~alpha-1_amd64.deb
+Size: 3254708
+SHA256: e4c0edd6bbed006fa0a6b8d144b99bbbe41fe88f86c09a579733cc3f5d22e2cb
+SHA1: 4749ce28cd03f3216a8a3333ddec7ba9eb95c117
+MD5sum: 37cb7c991523b38914473ed289ef2caf
+Description: OLLMchat - LLM chat application (remote backends only)
+ OLLMchat is a GTK chat application with LLM access, tool integration,
+ and embeddable libraries for other applications.
+ .
+ This all-in-one package bundles the application, shared libraries,
+ GObject introspection data, and command-line tools. It is built
+ without libllama: use Ollama, OpenAI-compatible HTTP APIs, and other
+ remote backends only — no local GGUF inference.
+ .
+ For local GGUF embedding and chat via libllama, install the ollmchat
+ package instead (see debian/README).
+
+Package: roobuilder
+Version: 5.0.11
+Architecture: amd64
+Maintainer: Alan <alan@roojs.com>
+Installed-Size: 15310
+Depends: libadwaita-1-0 (>= 1.4~beta), libc6 (>= 2.34), libgdk-pixbuf-2.0-0 (>= 2.22.0), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.70.0), libgraphene-1.0-0 (>= 1.5.4), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.14.0), libvala-0.56-0 (>= 0.55.90), libwebkitgtk-6.0-4 (>= 2.5.3), libx11-6, libxml2 (>= 2.7.4), meson, ninja-build, vala-language-server, gnome-terminal, roojspacker (>= 1.5), gdb
+Multi-Arch: foreign
+Homepage: https://github.com/roojs/roobuilder
+Priority: optional
+Section: universe/editors
+Filename: pool/main/r/roobuilder/roobuilder_5.0.11_amd64.deb
+Size: 1345036
+SHA256: 89d8a673f654555f603429b661b1e3236eec58b3cfdcd9b900d34d4fd14c17bf
+SHA1: 4f6c78b70d1fbd49840530f5b84cb38a44350cb3
+MD5sum: 97161a5214fdb06e708b87db0bec2ca0
+Description: Vala and Javascript IDE
+ for building Vala Desktop applications and Javascript UI's using the roojs libraries (for bootstrap and classic)
+
+Package: roojspacker
+Version: 1.5.2
+Architecture: amd64
+Maintainer: Alan <alan@roojs.com>
+Installed-Size: 560
+Depends: libc6 (>= 2.34), libgee-0.8-2 (>= 0.8.3), libglib2.0-0 (>= 2.54.0), libjson-glib-1.0-0 (>= 1.5.2)
+Multi-Arch: foreign
+Homepage: https://github.com/roojs/roojspacker
+Priority: optional
+Section: unknown
+Filename: pool/main/r/roojspacker/roojspacker_1.5.2_amd64.deb
+Size: 163522
+SHA256: 44c603b71244343e03612562ab73c82a0d9a7f9986fbfccb3aca081f6b871874
+SHA1: 53d4919940a9c5146830b4501039bba50e529557
+MD5sum: 6fda1e4607b373b1bf7f336e844572ca
+Description: Javascript compressor, packer and documentation tool
+ includes sharable library for use with C / Gnome etc..
+
+Package: rooterm
+Version: 0.1.1-1
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 489
+Depends: libadwaita-1-0 (>= 1.5), libc6 (>= 2.34), libgcrypt20 (>= 1.10.0), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.66.0), libgtk-4-1 (>= 4.14), libjson-glib-1.0-0 (>= 1.5.2), libpango-1.0-0 (>= 1.14.0), libsecret-1-0 (>= 0.7), libvte-2.91-gtk4-0 (>= 0.78), libyaml-0-2, openssh-client
+Homepage: https://github.com/roojs/app.RooTerm
+Priority: optional
+Section: gnome
+Filename: pool/main/r/rooterm/rooterm_0.1.1-1_amd64.deb
+Size: 157782
+SHA256: a606d2e07378783b4ec6b83bad3c56b2334fbd30ce353ca1ff5414b27ac6cf56
+SHA1: f3fc239ce69517dfe37634ee15c778b9c431600c
+MD5sum: 0e34905bfa537a121732d57f97ff9104
+Description: SSH host manager and terminal for GNOME
+ Roo Term is a thin SSH host manager and terminal for GNOME — a crossover
+ between Guake and Ásbrú Connection Manager.
+ .
+ It provides a host tree with per-host terminal tabs, libsecret-backed
+ passwords, optional Guake-style drop-down via a GNOME Shell extension,
+ Ásbrú config import, port forwards, and local PTY sessions.
+

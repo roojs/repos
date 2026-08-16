@@ -1,0 +1,38 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: roojs
+Label: roojs
+Codename: plucky
+Date: Sun, 16 Aug 2026 04:56:16 UTC
+Architectures: amd64 arm64
+Components: main
+Description: Official APT repository for roojs packages
+MD5Sum:
+ 0bff475a2050fccd033f9fcad98cac23 18995 main/binary-amd64/Packages
+ 69cdea5881fefa54ec9edfb24a6ff4f7 5273 main/binary-amd64/Packages.gz
+ 15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
+ 6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
+ a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
+ 32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
+SHA1:
+ 1e6d9dc8d5f4dd82a8b00e2b28a46f36020de222 18995 main/binary-amd64/Packages
+ 8f211799da52cef656ea66f5b17f25d03d2a65e7 5273 main/binary-amd64/Packages.gz
+ d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
+ b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
+ 3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
+ 6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
+SHA256:
+ 6ee67c55fb518a42ee679a178cfd1edd202e36456a712edee2dc2618043f51b6 18995 main/binary-amd64/Packages
+ 69f570558fc57d06d90981da29222c4e608b7d73cb9384122381c2a450531439 5273 main/binary-amd64/Packages.gz
+ 44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
+ 0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
+ 71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
+ 46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoFC8QAKCRADhhQ8Yzk0
+cIqjAP9EJSDBTEMkdQIQpton3iN9qo5G5skQo7WRMDBWa1r8nQD+MFsiXzOtiXIR
++ZZmcz82l5lKvgpjDyIF8wrW+1jPkQg=
+=bfG5
+-----END PGP SIGNATURE-----
