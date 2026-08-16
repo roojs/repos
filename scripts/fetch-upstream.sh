@@ -442,7 +442,7 @@ github_latest_release_tag() {
     done < <(gh release list -R "${owner}/${repo}" --limit 100 --json tagName --jq '.[].tagName')
     return 1
   fi
-  gh release view -R "${owner}/${repo}" --json tagName --jq -r '.tagName // empty'
+  gh release view -R "${owner}/${repo}" --json tagName -q '.tagName // empty'
 }
 
 pool_should_skip() {
