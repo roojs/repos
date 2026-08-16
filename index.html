@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>roojs package repositories</title>
 <style>
-body { font-family: sans-serif; line-height: 1.4; max-width: 52rem; margin: 1.5rem auto; padding: 0 1rem; }
+body { font-family: sans-serif; line-height: 1.4; max-width: 60rem; margin: 1.5rem auto; padding: 0 1rem; }
 h1 { margin-bottom: 0.25rem; }
 h3 { margin: 1.75rem 0 0.2rem; }
-h4 { margin: 1rem 0 0.35rem; }
 .lead, .group-lead { color: #444; margin-top: 0; }
 pre { background: #f4f4f4; padding: 0.75rem 1rem; overflow: auto; }
 table { border-collapse: collapse; width: auto; margin: 0 0 0.5rem; }
@@ -79,258 +78,169 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <h2>What you can install</h2>
 <p class="legend">
 <span><strong>version</strong> — we ship it in this repository</span>
-<span><em>default sources</em> — already in that distro; install with <code>apt</code> from Debian or Ubuntu</span>
-<span><strong>—</strong> — not available from us or from that suite</span>
+<span><em>already in Debian / Ubuntu / Fedora</em> — not required; use the distro package</span>
+<span><strong>—</strong> — not available from us or from that distro</span>
 </p>
 <h3>OLLMchat</h3>
 <p class="group-lead">Chat UI and the llama.cpp / FAISS libraries it uses.</p>
-<h4>Debian</h4>
 <div class="wrap"><table>
 <thead>
 <tr>
-<th class="pkg">Package</th>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="1">Debian</th>
+<th colspan="3">Ubuntu</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
 <th>trixie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libfaiss-dev</span><span class="pkg-desc">FAISS vector search library</span></th>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml-dev</span><span class="pkg-desc">Tensor library for machine learning - development files</span></th>
-<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0</span><span class="pkg-desc">Tensor library for machine learning - libraries</span></th>
-<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-blas</span><span class="pkg-desc">Tensor library for machine learning - BLAS backend</span></th>
-<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-rpc</span><span class="pkg-desc">Tensor library for machine learning - RPC backend</span></th>
-<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-vulkan</span><span class="pkg-desc">Tensor library for machine learning - Vulkan backend</span></th>
-<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libllama-dev</span><span class="pkg-desc">LLM inference in C/C++ - headers and development files</span></th>
-<td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libllama0</span><span class="pkg-desc">LLM inference in C/C++ - libraries</span></th>
-<td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">ollmchat</span><span class="pkg-desc">OLLMchat - LLM chat application (all-in-one, local GGUF)</span></th>
-<td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Ubuntu</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>plucky</th>
 <th>questing</th>
 <th>resolute</th>
+<th>fc42</th>
+<th>fc44</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libfaiss-dev</span><span class="pkg-desc">FAISS vector search library</span></th>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Debian</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libggml-dev</span><span class="pkg-desc">Tensor library for machine learning - development files</span></th>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libggml0</span><span class="pkg-desc">Tensor library for machine learning - libraries</span></th>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-blas</span><span class="pkg-desc">Tensor library for machine learning - BLAS backend</span></th>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-rpc</span><span class="pkg-desc">Tensor library for machine learning - RPC backend</span></th>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-vulkan</span><span class="pkg-desc">Tensor library for machine learning - Vulkan backend</span></th>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">0.18.1-1</span><span class="arch">amd64</span><span class="ver">0.19.0-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libllama-dev</span><span class="pkg-desc">LLM inference in C/C++ - headers and development files</span></th>
 <td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libllama0</span><span class="pkg-desc">LLM inference in C/C++ - libraries</span></th>
 <td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
-<td class="distro"><span class="ver">default</span><span class="arch">sources</span></td>
+<td class="ship"><span class="ver">10271+dfsg-1</span><span class="arch">amd64</span><span class="ver">10344+dfsg-1</span><span class="arch">arm64</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
+<td class="distro"><span class="ver">already in</span><span class="arch">Fedora</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">ollmchat</span><span class="pkg-desc">OLLMchat - LLM chat application (all-in-one, local GGUF)</span></th>
 <td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 </tbody>
 </table>
 </div>
 <h3>WebKit</h3>
 <p class="group-lead">Automation-enabled WebKitGTK builds.</p>
-<h4>Debian</h4>
 <div class="wrap"><table>
 <thead>
 <tr>
-<th class="pkg">Package</th>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="1">Debian</th>
+<th colspan="3">Ubuntu</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
 <th>trixie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libwebkitgtk-6.0-4</span><span class="pkg-desc">Web content engine library for GTK</span></th>
-<td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libwebkitgtk-6.0-dev</span><span class="pkg-desc">Web content engine library for GTK - development files</span></th>
-<td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Ubuntu</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>plucky</th>
 <th>questing</th>
 <th>resolute</th>
+<th>fc42</th>
+<th>fc44</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libwebkitgtk-6.0-4</span><span class="pkg-desc">Web content engine library for GTK</span></th>
+<td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
 <td class="none">—</td>
 <td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libwebkitgtk-6.0-dev</span><span class="pkg-desc">Web content engine library for GTK - development files</span></th>
+<td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
 <td class="none">—</td>
 <td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">2.52.3-0ubuntu0.26.04.3+webkitgtk1</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 </tbody>
 </table>
 </div>
 <h3>Speech (STT / TTS)</h3>
 <p class="group-lead">Sherpa-ONNX libraries and the IBus engine.</p>
-<h4>Debian</h4>
 <div class="wrap"><table>
 <thead>
 <tr>
-<th class="pkg">Package</th>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="1">Debian</th>
+<th colspan="3">Ubuntu</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
 <th>trixie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">ibus-sherpa-onnx</span><span class="pkg-desc">IBus speech dictation engine using sherpa-onnx</span></th>
-<td class="ship"><span class="ver">0.3.3-1</span><span class="arch">amd64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api</span></th>
-<td class="none">—</td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-dev</span><span class="pkg-desc">Development files for sherpa-onnx C API</span></th>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-devel</span></th>
-<td class="none">—</td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api1</span><span class="pkg-desc">sherpa-onnx C API shared library</span></th>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Ubuntu</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>plucky</th>
 <th>questing</th>
 <th>resolute</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">ibus-sherpa-onnx</span><span class="pkg-desc">IBus speech dictation engine using sherpa-onnx</span></th>
-<td class="ship"><span class="ver">0.3.2-1</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">0.3.3-1</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">0.3.3-1</span><span class="arch">amd64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api</span></th>
-<td class="none">—</td>
-<td class="none">—</td>
-<td class="none">—</td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-dev</span><span class="pkg-desc">Development files for sherpa-onnx C API</span></th>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-devel</span></th>
-<td class="none">—</td>
-<td class="none">—</td>
-<td class="none">—</td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api1</span><span class="pkg-desc">sherpa-onnx C API shared library</span></th>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Fedora</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>fc42</th>
 <th>fc44</th>
 </tr>
@@ -338,65 +248,67 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <tbody>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">ibus-sherpa-onnx</span><span class="pkg-desc">IBus speech dictation engine using sherpa-onnx</span></th>
+<td class="ship"><span class="ver">0.3.3-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">0.3.2-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">0.3.3-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">0.3.3-1</span><span class="arch">amd64</span></td>
 <td class="none">—</td>
 <td class="ship"><span class="ver">0.3.3-1</span><span class="arch">x86_64</span></td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api</span></th>
 <td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
 <td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">x86_64</span></td>
+</tr>
+<tr>
+<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-dev</span><span class="pkg-desc">Development files for sherpa-onnx C API</span></th>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-devel</span></th>
 <td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
 <td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">x86_64</span></td>
+</tr>
+<tr>
+<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api1</span><span class="pkg-desc">sherpa-onnx C API shared library</span></th>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.13.5-roojs2</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 </tbody>
 </table>
 </div>
 <h3>RooTerm</h3>
 <p class="group-lead">Terminal emulator.</p>
-<h4>Debian</h4>
 <div class="wrap"><table>
 <thead>
 <tr>
-<th class="pkg">Package</th>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="1">Debian</th>
+<th colspan="3">Ubuntu</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
 <th>trixie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">rooterm</span><span class="pkg-desc">SSH host manager and terminal for GNOME</span></th>
-<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Ubuntu</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>plucky</th>
 <th>questing</th>
 <th>resolute</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">rooterm</span><span class="pkg-desc">SSH host manager and terminal for GNOME</span></th>
-<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
-<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Fedora</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>fc42</th>
 <th>fc44</th>
 </tr>
@@ -404,6 +316,10 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <tbody>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">rooterm</span><span class="pkg-desc">SSH host manager and terminal for GNOME</span></th>
+<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">0.1.1-1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.1.1-2</span><span class="arch">x86_64</span></td>
 <td class="none">—</td>
 </tr>
@@ -412,34 +328,21 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </div>
 <h3>RooBuilder</h3>
 <p class="group-lead">Vala UI builder and JavaScript packer.</p>
-<h4>Debian</h4>
 <div class="wrap"><table>
 <thead>
 <tr>
-<th class="pkg">Package</th>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="1">Debian</th>
+<th colspan="3">Ubuntu</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
 <th>trixie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">roobuilder</span><span class="pkg-desc">Vala and Javascript IDE</span></th>
-<td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
-</tr>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">roojspacker</span><span class="pkg-desc">Javascript compressor, packer and documentation tool</span></th>
-<td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Ubuntu</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>plucky</th>
 <th>questing</th>
 <th>resolute</th>
+<th>fc42</th>
+<th>fc44</th>
 </tr>
 </thead>
 <tbody>
@@ -448,41 +351,38 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 <tr>
 <th class="pkg" scope="row"><span class="pkg-name">roojspacker</span><span class="pkg-desc">Javascript compressor, packer and documentation tool</span></th>
 <td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 </tbody>
 </table>
 </div>
 <h3>Other</h3>
-<h4>Debian</h4>
 <div class="wrap"><table>
 <thead>
 <tr>
-<th class="pkg">Package</th>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="1">Debian</th>
+<th colspan="3">Ubuntu</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
 <th>trixie</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="pkg" scope="row"><span class="pkg-name">ollmchat-remote-only</span><span class="pkg-desc">OLLMchat - LLM chat application (remote backends only)</span></th>
-<td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4>Ubuntu</h4>
-<div class="wrap"><table>
-<thead>
-<tr>
-<th class="pkg">Package</th>
 <th>plucky</th>
 <th>questing</th>
 <th>resolute</th>
+<th>fc42</th>
+<th>fc44</th>
 </tr>
 </thead>
 <tbody>
@@ -491,6 +391,9 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
+<td class="ship"><span class="ver">1.2.4~alpha-1</span><span class="arch">amd64</span></td>
+<td class="none">—</td>
+<td class="none">—</td>
 </tr>
 </tbody>
 </table>
