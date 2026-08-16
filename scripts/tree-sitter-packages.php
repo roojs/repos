@@ -432,41 +432,31 @@ class TreeSitterPackageBuilder {
             $this->createPackageJson($repoDir, $parser, $packageVersion);
         }
         
-        // Install npm dependencies in repo directory if package.json exists and has dependencies
-        // Some repos (like tree-sitter-typescript) need dependencies (including devDependencies) to build
-        // Also, if dependencies reference other tree-sitter parsers we've built, try to link them
+        // Install npm dependencies only when other tree-sitter parsers must be linked.
+        // Runtime .deb builds use system tree-sitter-cli + gcc; node native bindings are not needed.
         if (file_exists($repoDir . '/package.json')) {
             $packageJson = json_decode(file_get_contents($repoDir . '/package.json'), true);
-            if (!empty($packageJson['dependencies']) || !empty($packageJson['devDependencies'])) {
-                echo "  Installing npm dependencies in repository (including devDependencies)...\n";
-                
-                // Check if any dependencies are tree-sitter parsers we might have built
-                $allDeps = array_merge(
-                    $packageJson['dependencies'] ?? [],
-                    $packageJson['devDependencies'] ?? []
-                );
-                
-                // Try to link local tree-sitter parser packages if they exist
-                // This allows using locally built parsers instead of downloading from npm
-                $localDeps = [];
-                foreach ($allDeps as $depName => $depVersion) {
-                    if (strpos($depName, 'tree-sitter-') === 0 && $depName !== 'tree-sitter-cli' && $depName !== 'tree-sitter') {
-                        $depRepoDir = $this->baseDir . '/' . $depName;
-                        if (is_dir($depRepoDir) && file_exists($depRepoDir . '/package.json')) {
-                            echo "    Found local {$depName}, will link instead of downloading\n";
-                            $localDeps[$depName] = $depRepoDir;
-                        }
+            $allDeps = array_merge(
+                $packageJson['dependencies'] ?? [],
+                $packageJson['devDependencies'] ?? []
+            );
+
+            $localDeps = [];
+            foreach ($allDeps as $depName => $depVersion) {
+                if (strpos($depName, 'tree-sitter-') === 0 && $depName !== 'tree-sitter-cli' && $depName !== 'tree-sitter') {
+                    $depRepoDir = $this->baseDir . '/' . $depName;
+                    if (is_dir($depRepoDir) && file_exists($depRepoDir . '/package.json')) {
+                        echo "    Found local {$depName}, will link instead of downloading\n";
+                        $localDeps[$depName] = $depRepoDir;
                     }
                 }
-                
-                // Install dependencies
-                // If we have local dependencies, install them first with file: protocol
-                $installCmd = "cd " . escapeshellarg($repoDir) . " && npm install --include=dev";
-                if (!empty($localDeps)) {
-                    // Install local deps with file: protocol
-                    foreach ($localDeps as $depName => $depPath) {
-                        $installCmd .= " && npm install --include=dev " . escapeshellarg($depName . '@file:' . $depPath);
-                    }
+            }
+
+            if (!empty($localDeps)) {
+                echo "  Installing npm dependencies for local tree-sitter parser links...\n";
+                $installCmd = "cd " . escapeshellarg($repoDir) . " && npm install --include=dev --ignore-scripts";
+                foreach ($localDeps as $depName => $depPath) {
+                    $installCmd .= " && npm install --include=dev --ignore-scripts " . escapeshellarg($depName . '@file:' . $depPath);
                 }
                 $this->executeCommand($installCmd, true);
                 echo "  ✓ Repository dependencies installed\n";
