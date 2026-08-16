@@ -28,19 +28,20 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 Below that: support grids, not a flat dump of every `.deb`.
 - 🔷 ✔️ Separate tables per product block (OLLMchat including llama.cpp / FAISS, WebKit, speech STT/TTS, plus RooTerm and RooBuilder).
 - 🔷 ✔️ Rows: package name, with a short subtext of what it is (Packages `Description` synopsis).
-- 🔷 ✔️ Break Debian and Ubuntu apart (not one mixed APT band). Fedora is its own table.
+- 🔷 ✔️ One table per product block. Debian, Ubuntu, and Fedora are column groups in that table, not separate tables.
+- 🔷 ✔️ The “already in …” grade means the package is not required from this repo (it is already upstream in that distro).
 - 🔷 ✔️ Debian columns: `trixie` (and later Debian suites). Ubuntu columns: `plucky`, `questing`, `resolute`. Fedora columns only where we still publish (`fc44`, RooTerm `fc42`, …).
 - 🔷 ✔️ Version cells stay narrow: version on the first line, architecture(s) on the next.
 - 🔷 Cell is a support grade, not only a version:
   - We ship it: show the version from our repo.
-  - Default sources already have it: we do not package it for that suite. The cell must say that (not a blank that looks like “missing”).
+  - Already upstream: we do not package it for that distro. The cell says `already in Debian` / `already in Ubuntu` / `already in Fedora` (not “default”).
   - Not available from us or from the suite: empty or a dash.
 - 🔷 That grade is how we show llama.cpp on `resolute` (Ubuntu already has `libllama0`; we do not republish) vs `plucky` / `questing` / `trixie` (we import a fitting Debian build).
-- 🔷 Same idea for packages we never ship because every supported suite already has them (faiss / `libfaiss-dev`). Still a row, all cells “default sources”, so the page can tell you to `apt install` from Ubuntu/Debian.
+- 🔷 Same idea for packages we never ship because every supported suite already has them (faiss / `libfaiss-dev`). Still a row, APT cells “already in Debian/Ubuntu”, so the page can tell you to `apt install` from the distro.
 - 🔷 Generate from what is on `gh-pages` after ingest:
   - APT: `dists/<suite>/main/binary-<arch>/Packages` (or `.gz`)
   - DNF: `rpm/fc<ver>/<arch>/*.rpm` filenames
-- ℹ️ “We ship it” comes from those indexes. “Default sources already have it” is the complement of the per-project suite allowlist in `config/repos.json` (suites in `apt.suites` that are not in that project’s `deb.suites`), plus any package we omit entirely because every suite has it.
+- ℹ️ “We ship it” comes from those indexes. “Already in Debian/Ubuntu” is the complement of the per-project suite allowlist in `config/repos.json` (suites in `apt.suites` that are not in that project’s `deb.suites`), plus any package we omit entirely because every APT suite has it. “Already in Fedora” is for packages we skip because Fedora already ships them (llama.cpp).
 - 💩 ✔️ Legend on the page so the three grades are obvious without reading this plan.
 - 💩 ✔️ If both `amd64` and `arm64` exist, show the version once; architecture goes on the line below.
 - 💩 ✔️ Sort packages by name inside each table. Column order: APT suites from `config/repos.json`, then Fedora numbers ascending.

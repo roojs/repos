@@ -336,6 +336,32 @@ format_ship_html() {
   done
 }
 
+already_in_html() {
+  printf '<span class="ver">already in</span><span class="arch">%s</span>' "$(html_escape "$1")"
+}
+
+apt_suite_distro() {
+  local suite="$1" s
+  for s in "${debian_columns[@]}"; do
+    if [[ "$s" == "$suite" ]]; then
+      printf '%s\n' Debian
+      return 0
+    fi
+  done
+  printf '%s\n' Ubuntu
+}
+
+is_fedora_upstream() {
+  case "$1" in
+    libllama*|llama-*|libggml*|ggml-*)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
 cell_apt() {
   local pkg="$1" suite="$2" html
   if html="$(format_ship_html "${work}/apt/${pkg}/${suite}")"; then
@@ -343,7 +369,7 @@ cell_apt() {
     return 0
   fi
   if is_default_source "$pkg" "$suite"; then
-    printf 'distro\t<span class="ver">default</span><span class="arch">sources</span>\n'
+    printf 'distro\t%s\n' "$(already_in_html "$(apt_suite_distro "$suite")")"
     return 0
   fi
   printf 'none\t—\n'
@@ -353,6 +379,10 @@ cell_rpm() {
   local pkg="$1" fc="$2" html
   if html="$(format_ship_html "${work}/rpm/${pkg}/${fc}")"; then
     printf 'ship\t%s\n' "$html"
+    return 0
+  fi
+  if is_fedora_upstream "$pkg"; then
+    printf 'distro\t%s\n' "$(already_in_html Fedora)"
     return 0
   fi
   printf 'none\t—\n'
@@ -380,91 +410,46 @@ write_rpm_td() {
   printf '<td class="%s">%s</td>\n' "$grade" "$html"
 }
 
-table_kind_useful() {
-  local pkgfile="$1" kind="$2" pkg suite fc grade html
-  [[ -s "$pkgfile" ]] || return 1
-  while IFS= read -r pkg; do
-    [[ -n "$pkg" ]] || continue
-    case "$kind" in
-      debian)
-        [[ "${#debian_columns[@]}" -gt 0 ]] || return 1
-        for suite in "${debian_columns[@]}"; do
-          IFS=$'\t' read -r grade html < <(cell_apt "$pkg" "$suite")
-          if [[ "$grade" != none ]]; then
-            return 0
-          fi
-        done
-        ;;
-      ubuntu)
-        [[ "${#ubuntu_columns[@]}" -gt 0 ]] || return 1
-        for suite in "${ubuntu_columns[@]}"; do
-          IFS=$'\t' read -r grade html < <(cell_apt "$pkg" "$suite")
-          if [[ "$grade" != none ]]; then
-            return 0
-          fi
-        done
-        ;;
-      fedora)
-        [[ "${#fedora_columns[@]}" -gt 0 ]] || return 1
-        for fc in "${fedora_columns[@]}"; do
-          IFS=$'\t' read -r grade html < <(cell_rpm "$pkg" "$fc")
-          if [[ "$grade" != none ]]; then
-            return 0
-          fi
-        done
-        ;;
-    esac
-  done < "$pkgfile"
-  return 1
-}
-
-write_kind_table() {
-  local heading="$1" pkgfile="$2" kind="$3" pkg suite fc
-  table_kind_useful "$pkgfile" "$kind" || return 0
-  printf '<h4>%s</h4>\n<div class="wrap"><table>\n<thead>\n<tr>\n' "$(html_escape "$heading")"
-  printf '<th class="pkg">Package</th>\n'
-  case "$kind" in
-    debian)
-      for suite in "${debian_columns[@]}"; do
-        printf '<th>%s</th>\n' "$(html_escape "$suite")"
-      done
-      ;;
-    ubuntu)
-      for suite in "${ubuntu_columns[@]}"; do
-        printf '<th>%s</th>\n' "$(html_escape "$suite")"
-      done
-      ;;
-    fedora)
-      for fc in "${fedora_columns[@]}"; do
-        printf '<th>fc%s</th>\n' "$(html_escape "$fc")"
-      done
-      ;;
-  esac
+write_group_table() {
+  local pkgfile="$1" pkg suite fc
+  local debian_span="${#debian_columns[@]}"
+  local ubuntu_span="${#ubuntu_columns[@]}"
+  local fedora_span="${#fedora_columns[@]}"
+  printf '<div class="wrap"><table>\n<thead>\n<tr>\n'
+  printf '<th class="pkg" rowspan="2">Package</th>\n'
+  if [[ "$debian_span" -gt 0 ]]; then
+    printf '<th colspan="%s">Debian</th>\n' "$debian_span"
+  fi
+  if [[ "$ubuntu_span" -gt 0 ]]; then
+    printf '<th colspan="%s">Ubuntu</th>\n' "$ubuntu_span"
+  fi
+  if [[ "$fedora_span" -gt 0 ]]; then
+    printf '<th colspan="%s">Fedora</th>\n' "$fedora_span"
+  fi
+  printf '</tr>\n<tr>\n'
+  for suite in "${debian_columns[@]}"; do
+    printf '<th>%s</th>\n' "$(html_escape "$suite")"
+  done
+  for suite in "${ubuntu_columns[@]}"; do
+    printf '<th>%s</th>\n' "$(html_escape "$suite")"
+  done
+  for fc in "${fedora_columns[@]}"; do
+    printf '<th>fc%s</th>\n' "$(html_escape "$fc")"
+  done
   printf '</tr>\n</thead>\n<tbody>\n'
   while IFS= read -r pkg; do
     [[ -n "$pkg" ]] || continue
-    if [[ "$kind" == fedora && ! -d "${work}/rpm/${pkg}" ]]; then
-      continue
-    fi
     printf '<tr>\n'
     write_pkg_th "$pkg"
-    case "$kind" in
-      debian)
-        for suite in "${debian_columns[@]}"; do
-          write_apt_td "$pkg" "$suite"
-        done
-        ;;
-      ubuntu)
-        for suite in "${ubuntu_columns[@]}"; do
-          write_apt_td "$pkg" "$suite"
-        done
-        ;;
-      fedora)
-        for fc in "${fedora_columns[@]}"; do
-          write_rpm_td "$pkg" "$fc"
-        done
-        ;;
-    esac
+    for suite in "${debian_columns[@]}"; do
+      write_apt_td "$pkg" "$suite"
+    done
+    for suite in "${ubuntu_columns[@]}"; do
+      write_apt_td "$pkg" "$suite"
+    done
+    for fc in "${fedora_columns[@]}"; do
+      write_rpm_td "$pkg" "$fc"
+    done
     printf '</tr>\n'
   done < "$pkgfile"
   printf '</tbody>\n</table>\n</div>\n'
@@ -480,10 +465,9 @@ write_html() {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>roojs package repositories</title>
 <style>
-body { font-family: sans-serif; line-height: 1.4; max-width: 52rem; margin: 1.5rem auto; padding: 0 1rem; }
+body { font-family: sans-serif; line-height: 1.4; max-width: 60rem; margin: 1.5rem auto; padding: 0 1rem; }
 h1 { margin-bottom: 0.25rem; }
 h3 { margin: 1.75rem 0 0.2rem; }
-h4 { margin: 1rem 0 0.35rem; }
 .lead, .group-lead { color: #444; margin-top: 0; }
 pre { background: #f4f4f4; padding: 0.75rem 1rem; overflow: auto; }
 table { border-collapse: collapse; width: auto; margin: 0 0 0.5rem; }
@@ -567,8 +551,8 @@ DNF
 <h2>What you can install</h2>
 <p class="legend">
 <span><strong>version</strong> — we ship it in this repository</span>
-<span><em>default sources</em> — already in that distro; install with <code>apt</code> from Debian or Ubuntu</span>
-<span><strong>—</strong> — not available from us or from that suite</span>
+<span><em>already in Debian / Ubuntu / Fedora</em> — not required; use the distro package</span>
+<span><strong>—</strong> — not available from us or from that distro</span>
 </p>
 GRID
 
@@ -581,9 +565,7 @@ GRID
       if [[ -n "$blurb" ]]; then
         printf '<p class="group-lead">%s</p>\n' "$(html_escape "$blurb")"
       fi
-      write_kind_table Debian "${work}/group/${gid}" debian
-      write_kind_table Ubuntu "${work}/group/${gid}" ubuntu
-      write_kind_table Fedora "${work}/group/${gid}" fedora
+      write_group_table "${work}/group/${gid}"
     done
   else
     printf '<p>No packages published yet.</p>\n'
