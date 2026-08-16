@@ -18,8 +18,9 @@
       "repo": "webkitgtk-automation",
       "deb": {
         "release_tags": {
-          "build-resolute-*": ["resolute"],
-          "build-questing-*": ["questing"]
+          "build-plucky-*": ["plucky"],
+          "build-questing-*": ["questing"],
+          "build-resolute-*": ["resolute"]
         }
       }
     },
