@@ -19,6 +19,7 @@ Maintainer setup (GPG keys, GitHub secrets, Pages): **[docs/setup.md](docs/setup
 | Use this suite | Distribution |
 |----------------|--------------|
 | `trixie` | Debian 13 |
+| `plucky` | Ubuntu 25.04 |
 | `questing` | Ubuntu 25.10 |
 | `resolute` | Ubuntu 26.04 LTS |
 
@@ -45,16 +46,15 @@ sudo install -d -m 0755 /etc/apt/keyrings
 curl -fsSL https://roojs.github.io/repos/key.gpg \
   | sudo gpg --dearmor -o /etc/apt/keyrings/roojs.gpg
 
-. /etc/os-release
 curl -fsSL https://roojs.github.io/repos/sources \
-  | sed "s/@suite@/$VERSION_CODENAME/" \
+  | sed "s/@suite@/$(lsb_release -cs)/" \
   | sudo tee /etc/apt/sources.list.d/roojs.sources
 
 sudo apt update
 sudo apt install ibus-sherpa-onnx ollmchat rooterm
 ```
 
-Template: [docs/sources](docs/sources) (`@suite@` is replaced with your `VERSION_CODENAME`).
+Template: [docs/sources](docs/sources) (`@suite@` is replaced with your suite from `lsb_release -cs`).
 
 ### APT troubleshooting
 
@@ -111,6 +111,8 @@ New releases appear after the [publish workflow](.github/workflows/publish-repos
 - **Workflow:** [Publish package repositories](.github/workflows/publish-repos.yml) — checks upstream GitHub Releases daily; commits to `gh-pages` only when packages or repo config change
 - **Upstream list:** `config/repos.json` — projects, APT suites, and per-release suite rules
 - **Setup guide:** [docs/setup.md](docs/setup.md)
+- **Plan guide:** [docs/guide-to-writing-plans.md](docs/guide-to-writing-plans.md)
+- **Plans:** [docs/plans/1-import-debian-pool-deps.md](docs/plans/1-import-debian-pool-deps.md), [docs/plans/2-tree-sitter-batch-release.md](docs/plans/2-tree-sitter-batch-release.md), [docs/plans/3-ollmchat-rpm-opensuse-faiss.md](docs/plans/3-ollmchat-rpm-opensuse-faiss.md), [docs/plans/4-repo-catalog-html.md](docs/plans/4-repo-catalog-html.md)
 
 ## AI assistance
 

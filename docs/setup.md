@@ -150,4 +150,4 @@ gh workflow run publish-repos.yml -R roojs/repos
 
 See [Using the APT repository](../README.md#using-the-apt-repository) in the README.
 
-On each machine, use only the suite that matches the OS (`trixie`, `questing`, or `resolute`).
+On each machine, use only the suite that matches the OS (`trixie`, `plucky`, `questing`, or `resolute`).
