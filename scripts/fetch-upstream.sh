@@ -23,28 +23,22 @@ found=0
 declare -A pool_file_suites=()
 pool_work=""
 previous_index="{}"
-can_skip=false
 fetch_force="${FETCH_FORCE:-false}"
+has_previous_manifest=false
 
 if [[ -n "$previous_manifest" && -f "$previous_manifest" ]]; then
+  has_previous_manifest=true
   previous_index="$(jq -c --arg kind "$package_type" '
     if $kind == "deb" then (.debs // {}) else (.rpms // {}) end
   ' "$previous_manifest")"
-  if [[ "$fetch_force" != "true" ]]; then
-    prev_config_sha="$(jq -r '.repos_json_sha256 // empty' "$previous_manifest")"
-    curr_config_sha="$(sha256sum "$config" | awk '{print $1}')"
-    if [[ -n "$prev_config_sha" && "$prev_config_sha" == "$curr_config_sha" ]]; then
-      can_skip=true
-    fi
-  fi
 fi
 
-if [[ "$can_skip" == "true" ]]; then
-  echo "Skipping downloads for unchanged ${package_type} packages."
-elif [[ "$fetch_force" == "true" ]]; then
+if [[ "$fetch_force" == "true" ]]; then
   echo "FETCH_FORCE=true: downloading all ${package_type} packages."
+elif [[ "$has_previous_manifest" == "true" ]]; then
+  echo "Checking ${package_type} packages against previous publish (release tags and file names)."
 else
-  echo "Downloading ${package_type} packages (no matching previous publish)."
+  echo "Downloading ${package_type} packages (no previous publish manifest)."
 fi
 
 pool_ensure_index() {
@@ -404,7 +398,7 @@ keep_previous_repo() {
 
 github_should_skip() {
   local prev_repo="$1" release_json="$2" ext="$3"
-  [[ "$can_skip" == "true" ]] || return 1
+  [[ "$fetch_force" != "true" ]] || return 1
   [[ -n "$prev_repo" ]] || return 1
   jq -en --argjson prev "$prev_repo" --argjson rel "$release_json" --arg ext "$ext" '
     def relevant_name:
@@ -447,7 +441,7 @@ github_latest_release_tag() {
 
 pool_should_skip() {
   local pool="$1" prev_repo="$2" allowlisted="$3" arch html filename name ver prev_file prev_ver
-  [[ "$can_skip" == "true" ]] || return 1
+  [[ "$fetch_force" != "true" ]] || return 1
   [[ -n "$prev_repo" ]] || return 1
 
   html="$(curl -fsSL "${pool}/")" || return 1

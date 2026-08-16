@@ -1,8 +1,8 @@
 name: Publish package repositories
 
-# Polls upstream releases daily. Downloads assets only when tags, GitHub
-# asset digests, Debian pool versions, or repo config change. Publishes only
-# when the package manifest changes.
+# Polls upstream releases daily. Downloads assets only when release tags,
+# GitHub asset file names/digests, or Debian pool versions change. Publishes
+# when the package manifest changes (including repo config).
 on:
   schedule:
     - cron: '0 6 * * *'
