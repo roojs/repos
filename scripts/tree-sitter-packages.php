@@ -432,8 +432,8 @@ class TreeSitterPackageBuilder {
             $this->createPackageJson($repoDir, $parser, $packageVersion);
         }
         
-        // Install npm dependencies only when other tree-sitter parsers must be linked.
-        // Runtime .deb builds use system tree-sitter-cli + gcc; node native bindings are not needed.
+        // Install npm grammar dependencies (e.g. tree-sitter-c for tree-sitter-cpp).
+        // Use --ignore-scripts: only JS modules are needed for `tree-sitter generate`.
         if (file_exists($repoDir . '/package.json')) {
             $packageJson = json_decode(file_get_contents($repoDir . '/package.json'), true);
             $allDeps = array_merge(
@@ -441,25 +441,33 @@ class TreeSitterPackageBuilder {
                 $packageJson['devDependencies'] ?? []
             );
 
+            $grammarDeps = [];
             $localDeps = [];
             foreach ($allDeps as $depName => $depVersion) {
-                if (strpos($depName, 'tree-sitter-') === 0 && $depName !== 'tree-sitter-cli' && $depName !== 'tree-sitter') {
-                    $depRepoDir = $this->baseDir . '/' . $depName;
-                    if (is_dir($depRepoDir) && file_exists($depRepoDir . '/package.json')) {
-                        echo "    Found local {$depName}, will link instead of downloading\n";
-                        $localDeps[$depName] = $depRepoDir;
-                    }
+                if (strpos($depName, 'tree-sitter-') !== 0 || $depName === 'tree-sitter-cli') {
+                    continue;
+                }
+                $depRepoDir = $this->baseDir . '/' . $depName;
+                if (is_dir($depRepoDir) && file_exists($depRepoDir . '/package.json')) {
+                    echo "    Found local {$depName}, will link instead of downloading\n";
+                    $localDeps[$depName] = $depRepoDir;
+                } else {
+                    $grammarDeps[$depName] = $depVersion;
                 }
             }
 
-            if (!empty($localDeps)) {
-                echo "  Installing npm dependencies for local tree-sitter parser links...\n";
-                $installCmd = "cd " . escapeshellarg($repoDir) . " && npm install --include=dev --ignore-scripts";
-                foreach ($localDeps as $depName => $depPath) {
-                    $installCmd .= " && npm install --include=dev --ignore-scripts " . escapeshellarg($depName . '@file:' . $depPath);
+            if (!empty($grammarDeps) || !empty($localDeps)) {
+                echo "  Installing npm grammar dependencies...\n";
+                $packages = [];
+                foreach ($grammarDeps as $depName => $depVersion) {
+                    $packages[] = escapeshellarg($depName . '@' . $depVersion);
                 }
+                foreach ($localDeps as $depName => $depPath) {
+                    $packages[] = escapeshellarg($depName . '@file:' . $depPath);
+                }
+                $installCmd = "cd " . escapeshellarg($repoDir) . " && npm install --ignore-scripts --no-save " . implode(' ', $packages);
                 $this->executeCommand($installCmd, true);
-                echo "  ✓ Repository dependencies installed\n";
+                echo "  ✓ Grammar dependencies installed\n";
             }
         }
         
