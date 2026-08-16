@@ -17,6 +17,11 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 When a build fails, pin that parser and deal with it then.
 - 🔷 The existing PHP script fetches and builds. Use that.
 - 🔷 Not a long build. Caching checkouts is fine.
+- 🔷 Only build a parser when its source identity changed.
+- 🔷 Pinned parsers: identity is the `tag`. Once built at that tag, never rebuild until the pin changes.
+- 🔷 Unpinned parsers: identity is the default-branch HEAD. Rebuild only when HEAD moves.
+- 🔷 Reuse `.deb`s from the latest `tree-sitter-*` release for unchanged parsers. Carry them into every new dated release.
+- 🔷 Build on `ubuntu-24.04` as-is. Same environment for every run. No per-suite build variants.
 - ℹ️ Script: `/home/alan/gitlive/OLLMchat/docs/tools/tree-sitter-packages.php`
 - 🔷 ⏳ Copy the script here, drive it from that JSON, cut a dated release, ingest it.
 
@@ -46,8 +51,22 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 Set `tag` when we know a later tree does not build (or after CI fails).
 - 🔷 Omit `tag` (or leave it empty) to follow `main` / `master`.
 - 🔷 Do not watch GitHub Releases for unpinned parsers. A lot of them have none.
+- 🔷 A pinned `tag` is also the build identity. Same tag as last release means skip the build.
 - 💩 ⏳ Starting `tag` values can be the local deb versions above, for parsers that already failed on later trees. The rest can start unpinned.
 - 🔷 ⏳ Cache checkouts between runs.
+
+## Incremental build
+
+- 🔷 Each parser has a **source identity**:
+  - Pinned: the `tag` string from config.
+  - Unpinned: the `main` / `master` commit SHA after fetch.
+- 🔷 Each parser has a **built identity** recorded in the latest `tree-sitter-*` release manifest.
+- 🔷 Skip build when built identity equals source identity.
+- 🔷 For pinned parsers this is almost always a skip after the first successful build.
+- 🔷 Unpinned parsers rebuild only when upstream HEAD moves.
+- 🔷 Unchanged `.deb`s are copied from the prior `tree-sitter-*` release, not rebuilt.
+- 🔷 A new dated release always ships the full parser set: reused `.deb`s plus any freshly built ones.
+- 🔷 One `ubuntu-24.04` build produces `.deb`s shared across all APT suites. No suite-specific rebuilds.
 
 ## Script
 
@@ -219,18 +238,77 @@ Skip the script’s “highest tag ≤ tree-sitter version” logic when config 
 
 - 🔷 A failed build is the signal to add a `tag` for that parser. Do not invent a release watcher.
 
+### 3b. `scripts/tree-sitter-packages.php` — skip unchanged parsers
+
+Why: 🔷 only build when source identity changed. Reuse prior `.deb`s.
+
+Where: per-parser build loop. Before clone/build.
+
+Depends on: §2, §3.
+
+#### Add — read prior manifest and skip when identity matches
+
+The workflow passes `TREE_SITTER_MANIFEST` (path to manifest from the latest `tree-sitter-*` release) and `TREE_SITTER_OUTPUT_DIR` (where `.deb`s land for this run).
+
+For each parser, resolve **source identity** after checkout:
+
+- Pinned: `$parser['tag']`
+- Unpinned: `git rev-parse HEAD` in the repo dir
+
+Read the prior manifest (if present). Each entry is `{ "identity": "…", "deb": "libtree-sitter-…_….deb" }`.
+
+When `identity` matches, copy the prior `.deb` into `TREE_SITTER_OUTPUT_DIR` and skip build for that parser.
+
+```php
+        $manifest = [];
+        $manifestPath = getenv('TREE_SITTER_MANIFEST') ?: '';
+        if ($manifestPath !== '' && is_readable($manifestPath)) {
+            $manifest = json_decode(file_get_contents($manifestPath), true)['parsers'] ?? [];
+        }
+        $outputDir = getenv('TREE_SITTER_OUTPUT_DIR') ?: $this->baseDir;
+
+        $identity = !empty($parser['tag'])
+            ? $parser['tag']
+            : trim(shell_exec('cd ' . escapeshellarg($repoDir) . ' && git rev-parse HEAD'));
+
+        if (
+            isset($manifest[$parser['id']])
+            && ($manifest[$parser['id']]['identity'] ?? '') === $identity
+            && is_readable($manifest[$parser['id']]['deb'])
+        ) {
+            copy($manifest[$parser['id']]['deb'], $outputDir . '/' . basename($manifest[$parser['id']]['deb']));
+            continue;
+        }
+```
+
+#### Add — write manifest after each successful build
+
+Append to a run-local manifest (`$outputDir/tree-sitter-manifest.json`) so the release step can upload it:
+
+```php
+        $builtManifest['parsers'][$parser['id']] = [
+            'identity' => $identity,
+            'deb' => $outputDir . '/' . basename($debPath),
+        ];
+```
+
+- 🔷 First run has no prior manifest. Every parser builds.
+- 🔷 Pinned parsers on later runs almost always hit the skip path.
+
 ## Release
 
 - 🔷 One GitHub Release on `roojs/repos` with every parser `.deb` from that run.
 - 🔷 Tag dated when released.
+- 🔷 Release includes `tree-sitter-manifest.json` so the next run can skip unchanged parsers.
+- 🔷 Skip creating a release when every parser was reused and nothing changed.
 
-### 4. `.github/workflows/build-tree-sitter.yml` — batch build + release
+### 4. `.github/workflows/build-tree-sitter.yml` — incremental batch build + release
 
-Why: 🔷 build on this project as a batch.
+Why: 🔷 build on this project as a batch. Reuse prior `.deb`s. Only rebuild what moved.
 
 Where: new workflow file.
 
-Depends on: §1–§3.
+Depends on: §1–§3b.
 
 #### Add — new `.github/workflows/build-tree-sitter.yml`
 
@@ -257,33 +335,54 @@ jobs:
           restore-keys: |
             tree-sitter-checkouts-v1-
 
+      - name: Download prior release
+        id: prior
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p cache/prior-release cache/output
+          tag="$(gh release list --limit 50 --json tagName \
+            --jq '[.[].tagName | select(startswith("tree-sitter-"))] | first // empty')"
+          if [[ -z "$tag" ]]; then
+            echo "has_prior=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          gh release download "$tag" --dir cache/prior-release
+          echo "has_prior=true" >> "$GITHUB_OUTPUT"
+
       - name: Install build dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             git nodejs npm build-essential devscripts debhelper \
-            libtree-sitter-dev tree-sitter-cli php-cli
+            libtree-sitter-dev tree-sitter-cli php-cli jq
 
       - name: Build packages
         run: php scripts/tree-sitter-packages.php
         env:
           TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
+          TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output
+          TREE_SITTER_MANIFEST: ${{ github.workspace }}/cache/prior-release/tree-sitter-manifest.json
 
       - name: Publish dated release
+        if: steps.build.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="tree-sitter-$(date -u +%Y-%m-%d)"
           gh release create "$tag" \
-            cache/tree-sitter/libtree-sitter-*.deb \
+            cache/output/libtree-sitter-*.deb \
+            cache/output/tree-sitter-manifest.json \
             --title "$tag" \
             --notes "Tree-sitter parser batch ${tag}"
 ```
 
-- 🔷 `workflow_dispatch`. Rebuild frequency is still open.
-- 🔷 Cache path `cache/tree-sitter` (checkouts).
+- 🔷 `workflow_dispatch`. Safe to run often — pinned parsers skip after first build.
+- 🔷 Cache path `cache/tree-sitter` (checkouts). Output `.deb`s go in `cache/output`.
+- 🔷 Prior release download seeds the skip manifest and supplies reused `.deb`s.
+- 🔷 `ubuntu-24.04` is the only build image. No suite-specific variants.
 - 💩 Script must honour `TREE_SITTER_BASE_DIR` instead of `~/git`. One-line constructor change when copying.
-- 💩 `ubuntu-24.04` so `libtree-sitter-dev` matches the 0.20.x pins.
+- 💩 `steps.build.outputs.changed` needs a small hook in the PHP script (or a wrapper) to set `changed=false` when every parser was reused.
 - 💩 After release, `gh api` `repository_dispatch` `publish-repos` if we want ingest in the same motion.
 
 ## Ingest
@@ -318,3 +417,5 @@ Depends on: §4.
 - First batch can stay amd64. The PHP `debian/install` path is `usr/lib/x86_64-linux-gnu/`.
 - Do not add a GitHub Release watcher for unpinned parsers.
 - Do not add this build to the daily publish cron until rebuild frequency is approved.
+- Pinned parsers: after the first successful build, every later run should skip them unless the `tag` in config changes.
+- One `ubuntu-24.04` build serves all APT suites. Do not add per-suite rebuild logic.
