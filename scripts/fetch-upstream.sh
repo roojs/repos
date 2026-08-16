@@ -105,10 +105,54 @@ pool_suite_libc6() {
   ' "$idx"
 }
 
-pool_sid_index() {
-  local arch="$1" dest="${pool_work}/sid-${arch}.packages"
-  pool_ensure_index "$dest" "https://deb.debian.org/debian/dists/sid/main/binary-${arch}/Packages.xz" || return 1
-  printf '%s\n' "$dest"
+pool_index_depends() {
+  local idx="$1" name="$2"
+  awk -v pkg="$name" '
+    $0 == "Package: " pkg { hit = 1; next }
+    hit && /^Depends:/ {
+      val = substr($0, 10)
+      collecting = 1
+      next
+    }
+    hit && collecting && /^ / {
+      val = val $0
+      next
+    }
+    hit && collecting { print val; exit }
+    hit && /^$/ { exit }
+  ' "$idx"
+}
+
+pool_sid_libc_need() {
+  local name="$1" arch="$2" idx depends
+  idx="$(pool_sid_index "$arch")" || return 1
+  if ! grep -qx "Package: ${name}" "$idx"; then
+    return 1
+  fi
+  depends="$(pool_index_depends "$idx" "$name")"
+  sed -n 's/.*libc6 (>= \([^)]*\)).*/\1/p' <<< "$depends" | head -n1
+}
+
+# True when the sid (newest) build of this package can install on an allowlisted suite.
+pool_newest_fits_allowlist() {
+  local name="$1" arch="$2" allowlisted="$3" idx need suite suite_libc
+  idx="$(pool_sid_index "$arch")" || return 1
+  if ! grep -qx "Package: ${name}" "$idx"; then
+    return 1
+  fi
+  need="$(pool_sid_libc_need "$name" "$arch" || true)"
+  if [[ -z "$need" ]]; then
+    return 0
+  fi
+  while IFS= read -r suite; do
+    [[ -n "$suite" ]] || continue
+    suite_libc="$(pool_suite_libc6 "$suite" "$arch")" || continue
+    [[ -n "$suite_libc" ]] || continue
+    if dpkg --compare-versions "$suite_libc" ge "$need"; then
+      return 0
+    fi
+  done <<< "$allowlisted"
+  return 1
 }
 
 pool_url_for_package() {
@@ -382,14 +426,15 @@ github_should_skip() {
 }
 
 pool_should_skip() {
-  local pool="$1" prev_repo="$2" arch html filename name ver prev_file prev_ver
+  local pool="$1" prev_repo="$2" allowlisted="$3" arch html filename name ver prev_file prev_ver
   [[ "$can_skip" == "true" ]] || return 1
   [[ -n "$prev_repo" ]] || return 1
+
+  html="$(curl -fsSL "${pool}/")" || return 1
 
   declare -A newest_ver=()
   while IFS= read -r arch; do
     [[ -n "$arch" ]] || continue
-    html="$(curl -fsSL "${pool}/")" || return 1
     while IFS= read -r filename; do
       [[ -n "$filename" ]] || continue
       name="${filename%%_*}"
@@ -419,13 +464,20 @@ pool_should_skip() {
       ' <<< "$prev_repo"
     )"
     if [[ -z "$prev_file" ]]; then
-      echo "Pool has new package ${name} (${arch})." >&2
-      return 1
+      if pool_newest_fits_allowlist "$name" "$arch" "$allowlisted"; then
+        echo "Pool has new package ${name} (${arch}) that fits a suite." >&2
+        return 1
+      fi
+      echo "Pool has new ${name} (${arch}) that does not fit suite libc; ignoring." >&2
+      continue
     fi
     prev_ver="$(pool_filename_version "$name" "$arch" "$prev_file")"
     if dpkg --compare-versions "${newest_ver[$key]}" gt "$prev_ver"; then
-      echo "Pool has newer ${name} ${arch}: ${newest_ver[$key]} > ${prev_ver}." >&2
-      return 1
+      if pool_newest_fits_allowlist "$name" "$arch" "$allowlisted"; then
+        echo "Pool has newer ${name} ${arch} that fits a suite: ${newest_ver[$key]} > ${prev_ver}." >&2
+        return 1
+      fi
+      echo "Pool has newer ${name} ${arch} (${newest_ver[$key]}) that does not fit suite libc; keeping ${prev_ver}." >&2
     fi
   done
   return 0
@@ -457,14 +509,14 @@ while IFS= read -r repo; do
       echo "Skipping ${repo}: no deb suite mapping in config." >&2
       continue
     fi
-    if pool_should_skip "$pool" "$(previous_repo_json "$repo")"; then
-      if keep_previous_repo "$repo" "Skipping pool download for ${repo}: no newer packages than last publish."; then
-        continue
-      fi
-    fi
     if [[ -z "$pool_work" ]]; then
       pool_work="$(mktemp -d)"
       trap 'rm -rf "$pool_work"' EXIT
+    fi
+    if pool_should_skip "$pool" "$(previous_repo_json "$repo")" "$suites"; then
+      if keep_previous_repo "$repo" "Skipping pool download for ${repo}: no newer packages that fit any suite."; then
+        continue
+      fi
     fi
     echo "Downloading pool packages for ${repo} ..."
     pool_fetch_into "$pool" "$repo_dir" "$suites"

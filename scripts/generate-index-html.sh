@@ -299,6 +299,18 @@ if [[ -s "${work}/pkg-names" ]]; then
   done < "${work}/pkg-names"
 fi
 
+headline_version() {
+  local ver="$1"
+  ver="${ver#*:}"
+  if [[ "$ver" == *-* ]]; then
+    ver="${ver%-*}"
+  fi
+  if [[ "$ver" == *~* ]]; then
+    ver="${ver%%~*}"
+  fi
+  printf '%s\n' "$ver"
+}
+
 format_ship_html() {
   local dir="$1"
   [[ -d "$dir" ]] || return 1
@@ -307,7 +319,7 @@ format_ship_html() {
   mapfile -t arches < <(find "$dir" -mindepth 1 -maxdepth 1 -type f -printf '%f\n' | sort)
   [[ "${#arches[@]}" -gt 0 ]] || return 1
   for arch in "${arches[@]}"; do
-    ver="$(cat "${dir}/${arch}")"
+    ver="$(headline_version "$(cat "${dir}/${arch}")")"
     vers+=("$ver")
     if [[ "$arch" != all ]]; then
       show+=("$arch")

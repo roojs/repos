@@ -115,6 +115,8 @@ Stopped before coding. §4 as written would either publish uninstallable llama.c
 ### Once it is in our repo
 
 - 🔷 After ingest, those `.deb`s live in reprepro on `gh-pages`. Incoming is deleted. They stay. We do not need to import that version again.
+- 🔷 ✔️ Do not re-download the pool just because Debian published a newer build. Skip the hunt unless that newer build’s `libc6` Depends can be satisfied by an allowlisted suite.
+- ℹ️ Debian llama.cpp uploads often against glibc 2.43. Our suites cannot install those. Treating “pool has something newer” as a fetch was re-downloading the world every day.
 - ℹ️ The daily job still hunts, same as other projects. If it picks the same files, hashes match, nothing is committed. reprepro would also no-op (“already published”).
 - 🔷 Do not replace a published fitting version with a newer Debian build the suite cannot install (`10344` onto plucky).
 - 🔷 If a newer Debian build still fits that suite’s libc6, taking it is the existing “new `.deb`s are normal” behaviour.
