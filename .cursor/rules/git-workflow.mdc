@@ -1,0 +1,17 @@
+---
+description: Git workflow for this repository — commit directly to main, no pull requests
+alwaysApply: true
+---
+
+# Git workflow
+
+**Do not open pull requests on this project.**
+
+When making code changes:
+
+1. Work on `main` (or commit directly to `main`).
+2. Commit with a clear message.
+3. Push to `origin main`.
+4. Do **not** use `ManagePullRequest`, `gh pr create`, or feature-branch PR workflows unless the user explicitly asks for a PR.
+
+The user prefers direct commits to this repo, not PR-based review.
