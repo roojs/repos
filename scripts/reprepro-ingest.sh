@@ -22,8 +22,8 @@ while IFS= read -r repo; do
     [[ -n "$filename" ]] || continue
     deb="${incoming}/${repo}/${filename}"
     if [[ ! -f "$deb" ]]; then
-      echo "Missing ${deb}" >&2
-      exit 1
+      echo "Skipping ingest for ${filename} (${repo}@${tag}): not re-downloaded."
+      continue
     fi
 
     mapfile -t suites < <(jq -r --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].suites[]?' "$index")

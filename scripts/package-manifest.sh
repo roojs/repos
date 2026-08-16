@@ -33,7 +33,7 @@ if [[ -f "${pages}/.publish-manifest.json" ]]; then
 fi
 
 changed=false
-if [[ "$current" != "$previous" ]]; then
+if ! jq -en --argjson current "$current" --argjson previous "$previous" '$current == $previous' >/dev/null; then
   changed=true
 fi
 

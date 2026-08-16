@@ -25,9 +25,12 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 Top: install instructions (APT, then DNF). Same steps as the README (`key.gpg`, `sources` / `repo`, `apt update` / `dnf makecache`).
 - ℹ️ Commands live in `README.md` and the templates `docs/sources`, `docs/repo`.
 - 💩 ✔️ Pull those command blocks from the templates when generating, so the page does not drift from the files clients already download.
-- 🔷 Below that: the support grid, not a flat dump of every `.deb`.
-- 🔷 Rows: package name.
-- 🔷 Columns: each APT suite (`trixie`, `plucky`, `questing`, `resolute`), then each Fedora we actually publish (`fc44`, …). Old Fedora columns only appear if we still publish something there (e.g. RooTerm `fc42`).
+- 🔷 Below that: support grids, not a flat dump of every `.deb`.
+- 🔷 ✔️ Separate tables per product block (OLLMchat including llama.cpp / FAISS, WebKit, speech STT/TTS, plus RooTerm and RooBuilder).
+- 🔷 ✔️ Rows: package name, with a short subtext of what it is (Packages `Description` synopsis).
+- 🔷 ✔️ Break Debian and Ubuntu apart (not one mixed APT band). Fedora is its own table.
+- 🔷 ✔️ Debian columns: `trixie` (and later Debian suites). Ubuntu columns: `plucky`, `questing`, `resolute`. Fedora columns only where we still publish (`fc44`, RooTerm `fc42`, …).
+- 🔷 ✔️ Version cells stay narrow: version on the first line, architecture(s) on the next.
 - 🔷 Cell is a support grade, not only a version:
   - We ship it: show the version from our repo.
   - Default sources already have it: we do not package it for that suite. The cell must say that (not a blank that looks like “missing”).
@@ -39,8 +42,8 @@ Checklist: `docs/guide-to-writing-plans.md`
   - DNF: `rpm/fc<ver>/<arch>/*.rpm` filenames
 - ℹ️ “We ship it” comes from those indexes. “Default sources already have it” is the complement of the per-project suite allowlist in `config/repos.json` (suites in `apt.suites` that are not in that project’s `deb.suites`), plus any package we omit entirely because every suite has it.
 - 💩 ✔️ Legend on the page so the three grades are obvious without reading this plan.
-- 💩 ✔️ If both `amd64` and `arm64` exist, show the version once, or `version (amd64)` when only one arch is present.
-- 💩 ✔️ Sort packages by name. Column order: APT suites from `config/repos.json`, then Fedora numbers ascending.
+- 💩 ✔️ If both `amd64` and `arm64` exist, show the version once; architecture goes on the line below.
+- 💩 ✔️ Sort packages by name inside each table. Column order: APT suites from `config/repos.json`, then Fedora numbers ascending.
 
 ## Script
 

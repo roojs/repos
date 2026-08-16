@@ -5,6 +5,7 @@ config="${1:?config path required}"
 output="${2:?output directory required}"
 package_type="${3:?deb or rpm required}"
 repo_filter="${4:-}"
+previous_manifest="${5:-}"
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=lib/repos-config.sh
@@ -21,6 +22,30 @@ index="{}"
 found=0
 declare -A pool_file_suites=()
 pool_work=""
+previous_index="{}"
+can_skip=false
+fetch_force="${FETCH_FORCE:-false}"
+
+if [[ -n "$previous_manifest" && -f "$previous_manifest" ]]; then
+  previous_index="$(jq -c --arg kind "$package_type" '
+    if $kind == "deb" then (.debs // {}) else (.rpms // {}) end
+  ' "$previous_manifest")"
+  if [[ "$fetch_force" != "true" ]]; then
+    prev_config_sha="$(jq -r '.repos_json_sha256 // empty' "$previous_manifest")"
+    curr_config_sha="$(sha256sum "$config" | awk '{print $1}')"
+    if [[ -n "$prev_config_sha" && "$prev_config_sha" == "$curr_config_sha" ]]; then
+      can_skip=true
+    fi
+  fi
+fi
+
+if [[ "$can_skip" == "true" ]]; then
+  echo "Skipping downloads for unchanged ${package_type} packages."
+elif [[ "$fetch_force" == "true" ]]; then
+  echo "FETCH_FORCE=true: downloading all ${package_type} packages."
+else
+  echo "Downloading ${package_type} packages (no matching previous publish)."
+fi
 
 pool_ensure_index() {
   local dest="$1" url="$2"
@@ -315,6 +340,97 @@ pool_fetch_into() {
   done
 }
 
+previous_repo_json() {
+  jq -c --arg repo "$1" '.[$repo] // empty' <<< "$previous_index"
+}
+
+keep_previous_repo() {
+  local repo="$1" reason="$2" prev
+  prev="$(previous_repo_json "$repo")"
+  if [[ -z "$prev" ]]; then
+    return 1
+  fi
+  echo "$reason" >&2
+  index="$(jq --arg repo "$repo" --argjson prev "$prev" '. + {($repo): $prev}' <<< "$index")"
+  found=1
+  return 0
+}
+
+github_should_skip() {
+  local prev_repo="$1" release_json="$2" ext="$3"
+  [[ "$can_skip" == "true" ]] || return 1
+  [[ -n "$prev_repo" ]] || return 1
+  jq -en --argjson prev "$prev_repo" --argjson rel "$release_json" --arg ext "$ext" '
+    def relevant_name:
+      select(.name | endswith("." + $ext))
+      | select($ext != "rpm" or (.name | test("debuginfo|debugsource") | not))
+      | .name;
+    ($prev.tag == $rel.tagName)
+    and (($prev.packages | keys | sort) == ([ $rel.assets[] | relevant_name ] | sort))
+    and (
+      [
+        $rel.assets[]
+        | select((.digest // "") != "")
+        | select(.name | endswith("." + $ext))
+        | select($ext != "rpm" or (.name | test("debuginfo|debugsource") | not))
+      ]
+      | all(
+          (.digest | sub("^sha256:"; "")) == ($prev.packages[.name].sha256 // "")
+        )
+    )
+  ' >/dev/null
+}
+
+pool_should_skip() {
+  local pool="$1" prev_repo="$2" arch html filename name ver prev_file prev_ver
+  [[ "$can_skip" == "true" ]] || return 1
+  [[ -n "$prev_repo" ]] || return 1
+
+  declare -A newest_ver=()
+  while IFS= read -r arch; do
+    [[ -n "$arch" ]] || continue
+    html="$(curl -fsSL "${pool}/")" || return 1
+    while IFS= read -r filename; do
+      [[ -n "$filename" ]] || continue
+      name="${filename%%_*}"
+      [[ "$name" == lib* ]] || continue
+      pool_skip_name "$name" && continue
+      ver="$(pool_filename_version "$name" "$arch" "$filename")"
+      if [[ -z "${newest_ver[${name}:${arch}]:-}" ]] \
+        || dpkg --compare-versions "$ver" gt "${newest_ver[${name}:${arch}]}"; then
+        newest_ver["${name}:${arch}"]="$ver"
+      fi
+    done < <(
+      grep -oE "href=\"lib[^\"]+_${arch}\\.deb\"" <<< "$html" \
+        | sed 's/^href="//;s/"$//' \
+        || true
+    )
+  done < <(jq -r '.apt.architectures[]' "$config")
+
+  [[ "${#newest_ver[@]}" -gt 0 ]] || return 1
+
+  local key
+  for key in "${!newest_ver[@]}"; do
+    name="${key%%:*}"
+    arch="${key#*:}"
+    prev_file="$(
+      jq -r --arg prefix "${name}_" --arg suffix "_${arch}.deb" '
+        [.packages | keys[] | select(startswith($prefix) and endswith($suffix))] | first // empty
+      ' <<< "$prev_repo"
+    )"
+    if [[ -z "$prev_file" ]]; then
+      echo "Pool has new package ${name} (${arch})." >&2
+      return 1
+    fi
+    prev_ver="$(pool_filename_version "$name" "$arch" "$prev_file")"
+    if dpkg --compare-versions "${newest_ver[$key]}" gt "$prev_ver"; then
+      echo "Pool has newer ${name} ${arch}: ${newest_ver[$key]} > ${prev_ver}." >&2
+      return 1
+    fi
+  done
+  return 0
+}
+
 while IFS= read -r repo; do
   [[ -n "$repo" ]] || continue
   project="$(repos_config_project_json "$config" "$repo")"
@@ -341,6 +457,11 @@ while IFS= read -r repo; do
       echo "Skipping ${repo}: no deb suite mapping in config." >&2
       continue
     fi
+    if pool_should_skip "$pool" "$(previous_repo_json "$repo")"; then
+      if keep_previous_repo "$repo" "Skipping pool download for ${repo}: no newer packages than last publish."; then
+        continue
+      fi
+    fi
     if [[ -z "$pool_work" ]]; then
       pool_work="$(mktemp -d)"
       trap 'rm -rf "$pool_work"' EXIT
@@ -363,12 +484,19 @@ while IFS= read -r repo; do
       done
     fi
     if [[ -z "$tag" ]]; then
+      if keep_previous_repo "$repo" "Keeping previously published ${repo}: no pool .deb fitted any suite."; then
+        continue
+      fi
       echo "Skipping ${repo}: no pool .deb fitted any suite." >&2
       continue
     fi
   else
-    tag="$(gh release view -R "${owner}/${repo}" --json tagName -q .tagName 2>/dev/null || true)"
-    if [[ -z "$tag" ]]; then
+    release_json="$(gh release view -R "${owner}/${repo}" --json tagName,assets 2>/dev/null || true)"
+    tag="$(jq -r '.tagName // empty' <<< "${release_json:-}" 2>/dev/null || true)"
+    if [[ -z "$tag" || -z "$release_json" ]]; then
+      if keep_previous_repo "$repo" "Keeping previously published ${owner}/${repo}: no latest release."; then
+        continue
+      fi
       echo "Skipping ${owner}/${repo}: no latest release." >&2
       continue
     fi
@@ -383,6 +511,12 @@ while IFS= read -r repo; do
       suites_json="null"
     fi
 
+    if github_should_skip "$(previous_repo_json "$repo")" "$release_json" "$package_type"; then
+      if keep_previous_repo "$repo" "Skipping download for ${owner}/${repo}@${tag}: already published."; then
+        continue
+      fi
+    fi
+
     pattern='*.deb'
     [[ "$package_type" == "rpm" ]] && pattern='*.rpm'
 
@@ -391,6 +525,9 @@ while IFS= read -r repo; do
       --pattern "$pattern" \
       -D "$repo_dir" \
       --clobber 2>/dev/null; then
+      if keep_previous_repo "$repo" "Keeping previously published ${owner}/${repo}@${tag}: no ${package_type} assets."; then
+        continue
+      fi
       echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} assets." >&2
       continue
     fi
@@ -439,6 +576,16 @@ while IFS= read -r repo; do
     <<< "$index")"
   found=1
 done < <(repos_config_project_names "$config" "$repo_filter")
+
+if [[ -n "$repo_filter" ]]; then
+  while IFS= read -r repo; do
+    [[ -n "$repo" ]] || continue
+    if jq -e --arg repo "$repo" 'has($repo)' <<< "$index" >/dev/null; then
+      continue
+    fi
+    keep_previous_repo "$repo" "Keeping previously published ${repo}: not in this run's repo filter."
+  done < <(jq -r 'keys[]' <<< "$previous_index")
+fi
 
 printf '%s\n' "$index" | jq . > "${output}/.package-index.json"
 

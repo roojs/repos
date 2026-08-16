@@ -1,6 +1,8 @@
 name: Publish package repositories
 
-# Polls upstream releases daily. Publishes only when packages or repo config change.
+# Polls upstream releases daily. Downloads assets only when tags, GitHub
+# asset digests, Debian pool versions, or repo config change. Publishes only
+# when the package manifest changes.
 on:
   schedule:
     - cron: '0 6 * * *'
@@ -48,6 +50,7 @@ jobs:
         working-directory: main
         env:
           GH_TOKEN: ${{ github.token }}
+          FETCH_FORCE: ${{ inputs.force }}
         run: |
           set +e
           chmod +x scripts/fetch-upstream.sh
@@ -55,7 +58,8 @@ jobs:
             config/repos.json \
             "${GITHUB_WORKSPACE}/pages/incoming-debs" \
             deb \
-            "${{ inputs.repos }}"
+            "${{ inputs.repos }}" \
+            "${GITHUB_WORKSPACE}/pages/.publish-manifest.json"
           status=$?
           set -e
           if [[ "${status}" -eq 0 ]]; then
@@ -69,6 +73,7 @@ jobs:
         working-directory: main
         env:
           GH_TOKEN: ${{ github.token }}
+          FETCH_FORCE: ${{ inputs.force }}
         run: |
           set +e
           chmod +x scripts/fetch-upstream.sh
@@ -76,7 +81,8 @@ jobs:
             config/repos.json \
             "${GITHUB_WORKSPACE}/pages/incoming-rpms" \
             rpm \
-            "${{ inputs.repos }}"
+            "${{ inputs.repos }}" \
+            "${GITHUB_WORKSPACE}/pages/.publish-manifest.json"
           status=$?
           set -e
           if [[ "${status}" -eq 0 ]]; then
