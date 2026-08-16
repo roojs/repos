@@ -2,4 +2,5 @@ Types: deb
 URIs: https://roojs.github.io/repos/
 Suites: @suite@
 Components: main
+Architectures: amd64 arm64
 Signed-By: /etc/apt/keyrings/roojs.gpg

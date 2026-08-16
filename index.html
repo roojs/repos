@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>roojs package repositories</title>
+<style>
+body { font-family: sans-serif; line-height: 1.4; max-width: 72rem; margin: 1.5rem auto; padding: 0 1rem; }
+h1 { margin-bottom: 0.25rem; }
+.lead { color: #444; margin-top: 0; }
+pre { background: #f4f4f4; padding: 0.75rem 1rem; overflow: auto; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0 2rem; }
+th, td { border: 1px solid #888; padding: 0.4rem 0.55rem; vertical-align: top; }
+th { background: #eee; }
+th.pkg, td.pkg { text-align: left; white-space: nowrap; }
+td.ship { font-variant-numeric: tabular-nums; }
+td.distro { font-style: italic; color: #333; }
+td.none { color: #888; text-align: center; }
+.wrap { overflow-x: auto; }
+.legend span { display: inline-block; margin-right: 1.25rem; }
+@media (prefers-color-scheme: dark) {
+  body { background: #111; color: #eee; }
+  .lead { color: #bbb; }
+  pre { background: #222; }
+  th { background: #222; }
+  th, td { border-color: #555; }
+  td.distro { color: #ccc; }
+  td.none { color: #888; }
+}
+</style>
+</head>
+<body>
+<h1>roojs package repositories</h1>
+<p class="lead">Official APT and DNF packages for <a href="https://github.com/roojs">roojs</a> desktop projects. This page is generated from the published repository, not a hand-written list.</p>
+<h2>APT (Debian / Ubuntu)</h2>
+<p>Suites: <code>trixie</code> <code>plucky</code> <code>questing</code> <code>resolute</code>. Architectures: <code>amd64</code>, <code>arm64</code>.</p>
+<p>Add the signing key and the sources file, replacing <code>@suite@</code> with your suite from <code>lsb_release -cs</code>:</p>
+<pre>sudo install -d -m 0755 /etc/apt/keyrings
+curl -fsSL https://roojs.github.io/repos/key.gpg \
+  | sudo gpg --dearmor -o /etc/apt/keyrings/roojs.gpg
+
+curl -fsSL https://roojs.github.io/repos/sources \
+  | sed "s/@suite@/$(lsb_release -cs)/" \
+  | sudo tee /etc/apt/sources.list.d/roojs.sources
+
+sudo apt update</pre>
+<p>The <code>sources</code> file currently served is:</p>
+<pre>
+Types: deb
+URIs: https://roojs.github.io/repos/
+Suites: @suite@
+Components: main
+Architectures: amd64 arm64
+Signed-By: /etc/apt/keyrings/roojs.gpg
+</pre>
+<h2>DNF (Fedora)</h2>
+<p>Repositories are published per Fedora release under <code>rpm/fc&lt;version&gt;/&lt;arch&gt;/</code>. Check your version with <code>rpm -E %fedora</code>.</p>
+<pre>sudo curl -fsSL https://roojs.github.io/repos/key.gpg \
+  -o /etc/pki/rpm-gpg/RPM-GPG-KEY-roojs
+sudo curl -fsSL https://roojs.github.io/repos/repo \
+  -o /etc/yum.repos.d/roojs.repo
+sudo dnf makecache</pre>
+<p>The <code>repo</code> file currently served is:</p>
+<pre>
+[roojs]
+name=roojs packages (Fedora $releasever)
+baseurl=https://roojs.github.io/repos/rpm/fc$releasever/$basearch/
+enabled=1
+gpgcheck=0
+repo_gpgcheck=1
+gpgkey=https://roojs.github.io/repos/key.gpg
+</pre>
+<h2>What you can install</h2>
+<p class="legend">
+<span><strong>version</strong> — we ship it in this repository</span>
+<span><em>default sources</em> — already in Debian/Ubuntu; install with <code>apt</code> from the distro</span>
+<span><strong>—</strong> — not available from us or from that suite</span>
+</p>
+<div class="wrap">
+<table>
+<thead>
+<tr>
+<th class="pkg" rowspan="2">Package</th>
+<th colspan="4">APT</th>
+<th colspan="2">Fedora</th>
+</tr>
+<tr>
+<th>trixie</th>
+<th>plucky</th>
+<th>questing</th>
+<th>resolute</th>
+<th>fc42</th>
+<th>fc44</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="pkg" scope="row">ibus-sherpa-onnx</th>
+<td class="ship">0.3.3-1 (amd64)</td>
+<td class="ship">0.3.2-1 (amd64)</td>
+<td class="ship">0.3.3-1 (amd64)</td>
+<td class="ship">0.3.3-1 (amd64)</td>
+<td class="none">—</td>
+<td class="ship">0.3.3-1 (x86_64)</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libfaiss-dev</th>
+<td class="distro">default sources</td>
+<td class="distro">default sources</td>
+<td class="distro">default sources</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libggml-dev</th>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libggml0</th>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libggml0-backend-blas</th>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libggml0-backend-rpc</th>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libggml0-backend-vulkan</th>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="ship">amd64 0.18.1-1;arm64 0.19.0-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libllama-dev</th>
+<td class="ship">amd64 10271+dfsg-1;arm64 10344+dfsg-1</td>
+<td class="ship">amd64 10271+dfsg-1;arm64 10344+dfsg-1</td>
+<td class="ship">amd64 10271+dfsg-1;arm64 10344+dfsg-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libllama0</th>
+<td class="ship">amd64 10271+dfsg-1;arm64 10344+dfsg-1</td>
+<td class="ship">amd64 10271+dfsg-1;arm64 10344+dfsg-1</td>
+<td class="ship">amd64 10271+dfsg-1;arm64 10344+dfsg-1</td>
+<td class="distro">default sources</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libsherpa-onnx-c-api</th>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="ship">1.13.5-roojs2 (x86_64)</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libsherpa-onnx-c-api-dev</th>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libsherpa-onnx-c-api-devel</th>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="none">—</td>
+<td class="ship">1.13.5-roojs2 (x86_64)</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libsherpa-onnx-c-api1</th>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="ship">1.13.5-roojs2 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libwebkitgtk-6.0-4</th>
+<td class="ship">2.52.3-0ubuntu0.26.04.3+webkitgtk1 (amd64)</td>
+<td class="none">—</td>
+<td class="ship">2.52.3-0ubuntu0.26.04.3+webkitgtk1 (amd64)</td>
+<td class="ship">2.52.3-0ubuntu0.26.04.3+webkitgtk1 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">libwebkitgtk-6.0-dev</th>
+<td class="ship">2.52.3-0ubuntu0.26.04.3+webkitgtk1 (amd64)</td>
+<td class="none">—</td>
+<td class="ship">2.52.3-0ubuntu0.26.04.3+webkitgtk1 (amd64)</td>
+<td class="ship">2.52.3-0ubuntu0.26.04.3+webkitgtk1 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">ollmchat</th>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">ollmchat-remote-only</th>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="ship">1.2.4~alpha-1 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">roobuilder</th>
+<td class="ship">5.0.11 (amd64)</td>
+<td class="ship">5.0.11 (amd64)</td>
+<td class="ship">5.0.11 (amd64)</td>
+<td class="ship">5.0.11 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">roojspacker</th>
+<td class="ship">1.5.2 (amd64)</td>
+<td class="ship">1.5.2 (amd64)</td>
+<td class="ship">1.5.2 (amd64)</td>
+<td class="ship">1.5.2 (amd64)</td>
+<td class="none">—</td>
+<td class="none">—</td>
+</tr>
+<tr>
+<th class="pkg" scope="row">rooterm</th>
+<td class="ship">0.1.1-1 (amd64)</td>
+<td class="ship">0.1.1-1 (amd64)</td>
+<td class="ship">0.1.1-1 (amd64)</td>
+<td class="ship">0.1.1-1 (amd64)</td>
+<td class="ship">0.1.1-2 (x86_64)</td>
+<td class="none">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Source: <a href="https://github.com/roojs/repos">github.com/roojs/repos</a></p>
+</body>
+</html>
