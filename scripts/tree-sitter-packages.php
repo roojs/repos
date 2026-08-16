@@ -291,11 +291,26 @@ class TreeSitterPackageBuilder {
 
         if (!empty($parser['tag'])) {
             $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git fetch --tags && git checkout " . escapeshellarg($parser['tag']),
+                "cd " . escapeshellarg($repoDir) . " && git fetch --tags",
                 true
             );
-            echo "  ✓ Checked out pinned tag: {$parser['tag']}\n";
-            $packageVersion = $this->extractVersionFromTag($parser['tag']) ?? $parser['tag'];
+            $resolvedTag = $this->findMatchingTag($repoDir, $parser['tag']);
+            if ($resolvedTag === null) {
+                throw new Exception(
+                    "No git tag found matching pin '{$parser['tag']}' in {$parser['repo']}. " .
+                    "Remove the pin to track main/master, or set a tag that exists in the repo."
+                );
+            }
+            $this->executeCommand(
+                "cd " . escapeshellarg($repoDir) . " && git checkout " . escapeshellarg($resolvedTag),
+                true
+            );
+            if ($resolvedTag !== $parser['tag']) {
+                echo "  ✓ Checked out pinned tag: {$resolvedTag} (config pin: {$parser['tag']})\n";
+            } else {
+                echo "  ✓ Checked out pinned tag: {$parser['tag']}\n";
+            }
+            $packageVersion = $this->extractVersionFromTag($resolvedTag) ?? $parser['tag'];
         } else {
             $this->executeCommand(
                 "cd " . escapeshellarg($repoDir) . " && git fetch && (git checkout main || git checkout master) && git pull",
