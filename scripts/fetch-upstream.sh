@@ -26,6 +26,13 @@ previous_index="{}"
 fetch_force="${FETCH_FORCE:-false}"
 has_previous_manifest=false
 
+write_package_index() {
+  [[ "$found" -gt 0 ]] || return 0
+  printf '%s\n' "$index" | jq . > "${output}/.package-index.json"
+}
+
+trap write_package_index EXIT
+
 if [[ -n "$previous_manifest" && -f "$previous_manifest" ]]; then
   has_previous_manifest=true
   previous_index="$(jq -c --arg kind "$package_type" '
@@ -557,7 +564,7 @@ while IFS= read -r repo; do
       continue
     fi
   else
-    tag="$(github_latest_release_tag "$owner" "$repo" "$project")"
+    tag="$(github_latest_release_tag "$owner" "$repo" "$project" || true)"
     if [[ -n "$tag" ]]; then
       release_json="$(gh release view "$tag" -R "${owner}/${repo}" --json tagName,assets 2>/dev/null || true)"
     else
@@ -657,7 +664,8 @@ if [[ -n "$repo_filter" ]]; then
   done < <(jq -r 'keys[]' <<< "$previous_index")
 fi
 
-printf '%s\n' "$index" | jq . > "${output}/.package-index.json"
+write_package_index
+trap - EXIT
 
 if [[ "$found" -eq 0 ]]; then
   echo "No ${package_type} packages downloaded." >&2

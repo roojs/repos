@@ -45,6 +45,24 @@ jobs:
           fetch-depth: 0
           path: pages
 
+      - name: Repair empty deb manifest cache
+        working-directory: pages
+        run: |
+          if [[ ! -f .publish-manifest.json ]]; then
+            exit 0
+          fi
+          if ! jq -e '(.debs // {}) == {}' .publish-manifest.json >/dev/null; then
+            exit 0
+          fi
+          restored="$(git show d1efb38:.publish-manifest.json 2>/dev/null | jq -c '.debs // {}' || echo '{}')"
+          if [[ "$restored" == "{}" ]]; then
+            echo "No historical deb cache to restore." >&2
+            exit 0
+          fi
+          jq --argjson debs "$restored" '.debs = $debs' .publish-manifest.json > .publish-manifest.json.tmp
+          mv .publish-manifest.json.tmp .publish-manifest.json
+          echo "Restored deb cache from d1efb38."
+
       - name: Download upstream .deb release assets
         id: fetch-debs
         working-directory: main
@@ -109,6 +127,13 @@ jobs:
             /tmp/distributions \
             /tmp/current-manifest.json
 
+      - name: Update publish manifest
+        if: >-
+          steps.changes.outputs.changed == 'true'
+          || steps.changes.outputs.manifest_cache_stale == 'true'
+          || inputs.force == true
+        run: cp /tmp/current-manifest.json pages/.publish-manifest.json
+
       - name: Skip publish when unchanged
         if: steps.changes.outputs.changed != 'true' && inputs.force != true
         run: |
@@ -166,10 +191,6 @@ jobs:
           ./scripts/build-rpm-repos.sh \
             "${GITHUB_WORKSPACE}/pages/incoming-rpms" \
             "${GITHUB_WORKSPACE}/pages"
-
-      - name: Update publish manifest
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
-        run: cp /tmp/current-manifest.json pages/.publish-manifest.json
 
       - name: Clean up incoming packages
         if: steps.changes.outputs.changed == 'true' || inputs.force == true
