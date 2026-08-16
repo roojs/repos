@@ -11,7 +11,7 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 A grid of what is available where: package vs suite / Fedora.
 - 🔷 Put the install instructions on that same page. One merged reference (how to add the repo, then what you can install where).
 - 🔷 For referencing (what we actually publish, not a hand-written list).
-- 🔷 ⏳ Emit `index.html` on `gh-pages` from the published tree.
+- 🔷 ✔️ Emit `index.html` on `gh-pages` from the published tree.
 
 ## Current behaviour
 
@@ -24,7 +24,7 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 One page at the site root: `https://roojs.github.io/repos/`
 - 🔷 Top: install instructions (APT, then DNF). Same steps as the README (`key.gpg`, `sources` / `repo`, `apt update` / `dnf makecache`).
 - ℹ️ Commands live in `README.md` and the templates `docs/sources`, `docs/repo`.
-- 💩 Pull those command blocks from the templates when generating, so the page does not drift from the files clients already download.
+- 💩 ✔️ Pull those command blocks from the templates when generating, so the page does not drift from the files clients already download.
 - 🔷 Below that: the support grid, not a flat dump of every `.deb`.
 - 🔷 Rows: package name.
 - 🔷 Columns: each APT suite (`trixie`, `plucky`, `questing`, `resolute`), then each Fedora we actually publish (`fc44`, …). Old Fedora columns only appear if we still publish something there (e.g. RooTerm `fc42`).
@@ -38,16 +38,16 @@ Checklist: `docs/guide-to-writing-plans.md`
   - APT: `dists/<suite>/main/binary-<arch>/Packages` (or `.gz`)
   - DNF: `rpm/fc<ver>/<arch>/*.rpm` filenames
 - ℹ️ “We ship it” comes from those indexes. “Default sources already have it” is the complement of the per-project suite allowlist in `config/repos.json` (suites in `apt.suites` that are not in that project’s `deb.suites`), plus any package we omit entirely because every suite has it.
-- 💩 Legend on the page so the three grades are obvious without reading this plan.
-- 💩 If both `amd64` and `arm64` exist, show the version once, or `version (amd64, arm64)` in the cell.
-- 💩 Sort packages by name. Column order: APT suites from `config/repos.json`, then Fedora numbers ascending.
+- 💩 ✔️ Legend on the page so the three grades are obvious without reading this plan.
+- 💩 ✔️ If both `amd64` and `arm64` exist, show the version once, or `version (amd64)` when only one arch is present.
+- 💩 ✔️ Sort packages by name. Column order: APT suites from `config/repos.json`, then Fedora numbers ascending.
 
 ## Script
 
 Edits are Remove / Replace with / Add from the tree.
 Verify surrounding context before applying.
 
-### 1. `scripts/generate-index-html.sh` — write `index.html` from `pages/`
+### 1. `scripts/generate-index-html.sh` — write `index.html` from `pages/` ✔️
 
 Why: 🔷 generated catalog, not a hand-edited table.
 
@@ -80,7 +80,7 @@ The rest of the file is the scan + HTML write. Keep it in this script. Do not ad
 
 ## Workflow
 
-### 2. `.github/workflows/publish-repos.yml` — generate the page on every run
+### 2. `.github/workflows/publish-repos.yml` — generate the page on every run ✔️
 
 Why: 🔷 the live site is the reference. First run must create `index.html` even if packages did not change.
 

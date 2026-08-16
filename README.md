@@ -54,7 +54,7 @@ sudo apt update
 sudo apt install ibus-sherpa-onnx ollmchat rooterm
 ```
 
-Template: [docs/sources](docs/sources) (`@suite@` is replaced with your suite from `lsb_release -cs`).
+Template: [docs/sources](docs/sources) (`@suite@` is replaced with your suite from `lsb_release -cs`). `Architectures:` is `amd64 arm64` so apt does not request `i386` from this repo.
 
 ### APT troubleshooting
 
