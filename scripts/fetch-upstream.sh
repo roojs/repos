@@ -73,12 +73,18 @@ pool_suite_index() {
   if [[ "$arch" != "amd64" && "$arch" != "i386" ]]; then
     base="https://ports.ubuntu.com/ubuntu-ports"
   fi
-  local comp
+  local comp tmp_xz
   for comp in main universe; do
-    if ! curl -fsSL "${base}/dists/${suite}/${comp}/binary-${arch}/Packages.xz" | xzcat >> "$dest"; then
-      rm -f "$dest"
+    tmp_xz="${dest}.xz"
+    if ! curl -fsSL "${base}/dists/${suite}/${comp}/binary-${arch}/Packages.xz" -o "$tmp_xz"; then
+      rm -f "$dest" "$tmp_xz"
       return 1
     fi
+    if ! xzcat "$tmp_xz" >> "$dest"; then
+      rm -f "$dest" "$tmp_xz"
+      return 1
+    fi
+    rm -f "$tmp_xz"
   done
   printf '%s\n' "$dest"
 }
@@ -125,14 +131,111 @@ pool_index_depends() {
   ' "$idx"
 }
 
+pool_index_package_version() {
+  local idx="$1" name="$2"
+  awk -v pkg="$name" '
+    $0 == "Package: " pkg { hit = 1 }
+    hit && /^Version:/ { print $2; exit }
+    hit && /^$/ { exit }
+  ' "$idx"
+}
+
+pool_libc_need_from_depends() {
+  local depends="$1"
+  sed -n 's/.*libc6 (>= \([^)]*\)).*/\1/p' <<< "$depends" | head -n1
+}
+
+pool_index_libc_need() {
+  local idx="$1" name="$2" depends
+  depends="$(pool_index_depends "$idx" "$name")"
+  pool_libc_need_from_depends "$depends"
+}
+
 pool_sid_libc_need() {
-  local name="$1" arch="$2" idx depends
+  local name="$1" arch="$2" idx
   idx="$(pool_sid_index "$arch")" || return 1
   if ! grep -qx "Package: ${name}" "$idx"; then
     return 1
   fi
-  depends="$(pool_index_depends "$idx" "$name")"
-  sed -n 's/.*libc6 (>= \([^)]*\)).*/\1/p' <<< "$depends" | head -n1
+  pool_index_libc_need "$idx" "$name"
+}
+
+# Read libc6 (>= …) from a .deb on disk. Used only for older pool revisions
+# that are no longer listed in the sid Packages index.
+pool_read_deb_libc_need() {
+  local deb="$1" depends
+  depends="$(dpkg-deb -f "$deb" Depends 2>/dev/null || true)"
+  pool_libc_need_from_depends "$depends"
+}
+
+declare -A pool_libc_cache=()
+
+# Resolve libc requirement for a pool filename. Prefer the sid Packages index
+# (no .deb download). Fall back to reading control from the .deb only for
+# older revisions still in the pool but dropped from sid.
+pool_libc_need_for_filename() {
+  pool_effective_libc_need_for_filename "$@"
+}
+
+pool_libc_fits() {
+  local need="$1" suite_libc="$2"
+  [[ -z "$need" ]] && return 0
+  dpkg --compare-versions "$suite_libc" ge "$need"
+}
+
+pool_depends_for_filename() {
+  local name="$1" arch="$2" filename="$3" pool="$4"
+  local idx sid_ver ver staged depends
+
+  ver="$(pool_filename_version "$name" "$arch" "$filename")"
+  idx="$(pool_sid_index "$arch")"
+  sid_ver="$(pool_index_package_version "$idx" "$name")"
+  if [[ -n "$sid_ver" && "$ver" == "$sid_ver" ]]; then
+    pool_index_depends "$idx" "$name"
+    return 0
+  fi
+
+  staged="${pool_work}/staging/${filename}"
+  if [[ ! -s "$staged" ]]; then
+    echo "Reading libc metadata from ${filename}" >&2
+    mkdir -p "${pool_work}/staging"
+    if ! curl -fsSL "${pool}/${filename}" -o "$staged"; then
+      rm -f "$staged"
+      return 1
+    fi
+  fi
+  dpkg-deb -f "$staged" Depends 2>/dev/null || true
+}
+
+# Effective libc floor: this package's own Depends, or pinned (=) library deps.
+pool_effective_libc_need_for_filename() {
+  local name="$1" arch="$2" filename="$3" pool="$4"
+  local cache_key="${filename}#libc"
+  local depends need dep_name dep_ver child_pool child_file child_need max_need
+
+  if [[ -n "${pool_libc_cache[$cache_key]:-}" ]]; then
+    printf '%s\n' "${pool_libc_cache[$cache_key]}"
+    return 0
+  fi
+
+  depends="$(pool_depends_for_filename "$name" "$arch" "$filename" "$pool")" || return 1
+  need="$(pool_libc_need_from_depends "$depends")"
+  max_need="$need"
+
+  while IFS=$'\t' read -r dep_name dep_op dep_ver; do
+    [[ "$dep_op" == "=" ]] || continue
+    [[ -n "$dep_name" && -n "$dep_ver" ]] || continue
+    pool_never_republish "$dep_name" && continue
+    child_pool="$(pool_url_for_package "$dep_name" "$arch")" || continue
+    child_file="${dep_name}_${dep_ver}_${arch}.deb"
+    child_need="$(pool_effective_libc_need_for_filename "$dep_name" "$arch" "$child_file" "$child_pool")" || continue
+    if [[ -z "$max_need" ]] || dpkg --compare-versions "$child_need" gt "$max_need"; then
+      max_need="$child_need"
+    fi
+  done < <(pool_relation_packages_from_raw "$depends" Depends)
+
+  pool_libc_cache[$cache_key]="${max_need:-}"
+  printf '%s\n' "${max_need:-}"
 }
 
 # True when the sid (newest) build of this package can install on an allowlisted suite.
@@ -193,33 +296,8 @@ pool_filename_version() {
 pool_deb_fits_libc() {
   local deb="$1" suite_libc="$2" depends need
   depends="$(dpkg-deb -f "$deb" Depends 2>/dev/null || true)"
-  need="$(sed -n 's/.*libc6 (>= \([^)]*\)).*/\1/p' <<< "$depends" | head -n1 || true)"
-  if [[ -z "$need" ]]; then
-    return 0
-  fi
-  dpkg --compare-versions "$suite_libc" ge "$need"
-}
-
-pool_deb_fits_suite() {
-  local deb="$1" suite_libc="$2" arch="$3"
-  local name op ver child_pool filename staged
-  pool_deb_fits_libc "$deb" "$suite_libc" || return 1
-  while IFS=$'\t' read -r name op ver; do
-    [[ "$op" == "=" ]] || continue
-    [[ "$name" == libc6 ]] && continue
-    child_pool="$(pool_url_for_package "$name" "$arch")" || return 1
-    filename="${name}_${ver}_${arch}.deb"
-    staged="${pool_work}/staging/${filename}"
-    mkdir -p "${pool_work}/staging"
-    if [[ ! -s "$staged" ]]; then
-      echo "Downloading ${filename}" >&2
-      if ! curl -fsSL "${child_pool}/${filename}" -o "$staged"; then
-        rm -f "$staged"
-        return 1
-      fi
-    fi
-    pool_deb_fits_libc "$staged" "$suite_libc" || return 1
-  done < <(pool_relation_packages "$deb" Depends)
+  need="$(pool_libc_need_from_depends "$depends")"
+  pool_libc_fits "$need" "$suite_libc"
 }
 
 pool_skip_name() {
@@ -227,6 +305,21 @@ pool_skip_name() {
   [[ "$name" == python3-* ]] && return 0
   [[ "$name" == *-examples || "$name" == *-tests || "$name" == *-tools ]] && return 0
   [[ "$name" == libggml0-backend-hip ]] && return 0
+  return 1
+}
+
+# True when the target suite already publishes this package (Debian/Ubuntu).
+# Those deps are satisfied from the user's normal apt sources, not this repo.
+pool_suite_has_package() {
+  local suite="$1" arch="$2" name="$3" idx
+  idx="$(pool_suite_index "$suite" "$arch")" || return 1
+  grep -qx "Package: ${name}" "$idx"
+}
+
+# Never republish libc6 or other base system packages from the Debian pool.
+pool_never_republish() {
+  local name="$1"
+  [[ "$name" == libc6 || "$name" == libc6-* ]] && return 0
   return 1
 }
 
@@ -247,8 +340,13 @@ pool_seed_names() {
 }
 
 pool_relation_packages() {
-  local deb="$1" field="$2" raw clause name rest
+  local deb="$1" field="$2" raw
   raw="$(dpkg-deb -f "$deb" "$field" 2>/dev/null || true)"
+  pool_relation_packages_from_raw "$raw" "$field"
+}
+
+pool_relation_packages_from_raw() {
+  local raw="$1" field="$2" raw clause name rest
   [[ -n "$raw" ]] || return 0
   raw="${raw//[$'\n']/ }"
   IFS=',' read -r -a clauses <<< "$raw"
@@ -275,26 +373,53 @@ pool_relation_packages() {
   done
 }
 
+# Pick the newest pool .deb whose libc6 requirement fits the target suite.
+# Uses the sid Packages index where possible; downloads at most one .deb per pick.
 pool_pick_deb() {
-  local pool="$1" name="$2" arch="$3" suite_libc="$4" op="${5:-}" ver="${6:-}"
-  local filename deb_ver staged
-  mkdir -p "${pool_work}/staging"
+  local pool="$1" name="$2" arch="$3" suite_libc="$4" op="${5:-}" ver="${6:-}" suite="${7:-}"
+  local filename deb_ver need chosen="" staged
+
   while IFS= read -r filename; do
     [[ -n "$filename" ]] || continue
     deb_ver="$(pool_filename_version "$name" "$arch" "$filename")"
-    if [[ -n "$op" && -n "$ver" ]]; then
-      dpkg --compare-versions "$deb_ver" "$op" "$ver" || continue
+    if [[ -n "$op" && -n "$ver" ]] && ! dpkg --compare-versions "$deb_ver" "$op" "$ver"; then
+      continue
     fi
-    staged="${pool_work}/staging/${filename}"
-    if [[ ! -s "$staged" ]]; then
-      echo "Downloading ${filename}" >&2
-      if ! curl -fsSL "${pool}/${filename}" -o "$staged"; then
-        rm -f "$staged"
-        continue
-      fi
+    need="$(pool_libc_need_for_filename "$name" "$arch" "$filename" "$pool")" || continue
+    if ! pool_libc_fits "$need" "$suite_libc"; then
+      continue
     fi
-    if pool_deb_fits_suite "$staged" "$suite_libc" "$arch"; then
-      printf '%s\n' "$staged"
+    chosen="$filename"
+    break
+  done < <(pool_list_filenames "$pool" "$name" "$arch")
+
+  [[ -n "$chosen" ]] || return 1
+
+  staged="${pool_work}/staging/${chosen}"
+  if [[ ! -s "$staged" ]]; then
+    echo "Downloading ${chosen}" >&2
+    mkdir -p "${pool_work}/staging"
+    if ! curl -fsSL "${pool}/${chosen}" -o "$staged"; then
+      rm -f "$staged"
+      return 1
+    fi
+  fi
+  printf '%s\n' "$staged"
+}
+
+# True when some pool revision of this package fits the suite libc (index only).
+pool_pick_deb_exists() {
+  local pool="$1" name="$2" arch="$3" suite_libc="$4" op="${5:-}" ver="${6:-}" suite="${7:-}"
+  local filename deb_ver need
+
+  while IFS= read -r filename; do
+    [[ -n "$filename" ]] || continue
+    deb_ver="$(pool_filename_version "$name" "$arch" "$filename")"
+    if [[ -n "$op" && -n "$ver" ]] && ! dpkg --compare-versions "$deb_ver" "$op" "$ver"; then
+      continue
+    fi
+    need="$(pool_libc_need_for_filename "$name" "$arch" "$filename" "$pool")" || continue
+    if pool_libc_fits "$need" "$suite_libc"; then
       return 0
     fi
   done < <(pool_list_filenames "$pool" "$name" "$arch")
@@ -322,12 +447,16 @@ pool_fetch_into() {
       [[ -n "$name" ]] || continue
       while IFS= read -r suite; do
         [[ -n "$suite" ]] || continue
+        if pool_suite_has_package "$suite" "$arch" "$name"; then
+          echo "Skipping ${name} for ${suite}/${arch}: already in upstream suite." >&2
+          continue
+        fi
         libc="$(pool_suite_libc6 "$suite" "$arch")"
         if [[ -z "$libc" ]]; then
           echo "Skipping ${name} for ${suite}/${arch}: could not read libc6 version." >&2
           continue
         fi
-        if ! staged="$(pool_pick_deb "$pool" "$name" "$arch" "$libc")"; then
+        if ! staged="$(pool_pick_deb "$pool" "$name" "$arch" "$libc" "" "" "$suite")"; then
           echo "No Debian pool .deb for ${name} ${arch} fits ${suite} libc6 ${libc}." >&2
           continue
         fi
@@ -353,17 +482,22 @@ pool_fetch_into() {
     for field in Depends Recommends Suggests; do
       while IFS=$'\t' read -r name op ver; do
         [[ -n "$name" ]] || continue
+        pool_never_republish "$name" && continue
         if ! child_pool="$(pool_url_for_package "$name" "$arch")"; then
           continue
         fi
         for suite in $parent_suites; do
           [[ -n "$suite" ]] || continue
+          if pool_suite_has_package "$suite" "$arch" "$name"; then
+            echo "Skipping ${name} for ${suite}/${arch}: already in upstream suite." >&2
+            continue
+          fi
           libc="$(pool_suite_libc6 "$suite" "$arch")"
           if [[ -z "$libc" ]]; then
             echo "Skipping ${name} for ${suite}/${arch}: could not read libc6 version." >&2
             continue
           fi
-          if ! staged="$(pool_pick_deb "$child_pool" "$name" "$arch" "$libc" "$op" "$ver")"; then
+          if ! staged="$(pool_pick_deb "$child_pool" "$name" "$arch" "$libc" "$op" "$ver" "$suite")"; then
             echo "No Debian pool .deb for ${name} ${arch} fits ${suite} libc6 ${libc}." >&2
             continue
           fi
