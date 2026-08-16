@@ -141,10 +141,10 @@
       }
     },
     "app.RooTerm": {
-      "tag": "v0.1.1",
+      "tag": "v0.1.2",
       "packages": {
-        "rooterm_0.1.1-1_amd64.deb": {
-          "sha256": "a606d2e07378783b4ec6b83bad3c56b2334fbd30ce353ca1ff5414b27ac6cf56",
+        "rooterm_0.1.2-1_amd64.deb": {
+          "sha256": "38087d7cb32777139ea127a1709bb416593ddd4a4bd7973053447e8838b9402a",
           "suites": [
             "trixie",
             "plucky",
@@ -234,10 +234,10 @@
   },
   "rpms": {
     "app.RooTerm": {
-      "tag": "v0.1.1",
+      "tag": "v0.1.2",
       "packages": {
-        "rooterm-0.1.1-2.fc42.x86_64.rpm": {
-          "sha256": "8a4c2cd61691d5cea2f7a67979bdcf20ac076b8722f2f2a3553d9c1d2e304406"
+        "rooterm-0.1.2-2.fc42.x86_64.rpm": {
+          "sha256": "8d6fc7f8d6ede37f5282ead924c3b6d97c35237f19d9e6e576983fc561b1e480"
         }
       }
     },

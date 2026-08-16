@@ -476,19 +476,19 @@ Description: Javascript compressor, packer and documentation tool
  includes sharable library for use with C / Gnome etc..
 
 Package: rooterm
-Version: 0.1.1-1
+Version: 0.1.2-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 489
-Depends: libadwaita-1-0 (>= 1.5), libc6 (>= 2.34), libgcrypt20 (>= 1.10.0), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.66.0), libgtk-4-1 (>= 4.14), libjson-glib-1.0-0 (>= 1.5.2), libpango-1.0-0 (>= 1.14.0), libsecret-1-0 (>= 0.7), libvte-2.91-gtk4-0 (>= 0.78), libyaml-0-2, openssh-client
+Installed-Size: 590
+Depends: libadwaita-1-0 (>= 1.5), libc6 (>= 2.34), libgcrypt20 (>= 1.10.0), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.66.0), libgtk-4-1 (>= 4.14), libjson-glib-1.0-0 (>= 1.5.2), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libsecret-1-0 (>= 0.7), libvte-2.91-gtk4-0 (>= 0.78), libyaml-0-2, openssh-client
 Homepage: https://github.com/roojs/app.RooTerm
 Priority: optional
 Section: gnome
-Filename: pool/main/r/rooterm/rooterm_0.1.1-1_amd64.deb
-Size: 157782
-SHA256: a606d2e07378783b4ec6b83bad3c56b2334fbd30ce353ca1ff5414b27ac6cf56
-SHA1: f3fc239ce69517dfe37634ee15c778b9c431600c
-MD5sum: 0e34905bfa537a121732d57f97ff9104
+Filename: pool/main/r/rooterm/rooterm_0.1.2-1_amd64.deb
+Size: 193646
+SHA256: 38087d7cb32777139ea127a1709bb416593ddd4a4bd7973053447e8838b9402a
+SHA1: 81aac27bbf0e4822d19536b8559125316fa8c674
+MD5sum: 3f56f59ad9ecad0d998fe1795cccad38
 Description: SSH host manager and terminal for GNOME
  Roo Term is a thin SSH host manager and terminal for GNOME — a crossover
  between Guake and Ásbrú Connection Manager.
