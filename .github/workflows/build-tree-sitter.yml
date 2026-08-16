@@ -1,0 +1,63 @@
+name: Build tree-sitter packages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache parser checkouts
+        uses: actions/cache@v4
+        with:
+          path: cache/tree-sitter
+          key: tree-sitter-checkouts-v1-${{ hashFiles('config/tree-sitter.json') }}
+          restore-keys: |
+            tree-sitter-checkouts-v1-
+
+      - name: Download prior release
+        id: prior
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p cache/prior-release cache/output
+          tag="$(gh release list --limit 50 --json tagName \
+            --jq '[.[].tagName | select(startswith("tree-sitter-"))] | first // empty')"
+          if [[ -z "$tag" ]]; then
+            echo "has_prior=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          gh release download "$tag" --dir cache/prior-release
+          echo "has_prior=true" >> "$GITHUB_OUTPUT"
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            git nodejs npm build-essential devscripts debhelper \
+            libtree-sitter-dev tree-sitter-cli php-cli jq
+
+      - name: Build packages
+        id: build
+        run: php scripts/tree-sitter-packages.php
+        env:
+          TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
+          TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output
+          TREE_SITTER_MANIFEST: ${{ github.workspace }}/cache/prior-release/tree-sitter-manifest.json
+
+      - name: Publish dated release
+        if: steps.build.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="tree-sitter-$(date -u +%Y-%m-%d)"
+          gh release create "$tag" \
+            cache/output/libtree-sitter-*.deb \
+            cache/output/tree-sitter-manifest.json \
+            --title "$tag" \
+            --notes "Tree-sitter parser batch ${tag}"

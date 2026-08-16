@@ -1,0 +1,88 @@
+{
+  "release_prefix": "tree-sitter-",
+  "parsers": [
+    {
+      "id": "vala",
+      "name": "tree-sitter-vala",
+      "repo": "https://github.com/vala-lang/tree-sitter-vala",
+      "language": "vala",
+      "tag": "0.20.8"
+    },
+    {
+      "id": "rust",
+      "name": "tree-sitter-rust",
+      "repo": "https://github.com/tree-sitter/tree-sitter-rust",
+      "language": "rust",
+      "tag": "0.20.4"
+    },
+    {
+      "id": "python",
+      "name": "tree-sitter-python",
+      "repo": "https://github.com/tree-sitter/tree-sitter-python",
+      "language": "python",
+      "tag": "0.20.4"
+    },
+    {
+      "id": "javascript",
+      "name": "tree-sitter-javascript",
+      "repo": "https://github.com/tree-sitter/tree-sitter-javascript",
+      "language": "javascript",
+      "tag": "0.20.4"
+    },
+    {
+      "id": "java",
+      "name": "tree-sitter-java",
+      "repo": "https://github.com/tree-sitter/tree-sitter-java",
+      "language": "java",
+      "tag": "0.20.2"
+    },
+    {
+      "id": "cpp",
+      "name": "tree-sitter-cpp",
+      "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
+      "language": "cpp",
+      "tag": "0.20.5"
+    },
+    {
+      "id": "c-sharp",
+      "name": "tree-sitter-c-sharp",
+      "repo": "https://github.com/tree-sitter/tree-sitter-c-sharp",
+      "language": "c_sharp",
+      "tag": "0.20.0"
+    },
+    {
+      "id": "php",
+      "name": "tree-sitter-php",
+      "repo": "https://github.com/tree-sitter/tree-sitter-php",
+      "language": "php",
+      "tag": "0.20.0"
+    },
+    {
+      "id": "ruby",
+      "name": "tree-sitter-ruby",
+      "repo": "https://github.com/tree-sitter/tree-sitter-ruby",
+      "language": "ruby",
+      "tag": "0.20.1"
+    },
+    {
+      "id": "bash",
+      "name": "tree-sitter-bash",
+      "repo": "https://github.com/tree-sitter/tree-sitter-bash",
+      "language": "bash",
+      "tag": "0.20.5"
+    },
+    {
+      "id": "markdown",
+      "name": "tree-sitter-markdown",
+      "repo": "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
+      "language": "markdown"
+    },
+    {
+      "id": "go",
+      "name": "tree-sitter-go",
+      "repo": "https://github.com/tree-sitter/tree-sitter-go",
+      "language": "go",
+      "tag": "0.20.0"
+    }
+  ]
+}

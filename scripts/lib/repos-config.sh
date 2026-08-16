@@ -50,7 +50,13 @@ repos_config_deb_suites() {
     while IFS= read -r pattern; do
       [[ -n "$pattern" ]] || continue
       if [[ "$tag" == $pattern ]]; then
-        jq -r --arg pattern "$pattern" '.deb.release_tags[$pattern][]' <<< "$project"
+        local suites_val
+        suites_val="$(jq -r --arg pattern "$pattern" '.deb.release_tags[$pattern]' <<< "$project")"
+        if [[ "$suites_val" == "default" ]]; then
+          repos_config_default_suites "$config"
+        else
+          jq -r --arg pattern "$pattern" '.deb.release_tags[$pattern][]' <<< "$project"
+        fi
         return 0
       fi
     done < <(jq -r '.deb.release_tags | keys[]' <<< "$project")

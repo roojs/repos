@@ -425,6 +425,24 @@ github_should_skip() {
   ' >/dev/null
 }
 
+github_latest_release_tag() {
+  local owner="$1" repo="$2" project="$3" tag pattern
+  if jq -e '.deb.release_tags' >/dev/null <<< "$project"; then
+    while IFS= read -r tag; do
+      [[ -n "$tag" ]] || continue
+      while IFS= read -r pattern; do
+        [[ -n "$pattern" ]] || continue
+        if [[ "$tag" == $pattern ]]; then
+          printf '%s\n' "$tag"
+          return 0
+        fi
+      done < <(jq -r '.deb.release_tags | keys[]' <<< "$project")
+    done < <(gh release list -R "${owner}/${repo}" --limit 100 --json tagName --jq '.[].tagName')
+    return 1
+  fi
+  gh release view -R "${owner}/${repo}" --json tagName --jq -r '.tagName // empty'
+}
+
 pool_should_skip() {
   local pool="$1" prev_repo="$2" allowlisted="$3" arch html filename name ver prev_file prev_ver
   [[ "$can_skip" == "true" ]] || return 1
@@ -543,8 +561,12 @@ while IFS= read -r repo; do
       continue
     fi
   else
-    release_json="$(gh release view -R "${owner}/${repo}" --json tagName,assets 2>/dev/null || true)"
-    tag="$(jq -r '.tagName // empty' <<< "${release_json:-}" 2>/dev/null || true)"
+    tag="$(github_latest_release_tag "$owner" "$repo" "$project")"
+    if [[ -n "$tag" ]]; then
+      release_json="$(gh release view "$tag" -R "${owner}/${repo}" --json tagName,assets 2>/dev/null || true)"
+    else
+      release_json=""
+    fi
     if [[ -z "$tag" || -z "$release_json" ]]; then
       if keep_previous_repo "$repo" "Keeping previously published ${owner}/${repo}: no latest release."; then
         continue
