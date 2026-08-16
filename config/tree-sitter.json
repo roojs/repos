@@ -5,8 +5,7 @@
       "id": "vala",
       "name": "tree-sitter-vala",
       "repo": "https://github.com/vala-lang/tree-sitter-vala",
-      "language": "vala",
-      "tag": "0.20.8"
+      "language": "vala"
     },
     {
       "id": "rust",
