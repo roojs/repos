@@ -1,5 +1,1300 @@
 {
-  "debs": {},
+  "debs": {
+    "OLLMchat": {
+      "tag": "v1.2.4-alpha",
+      "packages": {
+        "ollmchat-remote-only_1.2.4.alpha-1_amd64.deb": {
+          "sha256": "e4c0edd6bbed006fa0a6b8d144b99bbbe41fe88f86c09a579733cc3f5d22e2cb",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "ollmchat_1.2.4.alpha-1_amd64.deb": {
+          "sha256": "06c5532495a8bc5aa58583ed21e0af13a9002ef07adf439276999e696f64f0c3",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
+    "llama.cpp": {
+      "tag": "10271+dfsg-1",
+      "packages": {
+        "gcc-16-base_16.2.0-1_amd64.deb": {
+          "sha256": "2c83b8b5a3ebe4431ca1f8f20370af04f8e80ca5a8726afd56f3fa1523f83e16",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "gcc-16-base_16.2.0-1_arm64.deb": {
+          "sha256": "0e7c0d920f48bd4c5a857ff1a82115d277833474b7aea5551c13b3c62cd50c29",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "krb5-k5tls_1.22.1-3_amd64.deb": {
+          "sha256": "94a2de4dc582363e9252bf4d1b94edb01f2117ae1c9878fba460a2f795e4c3c2",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "krb5-k5tls_1.22.1-3_arm64.deb": {
+          "sha256": "5aee388872b9ec1159d8715b405c137dc2aa1d523c4abac98aaddc2c1cfaf527",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "krb5-user_1.22.1-3_amd64.deb": {
+          "sha256": "17070e8b71f00eda53b481c5d522a120ea0825e41039db09d72e41bcbd6cba74",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "krb5-user_1.22.1-3_arm64.deb": {
+          "sha256": "6eaac55575e9e5d2c6d4f66b4158c363ddbb62635f78ed59ea329cf9f3627737",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libblas3_3.12.1-8_amd64.deb": {
+          "sha256": "f9f937e771e4f4cfb53277d71ecc348fabb5bdc9e9cb9ed30e8519c4b64693c3",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libblas3_3.12.1-8_arm64.deb": {
+          "sha256": "5cda4f861a9bec68e4a3f36c07dab34ff6f0592247c1198b841765b59733a6ad",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libc-gconv-modules-extra_2.44-1_amd64.deb": {
+          "sha256": "00408257a5287df51898bb5f71beca80a37f1b569c2ae6b977cb6b27de2929b2",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libc-gconv-modules-extra_2.44-1_arm64.deb": {
+          "sha256": "5e45995a15786e54accaebf80b508d055608dc234129c8d7ba8056be5d39882a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libc6_2.44-1_amd64.deb": {
+          "sha256": "17d9a246ae46a457227c19a3d821c49d68b9c6f9531bfa6f52d9c064307de585",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libc6_2.44-1_arm64.deb": {
+          "sha256": "0652cdd0ba3f4ffd1581a95fcc08330e5604803ef7ef88e830639665fdae0d22",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libcom-err2_1.47.4-1_amd64.deb": {
+          "sha256": "f5ca808baa2f50f5f5cb1aa8b437d1ff6f129798f2f612228721f7ea92e46153",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libcom-err2_1.47.4-1_arm64.deb": {
+          "sha256": "7ddc133ca0d8307fdb2d9ed9926e7da179306041b6f4bd7c3e69346c502ac1cd",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libdisplay-info3_0.3.0-1+b1_amd64.deb": {
+          "sha256": "dfc160ad29f280ec15fea4d3d61536d2b477b37288b53276bbd121a185d801d6",
+          "suites": [
+            "questing",
+            "resolute"
+          ]
+        },
+        "libdisplay-info3_0.3.0-1+b1_arm64.deb": {
+          "sha256": "96ada7f7f0cd50abd3bc506d8626b8ac421efa3d53413eaba1837807fcfafa42",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libdrm-amdgpu1_2.4.134-3_amd64.deb": {
+          "sha256": "b7282a3422545c6cb488c3f4f5740844ad06c31030e7b9600700342a807ff519",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libdrm-amdgpu1_2.4.134-3_arm64.deb": {
+          "sha256": "fabe0d8d121f4580416282188e53e8ebf1db72c40cc8d4c6fcbae5066c53ff89",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libdrm2_2.4.134-3_amd64.deb": {
+          "sha256": "e1a841ed70c7b7bbd9a03f41c781101d668db0d35b4eee58d7705a6c32b88aaa",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libdrm2_2.4.134-3_arm64.deb": {
+          "sha256": "1df69d19f0b01148abbd589e80db5b4aa39bf4e0b9409ca1b3fa458acea2baa0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libelf1t64_0.195-1_amd64.deb": {
+          "sha256": "f4070c4d251c95f14ed7e45f3be8576b588df16a38f8b9e938f0206f2c4394f9",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libelf1t64_0.195-1_arm64.deb": {
+          "sha256": "5a1aea353d93e26b343dd1ed2b135373bdcf5bc3130b0a89cecf9369160d2572",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libexpat1_2.8.3-1_amd64.deb": {
+          "sha256": "978e9d30b84893a4c8191d8dae4d1b93c9b7ecaa772ada2fdb892ae3765cab4e",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libexpat1_2.8.3-1_arm64.deb": {
+          "sha256": "660f5f598a06aa56613a2fbf1ffbd408708175f1a6c2fac833842148f0228176",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libffi8_3.8.0-2_amd64.deb": {
+          "sha256": "8f52979b2f3831088c419aae858f10fd3ad7e42cc6c1d28967bae996a98223a4",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libffi8_3.8.0-2_arm64.deb": {
+          "sha256": "b6e6930ad3b9423237fb64bcf5fb65fdd36890613b7f083094fcf16041c5e851",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgcc-s1_16.2.0-1_amd64.deb": {
+          "sha256": "9c41e1c5492be427c847d6ef9c7929be7e4f05f7af5b1054aa5180103e958c12",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgcc-s1_16.2.0-1_arm64.deb": {
+          "sha256": "060e749da1fd54c9017c715af8d17a023714c4f51e31aa1ea1d0ce51f7dffb2b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgfortran5_16.2.0-1_amd64.deb": {
+          "sha256": "3ca9f191dbd938681d9ab7fe8827e7d6d6b628d2ddbed1069b796c741bab30a3",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgfortran5_16.2.0-1_arm64.deb": {
+          "sha256": "07df7cf5c942495a20e645b9094c4ad353c1b073fe75cbbf4e8465bd2152e428",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libggml-dev_0.18.1-1_amd64.deb": {
+          "sha256": "8eefaa5c748ed9096c805e5129b8bf7c99fdaa2af621688403044feac9ece5d0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml-dev_0.19.0-1_amd64.deb": {
+          "sha256": "b41b774c423f1a5be733800ae3e8a991507d69430db17a02d17b27c4de500193",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libggml-dev_0.19.0-1_arm64.deb": {
+          "sha256": "98a11803bb4c5db5cb3cf8c83373a4cb42d9b66a215fc4169c4472ba19d19a85",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libggml0-backend-blas_0.18.1-1_amd64.deb": {
+          "sha256": "c57a68863f49c2c4db2ad732aabc788c9d3afbe1ff8d6c4e1543d8e354bbad3a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-blas_0.19.0-1_amd64.deb": {
+          "sha256": "035fd3b4711b6cfb812621d8c876d9f28ccfbd4b8e3ec4253247a761ee5d18bd",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libggml0-backend-blas_0.19.0-1_arm64.deb": {
+          "sha256": "267b3653f6c0d0afed226a8038ff8c0d4b0e4d3806bcf4113e1b06bc848b1f98",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libggml0-backend-rpc_0.18.1-1_amd64.deb": {
+          "sha256": "b42627ace2a8a3f3c58763ac67ce3b7388a376a6cdbd947c8a574de79c7a9ec1",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-rpc_0.19.0-1_amd64.deb": {
+          "sha256": "702f65efaaaab420db9e3ccfbed47f83f4fddf526ccc44532850626fe2c56713",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libggml0-backend-rpc_0.19.0-1_arm64.deb": {
+          "sha256": "36fe1c5104c9d7a4f2b1d573ce0f174a936e5c9adab29421b224e200668b7bdf",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libggml0-backend-vulkan_0.18.1-1_amd64.deb": {
+          "sha256": "22d6c18eb31d714e7fd866cea6449268aecdb587d554bad55780299228afc569",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-vulkan_0.19.0-1_amd64.deb": {
+          "sha256": "52745d283611da8cdc470113bded1ad8f7a52a71ec704741d3a7513cb4f655ea",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libggml0-backend-vulkan_0.19.0-1_arm64.deb": {
+          "sha256": "d5bdffd0b1e8d2f1d36491563b6409a1c46cbffcc3d9d4274c4b7e94f92d3f9c",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libggml0_0.18.1-1_amd64.deb": {
+          "sha256": "bbfbfa4edb0271cc204a6d72e454d349697389ea4b04610a200d1af0ce510868",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0_0.19.0-1_amd64.deb": {
+          "sha256": "271c9d5070b2bd2d17ffe6e4fd8940f98824d450d75ab834c70e15fa6624712c",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libggml0_0.19.0-1_arm64.deb": {
+          "sha256": "042bd56777de60d81c22a387e4469868d9b41a0ea3b3e8188bb4669c07c51e54",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgomp1_16.2.0-1_amd64.deb": {
+          "sha256": "07fb753348b98e18b40b0ebf81c83a468bde7a3d312fb6cd44700b6ab28f607a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgomp1_16.2.0-1_arm64.deb": {
+          "sha256": "f93b4e083ca0b6e4b17792149e77bb9212fd0e9f8fd4207ed6db16c54104fe99",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgssapi-krb5-2_1.22.1-3_amd64.deb": {
+          "sha256": "8849ff8bdfabbc1e8d1664eb209852023b1eaba1889ffd821459b7c57604c777",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgssapi-krb5-2_1.22.1-3_arm64.deb": {
+          "sha256": "87c29d53b44899ff6f32a5a14f537289fce05acd521a0efb4e4c9d876f2798e6",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgssrpc4t64_1.22.1-3_amd64.deb": {
+          "sha256": "6c07fcda30c0db1d0502752eda2e245b0d324ebaff84d8d707400f3d6f64f687",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libgssrpc4t64_1.22.1-3_arm64.deb": {
+          "sha256": "5861fe0d1bcab55b039fc841a4a8f9738cd8e2c24533d9fb6ebb8c9ba0c19151",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libidn2-0_2.3.8-5_amd64.deb": {
+          "sha256": "25a38f7d9ba5bb3daf47a21ad5d348303e602f3c9037a48d621683fe87e7ce28",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libidn2-0_2.3.8-5_arm64.deb": {
+          "sha256": "5ecbc32716dea96d94bc51f5b0625bba1e676c2910e3ca41b4d403a926262474",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libk5crypto3_1.22.1-3_amd64.deb": {
+          "sha256": "6567c39be649ff018ccb356174886c7358e1a6888e6d13e8a7e001c76c78a20c",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libk5crypto3_1.22.1-3_arm64.deb": {
+          "sha256": "f0b76897311c8be84f49e17ad502970d069222b8e885a9ebfcfa0e6ee93e07af",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkadm5clnt-mit12_1.22.1-3_amd64.deb": {
+          "sha256": "1dc387597181e53fbf1f9f2a124b9f4409c0b66019c2c998d9973fbe2cf96c9a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkadm5clnt-mit12_1.22.1-3_arm64.deb": {
+          "sha256": "13f3f1d4676fb49306647a62ba576b9ad471e4f46db6afafa22fe18664afd353",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkadm5srv-mit12_1.22.1-3_amd64.deb": {
+          "sha256": "8638ee640df01ca5dcdc58e47f970a0ddbd8036fa525607537032e09a4092a32",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkadm5srv-mit12_1.22.1-3_arm64.deb": {
+          "sha256": "97bcd026078497241ce590bde1a5cfff91ec8c126b97f49e44985e7d4de2f0b1",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkdb5-10t64_1.22.1-3_amd64.deb": {
+          "sha256": "39d0976d282f74c5da4025d2423f1b9646499d840c586c2fa1402bce27b34e39",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkdb5-10t64_1.22.1-3_arm64.deb": {
+          "sha256": "f314f146bcfb2c7d1838e08d64ac9326453d6fd852a12aaffacdbe4cd2064d38",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkeyutils1_1.6.3-6_amd64.deb": {
+          "sha256": "0b11ad17be0300b63ad4eeb4c6450fed24d34b7b740f23e5363dcb29ee6d5eba",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkeyutils1_1.6.3-6_arm64.deb": {
+          "sha256": "5e680f317a6613161986417fb3ed63007c9228343f5ac2348551b103cc7fd7b4",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkrb5-3_1.22.1-3_amd64.deb": {
+          "sha256": "945966e0aeae286e8d79ab85e425340348024970587027acad3d3582471f1eef",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkrb5-3_1.22.1-3_arm64.deb": {
+          "sha256": "1d62e66d32a03fcaa5ccd66241475d28a0c43fe9222e186cfaeabf19e526cac5",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkrb5support0_1.22.1-3_amd64.deb": {
+          "sha256": "e7e2d65fa4f016fdf7d982ddd5b9c2e5ecdf2c33f41f1e4ab20de7e59aaaaacf",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libkrb5support0_1.22.1-3_arm64.deb": {
+          "sha256": "45d2538a69d19d9f6fcaef2e1b392c762d01f70c988c75e01c201a5244f93078",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libllama-dev_10271+dfsg-1_amd64.deb": {
+          "sha256": "9e4ec2d1482d3f95725025fd5be6da89739973022b817d171a1b6fd259898d79",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama-dev_10344+dfsg-1_amd64.deb": {
+          "sha256": "168a8e8b1c60a883bd51dc1fa12770049294a54ea921a9c3a98a653bc938e96a",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libllama-dev_10344+dfsg-1_arm64.deb": {
+          "sha256": "9c0dc188022678f9a85fae4658ac2b43f5944aec26989a6a3fb06a684708c003",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libllama0_10271+dfsg-1_amd64.deb": {
+          "sha256": "31e408cf608c27755dc3ec4e61e5ecc5ec65e7c28321e2dcc83df32e1d254930",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama0_10344+dfsg-1_amd64.deb": {
+          "sha256": "c2fea1c7b00f9c1b5ba76775fcc9ba9aa702fdf7cb0cccc9edc5c5a20c6e0e50",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libllama0_10344+dfsg-1_arm64.deb": {
+          "sha256": "d63060a906a25660ef57701ba7aafcce0349820aae7b32fbf1da62c29b94c511",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libnsl3_2.0.1-2_amd64.deb": {
+          "sha256": "8bad39924c34339ffe72706217cead3b83e78575b0b826614936b909cdbd2519",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libnsl3_2.0.1-2_arm64.deb": {
+          "sha256": "1db68f1e42baa9ef9a98684302c7f912de8244c50fc7bcb3456a984500037aa0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libnss-nis_3.4-1+b1_amd64.deb": {
+          "sha256": "45bd5ec0373fc73dae0ed71021b1984218f1d3c477529a3c9a73a28f5e43b6b4",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libnss-nis_3.4-1+b1_arm64.deb": {
+          "sha256": "0367e7b56551fabaa1b0ddc3029d1ffff7e3700bc886d331b1f603991e5ca2b7",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libopenblas0-pthread_0.3.33+ds-3_amd64.deb": {
+          "sha256": "b058acfbf38017dc2f6dee4f44f0207588494a51b2113eed4adf20c0f73c99c8",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libopenblas0-pthread_0.3.33+ds-3_arm64.deb": {
+          "sha256": "939451a6d362e7741d8a8da2b0c5944b60f49892231efbd3a355078248ea551f",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libopenblas0_0.3.33+ds-3_amd64.deb": {
+          "sha256": "7c1764c56107d228e0ab11618590f6a3be5d84444695df858ba1aaa174a1cc65",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libopenblas0_0.3.33+ds-3_arm64.deb": {
+          "sha256": "1039c02ca3f6ef211e522577f4012837e9c536010d2ddcc775c510bd2fb9a06b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libpng16-16t64_1.6.58-1_amd64.deb": {
+          "sha256": "e01786b8495d7e120333c5208e0d166f080b325f56d7213150a6e83ac912e4e8",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libpng16-16t64_1.6.58-1_arm64.deb": {
+          "sha256": "3835c62ced8c5f4349439c88ada813dc9274f7a17b7cd535a22e0f1e34c9ea83",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libss2_1.47.4-1_amd64.deb": {
+          "sha256": "c6291b564e188cc502b094749bc8061cd3abc1c122dd92751e266543c0bca62b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libss2_1.47.4-1_arm64.deb": {
+          "sha256": "01bb81121cdf62b6fde0e32e3577c36df9456074c626af3618f8caf020da6698",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libssl3t64_3.6.3-1_amd64.deb": {
+          "sha256": "487a94fcf2120a558b60a0fcf3b6f39cdf56f125dbe15ef62ecaed9f1cb42759",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libssl3t64_3.6.3-1_arm64.deb": {
+          "sha256": "0e58fc4beb997e87814eb10fe8056c8886379aa803f32fcc02b3ad62d09537a4",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtirpc3t64_1.3.7+ds-1_amd64.deb": {
+          "sha256": "a6d18d608b5a0fe40de49b0672aae558814c04e9203c8aa14b8293da3ec2ba4a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtirpc3t64_1.3.7+ds-1_arm64.deb": {
+          "sha256": "6c89ff129e1d6be4e2cab26000f578ea87e6fb4ca3d4389d9b199dad931f43a6",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libunistring5_1.4.2-1_amd64.deb": {
+          "sha256": "509fb596f6b4de34f1d9cb5a0001abc3c6c51f4800e908ef888262ebdaaefa3b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libunistring5_1.4.2-1_arm64.deb": {
+          "sha256": "532a6e1cc3d9f154d8892e5c58bcfb070c4fbad7d221c6f81af3acf9a9fcb12e",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libvulkan1_1.4.357.0-1_amd64.deb": {
+          "sha256": "1e3b644b8f9a2593ea8c4b80a35f90debab13f74108257d0de18ee89386f497d",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libvulkan1_1.4.357.0-1_arm64.deb": {
+          "sha256": "707e01104823b2e0d2d20bfcb0c32ba9394025c1119114d7b93f8144ce07c0c9",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libwayland-client0_1.26.0-1_amd64.deb": {
+          "sha256": "b432b1d30319f371efe776209e36143a23289285dd26d41751e89ad4a88b2c33",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libwayland-client0_1.26.0-1_arm64.deb": {
+          "sha256": "e074f9f761d79b29cf331b0a8bd726651e0760cc61012fc31db22df56a5f009e",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-dri3-0_1.17.0-2+b2_amd64.deb": {
+          "sha256": "0615ec62c1ac2c4849c04cd6c663d7397287e5c6e9a3fa4f4a42cbe545be4d79",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-dri3-0_1.17.0-2+b2_arm64.deb": {
+          "sha256": "adc602585ca5de21770768fe3a49124a56a0a17713e5b92a2fcd18b879177347",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-present0_1.17.0-2+b2_amd64.deb": {
+          "sha256": "6003cce386cf8cd7502022d8f91ffe92911e9d360477ce987eb8660294490a43",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-present0_1.17.0-2+b2_arm64.deb": {
+          "sha256": "6bc9e0f84c66b0f92ddbfa8f4ab9d192f326e7364b9506197737b1e27027db55",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-randr0_1.17.0-2+b2_amd64.deb": {
+          "sha256": "a0e3b0ff8137d2fa3ef3de2b1a58f3e56f70c67e9edbf08ffaa298ecc14676e6",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-randr0_1.17.0-2+b2_arm64.deb": {
+          "sha256": "3f5d7c3db2bb6ee8e038d5af9835c23d52f2a37f797089642d2e3c88d10c4e49",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-shm0_1.17.0-2+b2_amd64.deb": {
+          "sha256": "12299c866c4b5e7b9da3ca7f1b9fbba992b744e10684e8f19830def9bc18ce67",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-shm0_1.17.0-2+b2_arm64.deb": {
+          "sha256": "a877402b2aeef44fc4a97a503f9e3775ca3ef7ea499e3a60eaeae4b6c9238fac",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-sync1_1.17.0-2+b2_amd64.deb": {
+          "sha256": "1c6b418990335aeb1259ac8e27022f6b6aa97410c0617935933abccd0aa8c831",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-sync1_1.17.0-2+b2_arm64.deb": {
+          "sha256": "daee5093f316a6da8f13687d21d6cd2381858d591df8d5ecd003991f6f4762be",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-xfixes0_1.17.0-2+b2_amd64.deb": {
+          "sha256": "b9ebf6d05c193da5776c02879ca605eaa8f4baa2a847f4d562154bdeafa8966c",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb-xfixes0_1.17.0-2+b2_arm64.deb": {
+          "sha256": "ee26c1c1b2db3834713c47f397274883ddf680765d5980a6afbcabb8810b478e",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb1_1.17.0-2+b2_amd64.deb": {
+          "sha256": "86d6a614fe7b663610b4d170c84ef6f4371b3ef8e2af5df7e1e4a82b2c290119",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxcb1_1.17.0-2+b2_arm64.deb": {
+          "sha256": "65da730d6bb5e167ba2e391990a62b4a52b5f9ebdb837f8578f0962b7bcf37f8",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxshmfence1_1.3.3-1_amd64.deb": {
+          "sha256": "7b339e9e5b2349723d35af4df89bcc7aa456bbdf8ba1754358f9b44c3fe1f964",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libxshmfence1_1.3.3-1_arm64.deb": {
+          "sha256": "34b494c83cebcf138d1f87c2cbdd5ee8efe9da2befbd69c2a025b0e214c64d2d",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libzstd1_1.5.7+dfsg-4_amd64.deb": {
+          "sha256": "93e7930e4c25b918f1dd980cc1c6d4487654a248f5fa71eacb976ed7bbe954bd",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libzstd1_1.5.7+dfsg-4_arm64.deb": {
+          "sha256": "e99e6e244d6c80f1c8e96cb68bb04bffc6848b12e3dcc5a35f6a775e4332e936",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "mesa-vulkan-drivers_26.1.2-1~bpo13+1_amd64.deb": {
+          "sha256": "703fc269cbe9641e8a52bf664f9b4395547644c372d0d39e6d9373f7afd5ad41",
+          "suites": [
+            "trixie",
+            "plucky"
+          ]
+        },
+        "mesa-vulkan-drivers_26.1.6-1_amd64.deb": {
+          "sha256": "ade40e72be38657355bd0faf36fa0335c3d44dfe3fa4f1996cc70de176b7f5a8",
+          "suites": [
+            "questing"
+          ]
+        },
+        "mesa-vulkan-drivers_26.1.6-1_arm64.deb": {
+          "sha256": "d1b09ca770457035f374a2e7eea90e034c20b4799fde89e54122fd5bec5d9694",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "mesa-vulkan-drivers_26.2.0-1_amd64.deb": {
+          "sha256": "e5b97b2d0488d520c8de80cdaab1cd3a7427e4ac57b29191775a63fdb9475975",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "mesa-vulkan-drivers_26.2.0-1_arm64.deb": {
+          "sha256": "c122407d95638a677f94db6c34f59e2288d8cfb929fb55361ebe0a7e081f801c",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "openssl-provider-legacy_4.0.1-1_amd64.deb": {
+          "sha256": "8fd058c4f8e75ea3dcb2bfb01bbd8977888c58e1de0bec670a441a81b0a6a4ee",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "openssl-provider-legacy_4.0.1-1_arm64.deb": {
+          "sha256": "c29e50780b33dba8442785d83e6c3ffe78be3972d2f0a66a2165791ba22577b3",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
+    "app.RooTerm": {
+      "tag": "v0.1.2",
+      "packages": {
+        "rooterm_0.1.2-1_amd64.deb": {
+          "sha256": "38087d7cb32777139ea127a1709bb416593ddd4a4bd7973053447e8838b9402a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
+    "ibus-sherpa-onnx": {
+      "tag": "v0.3.2",
+      "packages": {
+        "ibus-sherpa-onnx_0.3.2-1_amd64.deb": {
+          "sha256": "ef3ad96adb2e9a9d7ddda37ada9c5defa8020ec588df6ffe988b811f892268ca",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
+    "sherpa-onnx": {
+      "tag": "v1.13.5-roojs2",
+      "packages": {
+        "libsherpa-onnx-c-api-dev_1.13.5-roojs2_amd64.deb": {
+          "sha256": "80765e6141fae2f83185d36da237dfa8e75f2ec0c3e55b4185bbb28d91c565d6",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libsherpa-onnx-c-api1_1.13.5-roojs2_amd64.deb": {
+          "sha256": "71cb2d75c38f18696ec406e6c2222746690653880fbf38173eda6df3ede66bb1",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
+    "webkitgtk-automation": {
+      "tag": "build-plucky-20260816-6;build-questing-20260815-9;build-resolute-20260815-2",
+      "packages": {
+        "libwebkitgtk-6.0-4_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb": {
+          "sha256": "311f007a6ad36a28ef6c5127dfbd60b16b769ea42885afe669c924f5338496d0",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "libwebkitgtk-6.0-dev_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb": {
+          "sha256": "fe4c692a5613c0b6fa979dece2c595b777483996dc11873b72cf75985d52a22c",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.25.10.1+webkitgtk1_amd64.deb": {
+          "sha256": "c02177a29b829c8e44672eaae1c3d7c9450d0f70d3cdd75b1fa72f1ef30652cd",
+          "suites": [
+            "questing"
+          ]
+        },
+        "libwebkitgtk-6.0-dev_2.52.3-0ubuntu0.25.10.1+webkitgtk1_amd64.deb": {
+          "sha256": "7f6593603503a3ad47d60ba65feda54022b30ee1de1507997e62f4ee0458406d",
+          "suites": [
+            "questing"
+          ]
+        },
+        "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": {
+          "sha256": "bdcf81883df5eb241167a36ca6916494d4e9d85ed1441b47477ff2fe34e141d9",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "libwebkitgtk-6.0-dev_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": {
+          "sha256": "6318b5acf0eb0bf083baf773661a9e40c0747687576a252f3941266b9d0e04e1",
+          "suites": [
+            "resolute"
+          ]
+        }
+      }
+    },
+    "roobuilder": {
+      "tag": "release-5.0.11",
+      "packages": {
+        "roobuilder_5.0.11_amd64.deb": {
+          "sha256": "89d8a673f654555f603429b661b1e3236eec58b3cfdcd9b900d34d4fd14c17bf",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "roojspacker_1.5.2_amd64.deb": {
+          "sha256": "44c603b71244343e03612562ab73c82a0d9a7f9986fbfccb3aca081f6b871874",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
+    "repos": {
+      "tag": "tree-sitter-2026-08-16",
+      "packages": {
+        "libtree-sitter-bash-0.20.5-1_amd64.deb": {
+          "sha256": "4d0f7cf0ed4e4dad2fbb2de23048d2d2393b435ff8f938fabe6dc6d7e8994b98",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-c-sharp-0.20.0-1_amd64.deb": {
+          "sha256": "e53527757aa90ea93733d9fa92010a9fa427f01c2fd90d6180c31570ac30f535",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-cpp-0.20.5-1_amd64.deb": {
+          "sha256": "dbe6b0043cdfb4e8edfe58ef794691509ffb382ef45af953b01b08dec04005f6",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-go-0.20.0-1_amd64.deb": {
+          "sha256": "4fd54e9eb7c027079475c0eb08455476de300a7b895feffeaaf5e3d68b87b3f1",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-java-0.20.2-1_amd64.deb": {
+          "sha256": "ac382e398d0a255ae010bdde56eed95b7cb0e220727487f242abd6f2c53ec5df",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-javascript-0.20.4-1_amd64.deb": {
+          "sha256": "bab16a553be79e6c80fa6f6f570c9406f388ed428c8aa914ffb0e94f805ac29b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-markdown-0.20.8-1_amd64.deb": {
+          "sha256": "ffba77b96a4da5455c34eafb6601726f526054cc89e0ab62c91ca31ea2a173fa",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-php-0.20.0-1_amd64.deb": {
+          "sha256": "9f99ee2b4ac22b293109e6a87ccc5c972e4c5d0dc48d379653a021415744f1a9",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-python-0.20.4-1_amd64.deb": {
+          "sha256": "d1249cb2d3072afa8bf03a1288fa5b5e1699bb8e2e4ebdba1fdf8b59c442981e",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-ruby-0.20.1-1_amd64.deb": {
+          "sha256": "33f814c71805e9ef014503fe37f3bf20da51e8065eb2e5b9dca70406a223ed4b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-rust-0.20.4-1_amd64.deb": {
+          "sha256": "e46e0568f7ceff46d9863082a2b925874200622ef715ffce431bcaf5eee0eeaa",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-vala-0.20.8-1_amd64.deb": {
+          "sha256": "bcd497c3529e2c68d1045b3211f38d78adb6d958b7c61ae173a6cec6cb7445e9",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    }
+  },
   "rpms": {
     "app.RooTerm": {
       "tag": "v0.1.2",
@@ -29,6 +1324,6 @@
       }
     }
   },
-  "repos_json_sha256": "536d187e1991d5a4f0dd4e444102556f3feff44e8c5cebd4857554f0c225b129",
+  "repos_json_sha256": "94b122999aa857fd715a6968b48239e3585d07686c39526ada6d64c213463697",
   "distributions_sha256": "c580b532db1b83d63610fdc454f54edb9153ff6e1951d0f033aa9986c9ecf729"
 }

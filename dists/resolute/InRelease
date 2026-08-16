@@ -4,35 +4,35 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: resolute
-Date: Sun, 16 Aug 2026 06:33:56 UTC
+Date: Sun, 16 Aug 2026 23:47:03 UTC
 Architectures: amd64 arm64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- a56d6478da7273411e6e3585e79bbde4 13775 main/binary-amd64/Packages
- 69e02e3b7a21f6bc71de10c0bcca321b 4439 main/binary-amd64/Packages.gz
+ e875be7f46f86005918437a2a738dab2 86166 main/binary-amd64/Packages
+ 6d235ce77bda8b440651b02360bfe022 21990 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
- d41d8cd98f00b204e9800998ecf8427e 0 main/binary-arm64/Packages
- 7029066c27ac6f5ef18d660d5741979a 20 main/binary-arm64/Packages.gz
+ e321d680e00a375bca1cbd6e7e5ee0ef 60382 main/binary-arm64/Packages
+ e1382ec315bd5cfe494fe3afd8bad712 15726 main/binary-arm64/Packages.gz
  32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- e793205c08c69563a38fb64c4499098cbf495ae8 13775 main/binary-amd64/Packages
- f01b0ee4831916be37bdaa656be8f587d7459f24 4439 main/binary-amd64/Packages.gz
+ 0ac32dc1e58f1faa5388644ea7c61030220159ee 86166 main/binary-amd64/Packages
+ f50db70537bcaab70fbe599b0f9f21e7111292e9 21990 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
- da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-arm64/Packages
- 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-arm64/Packages.gz
+ 6663ef6331c0a9b808581ec3e9c5f3000269c3d9 60382 main/binary-arm64/Packages
+ f47672532692ab0ff8ba39a83497a4cdbb654ba9 15726 main/binary-arm64/Packages.gz
  6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- 12b6a18d7f3d6e3ae40c695477b961eed9b27cbb2a0eeda0f33fd957b4b479bf 13775 main/binary-amd64/Packages
- bdad8992b70b4e4b8c6102719c735fecb12075b69136cacb405914e193658c7e 4439 main/binary-amd64/Packages.gz
+ 3e6c1b31494ddd50e94b975b264e74530652cdce93f74a092633e3a1d81d13e1 86166 main/binary-amd64/Packages
+ f838bbcf296a3704dfbeeea59b5a3d9d915e1b1c860b0edcded7daa667e38d19 21990 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-arm64/Packages
- 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-arm64/Packages.gz
+ 35e75b7444299e3128e19a9ff9b3e900f3c00ccb892d4006781630f5d089c738 60382 main/binary-arm64/Packages
+ 0cbe17ced04a791b50e29c7499ef766b36fbe4467adb2de3850f5158d54f02a9 15726 main/binary-arm64/Packages.gz
  46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoFZ1QAKCRADhhQ8Yzk0
-cPcxAQCDEBRoaST2JsqMiL8KpIP5OKbo8NfaPnE1KKl7jAQG2gEAniX9kK2R5txG
-zN6H4tDgUALApN4RmVC/T5z6QS0Zngc=
-=RBnV
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoJL9wAKCRADhhQ8Yzk0
+cKD9AQCd+5mBmXVRXVOD2hRjDTwWARBCSSDXL5PbtxRROAikgQD/UF0VK++yZXmU
+QoYrHGKnLGkekubCZy09/tc2ttv//wg=
+=aw3j
 -----END PGP SIGNATURE-----

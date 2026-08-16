@@ -1,28 +1,28 @@
 Origin: roojs
 Label: roojs
 Codename: trixie
-Date: Sun, 16 Aug 2026 06:33:53 UTC
+Date: Sun, 16 Aug 2026 23:47:00 UTC
 Architectures: amd64 arm64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 8fca018b9e183ca146f68bec34d08686 23635 main/binary-amd64/Packages
- 06b722b2319c5b41f1e3ff288d43df4a 6505 main/binary-amd64/Packages.gz
+ 1d19e989582bc71ec7b89dac8e546ecd 85267 main/binary-amd64/Packages
+ 70a2926e5e1c6de8f8cae96d43a7fb50 21651 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
- 6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
- a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
+ 386faf692c68033a19e730578e1cc567 60382 main/binary-arm64/Packages
+ 1992a94fb12ec05bda8d6bde5a38c8c6 15725 main/binary-arm64/Packages.gz
  32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- 3727a080c880429d514d8715a143ba665ef9b0e1 23635 main/binary-amd64/Packages
- 29cd1e501e7cd5a44655b3c294cbb106dbd6370b 6505 main/binary-amd64/Packages.gz
+ b164021e8b10cf596406496337825a04c212d350 85267 main/binary-amd64/Packages
+ 5be8ed844f727daa55ecb1a50d6ac1acdcf49063 21651 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
- b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
- 3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
+ ff778c27d2fc949f7ee70559880e9fa1d58f8d63 60382 main/binary-arm64/Packages
+ 637b18a3a4095c49e77ab585c54f91f72a169d86 15725 main/binary-arm64/Packages.gz
  6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- 74d13d3e4593d280fc0d3df33a4f25a076cb7aedb11be736cd46069645bdc0b5 23635 main/binary-amd64/Packages
- 2fdb4db22a77c91de821944299ee555427547aff907c0a5848bc8caf0a1c0e0b 6505 main/binary-amd64/Packages.gz
+ 80affe2b6f3a9ac20fec0210b48851b90a558ab00547aec6e436922f994c64d2 85267 main/binary-amd64/Packages
+ 5379af37b45d3514db9eb501f4a6803eff898e3c3bbc26c9054854d567c3e4e0 21651 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
- 0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
- 71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
+ 03fe1030abc4e4d1bdbd569fc9b4d3de50ab490b3506f5ae29f7b845ff99b9d2 60382 main/binary-arm64/Packages
+ c1c369fbd4d08bb5e684ed1a4b50d3476bf9751faad47e285370a4d00e416ac5 15725 main/binary-arm64/Packages.gz
  46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release

@@ -1,3 +1,23 @@
+Package: gcc-16-base
+Source: gcc-16
+Version: 16.2.0-1
+Architecture: amd64
+Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Installed-Size: 105
+Breaks: gnat (<< 7)
+Multi-Arch: same
+Homepage: https://gcc.gnu.org/
+Priority: optional
+Section: libs
+Filename: pool/main/g/gcc-16/gcc-16-base_16.2.0-1_amd64.deb
+Size: 37984
+SHA256: 2c83b8b5a3ebe4431ca1f8f20370af04f8e80ca5a8726afd56f3fa1523f83e16
+SHA1: 60d9f5a4056316be2eb58428827bcc5c820a9ad2
+MD5sum: df5d4290b975c1102d91f936e6c3f841
+Description: GCC, the GNU Compiler Collection (base package)
+ This package contains files common to all languages and libraries
+ contained in the GNU Compiler Collection (GCC).
+
 Package: ibus-sherpa-onnx
 Version: 0.3.2-1
 Architecture: amd64
@@ -21,6 +41,331 @@ Description: IBus speech dictation engine using sherpa-onnx
  /usr/share/ibus-sherpa-onnx/models/ via polkit, and activates the IME.
  .
  ASR model weights are not included (~440 MB); download via Preferences.
+
+Package: krb5-k5tls
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 95
+Depends: libc6 (>= 2.17), libkrb5-3 (>= 1.9+dfsg~beta1), libkrb5support0 (= 1.22.1-3), libssl3t64 (>= 3.0.0)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: net
+Filename: pool/main/k/krb5/krb5-k5tls_1.22.1-3_amd64.deb
+Size: 17208
+SHA256: 94a2de4dc582363e9252bf4d1b94edb01f2117ae1c9878fba460a2f795e4c3c2
+SHA1: 3c4f05fadf95ce9b94fa50237edcc4d1edccabda
+MD5sum: fadc8c8a8848fab7fb367f840546fb67
+Description: TLS plugin for MIT Kerberos
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains a plugin for the TLS functionality used by optional
+ functionality in MIT Kerberos.  The only current consumer is client support
+ for the MS-KKDCP protocol, which tunnels Kerberos protocol traffic through
+ an HTTPS proxy.
+
+Package: krb5-user
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 412
+Depends: libkrb5-3 (= 1.22.1-3), libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libk5crypto3 (>= 1.20), libkadm5clnt-mit12 (>= 1.22.1), libkadm5srv-mit12 (>= 1.18.2), libkdb5-10t64 (>= 1.22.1), libkrb5support0 (= 1.22.1-3), libss2 (>= 1.01)
+Recommends: krb5-config
+Suggests: krb5-k5tls
+Conflicts: heimdal-clients (<< 1.6~rc2+dfsg-7)
+Multi-Arch: foreign
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: net
+Filename: pool/main/k/krb5/krb5-user_1.22.1-3_amd64.deb
+Size: 118888
+SHA256: 17070e8b71f00eda53b481c5d522a120ea0825e41039db09d72e41bcbd6cba74
+SHA1: 73c23170c6604eb7c5996455922c8e904553c00f
+MD5sum: e06b562633f3bc4e611f1c99808f5e68
+Description: basic programs to authenticate using MIT Kerberos
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the basic programs to authenticate to MIT Kerberos,
+ change passwords, and talk to the admin server (to create and delete
+ principals, list principals, etc.).
+
+Package: libblas3
+Source: lapack
+Version: 3.12.1-8
+Architecture: amd64
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Installed-Size: 587
+Depends: libc6 (>= 2.4), libgcc-s1 (>= 3.0)
+Provides: libblas.so.3
+Multi-Arch: same
+Homepage: https://www.netlib.org/lapack/
+Priority: optional
+Section: libs
+Filename: pool/main/l/lapack/libblas3_3.12.1-8_amd64.deb
+Size: 205964
+SHA256: f9f937e771e4f4cfb53277d71ecc348fabb5bdc9e9cb9ed30e8519c4b64693c3
+SHA1: 85e4faed6fcc2422be85d1aa439e46455506a3a3
+MD5sum: f260d96fccaf987f074e735b4a7b01aa
+Description: Basic Linear Algebra Reference implementations, shared library
+ BLAS (Basic Linear Algebra Subroutines) is a set of efficient
+ routines for most of the basic vector and matrix operations.
+ They are widely used as the basis for other high quality linear
+ algebra software, for example lapack and linpack.  This
+ implementation is the Fortran 77 reference implementation found
+ at netlib.
+ .
+ This package contains a shared version of the library.
+
+Package: libc-gconv-modules-extra
+Source: glibc
+Version: 2.44-1
+Architecture: amd64
+Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Installed-Size: 7997
+Breaks: libc6 (<< 2.42-1)
+Replaces: libc6 (<< 2.42-1)
+Multi-Arch: same
+Homepage: https://www.gnu.org/software/libc/libc.html
+Priority: optional
+Section: libs
+Filename: pool/main/g/glibc/libc-gconv-modules-extra_2.44-1_amd64.deb
+Size: 1100304
+SHA256: 00408257a5287df51898bb5f71beca80a37f1b569c2ae6b977cb6b27de2929b2
+SHA1: 0c047c3a06e15194a8752a6b4ef8412f083e2000
+MD5sum: f869dd4fae3265156e38e0b3f39980eb
+Description: GNU C Library: Non-essential gconv modules
+ This package provides additional character set conversion modules for the GNU
+ C Library's gconv facility, to support encodings other than Latin-1 and UTF
+ based.
+
+Package: libc6
+Source: glibc
+Version: 2.44-1
+Architecture: amd64
+Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Installed-Size: 5532
+Depends: libgcc-s1, libc-gconv-modules-extra (= 2.44-1)
+Recommends: libidn2-0 (>= 2.0.5~)
+Suggests: glibc-doc, debconf | debconf-2.0, libc-l10n, locales, libnss-nis
+Breaks: base-files (<< 13.3~), dhcpcd (<< 1:10.1.0-7~), libamdhip64-5 (<< 5.7.1-5+b1), libhiprtc-builtins5 (<< 5.7.1-5+b1), librccl1 (<< 5.4.3-3+b1), libswupdate0.1 (<< 2024.12.1+dfsg-1+b3), locales (<< 2.44), locales-all (<< 2.44), lua-swupdate (<< 2024.12.1+dfsg-1+b3), nscd (<< 2.44), pd-scaf (<< 1:0.14.1+darcs20180201-6+b4), postgresql-15-pllua (<< 1:2.0.12-4), postgresql-17-pllua (<< 1:2.0.12-3+b2), python3-mrgingham (<< 1.25-1), python3-onnxruntime (<< 1.20.1+dfsg-2~), sysvinit (<< 3.09-2~), sysvinit-core (<< 3.09-2~), uwsgi-plugin-pypy3 (<< 0.0.2+b1)
+Replaces: libc6-amd64
+Multi-Arch: same
+Homepage: https://www.gnu.org/software/libc/libc.html
+Priority: optional
+Section: libs
+Filename: pool/main/g/glibc/libc6_2.44-1_amd64.deb
+Size: 1892464
+SHA256: 17d9a246ae46a457227c19a3d821c49d68b9c6f9531bfa6f52d9c064307de585
+SHA1: 6c73334e1502ebd8bc4b94c6f033949cee6759a9
+MD5sum: 46e30d519f7d5a1efeb64c8b167e0b09
+Description: GNU C Library: Shared libraries
+ Contains the standard libraries that are used by nearly all programs on
+ the system. This package includes shared versions of the standard C library
+ and the standard math library, as well as many others.
+
+Package: libcom-err2
+Source: e2fsprogs
+Version: 1.47.4-1
+Architecture: amd64
+Maintainer: Theodore Y. Ts'o <tytso@mit.edu>
+Installed-Size: 58
+Depends: libc6 (>= 2.38)
+Breaks: libcom-err2t64 (<< 1.47.0-2.4~exp1~), libcomerr2 (<< 1.43.9-1~)
+Replaces: libcom-err2t64, libcomerr2 (<< 1.43.9-1~)
+Provides: libcom-err2t64 (= 1.47.4-1), libcomerr2 (= 1.47.4-1)
+Multi-Arch: same
+Homepage: http://e2fsprogs.sourceforge.net
+Priority: optional
+Section: libs
+Filename: pool/main/e/e2fsprogs/libcom-err2_1.47.4-1_amd64.deb
+Size: 19216
+SHA256: f5ca808baa2f50f5f5cb1aa8b437d1ff6f129798f2f612228721f7ea92e46153
+SHA1: b89b687093411fb1374b9e54670eeff034c1fcde
+MD5sum: 80d77f48127788c3d5c0163de92e4716
+Description: common error description library
+ libcomerr is an attempt to present a common error-handling mechanism to
+ manipulate the most common form of error code in a fashion that does not
+ have the problems identified with mechanisms commonly in use.
+
+Package: libdrm-amdgpu1
+Source: libdrm
+Version: 2.4.134-3
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 71
+Depends: libc6 (>= 2.38), libdrm2 (>= 2.4.108)
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/mesa/libdrm/
+Priority: optional
+Section: libs
+Filename: pool/main/libd/libdrm/libdrm-amdgpu1_2.4.134-3_amd64.deb
+Size: 23300
+SHA256: b7282a3422545c6cb488c3f4f5740844ad06c31030e7b9600700342a807ff519
+SHA1: accd2b5e80f03a94f36f8fbaa1cb9e810e409a4a
+MD5sum: f2bab153b6d903077f0434e1441fcbb6
+Description: Userspace interface to amdgpu-specific kernel DRM services -- runtime
+ This library implements the userspace interface to the kernel DRM
+ services.  DRM stands for "Direct Rendering Manager", which is the
+ kernelspace portion of the "Direct Rendering Infrastructure" (DRI).
+ The DRI is currently used on Linux to provide hardware-accelerated
+ OpenGL drivers.
+
+Package: libdrm2
+Source: libdrm
+Version: 2.4.134-3
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 118
+Depends: libdrm-common (>= 2.4.134-3), libc6 (>= 2.38)
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/mesa/libdrm/
+Priority: optional
+Section: libs
+Filename: pool/main/libd/libdrm/libdrm2_2.4.134-3_amd64.deb
+Size: 38528
+SHA256: e1a841ed70c7b7bbd9a03f41c781101d668db0d35b4eee58d7705a6c32b88aaa
+SHA1: 3c81e57f8a5a9c19eafa86466d7e9ad2fbd78128
+MD5sum: c9d6d1afb74c69bbf4bd912c032dfaf5
+Description: Userspace interface to kernel DRM services -- runtime
+ This library implements the userspace interface to the kernel DRM
+ services.  DRM stands for "Direct Rendering Manager", which is the
+ kernelspace portion of the "Direct Rendering Infrastructure" (DRI).
+ The DRI is currently used on Linux to provide hardware-accelerated
+ OpenGL drivers.
+ .
+ This package provides the runtime environment for libdrm.
+
+Package: libelf1t64
+Source: elfutils
+Version: 0.195-1
+Architecture: amd64
+Maintainer: Debian Elfutils Maintainers <debian-gcc@lists.debian.org>
+Installed-Size: 164
+Depends: libc6 (>= 2.38), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)
+Breaks: libelf1 (<< 0.195-1)
+Replaces: libelf1
+Provides: libelf1 (= 0.195-1)
+Multi-Arch: same
+Homepage: https://sourceware.org/elfutils/
+Priority: optional
+Section: libs
+Filename: pool/main/e/elfutils/libelf1t64_0.195-1_amd64.deb
+Size: 58104
+SHA256: f4070c4d251c95f14ed7e45f3be8576b588df16a38f8b9e938f0206f2c4394f9
+SHA1: d570dc16467eac85d369ce50d2bfa0944a77d4ca
+MD5sum: 58043a2befa4c1081c3b7767c3861ed5
+Description: library to read and write ELF files
+ The libelf1t64 package provides a shared library which allows reading and
+ writing ELF files on a high level.  Third party programs depend on
+ this package to read internals of ELF files.  The programs of the
+ elfutils package use it also to generate new ELF files.
+ .
+ This library is part of elfutils.
+
+Package: libexpat1
+Source: expat
+Version: 2.8.3-1
+Architecture: amd64
+Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Installed-Size: 447
+Pre-Depends: libc6 (>= 2.38)
+Multi-Arch: same
+Homepage: https://libexpat.github.io/
+Priority: optional
+Section: libs
+Filename: pool/main/e/expat/libexpat1_2.8.3-1_amd64.deb
+Size: 126708
+SHA256: 978e9d30b84893a4c8191d8dae4d1b93c9b7ecaa772ada2fdb892ae3765cab4e
+SHA1: a3ec2f0caa2d46ac31acb0027da3df588bfcb748
+MD5sum: 8416fe553505cd445f26261c7750d970
+Description: XML parsing C library - runtime library
+ This package contains the runtime, shared library of expat, the C
+ library for parsing XML. Expat is a stream-oriented parser in
+ which an application registers handlers for things the parser
+ might find in the XML document (like start tags).
+
+Package: libffi8
+Source: libffi
+Version: 3.8.0-2
+Architecture: amd64
+Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Installed-Size: 101
+Depends: libc6 (>= 2.38)
+Breaks: libffi8ubuntu1 (<< 3.4.2-1)
+Replaces: libffi8ubuntu1 (<< 3.4.2-1)
+Provides: libffi8ubuntu1 (= 3.8.0-2)
+Multi-Arch: same
+Homepage: https://sourceware.org/libffi/
+Priority: optional
+Section: libs
+Filename: pool/main/libf/libffi/libffi8_3.8.0-2_amd64.deb
+Size: 32472
+SHA256: 8f52979b2f3831088c419aae858f10fd3ad7e42cc6c1d28967bae996a98223a4
+SHA1: 006866f7bbeefbd18e514ca5565271151063a741
+MD5sum: abfb04290abc7bc20fb0568cae5adcfb
+Description: Foreign Function Interface library runtime
+ A foreign function interface is the popular name for the interface that
+ allows code written in one language to call code written in another
+ language.
+
+Package: libgcc-s1
+Source: gcc-16
+Version: 16.2.0-1
+Architecture: amd64
+Protected: yes
+Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Installed-Size: 197
+Depends: gcc-16-base (= 16.2.0-1), libc6 (>= 2.35)
+Replaces: libgcc1 (<< 1:10)
+Provides: libgcc1 (= 1:16.2.0-1)
+Multi-Arch: same
+Homepage: https://gcc.gnu.org/
+Priority: optional
+Section: libs
+Filename: pool/main/g/gcc-16/libgcc-s1_16.2.0-1_amd64.deb
+Size: 74112
+SHA256: 9c41e1c5492be427c847d6ef9c7929be7e4f05f7af5b1054aa5180103e958c12
+SHA1: a4f92528472dec4a01242c5e61dd61728114821f
+MD5sum: e92d5a33d5f961cd274fd39643fec50f
+Description: GCC support library
+ Shared version of the support library, a library of internal subroutines
+ that GCC uses to overcome shortcomings of particular machines, or
+ special needs for some languages.
+Important: yes
+
+Package: libgfortran5
+Source: gcc-16
+Version: 16.2.0-1
+Architecture: amd64
+Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Installed-Size: 3530
+Depends: gcc-16-base (= 16.2.0-1), libc6 (>= 2.38), libgcc-s1 (>= 4.3)
+Breaks: gcc-4.3 (<< 4.3.6-1), gcc-4.4 (<< 4.4.6-4), gcc-4.5 (<< 4.5.3-2)
+Multi-Arch: same
+Homepage: https://gcc.gnu.org/
+Priority: optional
+Section: libs
+Filename: pool/main/g/gcc-16/libgfortran5_16.2.0-1_amd64.deb
+Size: 878116
+SHA256: 3ca9f191dbd938681d9ab7fe8827e7d6d6b628d2ddbed1069b796c741bab30a3
+SHA1: 910486b891eb3007551aac115cb75a935a602aff
+MD5sum: 5de1257fb9f3fe3ec89176e5779085f0
+Description: Runtime library for GNU Fortran applications
+ Library needed for GNU Fortran applications linked against the
+ shared library.
 
 Package: libggml-dev
 Source: ggml
@@ -193,6 +538,309 @@ Description: Tensor library for machine learning - Vulkan backend
  .
  This package provides the Vulkan backend.
 
+Package: libgomp1
+Source: gcc-16
+Version: 16.2.0-1
+Architecture: amd64
+Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Installed-Size: 402
+Depends: gcc-16-base (= 16.2.0-1), libc6 (>= 2.38)
+Breaks: gcc-4.3 (<< 4.3.6-1), gcc-4.4 (<< 4.4.6-4), gcc-4.5 (<< 4.5.3-2)
+Multi-Arch: same
+Homepage: https://gcc.gnu.org/
+Priority: optional
+Section: libs
+Filename: pool/main/g/gcc-16/libgomp1_16.2.0-1_amd64.deb
+Size: 151448
+SHA256: 07fb753348b98e18b40b0ebf81c83a468bde7a3d312fb6cd44700b6ab28f607a
+SHA1: 8e42b44da859cc046c9888aa14ae5f7dee38e54b
+MD5sum: 9cede8f831e7f72adaed7847cd191c57
+Description: GCC OpenMP (GOMP) support library
+ GOMP is an implementation of OpenMP for the C, C++, and Fortran compilers
+ in the GNU Compiler Collection.
+
+Package: libgssapi-krb5-2
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 432
+Depends: libkrb5-3 (= 1.22.1-3), libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libk5crypto3 (>= 1.20), libkrb5support0 (= 1.22.1-3)
+Suggests: krb5-doc, krb5-user
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libgssapi-krb5-2_1.22.1-3_amd64.deb
+Size: 137244
+SHA256: 8849ff8bdfabbc1e8d1664eb209852023b1eaba1889ffd821459b7c57604c777
+SHA1: c1bda13418cbffc368878f88a584c274526479e1
+MD5sum: 4001dea2e791f6407937c2e8a87bdb7b
+Description: MIT Kerberos runtime libraries - krb5 GSS-API Mechanism
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the runtime library for the MIT Kerberos
+ implementation of GSS-API used by applications and Kerberos clients.
+
+Package: libgssrpc4t64
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 211
+Depends: libc6 (>= 2.34), libgssapi-krb5-2 (>= 1.17)
+Suggests: krb5-doc, krb5-user
+Breaks: libgssrpc4 (<< 1.22.1-3)
+Replaces: libgssrpc4
+Provides: libgssrpc4 (= 1.22.1-3)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libgssrpc4t64_1.22.1-3_amd64.deb
+Size: 58324
+SHA256: 6c07fcda30c0db1d0502752eda2e245b0d324ebaff84d8d707400f3d6f64f687
+SHA1: f5c1da0ab8c7314ecd6df6cad39519f0506f1e13
+MD5sum: 85b222440d3489ade537949912902b58
+Description: MIT Kerberos runtime libraries - GSS enabled ONCRPC
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains an RPC library used by the Kerberos administrative
+ programs and potentially other applications.
+
+Package: libidn2-0
+Source: libidn2
+Version: 2.3.8-5
+Architecture: amd64
+Maintainer: Debian Commons <team+debian@tracker.debian.org>
+Installed-Size: 447
+Depends: libc6 (>= 2.14), libunistring5 (>= 1.1)
+Multi-Arch: same
+Homepage: https://www.gnu.org/software/libidn/#libidn2
+Priority: optional
+Section: libs
+Filename: pool/main/libi/libidn2/libidn2-0_2.3.8-5_amd64.deb
+Size: 108596
+SHA256: 25a38f7d9ba5bb3daf47a21ad5d348303e602f3c9037a48d621683fe87e7ce28
+SHA1: ad7ca7a75c1ded35bf9653d98105864872b70c7b
+MD5sum: bc778e95871ecd13073e2bdaab8d6ae7
+Description: Internationalized domain names (IDNA2008/TR46) library
+ Libidn2 implements the revised algorithm for internationalized domain
+ names called IDNA2008/TR46.
+ .
+ This package contains runtime libraries.
+
+Package: libk5crypto3
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 260
+Depends: libc6 (>= 2.38), libkrb5support0 (= 1.22.1-3)
+Suggests: krb5-doc, krb5-user
+Breaks: libgssapi-krb5-2 (<= 1.18~), libkrb5-3 (<= 1.18~)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libk5crypto3_1.22.1-3_amd64.deb
+Size: 78952
+SHA256: 6567c39be649ff018ccb356174886c7358e1a6888e6d13e8a7e001c76c78a20c
+SHA1: 92c1699ae1bb2a8fffc84bda518c5a6d59d68e19
+MD5sum: 5b2c754b69a682d55ea51fc9cbcf8af3
+Description: MIT Kerberos runtime libraries - Crypto Library
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the runtime cryptography libraries used by
+ applications and Kerberos clients.
+
+Package: libkadm5clnt-mit12
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 174
+Depends: libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libgssapi-krb5-2 (>= 1.17), libgssrpc4t64 (>= 1.6.dfsg.2), libk5crypto3 (>= 1.6.dfsg.2), libkrb5-3 (>= 1.15~beta1), libkrb5support0 (= 1.22.1-3)
+Suggests: krb5-doc, krb5-user
+Conflicts: libkdb5-8
+Breaks: krb5-user (<< 1.21)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libkadm5clnt-mit12_1.22.1-3_amd64.deb
+Size: 40256
+SHA256: 1dc387597181e53fbf1f9f2a124b9f4409c0b66019c2c998d9973fbe2cf96c9a
+SHA1: d8278c2f953487e824ba0083d1e1746fe53bf2b3
+MD5sum: e15db0f6e138d33fd7536ee8a3f8e2e8
+Description: MIT Kerberos runtime libraries - Administration Clients
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the runtime library used by clients of the Kerberos
+ administration protocol.
+
+Package: libkadm5srv-mit12
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 203
+Depends: libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libgssapi-krb5-2 (>= 1.6.dfsg.2), libgssrpc4t64 (>= 1.6.dfsg.2), libk5crypto3 (>= 1.6.dfsg.2), libkdb5-10t64 (>= 1.22.1), libkrb5-3 (>= 1.15~beta1), libkrb5support0 (= 1.22.1-3)
+Suggests: krb5-doc, krb5-user
+Conflicts: libkdb5-8
+Breaks: krb5-admin-server (<< 1.21), krb5-kdc (<< 1.21)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libkadm5srv-mit12_1.22.1-3_amd64.deb
+Size: 54132
+SHA256: 8638ee640df01ca5dcdc58e47f970a0ddbd8036fa525607537032e09a4092a32
+SHA1: 69d56e96e73ed84d2f909cb8dc5cc443a368489a
+MD5sum: 6dd5ee7967bc9c0914ccde2cfb22e3f9
+Description: MIT Kerberos runtime libraries - KDC and Admin Server
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the runtime library used by Kerberos administrative
+ servers.
+
+Package: libkdb5-10t64
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 163
+Depends: libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libgssrpc4t64 (>= 1.7dfsg~alpha1), libk5crypto3 (>= 1.20), libkrb5-3 (>= 1.14+dfsg), libkrb5support0 (= 1.22.1-3)
+Suggests: krb5-doc, krb5-user
+Replaces: libkdb5-10
+Provides: libkdb5-10 (= 1.22.1-3)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libkdb5-10t64_1.22.1-3_amd64.deb
+Size: 41308
+SHA256: 39d0976d282f74c5da4025d2423f1b9646499d840c586c2fa1402bce27b34e39
+SHA1: e1af18073699748b338c96ca847d0ee222df278d
+MD5sum: bba0e9fa767009c19f8dc773e4d14c74
+Description: MIT Kerberos runtime libraries - Kerberos database
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the internal Kerberos database libraries.
+
+Package: libkeyutils1
+Source: keyutils
+Version: 1.6.3-6
+Architecture: amd64
+Maintainer: Christian Kastner <ckk@debian.org>
+Installed-Size: 41
+Depends: libc6 (>= 2.14)
+Multi-Arch: same
+Homepage: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
+Priority: optional
+Section: libs
+Filename: pool/main/k/keyutils/libkeyutils1_1.6.3-6_amd64.deb
+Size: 9456
+SHA256: 0b11ad17be0300b63ad4eeb4c6450fed24d34b7b740f23e5363dcb29ee6d5eba
+SHA1: 510fbc305d8dc86f0279c13f77fa06c4c1a6c75f
+MD5sum: d94a241f2f7ab7edf5b6fb049fde8380
+Description: Linux Key Management Utilities (library)
+ Keyutils is a set of utilities for managing the key retention facility in the
+ kernel, which can be used by filesystems, block devices and more to gain and
+ retain the authorization and encryption keys required to perform secure
+ operations.
+ .
+ This package provides a wrapper library for the key management facility system
+ calls.
+
+Package: libkrb5-3
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 1100
+Depends: libkrb5support0 (= 1.22.1-3), libc6 (>= 2.38), libcom-err2 (>= 1.43.9), libk5crypto3 (>= 1.20), libkeyutils1 (>= 1.5.9), libssl3t64 (>= 3.0.0)
+Recommends: krb5-locales
+Suggests: krb5-doc, krb5-user
+Breaks: libapache2-mod-auth-kerb (<= 5.4-2.4)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libkrb5-3_1.22.1-3_amd64.deb
+Size: 335308
+SHA256: 945966e0aeae286e8d79ab85e425340348024970587027acad3d3582471f1eef
+SHA1: 7e26fef982c962eb5c53b631e073734746b581f3
+MD5sum: 1d63193cfc40dfbf23139728d6addac3
+Description: MIT Kerberos runtime libraries
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains the runtime library for the main Kerberos v5 API
+ used by applications and Kerberos clients.
+
+Package: libkrb5support0
+Source: krb5
+Version: 1.22.1-3
+Architecture: amd64
+Maintainer: Sam Hartman <hartmans@debian.org>
+Installed-Size: 135
+Depends: libc6 (>= 2.38)
+Breaks: krb5-admin-server (<< 1.20.1-4~), krb5-kdc (<< 1.20.1-4~), krb5-pkinit (<< 1.20.1-4~), krb5-user (<< 1.20.1-4~), libgssapi-krb5-2 (<< 1.20), libk5crypto3 (<< 1.20.1-4~), libkadm5clnt-mit9 (<< 1.13~alpha1-1), libkadm5srv-mit12 (<< 1.20.1-4~), libkadm5srv-mit9 (<< 1.13~alpha1-1), libkdb5-10t64 (<< 1.20.1-4~), libkdb5-8 (<< 1.16), libkrb5-3 (<< 1.20.1-4~)
+Multi-Arch: same
+Homepage: https://web.mit.edu/kerberos/
+Priority: optional
+Section: libs
+Filename: pool/main/k/krb5/libkrb5support0_1.22.1-3_amd64.deb
+Size: 31052
+SHA256: e7e2d65fa4f016fdf7d982ddd5b9c2e5ecdf2c33f41f1e4ab20de7e59aaaaacf
+SHA1: 543b9a17f6137ba55870da80b36a20cb50e8d4b2
+MD5sum: d14c2cf14d303403ba642a9faf0d229d
+Description: MIT Kerberos runtime libraries - Support library
+ Kerberos is a system for authenticating users and services on a network.
+ Kerberos is a trusted third-party service.  That means that there is a
+ third party (the Kerberos server) that is trusted by all the entities on
+ the network (users and services, usually called "principals").
+ .
+ This is the MIT reference implementation of Kerberos V5.
+ .
+ This package contains an internal runtime support library used by other
+ Kerberos libraries.
+
 Package: libllama-dev
 Source: llama.cpp
 Version: 10271+dfsg-1
@@ -277,6 +925,135 @@ Description: LLM inference in C/C++ - libraries
  libraries are not yet stable, so they are installed to private directories
  for now.
 
+Package: libnsl3
+Source: libnsl
+Version: 2.0.1-2
+Architecture: amd64
+Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Installed-Size: 58
+Depends: libc6 (>= 2.14), libtirpc3t64 (>= 1.0.2)
+Multi-Arch: same
+Homepage: https://github.com/thkukuk/libnsl
+Priority: optional
+Section: libs
+Filename: pool/main/libn/libnsl/libnsl3_2.0.1-2_amd64.deb
+Size: 15668
+SHA256: 8bad39924c34339ffe72706217cead3b83e78575b0b826614936b909cdbd2519
+SHA1: 993a6670c6f2a5c9891848efabd8fd6d22bebba8
+MD5sum: 0d517e0564ae9a187de47f13760e21f8
+Description: Public client interface for NIS(YP)
+ This package contains the libnsl library, which contains the public client
+ interface for NIS(YP). This code was formerly part of glibc, but is now
+ standalone to be able to link against TI-RPC for IPv6 support.
+
+Package: libnss-nis
+Source: libnss-nis (3.4-1)
+Version: 3.4-1+b1
+Architecture: amd64
+Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+Installed-Size: 84
+Depends: libc6 (>= 2.38), libnsl3 (>= 2.0)
+Multi-Arch: same
+Homepage: https://github.com/thkukuk/libnss_nis
+Priority: optional
+Section: admin
+Filename: pool/main/libn/libnss-nis/libnss-nis_3.4-1+b1_amd64.deb
+Size: 25348
+SHA256: 45bd5ec0373fc73dae0ed71021b1984218f1d3c477529a3c9a73a28f5e43b6b4
+SHA1: 0d7a2e5fe04922f6397699bce827f143f86ae0c5
+MD5sum: db62e2453b8f455978bed4f42fb6f17c
+Description: NSS module for using NIS as a naming service
+ This package provides a Name Service Switch that allows your NIS server
+ act as a name service. This means providing user account information,
+ group id's, host information, aliases, netgroups, and basically anything
+ else that you would normally get from /etc flat files.
+ .
+ This module was formerly part of glibc, but is now standalone to be able
+ to link against TI-RPC for IPv6 support.
+
+Package: libopenblas0
+Source: openblas
+Version: 0.3.33+ds-3
+Architecture: amd64
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Installed-Size: 73
+Depends: libopenblas0-pthread | libopenblas0-openmp | libopenblas0-serial
+Multi-Arch: same
+Homepage: https://www.openblas.net/
+Priority: optional
+Section: metapackages
+Filename: pool/main/o/openblas/libopenblas0_0.3.33+ds-3_amd64.deb
+Size: 44868
+SHA256: 7c1764c56107d228e0ab11618590f6a3be5d84444695df858ba1aaa174a1cc65
+SHA1: c7f8ff286d354b9fdf1deea9ca3472c4387c2244
+MD5sum: 048dcb4cc821972cb1828ec9b353fc74
+Description: Optimized BLAS (linear algebra) library (meta)
+ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+ .
+ On amd64, arm64, i386, loong64, ppc64el, riscv64 and s390x, all kernels are
+ included in the library and the one matching best your processor is selected
+ at runtime.
+ .
+ On other architectures, for maximum performance, you may want to rebuild
+ OpenBLAS locally, see the section: “Building an optimized OpenBLAS package for
+ your machine” in README.Debian.
+
+Package: libopenblas0-pthread
+Source: openblas
+Version: 0.3.33+ds-3
+Architecture: amd64
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Installed-Size: 46621
+Depends: libc6 (>= 2.38), libgfortran5 (>= 8)
+Provides: libblas.so.3, liblapack.so.3
+Multi-Arch: same
+Homepage: https://www.openblas.net/
+Priority: optional
+Section: libs
+Filename: pool/main/o/openblas/libopenblas0-pthread_0.3.33+ds-3_amd64.deb
+Size: 7029624
+SHA256: b058acfbf38017dc2f6dee4f44f0207588494a51b2113eed4adf20c0f73c99c8
+SHA1: a3b9ecc8e9d509eba1371f92bfc3d1e230ac099a
+MD5sum: 9e15bba623912fde7388f19352311dc4
+Description: Optimized BLAS (linear algebra) library (shared lib, pthread)
+ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+ .
+ On amd64, arm64, i386, loong64, ppc64el, riscv64 and s390x, all kernels are
+ included in the library and the one matching best your processor is selected
+ at runtime.
+ .
+ On other architectures, for maximum performance, you may want to rebuild
+ OpenBLAS locally, see the section: “Building an optimized OpenBLAS package for
+ your machine” in README.Debian.
+ .
+ Configuration: USE_THREAD=1 USE_OPENMP=0 INTERFACE64=0
+
+Package: libpng16-16t64
+Source: libpng1.6
+Version: 1.6.58-1
+Architecture: amd64
+Maintainer: Maintainers of libpng1.6 packages <libpng1.6@packages.debian.org>
+Installed-Size: 448
+Depends: libc6 (>= 2.29), zlib1g (>= 1:1.2.3.4)
+Breaks: libpng16-16 (<< 1.6.58-1)
+Replaces: libpng16-16
+Provides: libpng16-16 (= 1.6.58-1)
+Multi-Arch: same
+Homepage: http://libpng.org/pub/png/libpng.html
+Priority: optional
+Section: libs
+Filename: pool/main/libp/libpng1.6/libpng16-16t64_1.6.58-1_amd64.deb
+Size: 288792
+SHA256: e01786b8495d7e120333c5208e0d166f080b325f56d7213150a6e83ac912e4e8
+SHA1: 1ab613dec1cba491a9eea8ebd175d67956d00d0b
+MD5sum: d5a248f4584540b009637c13546997b1
+Description: PNG library - runtime (version 1.6)
+ libpng is a library implementing an interface for reading and writing
+ PNG (Portable Network Graphics) format files.
+ .
+ This package contains the runtime library files needed to run software
+ using libpng.
+
 Package: libsherpa-onnx-c-api-dev
 Source: sherpa-onnx
 Version: 1.13.5-roojs2
@@ -318,6 +1095,816 @@ Description: sherpa-onnx C API shared library
  ONNX Runtime.
  .
  This package contains the shared C (and C++) API libraries.
+
+Package: libss2
+Source: e2fsprogs
+Version: 1.47.4-1
+Architecture: amd64
+Maintainer: Theodore Y. Ts'o <tytso@mit.edu>
+Installed-Size: 74
+Depends: libc6 (>= 2.34), libcom-err2 (>= 1.43.9)
+Breaks: libss2t64 (<< 1.47.0-2.4~exp1~)
+Replaces: e2fsprogs (<< 1.34-1), libss2t64
+Provides: libss2t64 (= 1.47.4-1)
+Multi-Arch: same
+Homepage: http://e2fsprogs.sourceforge.net
+Priority: optional
+Section: libs
+Filename: pool/main/e/e2fsprogs/libss2_1.47.4-1_amd64.deb
+Size: 23820
+SHA256: c6291b564e188cc502b094749bc8061cd3abc1c122dd92751e266543c0bca62b
+SHA1: 5681cc1952dd8f3df05afa5cb0e5b5ca7d9ad46f
+MD5sum: af643914bcc33e7009c881b344299b56
+Description: command-line interface parsing library
+ libss provides a simple command-line interface parser which will
+ accept input from the user, parse the command into an argv argument
+ vector, and then dispatch it to a handler function.
+ .
+ It was originally inspired by the Multics SubSystem library.
+
+Package: libssl3t64
+Source: openssl
+Version: 3.6.3-1
+Architecture: amd64
+Maintainer: Debian OpenSSL Team <pkg-openssl-devel@alioth-lists.debian.net>
+Installed-Size: 8076
+Depends: libc6 (>= 2.38), libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4), openssl-provider-legacy
+Breaks: libssl3 (<< 3.6.3-1), openssl-provider-qat (<= 2.0.0-8)
+Replaces: libssl3
+Provides: libssl3 (= 3.6.3-1)
+Multi-Arch: same
+Homepage: https://openssl-library.org
+Priority: optional
+Section: libs
+Filename: pool/main/o/openssl/libssl3t64_3.6.3-1_amd64.deb
+Size: 2487992
+SHA256: 487a94fcf2120a558b60a0fcf3b6f39cdf56f125dbe15ef62ecaed9f1cb42759
+SHA1: 89e3fedec8fd6d20a500023a4c57a51c7601a236
+MD5sum: 6dad9999025c9aed4d45a55817fa7537
+Description: Secure Sockets Layer toolkit - shared libraries
+ This package is part of the OpenSSL project's implementation of the SSL
+ and TLS cryptographic protocols for secure communication over the
+ Internet.
+ .
+ It provides the libssl and libcrypto shared libraries.
+
+Package: libtirpc3t64
+Source: libtirpc
+Version: 1.3.7+ds-1
+Architecture: amd64
+Maintainer: Josue Ortega <josue@debian.org>
+Installed-Size: 230
+Depends: libc6 (>= 2.38), libgssapi-krb5-2 (>= 1.17), libtirpc-common (>= 1.3.7+ds-1)
+Breaks: libtirpc3 (<< 1.3.7+ds-1), nfs-common (<< 1:1.2.8-7), nfs-kernel-server (<< 1:1.2.8-7)
+Replaces: libtirpc3
+Provides: libtirpc3 (= 1.3.7+ds-1)
+Multi-Arch: same
+Homepage: http://sourceforge.net/projects/libtirpc
+Priority: optional
+Section: libs
+Filename: pool/main/libt/libtirpc/libtirpc3t64_1.3.7+ds-1_amd64.deb
+Size: 82880
+SHA256: a6d18d608b5a0fe40de49b0672aae558814c04e9203c8aa14b8293da3ec2ba4a
+SHA1: eb5ae978501e455c4ce195864f55a47582b3545f
+MD5sum: bce1e55fbd63503b3586c5a72a67c012
+Description: transport-independent RPC library
+ This package contains a port of Sun's transport-independent RPC library to
+ Linux. The library is intended as a replacement for the RPC code in the GNU C
+ library, providing among others support for RPC (and in turn, NFS) over IPv6.
+
+Package: libtree-sitter-bash
+Source: tree-sitter-bash
+Version: 0.20.5-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 1386
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-bash
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-bash/libtree-sitter-bash_0.20.5-1_amd64.deb
+Size: 164636
+SHA256: 4d0f7cf0ed4e4dad2fbb2de23048d2d2393b435ff8f938fabe6dc6d7e8994b98
+SHA1: ad98f757d4bb8dd14e13877636b818b073dc0cb6
+MD5sum: 114e805e45acee4ce7dd8dc6bcf44e0d
+Description: Tree-sitter parser for Bash language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Bash language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-c-sharp
+Source: tree-sitter-c-sharp
+Version: 0.20.0-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 3966
+Depends: libc6 (>= 2.2.5)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-c-sharp
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-c-sharp/libtree-sitter-c-sharp_0.20.0-1_amd64.deb
+Size: 184262
+SHA256: e53527757aa90ea93733d9fa92010a9fa427f01c2fd90d6180c31570ac30f535
+SHA1: 0e8bace2a06c7a8688001a5558f14ad836e558de
+MD5sum: f8415a350ff9c07a68221269595fe5a9
+Description: Tree-sitter parser for C_sharp language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for C_sharp language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-cpp
+Source: tree-sitter-cpp
+Version: 0.20.5-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 4698
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-cpp
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-cpp/libtree-sitter-cpp_0.20.5-1_amd64.deb
+Size: 239596
+SHA256: dbe6b0043cdfb4e8edfe58ef794691509ffb382ef45af953b01b08dec04005f6
+SHA1: 55dd3d8990c7ff882bca8457b6c9918421317892
+MD5sum: 6ecc57bb81c0ec1b1fcacbaf6183484e
+Description: Tree-sitter parser for Cpp language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Cpp language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-go
+Source: tree-sitter-go
+Version: 0.20.0-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 309
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-go
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-go/libtree-sitter-go_0.20.0-1_amd64.deb
+Size: 45394
+SHA256: 4fd54e9eb7c027079475c0eb08455476de300a7b895feffeaaf5e3d68b87b3f1
+SHA1: 7710eb56c19fafd398eaa8f81b56ec4386bd9cac
+MD5sum: 2b1f193628c0d380b49a63c2f21347ae
+Description: Tree-sitter parser for Go language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Go language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-java
+Source: tree-sitter-java
+Version: 0.20.2-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 489
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-java
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-java/libtree-sitter-java_0.20.2-1_amd64.deb
+Size: 51000
+SHA256: ac382e398d0a255ae010bdde56eed95b7cb0e220727487f242abd6f2c53ec5df
+SHA1: 2438a83ce839523dcad665c707b2bffae415bbe8
+MD5sum: f1c07f637e826cbfe0fe1fe8f1909cc4
+Description: Tree-sitter parser for Java language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Java language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-javascript
+Source: tree-sitter-javascript
+Version: 0.20.4-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 634
+Depends: libc6 (>= 2.4)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-javascript
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-javascript/libtree-sitter-javascript_0.20.4-1_amd64.deb
+Size: 68982
+SHA256: bab16a553be79e6c80fa6f6f570c9406f388ed428c8aa914ffb0e94f805ac29b
+SHA1: ee101727d6819dfa13a03844fbe5956b7a79302f
+MD5sum: 239e8b3a16fb5fc57a80b65f393d975d
+Description: Tree-sitter parser for Javascript language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Javascript language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-markdown
+Source: tree-sitter-markdown
+Version: 0.20.8-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 825
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter-grammars/tree-sitter-markdown
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-markdown/libtree-sitter-markdown_0.20.8-1_amd64.deb
+Size: 103916
+SHA256: ffba77b96a4da5455c34eafb6601726f526054cc89e0ab62c91ca31ea2a173fa
+SHA1: 883f39f8852f3c306741858773fd3b9fc6576b23
+MD5sum: 4a889d0b8394815af71a72fa50da0320
+Description: Tree-sitter parser for Markdown language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Markdown language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-php
+Source: tree-sitter-php
+Version: 0.20.0-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 766
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-php
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-php/libtree-sitter-php_0.20.0-1_amd64.deb
+Size: 71260
+SHA256: 9f99ee2b4ac22b293109e6a87ccc5c972e4c5d0dc48d379653a021415744f1a9
+SHA1: c72a2109b9bd436c8d2b3c5f938d8392dba77708
+MD5sum: b64eba6a7fe025e1da8beb0935ce896d
+Description: Tree-sitter parser for Php language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Php language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-python
+Source: tree-sitter-python
+Version: 0.20.4-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 538
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-python
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-python/libtree-sitter-python_0.20.4-1_amd64.deb
+Size: 65148
+SHA256: d1249cb2d3072afa8bf03a1288fa5b5e1699bb8e2e4ebdba1fdf8b59c442981e
+SHA1: df05057e69b3db133cbd03133d75e470a72bf6de
+MD5sum: 97d3dcda7d22a27c9aec802b1ad2a9bf
+Description: Tree-sitter parser for Python language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Python language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-ruby
+Source: tree-sitter-ruby
+Version: 0.20.1-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 2074
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-ruby
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-ruby/libtree-sitter-ruby_0.20.1-1_amd64.deb
+Size: 124372
+SHA256: 33f814c71805e9ef014503fe37f3bf20da51e8065eb2e5b9dca70406a223ed4b
+SHA1: 3da111d6bb747571ffc9a0df1a5e7e8b56dbe6a1
+MD5sum: 58ee1ae2da1d0a66f8ef064f204358bd
+Description: Tree-sitter parser for Ruby language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Ruby language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-rust
+Source: tree-sitter-rust
+Version: 0.20.4-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 906
+Depends: libc6 (>= 2.2.5)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-rust
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-rust/libtree-sitter-rust_0.20.4-1_amd64.deb
+Size: 84612
+SHA256: e46e0568f7ceff46d9863082a2b925874200622ef715ffce431bcaf5eee0eeaa
+SHA1: fdef642cf0e5a55656f02adf674d735ff660b114
+MD5sum: 9df96819d942981321680f98da607f13
+Description: Tree-sitter parser for Rust language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Rust language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-vala
+Source: tree-sitter-vala
+Version: 0.20.8-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 605
+Multi-Arch: foreign
+Homepage: https://github.com/vala-lang/tree-sitter-vala
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-vala/libtree-sitter-vala_0.20.8-1_amd64.deb
+Size: 55962
+SHA256: bcd497c3529e2c68d1045b3211f38d78adb6d958b7c61ae173a6cec6cb7445e9
+SHA1: 239774bfb09d69aa7caa13306c2d38396687a19e
+MD5sum: b84d6db92ba3ba1a94a4f138df364439
+Description: Tree-sitter parser for Vala language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Vala language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libunistring5
+Source: libunistring
+Version: 1.4.2-1
+Architecture: amd64
+Maintainer: Jörg Frings-Fürst <debian@jff.email>
+Installed-Size: 2102
+Depends: libc6 (>= 2.34)
+Multi-Arch: same
+Homepage: https://www.gnu.org/software/libunistring/
+Priority: optional
+Section: libs
+Filename: pool/main/libu/libunistring/libunistring5_1.4.2-1_amd64.deb
+Size: 479564
+SHA256: 509fb596f6b4de34f1d9cb5a0001abc3c6c51f4800e908ef888262ebdaaefa3b
+SHA1: 8b188f01b3a8ee30b2f0d58a800acb30bb570a0d
+MD5sum: 630f61cdd6e58cd1003b16c2b155d1fa
+Description: Unicode string library for C
+ The 'libunistring' library implements Unicode strings (in the UTF-8,
+ UTF-16, and UTF-32 encodings), together with functions for Unicode
+ characters (character names, classifications, properties) and
+ functions for string processing (formatted output, width, word
+ breaks, line breaks, normalization, case folding, regular
+ expressions).
+ .
+ This package contains the shared library.
+
+Package: libvulkan1
+Source: vulkan-loader
+Version: 1.4.357.0-1
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 654
+Depends: libc6 (>= 2.38)
+Recommends: mesa-vulkan-drivers | vulkan-icd
+Breaks: libvulkan-dev (<< 1.1.70+dfsg1-2), vulkan-loader
+Replaces: libvulkan-dev (<< 1.1.70+dfsg1-2), vulkan-loader
+Multi-Arch: same
+Homepage: https://github.com/KhronosGroup/Vulkan-Loader
+Priority: optional
+Section: libs
+Filename: pool/main/v/vulkan-loader/libvulkan1_1.4.357.0-1_amd64.deb
+Size: 150292
+SHA256: 1e3b644b8f9a2593ea8c4b80a35f90debab13f74108257d0de18ee89386f497d
+SHA1: 3958c7259d9937cc6e162f778c256c839a09dd8c
+MD5sum: 1bed4bd498f47911b5383efe0af12ee5
+Description: Vulkan loader library
+ The Loader implements the main VK library. It handles layer management and
+ driver management. The loader fully supports multi-gpu operation. As part of
+ this, it dispatches API calls to the correct driver, and to the correct
+ layers, based on the GPU object selected by the application.
+ .
+ This package includes the loader library.
+
+Package: libwayland-client0
+Source: wayland
+Version: 1.26.0-1
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 99
+Depends: libc6 (>= 2.38), libffi8 (>= 3.4)
+Multi-Arch: same
+Homepage: https://wayland.freedesktop.org/
+Priority: optional
+Section: libs
+Filename: pool/main/w/wayland/libwayland-client0_1.26.0-1_amd64.deb
+Size: 29364
+SHA256: b432b1d30319f371efe776209e36143a23289285dd26d41751e89ad4a88b2c33
+SHA1: aabcdf08f5a7ae452accc846eb443649f99ea1f7
+MD5sum: 30c2e8a464424ccab72ced7b4dd3dc3b
+Description: wayland compositor infrastructure - client library
+ Wayland is a protocol for a compositor to talk to its clients as well
+ as a C library implementation of that protocol. The compositor can be
+ a standalone display server running on Linux kernel modesetting and
+ evdev input devices, an X application, or a wayland client
+ itself. The clients can be traditional applications, X servers
+ (rootless or fullscreen) or other display servers.
+ .
+ This package ships the library that implements the client side of
+ the Wayland protocol.
+
+Package: libwebkitgtk-6.0-4
+Source: webkit2gtk
+Version: 2.50.4-0ubuntu0.25.04.1+webkitgtk1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 92892
+Depends: libjavascriptcoregtk-6.0-1 (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, libgles2, bubblewrap (>= 0.3.1), xdg-dbus-proxy, libatomic1 (>= 4.8), libc6 (>= 2.38), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.14.0), libdrm2 (>= 2.4.107), libenchant-2-2 (>= 2.2.3), libepoxy0 (>= 1.3), libexpat1 (>= 2.1~beta3), libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.11.1), libgbm1 (>= 21.3.0~rc1), libgcc-s1 (>= 4.0), libgcrypt20 (>= 1.11.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0t64 (>= 2.80.0), libgpg-error0 (>= 1.14), libgraphene-1.0-0 (>= 1.5.4), libgstreamer-gl1.0-0 (>= 1.14.0), libgstreamer-plugins-base1.0-0 (>= 1.23.1), libgstreamer1.0-0 (>= 1.25.1), libgtk-4-1 (>= 4.13.8), libharfbuzz-icu0 (>= 0.9.9), libharfbuzz0b (>= 1.8.6), libhyphen0 (>= 2.7.1), libicu76 (>= 76.1-1~), libjpeg8 (>= 8c), libjxl0.11 (>= 0.6.1), liblcms2-2 (>= 2.2+git20110628), libmanette-0.2-0 (>= 0.1.2), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libpng16-16t64 (>= 1.6.46), libseccomp2 (>= 0.0.0~20120605), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.8.7), libstdc++6 (>= 13.1), libsystemd0, libtasn1-6 (>= 4.14), libvulkan1 (>= 1.2.131.2), libwayland-client0 (>= 1.20.0), libwayland-egl1 (>= 1.15.0), libwayland-server0 (>= 1.0.2), libwebp7 (>= 1.5.0), libwebpdemux2 (>= 1.5.0), libwebpmux3 (>= 1.5.0), libwoff1 (>= 1.0.0), libx11-6, libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), zlib1g (>= 1:1.2.11)
+Recommends: gstreamer1.0-gl, libgl1-mesa-dri, xdg-desktop-portal-gtk
+Suggests: gstreamer1.0-libav, gstreamer1.0-plugins-bad, gstreamer1.0-alsa
+Multi-Arch: same
+Homepage: https://webkitgtk.org/
+Priority: optional
+Section: libs
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-4_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb
+Size: 24795986
+SHA256: 311f007a6ad36a28ef6c5127dfbd60b16b769ea42885afe669c924f5338496d0
+SHA1: 8071c78412808e1b1acfe4e97522c4033f62e367
+MD5sum: 266e0fed4e5321d6ad298072b6c01109
+Description: Web content engine library for GTK
+ WebKit is a web content engine, derived from KHTML and KJS from KDE, and
+ used primarily in Apple's Safari browser.  It is made to be embedded in
+ other applications, such as mail readers, or web browsers.
+ .
+ It is able to display content such as HTML, SVG, XML, and others. It also
+ supports DOM, XMLHttpRequest, XSLT, CSS, JavaScript/ECMAScript and more.
+ .
+ WebKitGTK is a WebKit port designed to be used in GTK applications.
+ This build provides version 6.0 of the API and uses libsoup v3 for
+ the networking stack and the GTK 4 widget toolkit.
+ .
+ This package contains the shared libraries.
+Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
+
+Package: libwebkitgtk-6.0-dev
+Source: webkit2gtk
+Version: 2.50.4-0ubuntu0.25.04.1+webkitgtk1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2370
+Depends: libwebkitgtk-6.0-4 (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), gir1.2-gtk-4.0-dev, gir1.2-soup-3.0-dev, gir1.2-webkit-6.0 (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1)
+Provides: gir1.2-webkit-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), gir1.2-webkitwebprocessextension-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1)
+Homepage: https://webkitgtk.org/
+Priority: optional
+Section: libdevel
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-dev_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb
+Size: 189052
+SHA256: fe4c692a5613c0b6fa979dece2c595b777483996dc11873b72cf75985d52a22c
+SHA1: e563c180ce7699bfc74dd0fd42e4de39b6c9f441
+MD5sum: dc0ec3d3f4a6bf237d66f8d9dfb8b938
+Description: Web content engine library for GTK - development files
+ WebKit is a web content engine, derived from KHTML and KJS from KDE, and
+ used primarily in Apple's Safari browser.  It is made to be embedded in
+ other applications, such as mail readers, or web browsers.
+ .
+ It is able to display content such as HTML, SVG, XML, and others. It also
+ supports DOM, XMLHttpRequest, XSLT, CSS, JavaScript/ECMAScript and more.
+ .
+ WebKitGTK is a WebKit port designed to be used in GTK applications.
+ This build provides version 6.0 of the API and uses libsoup v3 for
+ the networking stack and the GTK 4 widget toolkit.
+ .
+ This package contains the development files.
+Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
+
+Package: libxcb-dri3-0
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 137
+Depends: libc6 (>= 2.4), libxcb1 (>= 1.12)
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb-dri3-0_1.17.0-2+b2_amd64.deb
+Size: 106812
+SHA256: 0615ec62c1ac2c4849c04cd6c663d7397287e5c6e9a3fa4f4a42cbe545be4d79
+SHA1: 8da592235f841e332fb4f18a08fc18549136c844
+MD5sum: 8102afc459525928792fba0957d8432f
+Description: X C Binding, dri3 extension
+ This package contains the library files needed to run software using
+ libxcb-dri3, the dri3 extension for the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb-present0
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 128
+Depends: libc6 (>= 2.4), libxcb1
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb-present0_1.17.0-2+b2_amd64.deb
+Size: 105564
+SHA256: 6003cce386cf8cd7502022d8f91ffe92911e9d360477ce987eb8660294490a43
+SHA1: cb6fc78c088bf2225f39b39d194467b16524dbd6
+MD5sum: 5b3e89b0eca2833f89da25d7802ddee8
+Description: X C Binding, present extension
+ This package contains the library files needed to run software using
+ libxcb-present, the present extension for the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb-randr0
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 197
+Depends: libc6 (>= 2.4), libxcb1 (>= 1.9.2)
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb-randr0_1.17.0-2+b2_amd64.deb
+Size: 116516
+SHA256: a0e3b0ff8137d2fa3ef3de2b1a58f3e56f70c67e9edbf08ffaa298ecc14676e6
+SHA1: 50fc2ff5fa9498bfe42e3b7c45965345fbe63cd9
+MD5sum: f088a2e2945f3ef453f9071be84fe6be
+Description: X C Binding, randr extension
+ This package contains the library files needed to run software using
+ libxcb-randr, the randr extension for the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb-shm0
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 127
+Depends: libc6 (>= 2.4), libxcb1 (>= 1.12)
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb-shm0_1.17.0-2+b2_amd64.deb
+Size: 105284
+SHA256: 12299c866c4b5e7b9da3ca7f1b9fbba992b744e10684e8f19830def9bc18ce67
+SHA1: cce38d0dc1462968cda0aed4de2d176d5dd6a257
+MD5sum: 86da581b36684dd51c1e2f72a6ab7232
+Description: X C Binding, shm extension
+ This package contains the library files needed to run software using
+ libxcb-shm, the shm extension for the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb-sync1
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 150
+Depends: libc6 (>= 2.14), libxcb1
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb-sync1_1.17.0-2+b2_amd64.deb
+Size: 108568
+SHA256: 1c6b418990335aeb1259ac8e27022f6b6aa97410c0617935933abccd0aa8c831
+SHA1: 12bc0e3855808129b2aa062c4b587d95f17e01a5
+MD5sum: 2bf8f47338ef5fbdbaa96906aa5ef9d3
+Description: X C Binding, sync extension
+ This package contains the library files needed to run software using
+ libxcb-sync, the sync extension for the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb-xfixes0
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 152
+Depends: libc6 (>= 2.4), libxcb1
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb-xfixes0_1.17.0-2+b2_amd64.deb
+Size: 109156
+SHA256: b9ebf6d05c193da5776c02879ca605eaa8f4baa2a847f4d562154bdeafa8966c
+SHA1: 492f9dbfda03923cf6f127fb54f21820ca728608
+MD5sum: e93c45be81907a867e8a978b9ec61714
+Description: X C Binding, xfixes extension
+ This package contains the library files needed to run software using
+ libxcb-xfixes, the xfixes extension for the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb1
+Source: libxcb (1.17.0-2)
+Version: 1.17.0-2+b2
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 301
+Depends: libc6 (>= 2.38), libxau6 (>= 1:1.0.11), libxdmcp6 (>= 1:1.1.5)
+Multi-Arch: same
+Homepage: https://xcb.freedesktop.org
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxcb/libxcb1_1.17.0-2+b2_amd64.deb
+Size: 144420
+SHA256: 86d6a614fe7b663610b4d170c84ef6f4371b3ef8e2af5df7e1e4a82b2c290119
+SHA1: cf30b79b9f92fe886b47980a8ca3e9ca5b7ccc11
+MD5sum: 173ddd1a09b9493735ca933bc25873a9
+Description: X C Binding
+ This package contains the library files needed to run software using libxcb,
+ the X C Binding.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxshmfence1
+Source: libxshmfence
+Version: 1.3.3-1
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 36
+Depends: libc6 (>= 2.38)
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/xorg/lib/libxshmfence
+Priority: optional
+Section: libs
+Filename: pool/main/libx/libxshmfence/libxshmfence1_1.3.3-1_amd64.deb
+Size: 10884
+SHA256: 7b339e9e5b2349723d35af4df89bcc7aa456bbdf8ba1754358f9b44c3fe1f964
+SHA1: eabb0e94298339585895e5070221de4ea4edd648
+MD5sum: 5960dbe12a2b1a278dca22453be659b6
+Description: X shared memory fences - shared library
+ This library provides an interface to shared-memory fences for
+ synchronization between the X server and direct-rendering clients.
+ .
+ This package contains the xshmfence shared library.
+
+Package: libzstd1
+Source: libzstd
+Version: 1.5.7+dfsg-4
+Architecture: amd64
+Maintainer: RPM packaging team <team+pkg-rpm@tracker.debian.org>
+Installed-Size: 839
+Depends: libc6 (>= 2.34)
+Multi-Arch: same
+Homepage: https://github.com/facebook/zstd
+Priority: optional
+Section: libs
+Filename: pool/main/libz/libzstd/libzstd1_1.5.7+dfsg-4_amd64.deb
+Size: 304040
+SHA256: 93e7930e4c25b918f1dd980cc1c6d4487654a248f5fa71eacb976ed7bbe954bd
+SHA1: f273ef0e133ffd3a8ff2d65929bc06d52e9ca475
+MD5sum: 939a51c82ec81e68bf2a644ba8c5a399
+Description: fast lossless compression algorithm
+ Zstd, short for Zstandard, is a fast lossless compression algorithm, targeting
+ real-time compression scenarios at zlib-level compression ratio.
+ .
+ This package contains the shared library.
+
+Package: mesa-vulkan-drivers
+Source: mesa
+Version: 26.1.2-1~bpo13+1
+Architecture: amd64
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Installed-Size: 116230
+Depends: libvulkan1, libc6 (>= 2.39), libdisplay-info2 (>= 0.2.0), libdrm-amdgpu1 (>= 2.4.124-1), libdrm2 (>= 2.4.124-1), libelf1t64 (>= 0.142), libexpat1 (>= 2.0.1), libgcc-s1 (>= 4.2), libllvm19 (>= 1:19.1.0), libpng16-16t64 (>= 1.6.46), libstdc++6 (>= 13.1), libwayland-client0 (>= 1.23.0), libx11-xcb1, libxcb-dri3-0 (>= 1.17.0), libxcb-present0 (>= 1.17.0), libxcb-randr0 (>= 1.13), libxcb-shm0, libxcb-sync1, libxcb-xfixes0, libxcb1 (>= 1.9.2), libxshmfence1, libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)
+Provides: vulkan-icd
+Multi-Arch: same
+Homepage: https://mesa3d.org/
+Priority: optional
+Section: libs
+Filename: pool/main/m/mesa/mesa-vulkan-drivers_26.1.2-1~bpo13+1_amd64.deb
+Size: 17667688
+SHA256: 703fc269cbe9641e8a52bf664f9b4395547644c372d0d39e6d9373f7afd5ad41
+SHA1: 3f817f73053bdc8e17a059e529fc7361e5b8820d
+MD5sum: bc473112e84f2984f69a06b8c24df75b
+Description: Mesa Vulkan graphics drivers
+ Vulkan is a low-overhead 3D graphics and compute API. This package
+ includes Vulkan drivers provided by the Mesa project.
 
 Package: ollmchat
 Version: 1.2.4~alpha-1
@@ -374,6 +1961,33 @@ Description: OLLMchat - LLM chat application (remote backends only)
  .
  For local GGUF embedding and chat via libllama, install the ollmchat
  package instead (see debian/README).
+
+Package: openssl-provider-legacy
+Source: openssl
+Version: 4.0.1-1
+Architecture: amd64
+Maintainer: Debian OpenSSL Team <pkg-openssl-devel@alioth-lists.debian.net>
+Installed-Size: 436
+Depends: libc6 (>= 2.14), libssl4 (>= 4.0.0)
+Multi-Arch: foreign
+Homepage: https://openssl-library.org
+Priority: optional
+Section: utils
+Filename: pool/main/o/openssl/openssl-provider-legacy_4.0.1-1_amd64.deb
+Size: 327864
+SHA256: 8fd058c4f8e75ea3dcb2bfb01bbd8977888c58e1de0bec670a441a81b0a6a4ee
+SHA1: 2d1f8ae308067b6160643c8ade6a8e78f70dc97c
+MD5sum: 8071bface5ae022df45e806b718f5245
+Description: Secure Sockets Layer toolkit - cryptographic utility
+ This package is part of the OpenSSL project's implementation of the SSL
+ and TLS cryptographic protocols for secure communication over the
+ Internet.
+ .
+ This package contains the legacy provider. The OpenSSL legacy provider
+ supplies OpenSSL implementations of algorithms that have been deemed legacy.
+ Such algorithms have commonly fallen out of use, have been deemed insecure by
+ the cryptography community, or something similar.
+ For details see OSSL_PROVIDER-legacy man page.
 
 Package: roobuilder
 Version: 5.0.11
