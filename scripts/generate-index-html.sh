@@ -363,6 +363,73 @@ apt_suite_distro() {
   printf '%s\n' Ubuntu
 }
 
+apt_suite_release() {
+  case "$1" in
+    bookworm) printf '%s\n' "12" ;;
+    trixie) printf '%s\n' "13" ;;
+    forky) printf '%s\n' "14" ;;
+    sid) printf '%s\n' "unstable" ;;
+    plucky) printf '%s\n' "25.04" ;;
+    questing) printf '%s\n' "25.10" ;;
+    resolute) printf '%s\n' "26.04" ;;
+    noble) printf '%s\n' "24.04" ;;
+    jammy) printf '%s\n' "22.04" ;;
+    *) return 1 ;;
+  esac
+}
+
+is_debian_suite() {
+  local suite="$1" s
+  for s in "${debian_columns[@]}"; do
+    [[ "$s" == "$suite" ]] && return 0
+  done
+  return 1
+}
+
+write_apt_suite_intro() {
+  local suite="$1" release codename distro parts=()
+  for suite in "$@"; do
+    release="$(apt_suite_release "$suite" || true)"
+    codename="$(html_escape "$suite")"
+    if [[ -n "$release" ]]; then
+      if is_debian_suite "$suite"; then
+        distro="Debian"
+      else
+        distro="Ubuntu"
+      fi
+      parts+=("$(html_escape "$distro") $(html_escape "$release") (<code>${codename}</code>)")
+    else
+      parts+=("<code>${codename}</code>")
+    fi
+  done
+  local joined
+  printf -v joined '%s, ' "${parts[@]}"
+  printf '%s' "${joined%, }"
+}
+
+write_apt_suite_th() {
+  local suite="$1" release codename distro
+  release="$(apt_suite_release "$suite" || true)"
+  codename="$(html_escape "$suite")"
+  if [[ -n "$release" ]]; then
+    if is_debian_suite "$suite"; then
+      distro="Debian"
+    else
+      distro="Ubuntu"
+    fi
+    printf '<th class="suite"><span class="suite-release">%s %s</span><span class="suite-codename">%s</span></th>\n' \
+      "$(html_escape "$distro")" "$(html_escape "$release")" "$codename"
+  else
+    printf '<th class="suite">%s</th>\n' "$codename"
+  fi
+}
+
+write_fedora_th() {
+  local fc="$1"
+  printf '<th class="suite"><span class="suite-release">Fedora %s</span><span class="suite-codename">fc%s</span></th>\n' \
+    "$(html_escape "$fc")" "$(html_escape "$fc")"
+}
+
 is_fedora_upstream() {
   case "$1" in
     libllama*|llama-*|libggml*|ggml-*)
@@ -440,13 +507,13 @@ write_group_table() {
   fi
   printf '</tr>\n<tr>\n'
   for suite in "${debian_columns[@]}"; do
-    printf '<th>%s</th>\n' "$(html_escape "$suite")"
+    write_apt_suite_th "$suite"
   done
   for suite in "${ubuntu_columns[@]}"; do
-    printf '<th>%s</th>\n' "$(html_escape "$suite")"
+    write_apt_suite_th "$suite"
   done
   for fc in "${fedora_columns[@]}"; do
-    printf '<th>fc%s</th>\n' "$(html_escape "$fc")"
+    write_fedora_th "$fc"
   done
   printf '</tr>\n</thead>\n<tbody>\n'
   while IFS= read -r pkg; do
@@ -488,6 +555,8 @@ th { background: #eee; }
 th.pkg { text-align: left; min-width: 9rem; max-width: 16rem; }
 .pkg-name { display: block; }
 .pkg-desc { display: block; font-weight: 400; font-size: 0.8em; color: #555; }
+th.suite .suite-release { display: block; font-variant-numeric: tabular-nums; }
+th.suite .suite-codename { display: block; font-weight: 400; font-size: 0.75em; color: #555; }
 td { text-align: center; max-width: 6.5rem; }
 td.ship .ver, td.distro .ver { display: block; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 td.ship .arch, td.distro .arch { display: block; font-size: 0.75em; color: #666; }
@@ -501,7 +570,7 @@ td.none { color: #888; }
   pre { background: #222; }
   th { background: #222; }
   th, td { border-color: #555; }
-  .pkg-desc, td.ship .arch, td.distro .arch { color: #aaa; }
+  .pkg-desc, td.ship .arch, td.distro .arch, th.suite .suite-codename { color: #aaa; }
   td.none { color: #888; }
 }
 </style>
@@ -513,17 +582,13 @@ HEAD
 
   printf '<h2>APT</h2>\n<p>'
   if [[ "${#debian_columns[@]}" -gt 0 ]]; then
-    printf 'Debian:'
-    for suite in "${debian_columns[@]}"; do
-      printf ' <code>%s</code>' "$(html_escape "$suite")"
-    done
+    printf 'Debian: '
+    write_apt_suite_intro "${debian_columns[@]}"
     printf '.'
   fi
   if [[ "${#ubuntu_columns[@]}" -gt 0 ]]; then
-    printf ' Ubuntu:'
-    for suite in "${ubuntu_columns[@]}"; do
-      printf ' <code>%s</code>' "$(html_escape "$suite")"
-    done
+    printf ' Ubuntu: '
+    write_apt_suite_intro "${ubuntu_columns[@]}"
     printf '.'
   fi
   printf ' Architectures: <code>amd64</code>, <code>arm64</code>.</p>\n'

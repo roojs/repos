@@ -89,10 +89,18 @@ pool_suite_index() {
   printf '%s\n' "$dest"
 }
 
-pool_suite_has_package() {
-  local suite="$1" arch="$2" name="$3" idx
-  idx="$(pool_suite_index "$suite" "$arch")" || return 1
-  grep -qx "Package: ${name}" "$idx"
+pool_sid_index() {
+  local arch="$1" dest="${pool_work}/sid-${arch}.packages"
+  if [[ -f "$dest" ]]; then
+    printf '%s\n' "$dest"
+    return 0
+  fi
+  mkdir -p "$(dirname "$dest")"
+  if ! curl -fsSL "https://deb.debian.org/debian/dists/sid/main/binary-${arch}/Packages.xz" | xzcat > "$dest"; then
+    rm -f "$dest"
+    return 1
+  fi
+  printf '%s\n' "$dest"
 }
 
 pool_suite_libc6() {
@@ -320,9 +328,6 @@ pool_fetch_into() {
       [[ -n "$name" ]] || continue
       while IFS= read -r suite; do
         [[ -n "$suite" ]] || continue
-        if pool_suite_has_package "$suite" "$arch" "$name"; then
-          continue
-        fi
         libc="$(pool_suite_libc6 "$suite" "$arch")"
         if [[ -z "$libc" ]]; then
           echo "Skipping ${name} for ${suite}/${arch}: could not read libc6 version." >&2
@@ -359,9 +364,6 @@ pool_fetch_into() {
         fi
         for suite in $parent_suites; do
           [[ -n "$suite" ]] || continue
-          if pool_suite_has_package "$suite" "$arch" "$name"; then
-            continue
-          fi
           libc="$(pool_suite_libc6 "$suite" "$arch")"
           if [[ -z "$libc" ]]; then
             echo "Skipping ${name} for ${suite}/${arch}: could not read libc6 version." >&2
