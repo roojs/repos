@@ -194,6 +194,8 @@ class TreeSitterPackageBuilder {
 
         echo "Starting build process for " . count($parsers) . " parsers...\n";
         echo "Output directory: {$this->baseDir}\n\n";
+
+        $this->configureGitSafeDirectories();
         
         $startTime = microtime(true);
         
@@ -1219,19 +1221,23 @@ PKGCONFIG;
         }
     }
     
+    private function configureGitSafeDirectories() {
+        exec('git config --global --add safe.directory ' . escapeshellarg($this->baseDir) . ' 2>/dev/null');
+        exec('git config --global --add safe.directory ' . escapeshellarg('*') . ' 2>/dev/null');
+    }
+
     /**
      * Find tree-sitter binary - check system first, then npm
      */
     private function findTreeSitterBinary(): ?string {
-        // Check for system tree-sitter
-        exec("which tree-sitter 2>/dev/null", $output, $returnCode);
+        exec('command -v tree-sitter 2>/dev/null', $output, $returnCode);
         if ($returnCode === 0 && !empty($output)) {
             $path = trim($output[0]);
-            if (!empty($path) && file_exists($path)) {
+            if ($path !== '' && file_exists($path)) {
                 return $path;
             }
         }
-        
+
         return null;
     }
     
@@ -1548,7 +1554,7 @@ try {
     }
     
     // Check for optional tree-sitter (will use npm fallback if not found)
-    exec("which tree-sitter 2>/dev/null", $output, $returnCode);
+    exec('command -v tree-sitter 2>/dev/null', $output, $returnCode);
     if ($returnCode === 0) {
         echo "Info: Using system tree-sitter (will skip npm install for tree-sitter-cli)\n";
     } else {

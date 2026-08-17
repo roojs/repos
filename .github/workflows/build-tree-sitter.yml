@@ -97,7 +97,9 @@ jobs:
 
       - name: Build RPM packages
         id: build
-        run: php scripts/tree-sitter-packages.php --rpm
+        run: |
+          git config --global --add safe.directory '*'
+          php scripts/tree-sitter-packages.php --rpm
         env:
           TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
           TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output-rpm
