@@ -165,7 +165,8 @@ jobs:
           chmod +x scripts/reprepro-ingest.sh
           ./scripts/reprepro-ingest.sh \
             "${GITHUB_WORKSPACE}/pages" \
-            "${GPG_KEY_ID}"
+            "${GPG_KEY_ID}" \
+            config/repos.json
 
       - name: Build DNF repositories
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true') && steps.fetch-rpms.outputs.found == 'true'

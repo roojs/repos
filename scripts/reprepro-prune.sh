@@ -6,14 +6,17 @@ repo_root="${1:?repo root required}"
 config="${2:?config path required}"
 manifest="${3:?manifest path required}"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/deb-pkg-name.sh
+source "${script_dir}/lib/deb-pkg-name.sh"
+
 if [[ ! -f "$manifest" ]]; then
   echo "Missing manifest: ${manifest}" >&2
   exit 1
 fi
 
 deb_pkg_from_filename() {
-  local filename="$1"
-  printf '%s\n' "${filename%%_*}"
+  deb_pkg_name_from_filename "$1"
 }
 
 removed=0

@@ -3,6 +3,7 @@ set -euo pipefail
 
 repo_root="${1:?repo root required}"
 gpg_key_id="${2:?gpg key id required}"
+config="${3:-}"
 
 incoming="${repo_root}/incoming-debs"
 index="${incoming}/.package-index.json"
@@ -10,6 +11,30 @@ index="${incoming}/.package-index.json"
 if [[ ! -f "$index" ]]; then
   echo "Missing incoming-debs/.package-index.json" >&2
   exit 1
+fi
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=lib/deb-pkg-name.sh
+source "${script_dir}/lib/deb-pkg-name.sh"
+
+if [[ -n "$config" && -f "$config" ]]; then
+  owner="$(jq -r '.owner' "$config")"
+  while IFS= read -r repo; do
+    [[ -n "$repo" ]] || continue
+    tag="$(jq -r --arg repo "$repo" '.[$repo].tag // empty' "$index")"
+    [[ -n "$tag" ]] || continue
+    mkdir -p "${incoming}/${repo}"
+    while IFS= read -r filename; do
+      [[ -n "$filename" ]] || continue
+      deb="${incoming}/${repo}/${filename}"
+      [[ -f "$deb" ]] && continue
+      echo "Re-downloading missing ${filename} from ${owner}/${repo}@${tag}"
+      gh release download "$tag" -R "${owner}/${repo}" \
+        --pattern "$filename" \
+        -D "${incoming}/${repo}" \
+        --clobber
+    done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' "$index")
+  done < <(jq -r 'keys[]' "$index")
 fi
 
 sed -i "s/SignWith: default/SignWith: ${gpg_key_id}/g" "${repo_root}/conf/distributions"
