@@ -1,6 +1,6 @@
 # llama.cpp missing on Ubuntu 26.04 (resolute) after upstream-skip fix
 
-Status: open
+Status: fixed (`scripts/fetch-upstream.sh` — seed exception + version-aware upstream skip)
 
 Checklist: `docs/guide-to-writing-plans.md`
 

@@ -316,6 +316,31 @@ pool_suite_has_package() {
   grep -qx "Package: ${name}" "$idx"
 }
 
+pool_suite_package_version() {
+  local suite="$1" arch="$2" name="$3" idx
+  idx="$(pool_suite_index "$suite" "$arch")" || return 1
+  pool_index_package_version "$idx" "$name"
+}
+
+# True when a walked dependency should not be imported because upstream already
+# ships it. Returns false (do not skip) when upstream is older than a version pin.
+pool_skip_upstream_package() {
+  local suite="$1" arch="$2" name="$3" op="${4:-}" ver="${5:-}" upstream_ver
+  if ! pool_suite_has_package "$suite" "$arch" "$name"; then
+    return 1
+  fi
+  if [[ -z "$op" || -z "$ver" ]]; then
+    return 0
+  fi
+  upstream_ver="$(pool_suite_package_version "$suite" "$arch" "$name")" || return 0
+  if [[ "$op" == "=" || "$op" == ">=" ]]; then
+    if dpkg --compare-versions "$upstream_ver" lt "$ver"; then
+      return 1
+    fi
+  fi
+  return 0
+}
+
 # Never republish libc6 or other base system packages from the Debian pool.
 pool_never_republish() {
   local name="$1"
@@ -447,10 +472,7 @@ pool_fetch_into() {
       [[ -n "$name" ]] || continue
       while IFS= read -r suite; do
         [[ -n "$suite" ]] || continue
-        if pool_suite_has_package "$suite" "$arch" "$name"; then
-          echo "Skipping ${name} for ${suite}/${arch}: already in upstream suite." >&2
-          continue
-        fi
+        # Seed packages are explicit pool imports (llama.cpp pool: libllama* only).
         libc="$(pool_suite_libc6 "$suite" "$arch")"
         if [[ -z "$libc" ]]; then
           echo "Skipping ${name} for ${suite}/${arch}: could not read libc6 version." >&2
@@ -488,7 +510,7 @@ pool_fetch_into() {
         fi
         for suite in $parent_suites; do
           [[ -n "$suite" ]] || continue
-          if pool_suite_has_package "$suite" "$arch" "$name"; then
+          if pool_skip_upstream_package "$suite" "$arch" "$name" "$op" "$ver"; then
             echo "Skipping ${name} for ${suite}/${arch}: already in upstream suite." >&2
             continue
           fi
@@ -657,10 +679,28 @@ github_should_skip() {
   ' >/dev/null
 }
 
+pool_previous_missing_allowlisted_suites() {
+  local prev_repo="$1" allowlisted="$2" suite
+  [[ -n "$prev_repo" ]] || return 1
+  while IFS= read -r suite; do
+    [[ -n "$suite" ]] || continue
+    if ! jq -e --arg s "$suite" '
+      [.packages[]?.suites[]?] | index($s) != null
+    ' <<< "$prev_repo" >/dev/null; then
+      echo "Previous index missing allowlisted suite ${suite}; re-fetching pool." >&2
+      return 0
+    fi
+  done <<< "$allowlisted"
+  return 1
+}
+
 pool_should_skip() {
   local pool="$1" prev_repo="$2" allowlisted="$3" arch html filename name ver prev_file prev_ver
   [[ "$fetch_force" != "true" ]] || return 1
   [[ -n "$prev_repo" ]] || return 1
+  if pool_previous_missing_allowlisted_suites "$prev_repo" "$allowlisted"; then
+    return 1
+  fi
 
   html="$(curl -fsSL "${pool}/")" || return 1
 
