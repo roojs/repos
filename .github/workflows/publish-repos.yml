@@ -109,31 +109,38 @@ jobs:
             /tmp/distributions \
             /tmp/current-manifest.json
 
-      - name: Skip publish when unchanged
-        if: steps.changes.outputs.changed != 'true' && inputs.force != true
-        run: |
-          echo "No changes to publish."
-          rm -rf pages/incoming-debs pages/incoming-rpms
-
-      - name: Install dependencies
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+      - name: Install reprepro dependencies
+        if: steps.fetch-debs.outputs.found == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y reprepro createrepo-c gpg jq
 
-      - name: Import GPG key
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+      - name: Import GPG key for reprepro
+        if: steps.fetch-debs.outputs.found == 'true'
         uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
 
-      - name: Sync reprepro config
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
-        run: main/scripts/generate-distributions.sh main/config/repos.json > pages/conf/distributions
+      - name: Prune packages no longer in manifest
+        id: prune
+        if: steps.fetch-debs.outputs.found == 'true'
+        working-directory: main
+        run: |
+          chmod +x scripts/reprepro-prune.sh
+          ./scripts/reprepro-prune.sh \
+            "${GITHUB_WORKSPACE}/pages" \
+            config/repos.json \
+            /tmp/current-manifest.json
+
+      - name: Skip publish when unchanged
+        if: steps.changes.outputs.changed != 'true' && inputs.force != true && steps.prune.outputs.pruned != 'true'
+        run: |
+          echo "No changes to publish."
+          rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Export repository signing key
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
         working-directory: pages
         run: |
           set -euo pipefail
@@ -144,6 +151,10 @@ jobs:
           fi
           echo "GPG_KEY_ID=${GPG_KEY_ID}" >> "$GITHUB_ENV"
           gpg --armor --export "${GPG_KEY_ID}" > key.gpg
+
+      - name: Sync reprepro config
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
+        run: main/scripts/generate-distributions.sh main/config/repos.json > pages/conf/distributions
 
       - name: Ingest packages with reprepro
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-debs.outputs.found == 'true'
@@ -156,18 +167,8 @@ jobs:
             "${GITHUB_WORKSPACE}/pages" \
             "${GPG_KEY_ID}"
 
-      - name: Prune packages no longer in manifest
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
-        working-directory: main
-        run: |
-          chmod +x scripts/reprepro-prune.sh
-          ./scripts/reprepro-prune.sh \
-            "${GITHUB_WORKSPACE}/pages" \
-            config/repos.json \
-            /tmp/current-manifest.json
-
       - name: Build DNF repositories
-        if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-rpms.outputs.found == 'true'
+        if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true') && steps.fetch-rpms.outputs.found == 'true'
         working-directory: main
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
@@ -178,11 +179,11 @@ jobs:
             "${GITHUB_WORKSPACE}/pages"
 
       - name: Update publish manifest
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
         run: cp /tmp/current-manifest.json pages/.publish-manifest.json
 
       - name: Clean up incoming packages
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
         run: rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Sync client setup files to Pages
