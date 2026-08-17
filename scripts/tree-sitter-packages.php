@@ -38,6 +38,7 @@ class TreeSitterPackageBuilder {
     private string $onlyParser = '';
     private bool $buildDeb = true;
     private bool $buildRpm = false;
+    private string $treeSitterCliVersion = '0.20.8';
     private array $results = [];
     private array $priorManifest = [];
     private array $builtManifest = ['parsers' => []];
@@ -468,7 +469,6 @@ class TreeSitterPackageBuilder {
         }
         
         // Get tree-sitter version for package versioning (use tag version if available)
-        $treeSitterBin = $this->findTreeSitterBinary();
         if ($packageVersion === null) {
             $packageVersion = $this->getTreeSitterVersion() ?: '0.1.0';
         }
@@ -521,21 +521,8 @@ class TreeSitterPackageBuilder {
         echo "  Setting up: Creating build directory...\n";
         $this->createDirectory($buildDir);
         echo "  ✓ Build directory ready\n";
-        
-        if ($treeSitterBin === null) {
-            // System tree-sitter not found, install via npm
-            echo "  Building: Installing npm dependencies (system tree-sitter not found)...\n";
-            $this->executeCommand(
-                "cd " . escapeshellarg($buildDir) . " && " .
-                "npm init -y && " .
-                "npm install tree-sitter-cli " . escapeshellarg($repoDir),
-                true
-            );
-            echo "  ✓ Dependencies installed\n";
-            $treeSitterBin = $buildDir . '/node_modules/.bin/tree-sitter';
-        } else {
-            echo "  Using system tree-sitter: {$treeSitterBin}\n";
-        }
+
+        $treeSitterBin = $this->ensureTreeSitterBinary($buildDir);
         
         // Build all grammars
         $builtLibraries = [];
@@ -1229,44 +1216,60 @@ PKGCONFIG;
         exec('git config --global --add safe.directory ' . escapeshellarg('*') . ' 2>/dev/null');
     }
 
-    /**
-     * Find tree-sitter binary - check system first, then npm
-     */
-    private function findTreeSitterBinary(): ?string {
+    private function readTreeSitterVersionFromBinary(string $path) {
+        exec(escapeshellarg($path) . ' --version 2>/dev/null', $output, $returnCode);
+        if ($returnCode === 0 && !empty($output) && preg_match('/tree-sitter\s+([\d.]+)/', $output[0], $matches)) {
+            return $matches[1];
+        }
+
+        return '';
+    }
+
+    private function findTreeSitterBinary() {
         exec('command -v tree-sitter 2>/dev/null', $output, $returnCode);
         if ($returnCode === 0 && !empty($output)) {
             $path = trim($output[0]);
             if ($path !== '' && file_exists($path)) {
-                return $path;
+                $version = $this->readTreeSitterVersionFromBinary($path);
+                if ($version !== '' && version_compare($version, '0.21', '<')) {
+                    return $path;
+                }
+                if ($version !== '') {
+                    echo "  Ignoring system tree-sitter {$version} (need < 0.21, will use npm {$this->treeSitterCliVersion})\n";
+                }
             }
         }
 
-        return null;
+        return '';
+    }
+
+    private function ensureTreeSitterBinary(string $buildDir) {
+        $bin = $this->findTreeSitterBinary();
+        if ($bin !== '') {
+            echo "  Using system tree-sitter: {$bin}\n";
+            return $bin;
+        }
+
+        echo "  Installing tree-sitter-cli@{$this->treeSitterCliVersion} via npm...\n";
+        $this->executeCommand(
+            "cd " . escapeshellarg($buildDir) . " && npm init -y && npm install tree-sitter-cli@" . $this->treeSitterCliVersion,
+            true
+        );
+        echo "  ✓ tree-sitter-cli installed\n";
+
+        return $buildDir . '/node_modules/.bin/tree-sitter';
     }
     
-    /**
-     * Get tree-sitter version from system installation
-     */
-    private function getTreeSitterVersion(): ?string {
+    private function getTreeSitterVersion() {
         $treeSitterBin = $this->findTreeSitterBinary();
-        if ($treeSitterBin === null) {
-            return null;
-        }
-        
-        try {
-            $versionOutput = $this->executeCommand(
-                escapeshellarg($treeSitterBin) . " --version",
-                false
-            );
-            // Parse version from output like "tree-sitter 0.20.8"
-            if (preg_match('/tree-sitter\s+([\d.]+)/', $versionOutput, $matches)) {
-                return $matches[1];
+        if ($treeSitterBin !== '') {
+            $version = $this->readTreeSitterVersionFromBinary($treeSitterBin);
+            if ($version !== '') {
+                return $version;
             }
-        } catch (Exception $e) {
-            // Version command failed, return null
         }
-        
-        return null;
+
+        return $this->treeSitterCliVersion;
     }
     
     /**
@@ -1514,7 +1517,6 @@ try {
             'rpm-build',
             'libtree-sitter-devel',
             'libtree-sitter',
-            'tree-sitter-cli',
         ]);
     }
     
@@ -1556,16 +1558,8 @@ try {
         exit(1);
     }
     
-    // Check for optional tree-sitter (will use npm fallback if not found)
-    exec('command -v tree-sitter 2>/dev/null', $output, $returnCode);
-    if ($returnCode === 0) {
-        echo "Info: Using system tree-sitter (will skip npm install for tree-sitter-cli)\n";
-    } else {
-        echo "Info: System tree-sitter not found, will install via npm\n";
-    }
-    
-    // Run the builder
     $builder = new TreeSitterPackageBuilder();
+    echo "Info: tree-sitter CLI toolchain target is 0.20.8 (npm fallback when system CLI is newer)\n";
     $builder->buildAll();
 
     $githubOutput = getenv('GITHUB_OUTPUT') ?: '';
