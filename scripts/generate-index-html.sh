@@ -7,6 +7,8 @@ out="${pages}/index.html"
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$(cd "${script_dir}/.." && pwd)"
 config="${root}/config/repos.json"
+# shellcheck source=lib/repos-config.sh
+source "${script_dir}/lib/repos-config.sh"
 
 if [[ ! -d "$pages" ]]; then
   echo "Pages directory not found: ${pages}" >&2
@@ -149,11 +151,15 @@ if [[ -d "${pages}/rpm" ]]; then
     fi
     fc="${BASH_REMATCH[1]}"
     arch="${BASH_REMATCH[2]}"
-    if [[ ! "$base" =~ ^(.*)-([^-]+)-([^-]+)\.fc[0-9]+\.[^.]+\.rpm$ ]]; then
+    if [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.fc[0-9]+\.[^.]+\.rpm$ ]]; then
+      pkg="${BASH_REMATCH[1]}"
+      ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
+    elif [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
+      pkg="${BASH_REMATCH[1]}"
+      ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
+    else
       continue
     fi
-    pkg="${BASH_REMATCH[1]}"
-    ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
     record_rpm "$pkg" "$fc" "$arch" "$ver"
   done < <(find "${pages}/rpm" -type f -name '*.rpm' -print0 | sort -z)
   shopt -u nullglob
@@ -183,6 +189,8 @@ fedora_columns=()
 if [[ -f "${work}/fedora-nums" ]]; then
   mapfile -t fedora_columns < <(sort -n -u "${work}/fedora-nums")
 fi
+
+mapfile -t opensuse_columns < <(repos_config_opensuse_releases "$config")
 
 apt_has() {
   local pkg="$1" suite="$2"
@@ -287,6 +295,8 @@ pkg_desc() {
   fi
   case "$pkg" in
     libfaiss-dev) printf '%s\n' "FAISS vector search library" ;;
+    libfaiss) printf '%s\n' "FAISS vector search library" ;;
+    faiss-devel) printf '%s\n' "FAISS development headers" ;;
     ollmchat) printf '%s\n' "Local LLM chat" ;;
     rooterm) printf '%s\n' "Terminal emulator" ;;
     ibus-sherpa-onnx) printf '%s\n' "IBus on-device speech recognition" ;;
@@ -435,14 +445,45 @@ write_fedora_th() {
     "$(html_escape "$fc")" "$(html_escape "$fc")"
 }
 
+write_opensuse_th() {
+  local release="$1"
+  case "$release" in
+    tumbleweed)
+      printf '<th class="suite"><span class="suite-release">openSUSE Tumbleweed</span><span class="suite-codename">rolling</span></th>\n'
+      ;;
+    *)
+      printf '<th class="suite"><span class="suite-release">openSUSE %s</span><span class="suite-codename">%s</span></th>\n' \
+        "$(html_escape "$release")" "$(html_escape "$release")"
+      ;;
+  esac
+}
+
 is_fedora_upstream() {
   case "$1" in
-    libllama*|llama-*|libggml*|ggml-*)
+    libllama*|llama-*|libggml*|ggml-*|*webkit*|*javascriptcore*)
       return 0
       ;;
     *)
       return 1
       ;;
+  esac
+}
+
+is_opensuse_upstream() {
+  case "$1" in
+    libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss|*webkit*|*javascriptcore*)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+rpm_pkg_name() {
+  case "$1" in
+    libfaiss-dev) printf '%s\n' libfaiss ;;
+    *) printf '%s\n' "$1" ;;
   esac
 }
 
@@ -460,13 +501,23 @@ cell_apt() {
 }
 
 cell_rpm() {
-  local pkg="$1" fc="$2" html
-  if html="$(format_ship_html "${work}/rpm/${pkg}/${fc}")"; then
+  local pkg="$1" fc="$2" html rpm_pkg
+  rpm_pkg="$(rpm_pkg_name "$pkg")"
+  if html="$(format_ship_html "${work}/rpm/${rpm_pkg}/${fc}")"; then
     printf 'ship\t%s\n' "$html"
     return 0
   fi
   if is_fedora_upstream "$pkg"; then
     printf 'distro\t%s\n' "$(already_in_html Fedora)"
+    return 0
+  fi
+  printf 'none\t—\n'
+}
+
+cell_opensuse() {
+  local pkg="$1"
+  if is_opensuse_upstream "$pkg"; then
+    printf 'distro\t%s\n' "$(already_in_html openSUSE)"
     return 0
   fi
   printf 'none\t—\n'
@@ -494,11 +545,18 @@ write_rpm_td() {
   printf '<td class="%s">%s</td>\n' "$grade" "$html"
 }
 
+write_opensuse_td() {
+  local pkg="$1" grade html
+  IFS=$'\t' read -r grade html < <(cell_opensuse "$pkg")
+  printf '<td class="%s">%s</td>\n' "$grade" "$html"
+}
+
 write_group_table() {
-  local pkgfile="$1" pkg suite fc
+  local pkgfile="$1" pkg suite fc release
   local debian_span="${#debian_columns[@]}"
   local ubuntu_span="${#ubuntu_columns[@]}"
   local fedora_span="${#fedora_columns[@]}"
+  local opensuse_span="${#opensuse_columns[@]}"
   printf '<div class="wrap"><table>\n<thead>\n<tr>\n'
   printf '<th class="pkg" rowspan="2">Package</th>\n'
   if [[ "$debian_span" -gt 0 ]]; then
@@ -510,6 +568,9 @@ write_group_table() {
   if [[ "$fedora_span" -gt 0 ]]; then
     printf '<th colspan="%s">Fedora</th>\n' "$fedora_span"
   fi
+  if [[ "$opensuse_span" -gt 0 ]]; then
+    printf '<th colspan="%s">openSUSE</th>\n' "$opensuse_span"
+  fi
   printf '</tr>\n<tr>\n'
   for suite in "${debian_columns[@]}"; do
     write_apt_suite_th "$suite"
@@ -519,6 +580,9 @@ write_group_table() {
   done
   for fc in "${fedora_columns[@]}"; do
     write_fedora_th "$fc"
+  done
+  for release in "${opensuse_columns[@]}"; do
+    write_opensuse_th "$release"
   done
   printf '</tr>\n</thead>\n<tbody>\n'
   while IFS= read -r pkg; do
@@ -533,6 +597,9 @@ write_group_table() {
     done
     for fc in "${fedora_columns[@]}"; do
       write_rpm_td "$pkg" "$fc"
+    done
+    for release in "${opensuse_columns[@]}"; do
+      write_opensuse_td "$pkg"
     done
     printf '</tr>\n'
   done < "$pkgfile"
@@ -633,7 +700,7 @@ DNF
 <h2>What you can install</h2>
 <p class="legend">
 <span><strong>version</strong> — we ship it in this repository</span>
-<span><em>already in Debian / Ubuntu / Fedora</em> — not required; use the distro package</span>
+<span><em>already in Debian / Ubuntu / Fedora / openSUSE</em> — not required; use the distro package</span>
 <span><strong>—</strong> — not available from us or from that distro</span>
 </p>
 GRID

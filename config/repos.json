@@ -4,12 +4,22 @@
     "suites": ["trixie", "plucky", "questing", "resolute"],
     "architectures": ["amd64", "arm64"]
   },
+  "opensuse": {
+    "releases": ["tumbleweed"]
+  },
   "projects": [
     { "repo": "OLLMchat" },
     {
       "repo": "llama.cpp",
       "pool": "https://deb.debian.org/debian/pool/main/l/llama.cpp",
       "deb": { "suites": ["trixie", "plucky", "questing", "resolute"] }
+    },
+    {
+      "repo": "faiss",
+      "rpm": true,
+      "deb": false,
+      "rpm_pool": "https://download.opensuse.org/tumbleweed/repo/oss/x86_64/",
+      "fedora": [44]
     },
     { "repo": "app.RooTerm", "deb": false, "rpm": true, "fedora": [44] },
     { "repo": "ibus-sherpa-onnx", "deb": false, "rpm": true, "fedora": [44] },

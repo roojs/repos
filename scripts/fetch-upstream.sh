@@ -22,6 +22,7 @@ index="{}"
 found=0
 declare -A pool_file_suites=()
 pool_work=""
+rpm_pool_work=""
 previous_index="{}"
 fetch_force="${FETCH_FORCE:-false}"
 has_previous_manifest=false
@@ -581,7 +582,7 @@ persist_package_index() {
 }
 
 filter_rpm_index_by_fedora() {
-  local repo project allowlist filename fc
+  local repo project allowlist filename fc fedora_json
   while IFS= read -r repo; do
     [[ -n "$repo" ]] || continue
     project="$(repos_config_project_json "$config" "$repo")"
@@ -589,15 +590,25 @@ filter_rpm_index_by_fedora() {
     [[ "$allowlist" != "null" ]] || continue
     while IFS= read -r filename; do
       [[ -n "$filename" ]] || continue
-      if [[ ! "$filename" =~ \.fc([0-9]+)\. ]]; then
-        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-        echo "Dropping ${filename} from index: cannot parse Fedora release." >&2
+      if [[ "$filename" =~ \.fc([0-9]+)\. ]]; then
+        fc="${BASH_REMATCH[1]}"
+        if ! jq -en --argjson fc "$fc" --argjson list "$allowlist" '$list | index($fc) != null' >/dev/null; then
+          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+          echo "Dropping ${filename} from index: fc${fc} not in fedora allowlist." >&2
+        fi
         continue
       fi
-      fc="${BASH_REMATCH[1]}"
-      if ! jq -e --argjson fc "$fc" --argjson list "$allowlist" '$list | index($fc) != null' >/dev/null; then
+      fedora_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].fedora // null' <<< "$index")"
+      if [[ "$fedora_json" == "null" ]]; then
         index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-        echo "Dropping ${filename} from index: fc${fc} not in fedora allowlist." >&2
+        echo "Dropping ${filename} from index: no Fedora release metadata." >&2
+        continue
+      fi
+      if ! jq -en --argjson allowlist "$allowlist" --argjson fedora "$fedora_json" '
+        [ $fedora[] | select($allowlist | index(.) != null) ] | length > 0
+      ' >/dev/null; then
+        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+        echo "Dropping ${filename} from index: Fedora metadata not in allowlist." >&2
       fi
     done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' <<< "$index")
     if jq -e --arg repo "$repo" '.[$repo].packages | length == 0' <<< "$index" >/dev/null; then
@@ -654,7 +665,7 @@ packages_from_repo_dir() {
         continue
       fi
       fc="${BASH_REMATCH[1]}"
-      if ! jq -e --argjson fc "$fc" --argjson list "$fedora_allowlist" '$list | index($fc) != null' >/dev/null; then
+      if ! jq -en --argjson fc "$fc" --argjson list "$fedora_allowlist" '$list | index($fc) != null' >/dev/null; then
         rm -f "$file"
         echo "Skipping ${base}: fc${fc} not in fedora allowlist." >&2
         continue
@@ -817,6 +828,160 @@ pool_should_skip() {
   return 0
 }
 
+rpm_pool_arch_from_url() {
+  local url="${1%/}"
+  if [[ "$url" =~ /(x86_64|aarch64)$ ]]; then
+    printf '%s\n' "${BASH_REMATCH[1]}"
+    return 0
+  fi
+  return 1
+}
+
+rpm_pool_skip_name() {
+  local name="$1"
+  [[ "$name" == python*-faiss ]] && return 0
+  return 1
+}
+
+rpm_pool_skip_require() {
+  local req="$1"
+  case "$req" in
+    libc.so.*|libm.so.*|libstdc++.so.*|libgomp.so.*|libopenblas.so.*|libgcc_s.so.*|ld-linux-*)
+      return 0
+      ;;
+    rpmlib*|rtld*)
+      return 0
+      ;;
+  esac
+  return 1
+}
+
+rpm_pool_repodata_base() {
+  local pool="${1%/}"
+  if curl -fsSL "${pool}/repodata/repomd.xml" >/dev/null 2>&1; then
+    printf '%s\n' "$pool"
+    return 0
+  fi
+  if [[ "$pool" =~ /(x86_64|aarch64)$ ]]; then
+    pool="${pool%/*}"
+    if curl -fsSL "${pool}/repodata/repomd.xml" >/dev/null 2>&1; then
+      printf '%s\n' "$pool"
+      return 0
+    fi
+  fi
+  return 1
+}
+
+rpm_pool_primary_xml() {
+  local pool="$1" base repomd primary_href dest cache_key
+  base="$(rpm_pool_repodata_base "$pool")" || return 1
+  cache_key="${base//\//_}"
+  dest="${rpm_pool_work}/primary-${cache_key}.xml"
+  if [[ -f "$dest" ]]; then
+    printf '%s\n' "$dest"
+    return 0
+  fi
+  repomd="$(curl -fsSL "${base}/repodata/repomd.xml")"
+  primary_href="$(printf '%s\n' "$repomd" | sed -n 's/.*<location href="\([^"]*primary[^"]*\.xml\.zst\)".*/\1/p' | head -n1)"
+  if [[ -z "$primary_href" ]]; then
+    primary_href="$(printf '%s\n' "$repomd" | sed -n 's/.*<location href="\([^"]*primary[^"]*\.xml\.gz\)".*/\1/p' | head -n1)"
+  fi
+  [[ -n "$primary_href" ]] || return 1
+  mkdir -p "$(dirname "$dest")"
+  if [[ "$primary_href" == *.zst ]]; then
+    curl -fsSL "${base}/${primary_href}" | zstd -d > "$dest"
+  else
+    curl -fsSL "${base}/${primary_href}" | gunzip > "$dest"
+  fi
+  printf '%s\n' "$dest"
+}
+
+rpm_pool_package_href() {
+  local primary="$1" name="$2" arch="$3"
+  awk -v pkg="$name" -v arch="$arch" '
+    $0 ~ "<name>" pkg "</name>" { inpkg = 1 }
+    inpkg && $0 ~ "<arch>" arch "</arch>" { inarch = 1 }
+    inarch && $0 ~ "<location href=" {
+      sub(/.*href="/, "")
+      sub(/".*/, "")
+      print
+      exit
+    }
+    inpkg && $0 == "</package>" { inpkg = 0; inarch = 0 }
+  ' "$primary"
+}
+
+rpm_pool_seed_names() {
+  printf '%s\n' libfaiss faiss-devel
+}
+
+rpm_pool_download_package() {
+  local pool="$1" name="$2" arch="$3" dest_dir="$4" primary href filename base
+  primary="$(rpm_pool_primary_xml "$pool")" || return 1
+  href="$(rpm_pool_package_href "$primary" "$name" "$arch")"
+  [[ -n "$href" ]] || return 1
+  filename="${href##*/}"
+  if [[ -f "${dest_dir}/${filename}" ]]; then
+    printf '%s\n' "$filename"
+    return 0
+  fi
+  base="$(rpm_pool_repodata_base "$pool")" || return 1
+  curl -fsSL "${base}/${href}" -o "${dest_dir}/${filename}"
+  printf '%s\n' "$filename"
+}
+
+rpm_pool_fetch_into() {
+  local pool="$1" repo_dir="$2" arch="$3"
+  local name
+  while IFS= read -r name; do
+    [[ -n "$name" ]] || continue
+    rpm_pool_download_package "$pool" "$name" "$arch" "$repo_dir" >/dev/null
+  done < <(rpm_pool_seed_names)
+}
+
+rpm_pool_packages_json() {
+  local repo_dir="$1" fedora_allowlist="$2" arch="$3"
+  local packages="{}"
+  local file base sha
+  shopt -s nullglob
+  for file in "${repo_dir}"/*.rpm; do
+    [[ -f "$file" ]] || continue
+    base="$(basename "$file")"
+    if [[ "$base" == *debuginfo* || "$base" == *debugsource* ]]; then
+      rm -f "$file"
+      continue
+    fi
+    sha="$(sha256sum "$file" | awk '{print $1}')"
+    packages="$(jq \
+      --arg name "$base" \
+      --arg sha "$sha" \
+      --arg arch "$arch" \
+      --argjson fedora "$fedora_allowlist" \
+      '. + {($name): {sha256: $sha, arch: $arch, fedora: $fedora}}' \
+      <<< "$packages")"
+  done
+  shopt -u nullglob
+  jq -c . <<< "$packages"
+}
+
+rpm_pool_should_skip() {
+  local prev_repo="$1" pool="$2" arch="$3"
+  local primary name href filename sha prev_sha base
+  [[ "$fetch_force" != "true" ]] || return 1
+  [[ -n "$prev_repo" ]] || return 1
+  base="$(rpm_pool_repodata_base "$pool")" || return 1
+  primary="$(rpm_pool_primary_xml "$pool")" || return 1
+  while IFS= read -r name; do
+    [[ -n "$name" ]] || continue
+    href="$(rpm_pool_package_href "$primary" "$name" "$arch")" || return 1
+    filename="${href##*/}"
+    sha="$(curl -fsSL "${base}/${href}" | sha256sum | awk '{print $1}')"
+    prev_sha="$(jq -r --arg file "$filename" '.packages[$file].sha256 // empty' <<< "$prev_repo")"
+    [[ -n "$prev_sha" && "$prev_sha" == "$sha" ]] || return 1
+  done < <(rpm_pool_seed_names)
+  return 0
+}
+
 while IFS= read -r repo; do
   [[ -n "$repo" ]] || continue
   project="$(repos_config_project_json "$config" "$repo")"
@@ -829,6 +994,7 @@ while IFS= read -r repo; do
   fi
 
   pool="$(jq -r '.pool // empty' <<< "$project")"
+  rpm_pool="$(jq -r '.rpm_pool // empty' <<< "$project")"
   pool_file_suites=()
   tag=""
   suites_json="null"
@@ -838,6 +1004,43 @@ while IFS= read -r repo; do
   fi
   repo_dir="${output}/${repo}"
   mkdir -p "$repo_dir"
+
+  if [[ -n "$rpm_pool" ]]; then
+    if [[ "$package_type" != "rpm" ]]; then
+      continue
+    fi
+    arch="$(rpm_pool_arch_from_url "$rpm_pool")" || {
+      echo "Skipping ${repo}: cannot parse arch from rpm_pool URL." >&2
+      continue
+    }
+    if [[ -z "$rpm_pool_work" ]]; then
+      rpm_pool_work="$(mktemp -d)"
+      trap 'rm -rf "$pool_work" "$rpm_pool_work"' EXIT
+    fi
+    if rpm_pool_should_skip "$(previous_repo_json "$repo")" "$rpm_pool" "$arch"; then
+      if keep_previous_repo "$repo" "Skipping rpm_pool download for ${repo}: already published."; then
+        continue
+      fi
+    fi
+    echo "Downloading RPM pool packages for ${repo} from ${rpm_pool} ..."
+    if ! rpm_pool_fetch_into "$rpm_pool" "$repo_dir" "$arch"; then
+      if keep_previous_repo "$repo" "Keeping previously published ${repo}: rpm_pool fetch failed."; then
+        continue
+      fi
+      echo "Skipping ${repo}: rpm_pool fetch failed." >&2
+      continue
+    fi
+    packages="$(rpm_pool_packages_json "$repo_dir" "$fedora_allowlist" "$arch")"
+    if [[ "$packages" == "{}" ]]; then
+      if keep_previous_repo "$repo" "Keeping previously published ${repo}: no rpm_pool packages downloaded."; then
+        continue
+      fi
+      echo "Skipping ${repo}: no rpm_pool packages downloaded." >&2
+      continue
+    fi
+    merge_repo_index_entry "$repo" "opensuse-tumbleweed" "$packages"
+    continue
+  fi
 
   if [[ -n "$pool" ]]; then
     if [[ "$package_type" != "deb" ]]; then

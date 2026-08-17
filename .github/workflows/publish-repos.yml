@@ -45,6 +45,9 @@ jobs:
           fetch-depth: 0
           path: pages
 
+      - name: Install fetch prerequisites
+        run: sudo apt-get update && sudo apt-get install -y zstd
+
       - name: Download upstream .deb release assets
         id: fetch-debs
         working-directory: main

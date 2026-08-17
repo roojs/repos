@@ -3,6 +3,17 @@ set -euo pipefail
 
 incoming_dir="${1:?incoming directory required}"
 repo_root="${2:?repo root required}"
+index="${incoming_dir}/.package-index.json"
+
+publish_rpm() {
+  local rpm="$1" fc="$2" arch="$3"
+  local base dest
+  base="$(basename "${rpm}")"
+  dest="${repo_root}/rpm/fc${fc}/${arch}"
+  mkdir -p "${dest}"
+  cp -f "${rpm}" "${dest}/"
+  echo "Added ${base} -> rpm/fc${fc}/${arch}/"
+}
 
 shopt -s nullglob globstar
 mapfile -t rpms < <(find "${incoming_dir}" -mindepth 2 -maxdepth 2 -type f -name '*.rpm' | sort)
@@ -19,17 +30,35 @@ for rpm in "${rpms[@]}"; do
     continue
   fi
 
-  if [[ ! "${base}" =~ \.fc([0-9]+)\.([^.]+)\.rpm$ ]]; then
+  if [[ "${base}" =~ \.fc([0-9]+)\.([^.]+)\.rpm$ ]]; then
+    publish_rpm "$rpm" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}"
+    continue
+  fi
+
+  if [[ ! -f "$index" ]]; then
     echo "Skipping ${base}: cannot parse Fedora release/arch from filename." >&2
     continue
   fi
 
-  fc="${BASH_REMATCH[1]}"
-  arch="${BASH_REMATCH[2]}"
-  dest="${repo_root}/rpm/fc${fc}/${arch}"
-  mkdir -p "${dest}"
-  cp -f "${rpm}" "${dest}/"
-  echo "Added ${base} -> rpm/fc${fc}/${arch}/"
+  meta="$(jq -c --arg file "$base" '
+    [
+      .[]
+      | .packages[$file]?
+      | select(.fedora and .arch)
+      | {fedora: .fedora, arch: .arch}
+    ]
+    | .[0] // empty
+  ' "$index")"
+  if [[ -z "$meta" ]]; then
+    echo "Skipping ${base}: no Fedora metadata in package index." >&2
+    continue
+  fi
+
+  arch="$(jq -r '.arch' <<< "$meta")"
+  while IFS= read -r fc; do
+    [[ -n "$fc" ]] || continue
+    publish_rpm "$rpm" "$fc" "$arch"
+  done < <(jq -r '.fedora[]' <<< "$meta")
 done
 
 mapfile -t repo_dirs < <(find "${repo_root}/rpm" -mindepth 2 -maxdepth 2 -type d 2>/dev/null | sort)
