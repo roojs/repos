@@ -1405,6 +1405,8 @@ PKGCONFIG;
         if ($cflags === '') {
             if (is_dir('/usr/include/tree-sitter')) {
                 $cflags = '-I/usr/include/tree-sitter';
+            } elseif (is_dir('/usr/include/tree_sitter')) {
+                $cflags = '-I/usr/include';
             } else {
                 $cflags = '-I/usr/include';
             }
@@ -1501,8 +1503,9 @@ try {
     if ($buildRpm) {
         $requiredPackages = array_merge($requiredPackages, [
             'rpm-build',
-            'tree-sitter-devel',
-            'tree-sitter',
+            'libtree-sitter-devel',
+            'libtree-sitter',
+            'tree-sitter-cli',
         ]);
     }
     
