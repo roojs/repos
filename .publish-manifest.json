@@ -34,12 +34,19 @@
             "questing"
           ]
         },
+        "libggml-dev_0.19.0-1_amd64.deb": {
+          "sha256": "b41b774c423f1a5be733800ae3e8a991507d69430db17a02d17b27c4de500193",
+          "suites": [
+            "resolute"
+          ]
+        },
         "libggml-dev_0.19.0-1_arm64.deb": {
           "sha256": "98a11803bb4c5db5cb3cf8c83373a4cb42d9b66a215fc4169c4472ba19d19a85",
           "suites": [
             "trixie",
             "plucky",
-            "questing"
+            "questing",
+            "resolute"
           ]
         },
         "libggml0-backend-blas_0.18.1-1_amd64.deb": {
@@ -66,12 +73,19 @@
             "questing"
           ]
         },
+        "libggml0-backend-rpc_0.19.0-1_amd64.deb": {
+          "sha256": "702f65efaaaab420db9e3ccfbed47f83f4fddf526ccc44532850626fe2c56713",
+          "suites": [
+            "resolute"
+          ]
+        },
         "libggml0-backend-rpc_0.19.0-1_arm64.deb": {
           "sha256": "36fe1c5104c9d7a4f2b1d573ce0f174a936e5c9adab29421b224e200668b7bdf",
           "suites": [
             "trixie",
             "plucky",
-            "questing"
+            "questing",
+            "resolute"
           ]
         },
         "libggml0-backend-vulkan_0.18.1-1_amd64.deb": {
@@ -98,12 +112,19 @@
             "questing"
           ]
         },
+        "libggml0_0.19.0-1_amd64.deb": {
+          "sha256": "271c9d5070b2bd2d17ffe6e4fd8940f98824d450d75ab834c70e15fa6624712c",
+          "suites": [
+            "resolute"
+          ]
+        },
         "libggml0_0.19.0-1_arm64.deb": {
           "sha256": "042bd56777de60d81c22a387e4469868d9b41a0ea3b3e8188bb4669c07c51e54",
           "suites": [
             "trixie",
             "plucky",
-            "questing"
+            "questing",
+            "resolute"
           ]
         },
         "libllama-dev_10271+dfsg-1_amd64.deb": {
@@ -114,12 +135,19 @@
             "questing"
           ]
         },
+        "libllama-dev_10344+dfsg-1_amd64.deb": {
+          "sha256": "168a8e8b1c60a883bd51dc1fa12770049294a54ea921a9c3a98a653bc938e96a",
+          "suites": [
+            "resolute"
+          ]
+        },
         "libllama-dev_10344+dfsg-1_arm64.deb": {
           "sha256": "9c0dc188022678f9a85fae4658ac2b43f5944aec26989a6a3fb06a684708c003",
           "suites": [
             "trixie",
             "plucky",
-            "questing"
+            "questing",
+            "resolute"
           ]
         },
         "libllama0_10271+dfsg-1_amd64.deb": {
@@ -130,12 +158,19 @@
             "questing"
           ]
         },
+        "libllama0_10344+dfsg-1_amd64.deb": {
+          "sha256": "c2fea1c7b00f9c1b5ba76775fcc9ba9aa702fdf7cb0cccc9edc5c5a20c6e0e50",
+          "suites": [
+            "resolute"
+          ]
+        },
         "libllama0_10344+dfsg-1_arm64.deb": {
           "sha256": "d63060a906a25660ef57701ba7aafcce0349820aae7b32fbf1da62c29b94c511",
           "suites": [
             "trixie",
             "plucky",
-            "questing"
+            "questing",
+            "resolute"
           ]
         }
       }
