@@ -82,6 +82,12 @@
       "repo": "https://github.com/tree-sitter/tree-sitter-go",
       "language": "go",
       "tag": "0.20.0"
+    },
+    {
+      "id": "rpmspec",
+      "name": "tree-sitter-rpmspec",
+      "repo": "https://gitlab.com/cryptomilk/tree-sitter-rpmspec",
+      "language": "rpmspec"
     }
   ]
 }

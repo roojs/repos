@@ -35,6 +35,7 @@ class TreeSitterPackageBuilder {
     private string $outputDir;
     private bool $installPackages = false;
     private bool $cleanBeforeBuild = false;
+    private ?string $onlyParser = null;
     private array $results = [];
     private array $priorManifest = [];
     private array $builtManifest = ['parsers' => []];
@@ -104,7 +105,7 @@ class TreeSitterPackageBuilder {
     }
     
     private function parseArguments(): void {
-        $options = getopt('', ['install', 'clean', 'help', 'list']);
+        $options = getopt('', ['install', 'clean', 'help', 'list', 'only:']);
         
         if (isset($options['help'])) {
             $this->showHelp();
@@ -118,6 +119,9 @@ class TreeSitterPackageBuilder {
         
         $this->installPackages = isset($options['install']);
         $this->cleanBeforeBuild = isset($options['clean']);
+        if (isset($options['only'])) {
+            $this->onlyParser = $options['only'];
+        }
     }
     
     private function showHelp(): void {
@@ -128,6 +132,7 @@ class TreeSitterPackageBuilder {
         echo "  --install     Install packages after building\n";
         echo "  --clean       Clean before building (removes existing directories)\n";
         echo "  --list        List available parsers\n";
+        echo "  --only=ID     Build only the parser with this config id\n";
         echo "  --help        Show this help message\n\n";
         echo "Output directory: {$this->outputDir}\n";
     }
@@ -152,12 +157,20 @@ class TreeSitterPackageBuilder {
      * Build all packages
      */
     public function buildAll(): void {
-        echo "Starting build process for " . count($this->parsers) . " parsers...\n";
+        $parsers = $this->parsers;
+        if ($this->onlyParser !== null) {
+            if (!isset($parsers[$this->onlyParser])) {
+                throw new Exception("Unknown parser id '{$this->onlyParser}'. Use --list to see available ids.");
+            }
+            $parsers = [$this->onlyParser => $parsers[$this->onlyParser]];
+        }
+
+        echo "Starting build process for " . count($parsers) . " parsers...\n";
         echo "Output directory: {$this->baseDir}\n\n";
         
         $startTime = microtime(true);
         
-        foreach ($this->parsers as $key => $parser) {
+        foreach ($parsers as $key => $parser) {
             echo str_repeat('=', 60) . "\n";
             echo "Processing: {$parser['name']} ({$parser['language']})\n";
             echo str_repeat('-', 60) . "\n";
@@ -494,6 +507,9 @@ class TreeSitterPackageBuilder {
         // Build all grammars
         $builtLibraries = [];
         foreach ($grammarDirs as $grammarDir) {
+            $this->installGrammarNpmDependencies($grammarDir);
+        }
+        foreach ($grammarDirs as $grammarDir) {
             $grammarName = basename($grammarDir);
             if ($grammarDir === $repoDir) {
                 $grammarName = $parser['language'];
@@ -538,16 +554,11 @@ class TreeSitterPackageBuilder {
             $buildParserC = $buildDir . '/parser_' . $langName . '.c';
             copy($parserC, $buildParserC);
             echo "    ✓ Found parser.c: {$grammarName}\n";
-            
-            // Compile to shared library with standardized name (tree_sitter_parser_<language>.so)
+
+            $buildScannerC = $this->copyScannerSource($grammarDir, $buildDir, $langName);
+            $this->compileSharedLibrary($buildDir, $langName, $buildParserC, $buildScannerC, $grammarDir);
             $libName = 'tree_sitter_parser_' . $langName . '.so';
             $libPath = $buildDir . '/' . $libName;
-            $this->executeCommand(
-                "cd " . escapeshellarg($buildDir) . " && " .
-                "gcc -shared -fPIC -I/usr/include/tree-sitter " .
-                "-o " . escapeshellarg($libName) . " " . escapeshellarg(basename($buildParserC)),
-                true
-            );
             echo "    ✓ Compiled: {$libName}\n";
             
             $builtLibraries[] = [
@@ -767,7 +778,7 @@ CONTROL;
 			if echo "\$\$lang_name" | grep -q "^tree-sitter-"; then \
 				lang_name=\$\$(echo "\$\$lang_name" | sed 's/^tree-sitter-//'); \
 			fi; \
-			cd \$\$(dirname "\$\$subdir") && \$\$TS_BIN generate >/dev/null 2>&1; \
+			cd \$\$(dirname "\$\$subdir") && (npm install --ignore-scripts >/dev/null 2>&1 || true) && \$\$TS_BIN generate >/dev/null 2>&1; \
 			if [ -f src/parser.c ]; then cp src/parser.c ../build/parser_\$\$lang_name.c; \
 			elif [ -f parser.c ]; then cp parser.c ../build/parser_\$\$lang_name.c; fi; \
 			if [ -f src/scanner.c ]; then cp src/scanner.c ../build/scanner_\$\$lang_name.c; \
@@ -784,7 +795,10 @@ CONTROL;
 				scanner_c="scanner_\$\$lang_name.c"; \
 			fi; \
 			if [ -n "\$\$scanner_c" ]; then \
-				gcc -shared -fPIC -I/usr/include/tree-sitter -o "\$\$so_name" "\$\$parser_c" "\$\$scanner_c" -ltree-sitter >/dev/null 2>&1 || true; \
+				include_dir=""; \
+				if [ -d "../\$\$lang_name/src/tree_sitter" ]; then include_dir="-I../\$\$lang_name/src"; \
+				elif [ -d "../src/tree_sitter" ]; then include_dir="-I../src"; fi; \
+				gcc -shared -fPIC -I/usr/include/tree-sitter \$\$include_dir -o "\$\$so_name" "\$\$parser_c" "\$\$scanner_c" -ltree-sitter >/dev/null 2>&1 || true; \
 			else \
 				gcc -shared -fPIC -I/usr/include/tree-sitter -o "\$\$so_name" "\$\$parser_c" -ltree-sitter >/dev/null 2>&1 || true; \
 			fi; \
@@ -1225,6 +1239,68 @@ PKGCONFIG;
      * Find directories containing grammar.js files (source grammars only, not generated grammar.json)
      * Returns array of directory paths (root first, then subdirectories)
      */
+    private function installGrammarNpmDependencies(string $grammarDir): void {
+        if (!file_exists($grammarDir . '/package.json')) {
+            return;
+        }
+
+        echo "  Installing npm dependencies in " . basename($grammarDir) . "...\n";
+        $this->executeCommand(
+            "cd " . escapeshellarg($grammarDir) . " && npm install --ignore-scripts",
+            true
+        );
+    }
+
+    private function findScannerSource(string $grammarDir): ?string {
+        foreach ([$grammarDir . '/src/scanner.c', $grammarDir . '/scanner.c'] as $candidate) {
+            if (file_exists($candidate)) {
+                return $candidate;
+            }
+        }
+
+        return null;
+    }
+
+    private function copyScannerSource(string $grammarDir, string $buildDir, string $langName): ?string {
+        $scannerC = $this->findScannerSource($grammarDir);
+        if ($scannerC === null) {
+            return null;
+        }
+
+        $buildScannerC = $buildDir . '/scanner_' . $langName . '.c';
+        copy($scannerC, $buildScannerC);
+        echo "    ✓ Found scanner.c: " . basename($grammarDir) . "\n";
+
+        return $buildScannerC;
+    }
+
+    private function compileSharedLibrary(
+        string $buildDir,
+        string $langName,
+        string $buildParserC,
+        ?string $buildScannerC,
+        string $grammarDir
+    ): void {
+        $libName = 'tree_sitter_parser_' . $langName . '.so';
+        $includeFlags = '';
+        if (file_exists($grammarDir . '/src/tree_sitter')) {
+            $includeFlags = '-I' . escapeshellarg($grammarDir . '/src') . ' ';
+        }
+
+        $sources = escapeshellarg(basename($buildParserC));
+        if ($buildScannerC !== null) {
+            $sources .= ' ' . escapeshellarg(basename($buildScannerC));
+        }
+
+        $this->executeCommand(
+            "cd " . escapeshellarg($buildDir) . " && " .
+            "gcc -shared -fPIC -I/usr/include/tree-sitter " .
+            $includeFlags .
+            "-o " . escapeshellarg($libName) . " " . $sources . " -ltree-sitter",
+            true
+        );
+    }
+
     private function findGrammarDirectories(string $repoDir): array {
         $grammarDirs = [];
         
