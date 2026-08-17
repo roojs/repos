@@ -1,6 +1,6 @@
 # 1. Import Debian-pool dependencies
 
-Status: proposed
+Status: implemented (see **Implemented behaviour**); resolute regression open — `docs/bugs/llama-cpp-resolute-upstream-skip.md`
 
 Checklist: `docs/guide-to-writing-plans.md`
 
@@ -21,10 +21,49 @@ Checklist: `docs/guide-to-writing-plans.md`
 
 ## Current behaviour
 
-- ℹ️ `scripts/fetch-upstream.sh` only downloads GitHub Release assets for `roojs/<repo>`.
-- ℹ️ `deb.suites` / `deb.release_tags` already limit which suites get a project.
+- ✔️ `scripts/fetch-upstream.sh` downloads GitHub Release assets **or** Debian pool `.deb`s when a project has `pool` in `config/repos.json`.
+- ✔️ `deb.suites` / `deb.release_tags` limit which suites get a project.
 - ℹ️ Current `apt.suites`: `trixie`, `plucky`, `questing`, `resolute`.
-- ℹ️ The pool hunter already takes the newest matching `.deb`. For llama.cpp that will move often. The daily publish will commit when those hashes change.
+- ✔️ Pool import uses **libc-aware newest-that-fits** per suite, not blind sid-latest. See **Implemented behaviour**.
+- ✔️ `scripts/reprepro-prune.sh` removes packages no longer in the manifest (stale splatter cleanup).
+- ⏳ Resolute llama stack missing after upstream-skip — `docs/bugs/llama-cpp-resolute-upstream-skip.md`.
+
+## Implemented behaviour (Aug 2026)
+
+Authoritative implementation: `scripts/fetch-upstream.sh`, `config/repos.json`, `scripts/reprepro-prune.sh`.
+
+### Two-step pool fetch: seed vs Depends walk
+
+| Step | What it does | Upstream skip (`pool_suite_has_package`) |
+| ---- | ------------ | ---------------------------------------- |
+| **Seed** | Lists `lib*` `.deb` names from the project `pool` URL (llama.cpp pool → `libllama0`, `libllama-dev` only). Picks newest pool file whose libc fits each allowlisted suite. | ✔️ Applied on `main` today — **causes resolute regression**; seed should **not** skip (see bug doc). |
+| **Depends walk** | Reads `Depends` / `Recommends` / `Suggests` on downloaded `.deb`s; hunts missing `lib*` from Debian pool (e.g. `libggml0` from ggml pool). Recurses. | ✔️ **Must** skip when suite already ships the package — stops ~120-package splatter. Needs **version-aware** exception for pinned runtime deps newer than upstream (see bug doc). |
+
+### Anti-splatter rules (keep these)
+
+- ✔️ **`pool_suite_has_package`** on the **Depends walk only** (once seed exception is fixed): do not import `libc6`, `libgcc-s1`, `libkrb5`, `libblas`, etc. when the target suite already publishes that name.
+- ✔️ **`pool_never_republish`**: never import `libc6` from the pool.
+- ✔️ **`pool_pick_deb`**: newest pool revision whose effective `libc6 (>= …)` fits the suite — e.g. `10271` / `0.18.1` on plucky/trixie/questing, `10344` / `0.19.0` on resolute amd64 when libc is 2.43.
+- ✔️ **`pool_effective_libc_need_for_filename`**: for `-dev` / backend packages with no direct libc Depends, derive libc floor from pinned `(=)` runtime library deps so sid-only builds are not selected for older suites.
+- ✔️ **`pool_should_skip`**: do not re-fetch when hashes unchanged; re-fetch when a newer fitting build appears or when an allowlisted suite is missing from the previous index.
+- ✔️ **Prune**: `reprepro-prune.sh` drops packages in reprepro that are not in the publish manifest (uses `scripts/lib/deb-pkg-name.sh` for hyphenated tree-sitter filenames).
+
+### Splatter incident (Aug 2026)
+
+- ℹ️ Before upstream-skip: Depends walk republished ~120 packages (`libc6`, `libgcc-s1`, `libkrb5`, …) into `gh-pages`.
+- ✔️ Fixed in `3ec3405` with `pool_suite_has_package` on the walk + libc-aware pick + prune.
+- ⏳ Side effect: resolute llama stack stopped publishing because Ubuntu already ships older `libllama0` / `libggml0`. Documented in `docs/bugs/llama-cpp-resolute-upstream-skip.md`.
+- 🔷 **Do not** remove upstream skip from the Depends walk to fix resolute — that reverts the splatter fix.
+
+### Per-suite llama versions (expected when working)
+
+| Suite | libc6 | amd64 llama stack (typical) |
+| ----- | ----- | ----------------------------- |
+| trixie, plucky, questing | 2.41–2.42 | `libllama0` `10271+dfsg`, `libggml0` `0.18.1` (+ matching `-dev`, Suggests backends) |
+| resolute | 2.43 | `libllama0` `10344+dfsg`, `libggml0` `0.19.0` (+ matching `-dev`, backends) |
+
+- ℹ️ arm64 may share `10344` / `0.19.0` across suites when libc allows.
+- ℹ️ Catalog: `scripts/generate-index-html.sh` — suites without our package but in another suite’s allowlist show “already in Debian/Ubuntu”; resolute should show **we ship it** when newer pool builds are ingested.
 
 ## Suite allowlist
 
@@ -61,7 +100,8 @@ Stopped before coding. §4 as written would either publish uninstallable llama.c
 - ℹ️ Not a llama.cpp feature change. Debian sid rebuilt them against glibc 2.43. That landed this week.
 - ℹ️ The hunter always takes the newest `.deb`. Today that is the 2.43 build.
 - ℹ️ Suites that lack `libllama0` (`trixie` / `plucky` / `questing`) cannot install that newest build.
-- ℹ️ The one suite that can (`resolute`) already has Ubuntu’s `libllama0`. We must not republish it there.
+- ℹ️ `resolute` can install the 2.43 builds and Ubuntu already ships **older** `libllama0` / `libggml0`.
+- 🔷 We **do** republish newer pool builds on resolute (see `dd2d426`, `config/repos.json` `deb.suites`). Upstream-skip must not block that — `docs/bugs/llama-cpp-resolute-upstream-skip.md`.
 
 ### `Priority: required` / `essential` does not keep libc6 out — this part is not recent
 
@@ -124,15 +164,16 @@ Stopped before coding. §4 as written would either publish uninstallable llama.c
 
 ## Do not import packages the suite already has
 
-- 🔷 Do not add a dependency to our repo if the target suite already ships that package name.
-- 🔷 That is the Depends stop. Not `Priority: required` / `essential`.
-- ℹ️ That keeps `libc6` / `libstdc++6` / `libssl3t64` / `libblas` out. It still pulls `libggml0` on suites that lack it.
+- 🔷 On the **Depends walk**: do not add a dependency if the target suite already ships that package name **and** the suite’s version satisfies what we need (unpinned or upstream ≥ required pin).
+- 🔷 Exception: when we publish a **newer** pool build for an explicit project (llama stack on resolute), import pinned runtime deps (`libggml0 (= 0.19.0-1)`) even if the suite ships an older revision. See bug doc.
+- 🔷 **Seed** packages from the project pool URL are explicit imports — do not apply the upstream-name skip to seeds (llama.cpp pool only contains `libllama0` / `libllama-dev`).
+- ℹ️ That keeps `libc6` / `libstdc++6` / `libssl3t64` / `libblas` out of the walked graph. It still pulls `libggml0` on suites that lack it entirely.
 
 ## Config
 
-- 🔷 ✔️ Add llama.cpp as a pool source in `config/repos.json` after the `OLLMchat` entry.
+- ✔️ llama.cpp pool source in `config/repos.json` after the `OLLMchat` entry:
   - `pool`: `https://deb.debian.org/debian/pool/main/l/llama.cpp`
-  - `deb.suites`: suites that lack `libllama0` (`trixie`, `plucky`, `questing`). Not `resolute`.
+  - `deb.suites`: `trixie`, `plucky`, `questing`, `resolute` — all allowlisted; fetch logic picks per-suite versions and decides what to publish (see **Per-suite llama versions**).
 - 🔷 `pool` means fetch from the Debian pool, not `gh release`.
 - 🔷 No `packages` list. No `ggml` project.
 - 🔷 Omit faiss unless a supported suite is missing it. Do not invent a `noble` allowlist.
@@ -158,7 +199,7 @@ Stopped before coding. §4 as written would either publish uninstallable llama.c
 - 🔷 JSON only has the project + pool. The script works out lib deps.
 - 🔷 Seed: every `lib*` `.deb` in that pool for the arch (e.g. `libllama0`, `libllama-dev`). Skip `python3-*`, `*-examples`, `*-tests`, `*-tools`.
 - 🔷 For each downloaded `.deb`, read `Depends`, `Recommends`, and `Suggests`. Parse package names, hunt missing ones from the Debian pool (same newest-that-fits libc check as the seed). Recurse.
-- 🔷 Stop walking a dep if the target suite already ships that package name, or it is not in the pool. See **Do not import packages the suite already has**.
+- 🔷 Stop walking a dep if the target suite already ships that package name (subject to version-aware exception), or it is not in the pool. See **Do not import packages the suite already has**.
 - ℹ️ `libllama0` Depends on `libggml0`. Seeding `libllama-dev` also pulls `libggml-dev`.
 - 🔷 Skip `libggml0-backend-hip` by name.
 
@@ -167,4 +208,5 @@ Stopped before coding. §4 as written would either publish uninstallable llama.c
 - Do not add `noble` to `apt.suites` or any `deb.suites` allowlist.
 - Do not add a `packages` array or a `ggml` project to `config/repos.json`.
 - Do not add faiss / llama.cpp as `roojs` GitHub repos.
-- Do not republish a package into a suite that already has it.
+- Do not republish **walked system dependencies** into a suite that already has them (`libc6`, `libgcc-s1`, …).
+- Do not block **seed** or **newer pinned runtime** pool imports on resolute because Ubuntu ships older `libllama0` / `libggml0` — see `docs/bugs/llama-cpp-resolute-upstream-skip.md`.
