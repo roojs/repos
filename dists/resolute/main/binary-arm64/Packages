@@ -67,6 +67,40 @@ Description: Tensor library for machine learning - libraries
  .
  This package provides the main libraries, and the CPU backend.
 
+Package: libggml0-backend-blas
+Source: ggml
+Version: 0.19.0-1
+Architecture: arm64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 92
+Depends: libggml0 (= 0.19.0-1), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
+Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
+Provides: libggml0-backend (= 0.19.0-1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libs
+Filename: pool/main/g/ggml/libggml0-backend-blas_0.19.0-1_arm64.deb
+Size: 21676
+SHA256: 267b3653f6c0d0afed226a8038ff8c0d4b0e4d3806bcf4113e1b06bc848b1f98
+SHA1: 1f46a33155d6b70df5a0b941bcdc02624dc0854c
+MD5sum: 54b6250ccc457bee9e03d469f5f424d3
+Description: Tensor library for machine learning - BLAS backend
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the BLAS backend.
+
 Package: libggml0-backend-rpc
 Source: ggml
 Version: 0.19.0-1
@@ -100,6 +134,40 @@ Description: Tensor library for machine learning - RPC backend
  GPU backends.
  .
  This package provides the RPC backend.
+
+Package: libggml0-backend-vulkan
+Source: ggml
+Version: 0.19.0-1
+Architecture: arm64
+Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
+Installed-Size: 50079
+Depends: libggml0 (= 0.19.0-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
+Suggests: mesa-vulkan-drivers, nvidia-vulkan-icd
+Provides: libggml0-backend (= 0.19.0-1)
+Multi-Arch: same
+Homepage: https://github.com/ggml-org/ggml
+Priority: optional
+Section: libs
+Filename: pool/main/g/ggml/libggml0-backend-vulkan_0.19.0-1_arm64.deb
+Size: 5480736
+SHA256: d5bdffd0b1e8d2f1d36491563b6409a1c46cbffcc3d9d4274c4b7e94f92d3f9c
+SHA1: c038a541da19efe3523d7085b952c5d496370123
+MD5sum: 0b09755710c098609f371f8607ce5ff2
+Description: Tensor library for machine learning - Vulkan backend
+ ggml is a tensor library for machine learning with the following features:
+ .
+  * Low-level cross-platform implementation
+  * Integer quantization support
+  * Broad hardware support
+  * Automatic differentiation
+  * ADAM and L-BFGS optimizers
+  * No third-party dependencies
+  * Zero memory allocations during runtime
+ .
+ On Debian, ggml is shipped as a package that depends on one of the CPU or
+ GPU backends.
+ .
+ This package provides the Vulkan backend.
 
 Package: libllama-dev
 Source: llama.cpp
