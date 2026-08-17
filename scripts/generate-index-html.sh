@@ -43,7 +43,7 @@ html_escape() {
 
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
-mkdir -p "${work}/apt" "${work}/rpm" "${work}/allowlist" "${work}/always" "${work}/desc" "${work}/group"
+mkdir -p "${work}/apt" "${work}/rpm" "${work}/opensuse" "${work}/allowlist" "${work}/always" "${work}/desc" "${work}/group"
 
 # APT packages we never ingest because every supported suite already has them.
 printf '%s\n' libfaiss-dev > "${work}/always/packages"
@@ -85,6 +85,14 @@ record_rpm() {
   printf '%s\n' "$ver" > "${work}/rpm/${pkg}/${fc}/${arch}"
   printf '%s\n' "$pkg" >> "${work}/pkg-names"
   printf '%s\n' "$fc" >> "${work}/fedora-nums"
+}
+
+record_opensuse() {
+  local pkg="$1" release="$2" arch="$3" ver="$4"
+  [[ -n "$pkg" && -n "$release" && -n "$arch" && -n "$ver" ]] || return 0
+  mkdir -p "${work}/opensuse/${pkg}/${release}"
+  printf '%s\n' "$ver" > "${work}/opensuse/${pkg}/${release}/${arch}"
+  printf '%s\n' "$pkg" >> "${work}/pkg-names"
 }
 
 scan_packages_file() {
@@ -146,21 +154,28 @@ if [[ -d "${pages}/rpm" ]]; then
       continue
     fi
     rel="${file#"${pages}/rpm/"}"
-    if [[ ! "$rel" =~ ^fc([0-9]+)/([^/]+)/([^/]+)$ ]]; then
-      continue
+    if [[ "$rel" =~ ^fc([0-9]+)/([^/]+)/([^/]+)$ ]]; then
+      fc="${BASH_REMATCH[1]}"
+      arch="${BASH_REMATCH[2]}"
+      if [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.fc[0-9]+\.[^.]+\.rpm$ ]]; then
+        pkg="${BASH_REMATCH[1]}"
+        ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
+      elif [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
+        pkg="${BASH_REMATCH[1]}"
+        ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
+      else
+        continue
+      fi
+      record_rpm "$pkg" "$fc" "$arch" "$ver"
+    elif [[ "$rel" =~ ^tumbleweed/([^/]+)/([^/]+)$ ]]; then
+      release="tumbleweed"
+      arch="${BASH_REMATCH[1]}"
+      if [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]] && [[ "$base" != *\.fc* ]]; then
+        pkg="${BASH_REMATCH[1]}"
+        ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
+        record_opensuse "$pkg" "$release" "$arch" "$ver"
+      fi
     fi
-    fc="${BASH_REMATCH[1]}"
-    arch="${BASH_REMATCH[2]}"
-    if [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.fc[0-9]+\.[^.]+\.rpm$ ]]; then
-      pkg="${BASH_REMATCH[1]}"
-      ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
-    elif [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
-      pkg="${BASH_REMATCH[1]}"
-      ver="${BASH_REMATCH[2]}-${BASH_REMATCH[3]}"
-    else
-      continue
-    fi
-    record_rpm "$pkg" "$fc" "$arch" "$ver"
   done < <(find "${pages}/rpm" -type f -name '*.rpm' -print0 | sort -z)
   shopt -u nullglob
 fi
@@ -515,7 +530,12 @@ cell_rpm() {
 }
 
 cell_opensuse() {
-  local pkg="$1"
+  local pkg="$1" release="$2" html rpm_pkg
+  rpm_pkg="$(rpm_pkg_name "$pkg")"
+  if html="$(format_ship_html "${work}/opensuse/${rpm_pkg}/${release}")"; then
+    printf 'ship\t%s\n' "$html"
+    return 0
+  fi
   if is_opensuse_upstream "$pkg"; then
     printf 'distro\t%s\n' "$(already_in_html openSUSE)"
     return 0
@@ -546,8 +566,8 @@ write_rpm_td() {
 }
 
 write_opensuse_td() {
-  local pkg="$1" grade html
-  IFS=$'\t' read -r grade html < <(cell_opensuse "$pkg")
+  local pkg="$1" release="$2" grade html
+  IFS=$'\t' read -r grade html < <(cell_opensuse "$pkg" "$release")
   printf '<td class="%s">%s</td>\n' "$grade" "$html"
 }
 
@@ -599,7 +619,7 @@ write_group_table() {
       write_rpm_td "$pkg" "$fc"
     done
     for release in "${opensuse_columns[@]}"; do
-      write_opensuse_td "$pkg"
+      write_opensuse_td "$pkg" "$release"
     done
     printf '</tr>\n'
   done < "$pkgfile"

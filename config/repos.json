@@ -39,6 +39,8 @@
       "repo": "repos",
       "rpm": true,
       "fedora": [44],
+      "publish_fedora": [44],
+      "publish_opensuse": ["tumbleweed"],
       "deb": {
         "release_tags": {
           "tree-sitter-*": "default"

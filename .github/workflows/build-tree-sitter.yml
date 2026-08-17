@@ -113,9 +113,63 @@ jobs:
             cache/output-rpm/libtree-sitter-*.rpm
             cache/output-rpm/tree-sitter-manifest.json
 
+  build-suse-rpm:
+    runs-on: ubuntu-latest
+    container:
+      image: opensuse/tumbleweed
+    outputs:
+      changed: ${{ steps.build.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache parser checkouts
+        uses: actions/cache@v4
+        with:
+          path: cache/tree-sitter
+          key: tree-sitter-checkouts-v1-${{ hashFiles('config/tree-sitter.json') }}
+          restore-keys: |
+            tree-sitter-checkouts-v1-
+
+      - name: Install build dependencies
+        run: |
+          zypper -n refresh
+          zypper -n install \
+            git nodejs npm gcc make rpm-build tree-sitter-devel libtree-sitter0_26 php8 php8-cli jq gh
+
+      - name: Download prior release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          mkdir -p cache/prior-release cache/output-suse-rpm
+          tag="$(gh release list --limit 50 --json tagName \
+            --jq '[.[].tagName | select(startswith("tree-sitter-"))] | first // empty')"
+          if [[ -z "$tag" ]]; then
+            exit 0
+          fi
+          gh release download "$tag" --dir cache/prior-release
+
+      - name: Build openSUSE RPM packages
+        id: build
+        run: |
+          git config --global --add safe.directory '*'
+          php scripts/tree-sitter-packages.php --suse
+        env:
+          TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
+          TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output-suse-rpm
+          TREE_SITTER_MANIFEST: ${{ github.workspace }}/cache/prior-release/tree-sitter-manifest.json
+
+      - name: Upload openSUSE rpm artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tree-sitter-suse-rpm
+          path: |
+            cache/output-suse-rpm/libtree-sitter-*.rpm
+            cache/output-suse-rpm/tree-sitter-manifest.json
+
   release:
-    needs: [build-deb, build-rpm]
-    if: needs.build-deb.outputs.changed == 'true' || needs.build-rpm.outputs.changed == 'true'
+    needs: [build-deb, build-rpm, build-suse-rpm]
+    if: needs.build-deb.outputs.changed == 'true' || needs.build-rpm.outputs.changed == 'true' || needs.build-suse-rpm.outputs.changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -132,6 +186,12 @@ jobs:
           name: tree-sitter-rpm
           path: cache/output-rpm
 
+      - name: Download openSUSE rpm artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: tree-sitter-suse-rpm
+          path: cache/output-suse-rpm
+
       - name: Merge manifest
         run: |
           chmod +x scripts/merge-tree-sitter-manifest.sh
@@ -139,9 +199,11 @@ jobs:
           ./scripts/merge-tree-sitter-manifest.sh \
             cache/output-deb/tree-sitter-manifest.json \
             cache/output-rpm/tree-sitter-manifest.json \
+            cache/output-suse-rpm/tree-sitter-manifest.json \
             cache/output/tree-sitter-manifest.json
           cp cache/output-deb/libtree-sitter-*.deb cache/output/ 2>/dev/null || true
           cp cache/output-rpm/libtree-sitter-*.rpm cache/output/ 2>/dev/null || true
+          cp cache/output-suse-rpm/libtree-sitter-*.rpm cache/output/ 2>/dev/null || true
 
       - name: Publish dated release
         env:

@@ -646,7 +646,7 @@ merge_repo_index_entry() {
 }
 
 packages_from_repo_dir() {
-  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4" fedora_allowlist="${5:-null}" publish_fedora="${6:-null}"
+  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4" fedora_allowlist="${5:-null}" publish_fedora="${6:-null}" publish_opensuse="${7:-null}"
   local packages="{}"
   local file base sha file_suites_json fc arch
   shopt -s nullglob
@@ -658,16 +658,21 @@ packages_from_repo_dir() {
       echo "Skipping ${base}" >&2
       continue
     fi
-    if [[ "$package_type" == "rpm" ]] && [[ "$fedora_allowlist" != "null" ]]; then
-      if [[ ! "${base}" =~ \.fc([0-9]+)\. ]]; then
+    if [[ "$package_type" == "rpm" ]]; then
+      if [[ "${base}" =~ \.fc([0-9]+)\. ]]; then
+        if [[ "$fedora_allowlist" != "null" ]]; then
+          fc="${BASH_REMATCH[1]}"
+          if ! jq -en --argjson fc "$fc" --argjson list "$fedora_allowlist" '$list | index($fc) != null' >/dev/null; then
+            rm -f "$file"
+            echo "Skipping ${base}: fc${fc} not in fedora allowlist." >&2
+            continue
+          fi
+        fi
+      elif [[ "$publish_opensuse" != "null" ]] && [[ "${base}" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
+        :
+      elif [[ "$fedora_allowlist" != "null" ]]; then
         rm -f "$file"
         echo "Skipping ${base}: cannot parse Fedora release from filename." >&2
-        continue
-      fi
-      fc="${BASH_REMATCH[1]}"
-      if ! jq -en --argjson fc "$fc" --argjson list "$fedora_allowlist" '$list | index($fc) != null' >/dev/null; then
-        rm -f "$file"
-        echo "Skipping ${base}: fc${fc} not in fedora allowlist." >&2
         continue
       fi
     fi
@@ -696,6 +701,15 @@ packages_from_repo_dir() {
         --arg arch "$arch" \
         --argjson fedora "$publish_fedora" \
         '. + {($name): {sha256: $sha, arch: $arch, fedora: $fedora}}' \
+        <<< "$packages")"
+    elif [[ "$publish_opensuse" != "null" ]] && [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]] && [[ "$base" != *\.fc* ]]; then
+      arch="${BASH_REMATCH[4]}"
+      packages="$(jq \
+        --arg name "$base" \
+        --arg sha "$sha" \
+        --arg arch "$arch" \
+        --argjson opensuse "$publish_opensuse" \
+        '. + {($name): {sha256: $sha, arch: $arch, opensuse: $opensuse}}' \
         <<< "$packages")"
     else
       packages="$(jq \
@@ -1013,9 +1027,11 @@ while IFS= read -r repo; do
   suites_json="null"
   fedora_allowlist="null"
   publish_fedora="null"
+  publish_opensuse="null"
   if [[ "$package_type" == "rpm" ]]; then
     fedora_allowlist="$(repos_config_rpm_fedora_allowlist "$project")"
     publish_fedora="$(repos_config_rpm_publish_fedora "$project")"
+    publish_opensuse="$(repos_config_rpm_publish_opensuse "$project")"
   fi
   repo_dir="${output}/${repo}"
   mkdir -p "$repo_dir"
@@ -1149,7 +1165,7 @@ while IFS= read -r repo; do
         continue
       fi
 
-      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json" "$fedora_allowlist" "$publish_fedora")"
+      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json" "$fedora_allowlist" "$publish_fedora" "$publish_opensuse")"
       if [[ "$packages" == "{}" ]]; then
         echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} files matched release assets." >&2
         continue

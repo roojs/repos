@@ -15,6 +15,16 @@ publish_rpm() {
   echo "Added ${base} -> rpm/fc${fc}/${arch}/"
 }
 
+publish_rpm_opensuse() {
+  local rpm="$1" release="$2" arch="$3"
+  local base dest
+  base="$(basename "${rpm}")"
+  dest="${repo_root}/rpm/${release}/${arch}"
+  mkdir -p "${dest}"
+  cp -f "${rpm}" "${dest}/"
+  echo "Added ${base} -> rpm/${release}/${arch}/"
+}
+
 shopt -s nullglob globstar
 mapfile -t rpms < <(find "${incoming_dir}" -mindepth 2 -maxdepth 2 -type f -name '*.rpm' | sort)
 if [[ "${#rpms[@]}" -eq 0 ]]; then
@@ -46,6 +56,24 @@ for rpm in "${rpms[@]}"; do
         [[ -n "$fc" ]] || continue
         publish_rpm "$rpm" "$fc" "$arch"
       done < <(jq -r '.fedora[]' <<< "$meta")
+      continue
+    fi
+
+    meta="$(jq -c --arg file "$base" '
+      [
+        .[]
+        | .packages[$file]?
+        | select(.opensuse and .arch)
+        | {opensuse: .opensuse, arch: .arch}
+      ]
+      | .[0] // empty
+    ' "$index")"
+    if [[ -n "$meta" ]]; then
+      arch="$(jq -r '.arch' <<< "$meta")"
+      while IFS= read -r release; do
+        [[ -n "$release" ]] || continue
+        publish_rpm_opensuse "$rpm" "$release" "$arch"
+      done < <(jq -r '.opensuse[]' <<< "$meta")
       continue
     fi
   fi

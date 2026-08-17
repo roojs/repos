@@ -38,6 +38,7 @@ class TreeSitterPackageBuilder {
     private string $onlyParser = '';
     private bool $buildDeb = true;
     private bool $buildRpm = false;
+    private bool $buildSuseRpm = false;
     private string $treeSitterCliVersion = '0.20.8';
     private array $results = [];
     private array $priorManifest = [];
@@ -110,6 +111,11 @@ class TreeSitterPackageBuilder {
             } elseif (isset($this->priorManifest[$id]['rpm'])) {
                 $item['rpm'] = $this->priorManifest[$id]['rpm'];
             }
+            if (!empty($entry['suse_rpm'])) {
+                $item['suse_rpm'] = basename($entry['suse_rpm']);
+            } elseif (isset($this->priorManifest[$id]['suse_rpm'])) {
+                $item['suse_rpm'] = $this->priorManifest[$id]['suse_rpm'];
+            }
             $relativeManifest['parsers'][$id] = $item;
         }
         file_put_contents(
@@ -119,7 +125,7 @@ class TreeSitterPackageBuilder {
     }
     
     private function parseArguments(): void {
-        $options = getopt('', ['install', 'clean', 'help', 'list', 'only:', 'rpm', 'deb']);
+        $options = getopt('', ['install', 'clean', 'help', 'list', 'only:', 'rpm', 'suse', 'deb']);
         
         if (isset($options['help'])) {
             $this->showHelp();
@@ -140,6 +146,11 @@ class TreeSitterPackageBuilder {
             $this->buildRpm = true;
             $this->buildDeb = false;
         }
+        if (isset($options['suse'])) {
+            $this->buildSuseRpm = true;
+            $this->buildDeb = false;
+            $this->buildRpm = false;
+        }
         if (isset($options['deb'])) {
             $this->buildDeb = true;
         }
@@ -152,6 +163,10 @@ class TreeSitterPackageBuilder {
     public function buildsRpm() {
         return $this->buildRpm;
     }
+
+    public function buildsSuseRpm() {
+        return $this->buildSuseRpm;
+    }
     
     private function showHelp(): void {
         echo "Tree-sitter Parser Debian Package Builder\n";
@@ -163,6 +178,7 @@ class TreeSitterPackageBuilder {
         echo "  --list        List available parsers\n";
         echo "  --only=ID     Build only the parser with this config id\n";
         echo "  --rpm         Build Fedora RPM packages (default: Debian .deb)\n";
+        echo "  --suse        Build openSUSE RPM packages (no .fc dist tag in filenames)\n";
         echo "  --deb         Build Debian packages (default when --rpm is omitted)\n";
         echo "  --help        Show this help message\n\n";
         echo "Output directory: {$this->outputDir}\n";
@@ -407,7 +423,7 @@ class TreeSitterPackageBuilder {
                         glob($this->outputDir . '/' . $packageName . '-*.deb') ?: []
                     );
                 }
-                if ($this->buildRpm) {
+                if ($this->buildRpm || $this->buildSuseRpm) {
                     $existingPackages = array_merge(
                         $existingPackages,
                         glob($this->outputDir . '/' . $packageName . '-*.rpm') ?: []
@@ -420,12 +436,16 @@ class TreeSitterPackageBuilder {
                     foreach ($existingPackages as $pkg) {
                         echo "      - " . basename($pkg) . "\n";
                     }
-                    $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => ''];
+                    $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => '', 'suse_rpm' => ''];
                     foreach ($existingPackages as $pkg) {
                         if (substr($pkg, -4) === '.deb') {
                             $manifestEntry['deb'] = $pkg;
                         } elseif (substr($pkg, -4) === '.rpm') {
-                            $manifestEntry['rpm'] = $pkg;
+                            if ($this->isSuseRpmFilename(basename($pkg))) {
+                                $manifestEntry['suse_rpm'] = $pkg;
+                            } else {
+                                $manifestEntry['rpm'] = $pkg;
+                            }
                         }
                     }
                     $this->builtManifest['parsers'][$parser['id']] = $manifestEntry;
@@ -596,7 +616,7 @@ class TreeSitterPackageBuilder {
         echo "  ✓ Built " . count($builtLibraries) . " grammar(s)\n";
 
         $packageFiles = [];
-        $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => ''];
+        $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => '', 'suse_rpm' => ''];
 
         if ($this->buildDeb) {
             echo "  Packaging: Creating Debian package structure...\n";
@@ -608,9 +628,15 @@ class TreeSitterPackageBuilder {
         }
 
         if ($this->buildRpm) {
-            $rpms = $this->buildRpmPackage($parser, $repoDir, $buildDir, $packageVersion, $builtLibraries, $currentCommit);
+            $rpms = $this->buildRpmPackage($parser, $repoDir, $buildDir, $packageVersion, $builtLibraries, $currentCommit, true);
             $packageFiles = array_merge($packageFiles, $rpms);
             $manifestEntry['rpm'] = $rpms[0];
+        }
+
+        if ($this->buildSuseRpm) {
+            $rpms = $this->buildRpmPackage($parser, $repoDir, $buildDir, $packageVersion, $builtLibraries, $currentCommit, false);
+            $packageFiles = array_merge($packageFiles, $rpms);
+            $manifestEntry['suse_rpm'] = $rpms[0];
         }
 
         $this->builtManifest['parsers'][$parser['id']] = $manifestEntry;
@@ -989,7 +1015,7 @@ PKGCONFIG;
 
     private function reusePriorPackages(array $parser, string $identity, string $buildDir, string $repoDir) {
         $packageFiles = [];
-        $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => ''];
+        $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => '', 'suse_rpm' => ''];
 
         if ($this->buildDeb) {
             $priorDeb = $this->resolvePriorPackagePath($this->priorManifest[$parser['id']]['deb'] ?? '');
@@ -1011,9 +1037,20 @@ PKGCONFIG;
             }
         }
 
+        if ($this->buildSuseRpm) {
+            $priorRpm = $this->resolvePriorPackagePath($this->priorManifest[$parser['id']]['suse_rpm'] ?? '');
+            if ($priorRpm !== '' && is_file($priorRpm) && is_readable($priorRpm)) {
+                $targetRpm = $this->outputDir . '/' . basename($priorRpm);
+                copy($priorRpm, $targetRpm);
+                $manifestEntry['suse_rpm'] = $targetRpm;
+                $packageFiles[] = $targetRpm;
+            }
+        }
+
         $haveDeb = !$this->buildDeb || $manifestEntry['deb'] !== '';
         $haveRpm = !$this->buildRpm || $manifestEntry['rpm'] !== '';
-        if (!$haveDeb || !$haveRpm) {
+        $haveSuseRpm = !$this->buildSuseRpm || $manifestEntry['suse_rpm'] !== '';
+        if (!$haveDeb || !$haveRpm || !$haveSuseRpm) {
             return false;
         }
 
@@ -1030,7 +1067,7 @@ PKGCONFIG;
         ];
     }
 
-    private function buildRpmPackage(array $parser, string $repoDir, string $buildDir, string $packageVersion, array $builtLibraries, string $currentCommit) {
+    private function buildRpmPackage(array $parser, string $repoDir, string $buildDir, string $packageVersion, array $builtLibraries, string $currentCommit, $fedoraDist) {
         $rpmName = 'lib' . $parser['name'];
         $rpmTop = $repoDir . '/rpmbuild';
         foreach (['BUILD', 'RPMS', 'SOURCES', 'SPECS', 'SRPMS'] as $sub) {
@@ -1058,10 +1095,11 @@ PKGCONFIG;
             $filesLines[] = '%{_libdir}/' . $lib['basename'];
         }
 
+        $release = $fedoraDist ? '1%{?dist}' : '1';
         $date = date('Y-m-d');
         $spec = "Name:           {$rpmName}\n"
             . "Version:        {$packageVersion}\n"
-            . "Release:        1%{?dist}\n"
+            . "Release:        {$release}\n"
             . "Summary:        {$description}\n"
             . "License:        MIT\n"
             . "URL:            {$parser['repo']}\n\n"
@@ -1104,6 +1142,10 @@ PKGCONFIG;
         file_put_contents($commitFile, $currentCommit);
 
         return $packageFiles;
+    }
+
+    private function isSuseRpmFilename($filename) {
+        return substr($filename, -4) === '.rpm' && strpos($filename, '.fc') === false;
     }
     
     /**
@@ -1497,9 +1539,10 @@ PKGCONFIG;
 
 // Main execution
 try {
-    $cliOptions = getopt('', ['rpm', 'deb']);
+    $cliOptions = getopt('', ['rpm', 'suse', 'deb']);
     $buildRpm = isset($cliOptions['rpm']);
-    $buildDeb = !$buildRpm || isset($cliOptions['deb']);
+    $buildSuseRpm = isset($cliOptions['suse']);
+    $buildDeb = (!$buildRpm && !$buildSuseRpm) || isset($cliOptions['deb']);
 
     $requiredPackages = ['git', 'nodejs', 'npm', 'gcc', 'make', 'php-cli', 'jq'];
     if ($buildDeb) {
@@ -1512,7 +1555,7 @@ try {
             'tree-sitter-cli',
         ]);
     }
-    if ($buildRpm) {
+    if ($buildRpm || $buildSuseRpm) {
         $requiredPackages = array_merge($requiredPackages, [
             'rpm-build',
             'libtree-sitter-devel',
@@ -1523,11 +1566,19 @@ try {
     $missingPackages = [];
     
     foreach ($requiredPackages as $package) {
-        if ($buildRpm && ($package === 'nodejs' || $package === 'npm')) {
+        if (($buildRpm || $buildSuseRpm) && ($package === 'nodejs' || $package === 'npm')) {
             $command = $package === 'nodejs' ? 'node' : 'npm';
             exec('command -v ' . escapeshellarg($command) . ' >/dev/null 2>&1', $output, $returnCode);
-        } elseif ($buildRpm) {
-            exec('rpm -q ' . escapeshellarg($package) . ' >/dev/null 2>&1', $output, $returnCode);
+        } elseif ($buildRpm || $buildSuseRpm) {
+            $rpmPackage = $package;
+            if ($buildSuseRpm) {
+                if ($package === 'libtree-sitter-devel') {
+                    $rpmPackage = 'tree-sitter-devel';
+                } elseif ($package === 'libtree-sitter') {
+                    $rpmPackage = 'libtree-sitter0_26';
+                }
+            }
+            exec('rpm -q ' . escapeshellarg($rpmPackage) . ' >/dev/null 2>&1', $output, $returnCode);
         } else {
             exec('dpkg-query -W ' . escapeshellarg($package) . ' >/dev/null 2>&1', $output, $returnCode);
         }
@@ -1551,6 +1602,23 @@ try {
                 }
             }
             echo 'sudo dnf install -y ' . implode(' ', $fedoraPackages) . "\n";
+        } elseif ($buildSuseRpm) {
+            echo "You should install these:\n";
+            $susePackages = [];
+            foreach ($missingPackages as $package) {
+                if ($package === 'nodejs') {
+                    $susePackages[] = 'nodejs';
+                } elseif ($package === 'npm') {
+                    $susePackages[] = 'npm';
+                } elseif ($package === 'libtree-sitter-devel') {
+                    $susePackages[] = 'tree-sitter-devel';
+                } elseif ($package === 'libtree-sitter') {
+                    $susePackages[] = 'libtree-sitter0_26';
+                } else {
+                    $susePackages[] = $package;
+                }
+            }
+            echo 'sudo zypper install -y ' . implode(' ', $susePackages) . "\n";
         } else {
             echo "You should install these:\n";
             echo "sudo apt-get install -y " . implode(' ', $missingPackages) . "\n";
