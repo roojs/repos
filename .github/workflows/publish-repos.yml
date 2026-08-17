@@ -164,11 +164,11 @@ jobs:
           gpg --armor --export "${GPG_KEY_ID}" > key.gpg
 
       - name: Sync reprepro config
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: main/scripts/generate-distributions.sh main/config/repos.json > pages/conf/distributions
 
       - name: Ingest packages with reprepro
-        if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-debs.outputs.found == 'true'
+        if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.missing.outputs.missing == 'true') && steps.fetch-debs.outputs.found == 'true'
         working-directory: main
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
@@ -180,7 +180,7 @@ jobs:
             config/repos.json
 
       - name: Build DNF repositories
-        if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true') && steps.fetch-rpms.outputs.found == 'true'
+        if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true') && steps.fetch-rpms.outputs.found == 'true'
         working-directory: main
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
@@ -191,11 +191,11 @@ jobs:
             "${GITHUB_WORKSPACE}/pages"
 
       - name: Update publish manifest
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: cp /tmp/current-manifest.json pages/.publish-manifest.json
 
       - name: Clean up incoming packages
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Sync client setup files to Pages
