@@ -550,6 +550,33 @@ Description: Tree-sitter parser for Python language (runtime library)
  This package provides only the runtime libraries. For development, use
  libtree-sitter-dev which provides the main Tree-sitter API.
 
+Package: libtree-sitter-rpmspec
+Source: tree-sitter-rpmspec
+Version: 0.20.8-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 7153
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://gitlab.com/cryptomilk/tree-sitter-rpmspec
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-rpmspec/libtree-sitter-rpmspec_0.20.8-1_amd64.deb
+Size: 629662
+SHA256: 75c11716f722e14d915304b35096195ef0cd6fffef4c8242a78d5f69632a0cd8
+SHA1: 1a0d57e53223731e7e3b5a7b6c1fb2d88de975db
+MD5sum: 835bf1c9319f90952bee07675526321e
+Description: Tree-sitter parsers for Rpmspec (runtime libraries)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Rpmspec language parsing. This package includes parsers for: rpmbash, rpmspec.
+ .
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
 Package: libtree-sitter-ruby
 Source: tree-sitter-ruby
 Version: 0.20.1-1

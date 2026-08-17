@@ -305,7 +305,7 @@
       }
     },
     "repos": {
-      "tag": "tree-sitter-2026-08-16",
+      "tag": "tree-sitter-2026-08-17",
       "packages": {
         "libtree-sitter-bash-0.20.5-1_amd64.deb": {
           "sha256": "4d0f7cf0ed4e4dad2fbb2de23048d2d2393b435ff8f938fabe6dc6d7e8994b98",
@@ -381,6 +381,15 @@
         },
         "libtree-sitter-python-0.20.4-1_amd64.deb": {
           "sha256": "d1249cb2d3072afa8bf03a1288fa5b5e1699bb8e2e4ebdba1fdf8b59c442981e",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libtree-sitter-rpmspec-0.20.8-1_amd64.deb": {
+          "sha256": "75c11716f722e14d915304b35096195ef0cd6fffef4c8242a78d5f69632a0cd8",
           "suites": [
             "trixie",
             "plucky",

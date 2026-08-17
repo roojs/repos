@@ -4,35 +4,35 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: resolute
-Date: Mon, 17 Aug 2026 02:38:26 UTC
+Date: Mon, 17 Aug 2026 09:30:10 UTC
 Architectures: amd64 arm64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- d2aa9d5bd8edb83b7627d9f5f77bef80 35701 main/binary-amd64/Packages
- 8e505666bedbfaf097289a19d0f8a242 8526 main/binary-amd64/Packages.gz
+ 7ca712a224e0348bec5d74eb33f97855 36779 main/binary-amd64/Packages
+ 607fc775c561a0c61b7486759910e9c8 8716 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
  6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
  a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
  32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- be5dae2ffe06b59e39b68250b4e60dd968eb0b06 35701 main/binary-amd64/Packages
- 21989c98a3d2adc49468ef842e8cb96295e6c912 8526 main/binary-amd64/Packages.gz
+ 590fd6fe909343073a7258f980532235c294e426 36779 main/binary-amd64/Packages
+ 5b02995f2b273cb18a8c8852db16055d3ce5d011 8716 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
  b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
  3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
  6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- 2d555c57d3ccd9cc9052c779d0a38e34b537ec99c9d10ec79db1a749a314b3b2 35701 main/binary-amd64/Packages
- a16733c0d5554ae83dd070c207f0145629c22d5b4aac5d979e4444834d2c1fff 8526 main/binary-amd64/Packages.gz
+ 0d40123cd97cda9260329d49c6b57a394b9a2ff44dc2ea258b99bdc08ab69fe6 36779 main/binary-amd64/Packages
+ f341909644e5a579b5ca3d3e187d260577fc8d3a2a378f490ea69eaf5b6e3884 8716 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
  0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
  71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
  46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoJ0IwAKCRADhhQ8Yzk0
-cNzXAP9ylApd3I80CLl+xvX2dNb7bztQBPk3TkskuybU0omTmwEAtPFaM1VIh1lR
-6dPrRs15Du/bwi+3ojU0FNAEFOiL1wg=
-=xFip
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoLUogAKCRADhhQ8Yzk0
+cDlHAP9hx2HvRfGhyCbrQiAuIPcx0VoGVXfxCZBzR429lnXRsQD+I+c129a2+9Gi
+ctweoAj2HIL8Qu3dbS4rWf645Cv6lwM=
+=D1Ve
 -----END PGP SIGNATURE-----
