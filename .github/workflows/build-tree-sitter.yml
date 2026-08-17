@@ -77,11 +77,16 @@ jobs:
           restore-keys: |
             tree-sitter-checkouts-v1-
 
+      - name: Install build dependencies
+        run: |
+          dnf install -y \
+            git nodejs npm gcc make rpm-build tree-sitter-devel tree-sitter php-cli jq gh
+
       - name: Download prior release
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          dnf install -y gh
           mkdir -p cache/prior-release cache/output-rpm
           tag="$(gh release list --limit 50 --json tagName \
             --jq '[.[].tagName | select(startswith("tree-sitter-"))] | first // empty')"
@@ -89,11 +94,6 @@ jobs:
             exit 0
           fi
           gh release download "$tag" --dir cache/prior-release
-
-      - name: Install build dependencies
-        run: |
-          dnf install -y \
-            git nodejs npm gcc make rpm-build tree-sitter-devel tree-sitter php-cli jq
 
       - name: Build RPM packages
         id: build
@@ -133,11 +133,11 @@ jobs:
       - name: Merge manifest
         run: |
           chmod +x scripts/merge-tree-sitter-manifest.sh
+          mkdir -p cache/output
           ./scripts/merge-tree-sitter-manifest.sh \
             cache/output-deb/tree-sitter-manifest.json \
             cache/output-rpm/tree-sitter-manifest.json \
             cache/output/tree-sitter-manifest.json
-          mkdir -p cache/output
           cp cache/output-deb/libtree-sitter-*.deb cache/output/ 2>/dev/null || true
           cp cache/output-rpm/libtree-sitter-*.rpm cache/output/ 2>/dev/null || true
 
