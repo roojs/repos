@@ -37,6 +37,8 @@
     { "repo": "roobuilder" },
     {
       "repo": "repos",
+      "rpm": true,
+      "fedora": [44],
       "deb": {
         "release_tags": {
           "tree-sitter-*": "default"

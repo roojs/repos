@@ -36,6 +36,8 @@ class TreeSitterPackageBuilder {
     private bool $installPackages = false;
     private bool $cleanBeforeBuild = false;
     private string $onlyParser = '';
+    private bool $buildDeb = true;
+    private bool $buildRpm = false;
     private array $results = [];
     private array $priorManifest = [];
     private array $builtManifest = ['parsers' => []];
@@ -78,25 +80,33 @@ class TreeSitterPackageBuilder {
         return $decoded['parsers'] ?? [];
     }
     
-    private function resolvePriorDebPath(string $deb): string {
+    private function resolvePriorPackagePath(string $filename) {
         $manifestPath = getenv('TREE_SITTER_MANIFEST') ?: '';
         if ($manifestPath === '') {
-            return $deb;
+            return $filename;
         }
-        if ($deb !== '' && $deb[0] === '/') {
-            return $deb;
+        if ($filename !== '' && $filename[0] === '/') {
+            return $filename;
         }
-        return dirname($manifestPath) . '/' . $deb;
+        return dirname($manifestPath) . '/' . $filename;
     }
     
-    private function writeManifest(): void {
+    private function writeManifest() {
         $manifestPath = $this->outputDir . '/tree-sitter-manifest.json';
         $relativeManifest = ['parsers' => []];
         foreach ($this->builtManifest['parsers'] as $id => $entry) {
-            $relativeManifest['parsers'][$id] = [
-                'identity' => $entry['identity'],
-                'deb' => basename($entry['deb']),
-            ];
+            $item = ['identity' => $entry['identity']];
+            if (!empty($entry['deb'])) {
+                $item['deb'] = basename($entry['deb']);
+            } elseif (isset($this->priorManifest[$id]['deb'])) {
+                $item['deb'] = $this->priorManifest[$id]['deb'];
+            }
+            if (!empty($entry['rpm'])) {
+                $item['rpm'] = basename($entry['rpm']);
+            } elseif (isset($this->priorManifest[$id]['rpm'])) {
+                $item['rpm'] = $this->priorManifest[$id]['rpm'];
+            }
+            $relativeManifest['parsers'][$id] = $item;
         }
         file_put_contents(
             $manifestPath,
@@ -105,7 +115,7 @@ class TreeSitterPackageBuilder {
     }
     
     private function parseArguments(): void {
-        $options = getopt('', ['install', 'clean', 'help', 'list', 'only:']);
+        $options = getopt('', ['install', 'clean', 'help', 'list', 'only:', 'rpm', 'deb']);
         
         if (isset($options['help'])) {
             $this->showHelp();
@@ -122,6 +132,21 @@ class TreeSitterPackageBuilder {
         if (isset($options['only'])) {
             $this->onlyParser = $options['only'];
         }
+        if (isset($options['rpm'])) {
+            $this->buildRpm = true;
+            $this->buildDeb = false;
+        }
+        if (isset($options['deb'])) {
+            $this->buildDeb = true;
+        }
+    }
+    
+    public function buildsDeb() {
+        return $this->buildDeb;
+    }
+    
+    public function buildsRpm() {
+        return $this->buildRpm;
     }
     
     private function showHelp(): void {
@@ -133,6 +158,8 @@ class TreeSitterPackageBuilder {
         echo "  --clean       Clean before building (removes existing directories)\n";
         echo "  --list        List available parsers\n";
         echo "  --only=ID     Build only the parser with this config id\n";
+        echo "  --rpm         Build Fedora RPM packages (default: Debian .deb)\n";
+        echo "  --deb         Build Debian packages (default when --rpm is omitted)\n";
         echo "  --help        Show this help message\n\n";
         echo "Output directory: {$this->outputDir}\n";
     }
@@ -343,23 +370,9 @@ class TreeSitterPackageBuilder {
             isset($this->priorManifest[$parser['id']])
             && ($this->priorManifest[$parser['id']]['identity'] ?? '') === $identity
         ) {
-            $priorDeb = $this->resolvePriorDebPath($this->priorManifest[$parser['id']]['deb'] ?? '');
-            if (is_readable($priorDeb)) {
-                $targetDeb = $this->outputDir . '/' . basename($priorDeb);
-                copy($priorDeb, $targetDeb);
-                echo "  ✓ Reused package from prior release for identity {$identity}\n";
-                $this->builtManifest['parsers'][$parser['id']] = [
-                    'identity' => $identity,
-                    'deb' => $targetDeb,
-                ];
-                return [
-                    'success' => true,
-                    'package_files' => [$targetDeb],
-                    'build_dir' => $buildDir,
-                    'repo_dir' => $repoDir,
-                    'skipped' => true,
-                    'identity' => $identity,
-                ];
+            $reused = $this->reusePriorPackages($parser, $identity, $buildDir, $repoDir);
+            if ($reused !== false) {
+                return $reused;
             }
         }
 
@@ -381,9 +394,19 @@ class TreeSitterPackageBuilder {
 
             if ($savedCommit === $currentCommit) {
                 $packageName = 'lib' . $parser['name'];
-                $packagePattern = $this->outputDir . '/' . $packageName . '-*.deb';
-                echo "    Checking for packages matching: {$packagePattern}\n";
-                $existingPackages = glob($packagePattern);
+                $existingPackages = [];
+                if ($this->buildDeb) {
+                    $existingPackages = array_merge(
+                        $existingPackages,
+                        glob($this->outputDir . '/' . $packageName . '-*.deb') ?: []
+                    );
+                }
+                if ($this->buildRpm) {
+                    $existingPackages = array_merge(
+                        $existingPackages,
+                        glob($this->outputDir . '/' . $packageName . '-*.rpm') ?: []
+                    );
+                }
 
                 if (!empty($existingPackages)) {
                     echo "  ✓ Skipping: Package already built for commit {$currentCommit}\n";
@@ -391,10 +414,15 @@ class TreeSitterPackageBuilder {
                     foreach ($existingPackages as $pkg) {
                         echo "      - " . basename($pkg) . "\n";
                     }
-                    $this->builtManifest['parsers'][$parser['id']] = [
-                        'identity' => $identity,
-                        'deb' => $existingPackages[0],
-                    ];
+                    $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => ''];
+                    foreach ($existingPackages as $pkg) {
+                        if (substr($pkg, -4) === '.deb') {
+                            $manifestEntry['deb'] = $pkg;
+                        } elseif (substr($pkg, -4) === '.rpm') {
+                            $manifestEntry['rpm'] = $pkg;
+                        }
+                    }
+                    $this->builtManifest['parsers'][$parser['id']] = $manifestEntry;
                     return [
                         'success' => true,
                         'package_files' => $existingPackages,
@@ -574,51 +602,26 @@ class TreeSitterPackageBuilder {
         }
         
         echo "  ✓ Built " . count($builtLibraries) . " grammar(s)\n";
-        
-        // Get tree-sitter version for package versioning (use tag version if available)
-        $treeSitterBin = $this->findTreeSitterBinary();
-        if ($packageVersion === null) {
-            $packageVersion = $this->getTreeSitterVersion() ?: '0.1.0';
-        }
-        
-        // Check for existing package.json or create one
-        if (!file_exists($repoDir . '/package.json')) {
-            $this->createPackageJson($repoDir, $parser, $packageVersion);
-        }
-        
-        // Create build directory
-        echo "  Setting up: Creating build directory...\n";
-        $this->createDirectory($buildDir);
-        echo "  ✓ Build directory ready\n";
-        
-        if ($treeSitterBin === null) {
-            // System tree-sitter not found, install via npm
-            echo "  Building: Installing npm dependencies (system tree-sitter not found)...\n";
-            $this->executeCommand(
-                "cd " . escapeshellarg($buildDir) . " && " .
-                "npm init -y && " .
-                "npm install tree-sitter-cli " . escapeshellarg($repoDir),
-                true
-            );
-            echo "  ✓ Dependencies installed\n";
-            $treeSitterBin = $buildDir . '/node_modules/.bin/tree-sitter';
-        } else {
-            echo "  Using system tree-sitter: {$treeSitterBin}\n";
-            // No need to install anything - we just need grammar.js which is in the repo
-        }
-        
-        // Create Debian package structure (pass built libraries info)
-        echo "  Packaging: Creating Debian package structure...\n";
-        $this->createDebianPackage($parser, $repoDir, $buildDir, $packageVersion, $builtLibraries);
-        echo "  ✓ Debian structure created\n";
-        
-        // Build the package
-        $packageFiles = $this->buildDebianPackage($parser, $repoDir, $currentCommit);
 
-        $this->builtManifest['parsers'][$parser['id']] = [
-            'identity' => $identity,
-            'deb' => $packageFiles[0],
-        ];
+        $packageFiles = [];
+        $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => ''];
+
+        if ($this->buildDeb) {
+            echo "  Packaging: Creating Debian package structure...\n";
+            $this->createDebianPackage($parser, $repoDir, $buildDir, $packageVersion, $builtLibraries);
+            echo "  ✓ Debian structure created\n";
+            $debs = $this->buildDebianPackage($parser, $repoDir, $currentCommit);
+            $packageFiles = array_merge($packageFiles, $debs);
+            $manifestEntry['deb'] = $debs[0];
+        }
+
+        if ($this->buildRpm) {
+            $rpms = $this->buildRpmPackage($parser, $repoDir, $buildDir, $packageVersion, $builtLibraries, $currentCommit);
+            $packageFiles = array_merge($packageFiles, $rpms);
+            $manifestEntry['rpm'] = $rpms[0];
+        }
+
+        $this->builtManifest['parsers'][$parser['id']] = $manifestEntry;
 
         return [
             'success' => true,
@@ -991,6 +994,125 @@ PKGCONFIG;
         
         return $packageFiles;
     }
+
+    private function reusePriorPackages(array $parser, string $identity, string $buildDir, string $repoDir) {
+        $packageFiles = [];
+        $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => ''];
+
+        if ($this->buildDeb) {
+            $priorDeb = $this->resolvePriorPackagePath($this->priorManifest[$parser['id']]['deb'] ?? '');
+            if ($priorDeb !== '' && is_readable($priorDeb)) {
+                $targetDeb = $this->outputDir . '/' . basename($priorDeb);
+                copy($priorDeb, $targetDeb);
+                $manifestEntry['deb'] = $targetDeb;
+                $packageFiles[] = $targetDeb;
+            }
+        }
+
+        if ($this->buildRpm) {
+            $priorRpm = $this->resolvePriorPackagePath($this->priorManifest[$parser['id']]['rpm'] ?? '');
+            if ($priorRpm !== '' && is_readable($priorRpm)) {
+                $targetRpm = $this->outputDir . '/' . basename($priorRpm);
+                copy($priorRpm, $targetRpm);
+                $manifestEntry['rpm'] = $targetRpm;
+                $packageFiles[] = $targetRpm;
+            }
+        }
+
+        $haveDeb = !$this->buildDeb || $manifestEntry['deb'] !== '';
+        $haveRpm = !$this->buildRpm || $manifestEntry['rpm'] !== '';
+        if (!$haveDeb || !$haveRpm) {
+            return false;
+        }
+
+        echo "  ✓ Reused package(s) from prior release for identity {$identity}\n";
+        $this->builtManifest['parsers'][$parser['id']] = $manifestEntry;
+
+        return [
+            'success' => true,
+            'package_files' => $packageFiles,
+            'build_dir' => $buildDir,
+            'repo_dir' => $repoDir,
+            'skipped' => true,
+            'identity' => $identity,
+        ];
+    }
+
+    private function buildRpmPackage(array $parser, string $repoDir, string $buildDir, string $packageVersion, array $builtLibraries, string $currentCommit) {
+        $rpmName = 'lib' . $parser['name'];
+        $rpmTop = $repoDir . '/rpmbuild';
+        foreach (['BUILD', 'RPMS', 'SOURCES', 'SPECS', 'SRPMS'] as $sub) {
+            $this->createDirectory($rpmTop . '/' . $sub);
+        }
+
+        foreach ($builtLibraries as $lib) {
+            copy($lib['so'], $rpmTop . '/SOURCES/' . $lib['basename']);
+        }
+
+        $languageName = ucfirst($parser['language']);
+        $description = "Tree-sitter parser for {$languageName} language (runtime library)";
+        if (count($builtLibraries) > 1) {
+            $grammarNames = array_map(function ($lib) {
+                return $lib['name'];
+            }, $builtLibraries);
+            $description = "Tree-sitter parsers for {$languageName} (runtime libraries): "
+                . implode(', ', $grammarNames);
+        }
+
+        $installLines = [];
+        $filesLines = [];
+        foreach ($builtLibraries as $lib) {
+            $installLines[] = 'install -m 755 %{_sourcedir}/' . $lib['basename'] . ' $RPM_BUILD_ROOT%{_libdir}/' . $lib['basename'];
+            $filesLines[] = '%{_libdir}/' . $lib['basename'];
+        }
+
+        $date = date('Y-m-d');
+        $spec = "Name:           {$rpmName}\n"
+            . "Version:        {$packageVersion}\n"
+            . "Release:        1%{?dist}\n"
+            . "Summary:        {$description}\n"
+            . "License:        MIT\n"
+            . "URL:            {$parser['repo']}\n\n"
+            . "%description\n"
+            . "{$description}\n\n"
+            . "%install\n"
+            . "rm -rf \$RPM_BUILD_ROOT\n"
+            . "mkdir -p \$RPM_BUILD_ROOT%{_libdir}\n"
+            . implode("\n", $installLines) . "\n\n"
+            . "%files\n"
+            . implode("\n", $filesLines) . "\n\n"
+            . "%changelog\n"
+            . "* {$date} Auto Builder <builder@localhost> - {$packageVersion}-1\n"
+            . "- Automated tree-sitter parser build\n";
+
+        $specPath = $rpmTop . '/SPECS/' . $rpmName . '.spec';
+        file_put_contents($specPath, $spec);
+
+        echo "  Building: Creating RPM package...\n";
+        $this->executeCommand(
+            'rpmbuild -bb --define "_topdir ' . $rpmTop . '" ' . escapeshellarg($specPath),
+            true
+        );
+        echo "  ✓ RPM package built\n";
+
+        $pattern = $rpmTop . '/RPMS/*/' . $rpmName . '-*.rpm';
+        $rpms = glob($pattern);
+        if (empty($rpms)) {
+            throw new Exception("Build completed but no RPM files found matching {$pattern}");
+        }
+
+        $packageFiles = [];
+        foreach ($rpms as $rpmFile) {
+            $targetFile = $this->outputDir . '/' . basename($rpmFile);
+            rename($rpmFile, $targetFile);
+            $packageFiles[] = $targetFile;
+        }
+
+        $commitFile = $repoDir . '/debian_package_commit.txt';
+        file_put_contents($commitFile, $currentCommit);
+
+        return $packageFiles;
+    }
     
     /**
      * Install built packages
@@ -1274,6 +1396,32 @@ PKGCONFIG;
         return $buildScannerC;
     }
 
+    private function treeSitterCompileFlags() {
+        $cflags = '';
+        exec('pkg-config --cflags tree-sitter 2>/dev/null', $output, $returnCode);
+        if ($returnCode === 0 && !empty($output)) {
+            $cflags = trim($output[0]);
+        }
+        if ($cflags === '') {
+            if (is_dir('/usr/include/tree-sitter')) {
+                $cflags = '-I/usr/include/tree-sitter';
+            } else {
+                $cflags = '-I/usr/include';
+            }
+        }
+
+        $libs = '';
+        exec('pkg-config --libs tree-sitter 2>/dev/null', $output, $returnCode);
+        if ($returnCode === 0 && !empty($output)) {
+            $libs = trim($output[0]);
+        }
+        if ($libs === '') {
+            $libs = '-ltree-sitter';
+        }
+
+        return [$cflags, $libs];
+    }
+
     private function compileSharedLibrary(
         string $buildDir,
         string $langName,
@@ -1282,9 +1430,10 @@ PKGCONFIG;
         string $grammarDir
     ) {
         $libName = 'tree_sitter_parser_' . $langName . '.so';
-        $includeFlags = '';
+        list($cflags, $libs) = $this->treeSitterCompileFlags();
+        $includeFlags = $cflags . ' ';
         if (file_exists($grammarDir . '/src/tree_sitter')) {
-            $includeFlags = '-I' . escapeshellarg($grammarDir . '/src') . ' ';
+            $includeFlags .= '-I' . escapeshellarg($grammarDir . '/src') . ' ';
         }
 
         $sources = escapeshellarg(basename($buildParserC));
@@ -1294,9 +1443,9 @@ PKGCONFIG;
 
         $this->executeCommand(
             "cd " . escapeshellarg($buildDir) . " && " .
-            "gcc -shared -fPIC -I/usr/include/tree-sitter " .
+            "gcc -shared -fPIC " .
             $includeFlags .
-            "-o " . escapeshellarg($libName) . " " . $sources . " -ltree-sitter",
+            "-o " . escapeshellarg($libName) . " " . $sources . " " . $libs,
             true
         );
     }
@@ -1334,24 +1483,37 @@ PKGCONFIG;
 
 // Main execution
 try {
-    // Check for required dependencies using dpkg -l
-    $requiredPackages = [
-        'git',
-        'nodejs',
-        'npm',
-        'build-essential',
-        'devscripts',
-        'debhelper',
-        'libtree-sitter-dev',
-        'libc6-dev',
-        'tree-sitter-cli'
-    ];
+    $cliOptions = getopt('', ['rpm', 'deb']);
+    $buildRpm = isset($cliOptions['rpm']);
+    $buildDeb = !$buildRpm || isset($cliOptions['deb']);
+
+    $requiredPackages = ['git', 'nodejs', 'npm', 'gcc', 'make', 'php-cli', 'jq'];
+    if ($buildDeb) {
+        $requiredPackages = array_merge($requiredPackages, [
+            'build-essential',
+            'devscripts',
+            'debhelper',
+            'libtree-sitter-dev',
+            'libc6-dev',
+            'tree-sitter-cli',
+        ]);
+    }
+    if ($buildRpm) {
+        $requiredPackages = array_merge($requiredPackages, [
+            'rpm-build',
+            'tree-sitter-devel',
+            'tree-sitter',
+        ]);
+    }
     
     $missingPackages = [];
     
     foreach ($requiredPackages as $package) {
-        // Check if package is installed using dpkg-query (more reliable, handles :arch suffix)
-        exec("dpkg-query -W " . escapeshellarg($package) . " >/dev/null 2>&1", $output, $returnCode);
+        if ($buildRpm) {
+            exec("rpm -q " . escapeshellarg($package) . " >/dev/null 2>&1", $output, $returnCode);
+        } else {
+            exec("dpkg-query -W " . escapeshellarg($package) . " >/dev/null 2>&1", $output, $returnCode);
+        }
         if ($returnCode !== 0) {
             $missingPackages[] = $package;
         }
@@ -1359,8 +1521,13 @@ try {
     
     if (!empty($missingPackages)) {
         echo "Error: Missing required packages.\n";
-        echo "You should install these:\n";
-        echo "sudo apt-get install " . implode(' ', $missingPackages) . "\n";
+        if ($buildRpm) {
+            echo "You should install these:\n";
+            echo "sudo dnf install -y " . implode(' ', $missingPackages) . "\n";
+        } else {
+            echo "You should install these:\n";
+            echo "sudo apt-get install -y " . implode(' ', $missingPackages) . "\n";
+        }
         exit(1);
     }
     

@@ -7,8 +7,10 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build-deb:
     runs-on: ubuntu-24.04
+    outputs:
+      changed: ${{ steps.build.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,7 +27,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p cache/prior-release cache/output
+          mkdir -p cache/prior-release cache/output-deb
           tag="$(gh release list --limit 50 --json tagName \
             --jq '[.[].tagName | select(startswith("tree-sitter-"))] | first // empty')"
           if [[ -z "$tag" ]]; then
@@ -42,22 +44,111 @@ jobs:
             git nodejs npm build-essential devscripts debhelper \
             libtree-sitter-dev tree-sitter-cli php-cli jq
 
-      - name: Build packages
+      - name: Build Debian packages
         id: build
         run: php scripts/tree-sitter-packages.php
         env:
           TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
-          TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output
+          TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output-deb
           TREE_SITTER_MANIFEST: ${{ github.workspace }}/cache/prior-release/tree-sitter-manifest.json
 
+      - name: Upload deb artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tree-sitter-deb
+          path: |
+            cache/output-deb/libtree-sitter-*.deb
+            cache/output-deb/tree-sitter-manifest.json
+
+  build-rpm:
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:44
+    outputs:
+      changed: ${{ steps.build.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache parser checkouts
+        uses: actions/cache@v4
+        with:
+          path: cache/tree-sitter
+          key: tree-sitter-checkouts-v1-${{ hashFiles('config/tree-sitter.json') }}
+          restore-keys: |
+            tree-sitter-checkouts-v1-
+
+      - name: Download prior release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          dnf install -y gh
+          mkdir -p cache/prior-release cache/output-rpm
+          tag="$(gh release list --limit 50 --json tagName \
+            --jq '[.[].tagName | select(startswith("tree-sitter-"))] | first // empty')"
+          if [[ -z "$tag" ]]; then
+            exit 0
+          fi
+          gh release download "$tag" --dir cache/prior-release
+
+      - name: Install build dependencies
+        run: |
+          dnf install -y \
+            git nodejs npm gcc make rpm-build tree-sitter-devel tree-sitter php-cli jq
+
+      - name: Build RPM packages
+        id: build
+        run: php scripts/tree-sitter-packages.php --rpm
+        env:
+          TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
+          TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output-rpm
+          TREE_SITTER_MANIFEST: ${{ github.workspace }}/cache/prior-release/tree-sitter-manifest.json
+
+      - name: Upload rpm artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tree-sitter-rpm
+          path: |
+            cache/output-rpm/libtree-sitter-*.rpm
+            cache/output-rpm/tree-sitter-manifest.json
+
+  release:
+    needs: [build-deb, build-rpm]
+    if: needs.build-deb.outputs.changed == 'true' || needs.build-rpm.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download deb artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: tree-sitter-deb
+          path: cache/output-deb
+
+      - name: Download rpm artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: tree-sitter-rpm
+          path: cache/output-rpm
+
+      - name: Merge manifest
+        run: |
+          chmod +x scripts/merge-tree-sitter-manifest.sh
+          ./scripts/merge-tree-sitter-manifest.sh \
+            cache/output-deb/tree-sitter-manifest.json \
+            cache/output-rpm/tree-sitter-manifest.json \
+            cache/output/tree-sitter-manifest.json
+          mkdir -p cache/output
+          cp cache/output-deb/libtree-sitter-*.deb cache/output/ 2>/dev/null || true
+          cp cache/output-rpm/libtree-sitter-*.rpm cache/output/ 2>/dev/null || true
+
       - name: Publish dated release
-        if: steps.build.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="tree-sitter-$(date -u +%Y-%m-%d)"
           gh release create "$tag" \
             cache/output/libtree-sitter-*.deb \
+            cache/output/libtree-sitter-*.rpm \
             cache/output/tree-sitter-manifest.json \
             --title "$tag" \
             --notes "Tree-sitter parser batch ${tag}"
