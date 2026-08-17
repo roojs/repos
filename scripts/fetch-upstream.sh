@@ -322,10 +322,33 @@ pool_suite_package_version() {
   pool_index_package_version "$idx" "$name"
 }
 
+# libggml0 version already chosen for this suite in the current pool fetch.
+pool_suite_imported_package_version() {
+  local pkg_prefix="$1" suite="$2" arch="$3" base
+  for base in "${!pool_file_suites[@]}"; do
+    [[ " ${pool_file_suites[$base]} " == *" $suite "* ]] || continue
+    [[ "$base" == "${pkg_prefix}_"*"_${arch}.deb" ]] || continue
+    pool_filename_version "$pkg_prefix" "$arch" "$base"
+    return 0
+  done
+  return 1
+}
+
 # True when a walked dependency should not be imported because upstream already
 # ships it. Returns false (do not skip) when upstream is older than a version pin.
 pool_skip_upstream_package() {
-  local suite="$1" arch="$2" name="$3" op="${4:-}" ver="${5:-}" upstream_ver
+  local suite="$1" arch="$2" name="$3" op="${4:-}" ver="${5:-}" upstream_ver ggml_ver
+  if [[ "$name" == libggml0-backend-* ]]; then
+    if ! pool_suite_has_package "$suite" "$arch" "$name"; then
+      return 1
+    fi
+    ggml_ver="$(pool_suite_imported_package_version libggml0 "$suite" "$arch")" || return 0
+    upstream_ver="$(pool_suite_package_version "$suite" "$arch" "$name")" || return 0
+    if dpkg --compare-versions "$upstream_ver" lt "$ggml_ver"; then
+      return 1
+    fi
+    return 0
+  fi
   if ! pool_suite_has_package "$suite" "$arch" "$name"; then
     return 1
   fi
