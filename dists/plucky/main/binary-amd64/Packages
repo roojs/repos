@@ -319,6 +319,314 @@ Description: sherpa-onnx C API shared library
  .
  This package contains the shared C (and C++) API libraries.
 
+Package: libtree-sitter-bash
+Source: tree-sitter-bash
+Version: 0.20.5-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 1386
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-bash
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-bash/libtree-sitter-bash_0.20.5-1_amd64.deb
+Size: 164636
+SHA256: 4d0f7cf0ed4e4dad2fbb2de23048d2d2393b435ff8f938fabe6dc6d7e8994b98
+SHA1: ad98f757d4bb8dd14e13877636b818b073dc0cb6
+MD5sum: 114e805e45acee4ce7dd8dc6bcf44e0d
+Description: Tree-sitter parser for Bash language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Bash language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-c-sharp
+Source: tree-sitter-c-sharp
+Version: 0.20.0-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 3966
+Depends: libc6 (>= 2.2.5)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-c-sharp
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-c-sharp/libtree-sitter-c-sharp_0.20.0-1_amd64.deb
+Size: 184262
+SHA256: e53527757aa90ea93733d9fa92010a9fa427f01c2fd90d6180c31570ac30f535
+SHA1: 0e8bace2a06c7a8688001a5558f14ad836e558de
+MD5sum: f8415a350ff9c07a68221269595fe5a9
+Description: Tree-sitter parser for C_sharp language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for C_sharp language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-cpp
+Source: tree-sitter-cpp
+Version: 0.20.5-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 4698
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-cpp
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-cpp/libtree-sitter-cpp_0.20.5-1_amd64.deb
+Size: 239596
+SHA256: dbe6b0043cdfb4e8edfe58ef794691509ffb382ef45af953b01b08dec04005f6
+SHA1: 55dd3d8990c7ff882bca8457b6c9918421317892
+MD5sum: 6ecc57bb81c0ec1b1fcacbaf6183484e
+Description: Tree-sitter parser for Cpp language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Cpp language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-go
+Source: tree-sitter-go
+Version: 0.20.0-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 309
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-go
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-go/libtree-sitter-go_0.20.0-1_amd64.deb
+Size: 45394
+SHA256: 4fd54e9eb7c027079475c0eb08455476de300a7b895feffeaaf5e3d68b87b3f1
+SHA1: 7710eb56c19fafd398eaa8f81b56ec4386bd9cac
+MD5sum: 2b1f193628c0d380b49a63c2f21347ae
+Description: Tree-sitter parser for Go language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Go language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-java
+Source: tree-sitter-java
+Version: 0.20.2-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 489
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-java
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-java/libtree-sitter-java_0.20.2-1_amd64.deb
+Size: 51000
+SHA256: ac382e398d0a255ae010bdde56eed95b7cb0e220727487f242abd6f2c53ec5df
+SHA1: 2438a83ce839523dcad665c707b2bffae415bbe8
+MD5sum: f1c07f637e826cbfe0fe1fe8f1909cc4
+Description: Tree-sitter parser for Java language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Java language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-javascript
+Source: tree-sitter-javascript
+Version: 0.20.4-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 634
+Depends: libc6 (>= 2.4)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-javascript
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-javascript/libtree-sitter-javascript_0.20.4-1_amd64.deb
+Size: 68982
+SHA256: bab16a553be79e6c80fa6f6f570c9406f388ed428c8aa914ffb0e94f805ac29b
+SHA1: ee101727d6819dfa13a03844fbe5956b7a79302f
+MD5sum: 239e8b3a16fb5fc57a80b65f393d975d
+Description: Tree-sitter parser for Javascript language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Javascript language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-markdown
+Source: tree-sitter-markdown
+Version: 0.20.8-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 825
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter-grammars/tree-sitter-markdown
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-markdown/libtree-sitter-markdown_0.20.8-1_amd64.deb
+Size: 103916
+SHA256: ffba77b96a4da5455c34eafb6601726f526054cc89e0ab62c91ca31ea2a173fa
+SHA1: 883f39f8852f3c306741858773fd3b9fc6576b23
+MD5sum: 4a889d0b8394815af71a72fa50da0320
+Description: Tree-sitter parser for Markdown language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Markdown language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-php
+Source: tree-sitter-php
+Version: 0.20.0-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 766
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-php
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-php/libtree-sitter-php_0.20.0-1_amd64.deb
+Size: 71260
+SHA256: 9f99ee2b4ac22b293109e6a87ccc5c972e4c5d0dc48d379653a021415744f1a9
+SHA1: c72a2109b9bd436c8d2b3c5f938d8392dba77708
+MD5sum: b64eba6a7fe025e1da8beb0935ce896d
+Description: Tree-sitter parser for Php language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Php language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-python
+Source: tree-sitter-python
+Version: 0.20.4-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 538
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-python
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-python/libtree-sitter-python_0.20.4-1_amd64.deb
+Size: 65148
+SHA256: d1249cb2d3072afa8bf03a1288fa5b5e1699bb8e2e4ebdba1fdf8b59c442981e
+SHA1: df05057e69b3db133cbd03133d75e470a72bf6de
+MD5sum: 97d3dcda7d22a27c9aec802b1ad2a9bf
+Description: Tree-sitter parser for Python language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Python language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-ruby
+Source: tree-sitter-ruby
+Version: 0.20.1-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 2074
+Depends: libc6 (>= 2.14)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-ruby
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-ruby/libtree-sitter-ruby_0.20.1-1_amd64.deb
+Size: 124372
+SHA256: 33f814c71805e9ef014503fe37f3bf20da51e8065eb2e5b9dca70406a223ed4b
+SHA1: 3da111d6bb747571ffc9a0df1a5e7e8b56dbe6a1
+MD5sum: 58ee1ae2da1d0a66f8ef064f204358bd
+Description: Tree-sitter parser for Ruby language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Ruby language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-rust
+Source: tree-sitter-rust
+Version: 0.20.4-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 906
+Depends: libc6 (>= 2.2.5)
+Multi-Arch: foreign
+Homepage: https://github.com/tree-sitter/tree-sitter-rust
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-rust/libtree-sitter-rust_0.20.4-1_amd64.deb
+Size: 84612
+SHA256: e46e0568f7ceff46d9863082a2b925874200622ef715ffce431bcaf5eee0eeaa
+SHA1: fdef642cf0e5a55656f02adf674d735ff660b114
+MD5sum: 9df96819d942981321680f98da607f13
+Description: Tree-sitter parser for Rust language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Rust language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
+Package: libtree-sitter-vala
+Source: tree-sitter-vala
+Version: 0.20.8-1
+Architecture: amd64
+Maintainer: Auto Builder <builder@localhost>
+Installed-Size: 605
+Multi-Arch: foreign
+Homepage: https://github.com/vala-lang/tree-sitter-vala
+Priority: optional
+Section: devel
+Filename: pool/main/t/tree-sitter-vala/libtree-sitter-vala_0.20.8-1_amd64.deb
+Size: 55962
+SHA256: bcd497c3529e2c68d1045b3211f38d78adb6d958b7c61ae173a6cec6cb7445e9
+SHA1: 239774bfb09d69aa7caa13306c2d38396687a19e
+MD5sum: b84d6db92ba3ba1a94a4f138df364439
+Description: Tree-sitter parser for Vala language (runtime library)
+ Tree-sitter is a parser generator tool and an incremental parsing library.
+ This package contains the runtime shared libraries for Vala language parsing.
+ .
+ It can be used for syntax highlighting, code analysis, and other
+ language tooling applications.
+ .
+ This package provides only the runtime libraries. For development, use
+ libtree-sitter-dev which provides the main Tree-sitter API.
+
 Package: libwebkitgtk-6.0-4
 Source: webkit2gtk
 Version: 2.50.4-0ubuntu0.25.04.1+webkitgtk1

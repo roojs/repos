@@ -1,27 +1,27 @@
 Origin: roojs
 Label: roojs
 Codename: resolute
-Date: Mon, 17 Aug 2026 00:32:12 UTC
+Date: Mon, 17 Aug 2026 00:50:08 UTC
 Architectures: amd64 arm64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- a56d6478da7273411e6e3585e79bbde4 13775 main/binary-amd64/Packages
- 69e02e3b7a21f6bc71de10c0bcca321b 4439 main/binary-amd64/Packages.gz
+ f5bf84e031dde739f02582f623bd1a95 25841 main/binary-amd64/Packages
+ 9854fad031f9e1845a167c7b2977c555 6424 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/binary-arm64/Packages
  7029066c27ac6f5ef18d660d5741979a 20 main/binary-arm64/Packages.gz
  32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- e793205c08c69563a38fb64c4499098cbf495ae8 13775 main/binary-amd64/Packages
- f01b0ee4831916be37bdaa656be8f587d7459f24 4439 main/binary-amd64/Packages.gz
+ 475c8a5c434e970cc5ffce4c91626307ee09ad67 25841 main/binary-amd64/Packages
+ eb5587718d4d272ede48495fdf996a7ca1a8613e 6424 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-arm64/Packages
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-arm64/Packages.gz
  6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- 12b6a18d7f3d6e3ae40c695477b961eed9b27cbb2a0eeda0f33fd957b4b479bf 13775 main/binary-amd64/Packages
- bdad8992b70b4e4b8c6102719c735fecb12075b69136cacb405914e193658c7e 4439 main/binary-amd64/Packages.gz
+ d793e22903245f7a212d6f5429503eccb5ada923d8f08ad2e2d5d40c57ee372e 25841 main/binary-amd64/Packages
+ 07cff8eaab184428ae33b4cd743b178fa3c44143c7e3b4ff1599a52977dbde20 6424 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-arm64/Packages
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-arm64/Packages.gz
