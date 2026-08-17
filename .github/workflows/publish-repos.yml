@@ -156,6 +156,16 @@ jobs:
             "${GITHUB_WORKSPACE}/pages" \
             "${GPG_KEY_ID}"
 
+      - name: Prune packages no longer in manifest
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true
+        working-directory: main
+        run: |
+          chmod +x scripts/reprepro-prune.sh
+          ./scripts/reprepro-prune.sh \
+            "${GITHUB_WORKSPACE}/pages" \
+            config/repos.json \
+            /tmp/current-manifest.json
+
       - name: Build DNF repositories
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true) && steps.fetch-rpms.outputs.found == 'true'
         working-directory: main
