@@ -30,7 +30,7 @@ Checklist: `docs/guide-to-writing-plans.md`
 - 🔷 ✔️ Rows: package name, with a short subtext of what it is (Packages `Description` synopsis).
 - 🔷 ✔️ One table per product block. Debian, Ubuntu, and Fedora are column groups in that table, not separate tables.
 - 🔷 ✔️ The “already in …” grade means the package is not required from this repo (it is already upstream in that distro).
-- 🔷 ✔️ Debian columns: `trixie` (and later Debian suites). Ubuntu columns: `plucky`, `questing`, `resolute`. Fedora columns only where we still publish (`fc44`, RooTerm `fc42`, …).
+- 🔷 ✔️ Debian columns: `trixie` (and later Debian suites). Ubuntu columns: `plucky`, `questing`, `resolute`. Fedora columns only where we still publish (`fc44` for RooTerm, sherpa, …).
 - 🔷 ✔️ Version cells stay narrow: headline version only (not the packaging revision), architecture on the next line.
 - 🔷 Cell is a support grade, not only a version:
   - We ship it: show the version from our repo.

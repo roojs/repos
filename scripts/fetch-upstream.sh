@@ -580,6 +580,32 @@ persist_package_index() {
   jq . <<< "$index" > "${output}/.package-index.json"
 }
 
+filter_rpm_index_by_fedora() {
+  local repo project allowlist filename fc
+  while IFS= read -r repo; do
+    [[ -n "$repo" ]] || continue
+    project="$(repos_config_project_json "$config" "$repo")"
+    allowlist="$(repos_config_rpm_fedora_allowlist "$project")"
+    [[ "$allowlist" != "null" ]] || continue
+    while IFS= read -r filename; do
+      [[ -n "$filename" ]] || continue
+      if [[ ! "$filename" =~ \.fc([0-9]+)\. ]]; then
+        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+        echo "Dropping ${filename} from index: cannot parse Fedora release." >&2
+        continue
+      fi
+      fc="${BASH_REMATCH[1]}"
+      if ! jq -e --argjson fc "$fc" --argjson list "$allowlist" '$list | index($fc) != null' >/dev/null; then
+        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+        echo "Dropping ${filename} from index: fc${fc} not in fedora allowlist." >&2
+      fi
+    done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' <<< "$index")
+    if jq -e --arg repo "$repo" '.[$repo].packages | length == 0' <<< "$index" >/dev/null; then
+      index="$(jq --arg repo "$repo" 'del(.[$repo])' <<< "$index")"
+    fi
+  done < <(jq -r 'keys[]' <<< "$index")
+}
+
 merge_repo_index_entry() {
   local repo="$1" tag="$2" packages="$3"
   if jq -e --arg repo "$repo" 'has($repo)' <<< "$index" >/dev/null; then
@@ -609,9 +635,9 @@ merge_repo_index_entry() {
 }
 
 packages_from_repo_dir() {
-  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4"
+  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4" fedora_allowlist="${5:-null}"
   local packages="{}"
-  local file base sha file_suites_json
+  local file base sha file_suites_json fc
   shopt -s nullglob
   for file in "${repo_dir}"/*."${package_type}"; do
     [[ -f "$file" ]] || continue
@@ -620,6 +646,19 @@ packages_from_repo_dir() {
       rm -f "$file"
       echo "Skipping ${base}" >&2
       continue
+    fi
+    if [[ "$package_type" == "rpm" ]] && [[ "$fedora_allowlist" != "null" ]]; then
+      if [[ ! "${base}" =~ \.fc([0-9]+)\. ]]; then
+        rm -f "$file"
+        echo "Skipping ${base}: cannot parse Fedora release from filename." >&2
+        continue
+      fi
+      fc="${BASH_REMATCH[1]}"
+      if ! jq -e --argjson fc "$fc" --argjson list "$fedora_allowlist" '$list | index($fc) != null' >/dev/null; then
+        rm -f "$file"
+        echo "Skipping ${base}: fc${fc} not in fedora allowlist." >&2
+        continue
+      fi
     fi
     if [[ -n "$release_json" ]] && ! jq -e --arg name "$base" --arg ext "$package_type" \
       '[.assets[] | select(.name == $name and (.name | endswith("." + $ext)))] | length > 0' \
@@ -793,6 +832,10 @@ while IFS= read -r repo; do
   pool_file_suites=()
   tag=""
   suites_json="null"
+  fedora_allowlist="null"
+  if [[ "$package_type" == "rpm" ]]; then
+    fedora_allowlist="$(repos_config_rpm_fedora_allowlist "$project")"
+  fi
   repo_dir="${output}/${repo}"
   mkdir -p "$repo_dir"
 
@@ -888,7 +931,7 @@ while IFS= read -r repo; do
         continue
       fi
 
-      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json")"
+      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json" "$fedora_allowlist")"
       if [[ "$packages" == "{}" ]]; then
         echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} files matched release assets." >&2
         continue
@@ -952,6 +995,10 @@ if [[ -n "$repo_filter" ]]; then
     fi
     keep_previous_repo "$repo" "Keeping previously published ${repo}: not in this run's repo filter."
   done < <(jq -r 'keys[]' <<< "$previous_index")
+fi
+
+if [[ "$package_type" == "rpm" ]]; then
+  filter_rpm_index_by_fedora
 fi
 
 persist_package_index

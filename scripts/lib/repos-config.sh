@@ -38,6 +38,11 @@ repos_config_fetch_rpms() {
   [[ "$(jq -r '.rpm // false' <<< "$project")" == "true" ]]
 }
 
+repos_config_rpm_fedora_allowlist() {
+  local project="$1"
+  jq -c '.fedora // null' <<< "$project"
+}
+
 repos_config_deb_suites() {
   local config="$1" project="$2" tag="$3"
 

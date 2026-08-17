@@ -11,9 +11,9 @@
       "pool": "https://deb.debian.org/debian/pool/main/l/llama.cpp",
       "deb": { "suites": ["trixie", "plucky", "questing", "resolute"] }
     },
-    { "repo": "app.RooTerm", "deb": false, "rpm": true },
-    { "repo": "ibus-sherpa-onnx", "deb": false, "rpm": true },
-    { "repo": "sherpa-onnx", "deb": false, "rpm": true },
+    { "repo": "app.RooTerm", "deb": false, "rpm": true, "fedora": [44] },
+    { "repo": "ibus-sherpa-onnx", "deb": false, "rpm": true, "fedora": [44] },
+    { "repo": "sherpa-onnx", "deb": false, "rpm": true, "fedora": [44] },
     {
       "repo": "webkitgtk-automation",
       "deb": {

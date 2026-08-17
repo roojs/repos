@@ -21,7 +21,7 @@ Checklist: `docs/guide-to-writing-plans.md`
 - ℹ️ `OLLMchat` in `config/repos.json` has no `"rpm": true`. Fetch skips it for RPM.
 - ℹ️ `scripts/build-rpm-repos.sh` only accepts filenames matching `.fc([0-9]+).([^.]+).rpm`.
 - ℹ️ openSUSE names are `libfaiss-1.10.0-2.6.x86_64.rpm` (no `.fc44.`).
-- ℹ️ Published RPMs today: RooTerm `fc42`, sherpa / ibus `fc44`.
+- ℹ️ Published RPMs today: RooTerm, sherpa / ibus `fc44`.
 
 ## Will nicking Tumbleweed FAISS work
 

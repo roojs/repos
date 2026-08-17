@@ -110,13 +110,13 @@ jobs:
             /tmp/current-manifest.json
 
       - name: Install reprepro dependencies
-        if: steps.fetch-debs.outputs.found == 'true'
+        if: steps.fetch-debs.outputs.found == 'true' || steps.fetch-rpms.outputs.found == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y reprepro createrepo-c gpg jq
 
       - name: Import GPG key for reprepro
-        if: steps.fetch-debs.outputs.found == 'true'
+        if: steps.fetch-debs.outputs.found == 'true' || steps.fetch-rpms.outputs.found == 'true'
         uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
@@ -133,6 +133,16 @@ jobs:
             config/repos.json \
             /tmp/current-manifest.json
 
+      - name: Prune RPM packages no longer in manifest
+        id: rpm-prune
+        if: steps.fetch-rpms.outputs.found == 'true'
+        working-directory: main
+        run: |
+          chmod +x scripts/rpm-prune.sh
+          ./scripts/rpm-prune.sh \
+            "${GITHUB_WORKSPACE}/pages" \
+            /tmp/current-manifest.json
+
       - name: Check for manifest packages missing from repo
         id: missing
         if: steps.fetch-debs.outputs.found == 'true'
@@ -145,13 +155,13 @@ jobs:
             /tmp/current-manifest.json
 
       - name: Skip publish when unchanged
-        if: steps.changes.outputs.changed != 'true' && inputs.force != true && steps.prune.outputs.pruned != 'true' && steps.missing.outputs.missing != 'true'
+        if: steps.changes.outputs.changed != 'true' && inputs.force != true && steps.prune.outputs.pruned != 'true' && steps.rpm-prune.outputs.pruned != 'true' && steps.missing.outputs.missing != 'true'
         run: |
           echo "No changes to publish."
           rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Export repository signing key
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         working-directory: pages
         run: |
           set -euo pipefail
@@ -164,7 +174,7 @@ jobs:
           gpg --armor --export "${GPG_KEY_ID}" > key.gpg
 
       - name: Sync reprepro config
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: main/scripts/generate-distributions.sh main/config/repos.json > pages/conf/distributions
 
       - name: Ingest packages with reprepro
@@ -180,7 +190,7 @@ jobs:
             config/repos.json
 
       - name: Build DNF repositories
-        if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true') && steps.fetch-rpms.outputs.found == 'true'
+        if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true') && (steps.fetch-rpms.outputs.found == 'true' || steps.rpm-prune.outputs.pruned == 'true')
         working-directory: main
         env:
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
@@ -191,11 +201,11 @@ jobs:
             "${GITHUB_WORKSPACE}/pages"
 
       - name: Update publish manifest
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: cp /tmp/current-manifest.json pages/.publish-manifest.json
 
       - name: Clean up incoming packages
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Sync client setup files to Pages
