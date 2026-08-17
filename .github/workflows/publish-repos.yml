@@ -133,14 +133,25 @@ jobs:
             config/repos.json \
             /tmp/current-manifest.json
 
+      - name: Check for manifest packages missing from repo
+        id: missing
+        if: steps.fetch-debs.outputs.found == 'true'
+        working-directory: main
+        run: |
+          chmod +x scripts/reprepro-missing.sh
+          ./scripts/reprepro-missing.sh \
+            "${GITHUB_WORKSPACE}/pages" \
+            config/repos.json \
+            /tmp/current-manifest.json
+
       - name: Skip publish when unchanged
-        if: steps.changes.outputs.changed != 'true' && inputs.force != true && steps.prune.outputs.pruned != 'true'
+        if: steps.changes.outputs.changed != 'true' && inputs.force != true && steps.prune.outputs.pruned != 'true' && steps.missing.outputs.missing != 'true'
         run: |
           echo "No changes to publish."
           rm -rf pages/incoming-debs pages/incoming-rpms
 
       - name: Export repository signing key
-        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true'
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         working-directory: pages
         run: |
           set -euo pipefail
