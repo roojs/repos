@@ -35,7 +35,7 @@ class TreeSitterPackageBuilder {
     private string $outputDir;
     private bool $installPackages = false;
     private bool $cleanBeforeBuild = false;
-    private ?string $onlyParser = null;
+    private string $onlyParser = '';
     private array $results = [];
     private array $priorManifest = [];
     private array $builtManifest = ['parsers' => []];
@@ -158,7 +158,7 @@ class TreeSitterPackageBuilder {
      */
     public function buildAll(): void {
         $parsers = $this->parsers;
-        if ($this->onlyParser !== null) {
+        if ($this->onlyParser !== '') {
             if (!isset($parsers[$this->onlyParser])) {
                 throw new Exception("Unknown parser id '{$this->onlyParser}'. Use --list to see available ids.");
             }
@@ -1239,7 +1239,7 @@ PKGCONFIG;
      * Find directories containing grammar.js files (source grammars only, not generated grammar.json)
      * Returns array of directory paths (root first, then subdirectories)
      */
-    private function installGrammarNpmDependencies(string $grammarDir): void {
+    private function installGrammarNpmDependencies(string $grammarDir) {
         if (!file_exists($grammarDir . '/package.json')) {
             return;
         }
@@ -1251,20 +1251,20 @@ PKGCONFIG;
         );
     }
 
-    private function findScannerSource(string $grammarDir): ?string {
+    private function findScannerSource(string $grammarDir) {
         foreach ([$grammarDir . '/src/scanner.c', $grammarDir . '/scanner.c'] as $candidate) {
             if (file_exists($candidate)) {
                 return $candidate;
             }
         }
 
-        return null;
+        return '';
     }
 
-    private function copyScannerSource(string $grammarDir, string $buildDir, string $langName): ?string {
+    private function copyScannerSource(string $grammarDir, string $buildDir, string $langName) {
         $scannerC = $this->findScannerSource($grammarDir);
-        if ($scannerC === null) {
-            return null;
+        if ($scannerC === '') {
+            return '';
         }
 
         $buildScannerC = $buildDir . '/scanner_' . $langName . '.c';
@@ -1278,9 +1278,9 @@ PKGCONFIG;
         string $buildDir,
         string $langName,
         string $buildParserC,
-        ?string $buildScannerC,
+        string $buildScannerC,
         string $grammarDir
-    ): void {
+    ) {
         $libName = 'tree_sitter_parser_' . $langName . '.so';
         $includeFlags = '';
         if (file_exists($grammarDir . '/src/tree_sitter')) {
@@ -1288,7 +1288,7 @@ PKGCONFIG;
         }
 
         $sources = escapeshellarg(basename($buildParserC));
-        if ($buildScannerC !== null) {
+        if ($buildScannerC !== '') {
             $sources .= ' ' . escapeshellarg(basename($buildScannerC));
         }
 
