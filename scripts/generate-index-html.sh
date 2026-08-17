@@ -231,6 +231,9 @@ done
 
 package_group() {
   case "$1" in
+    libtree-sitter-*)
+      printf '%s\n' treesitter
+      ;;
     ollmchat|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss)
       printf '%s\n' ollmchat
       ;;
@@ -254,6 +257,7 @@ package_group() {
 
 package_group_title() {
   case "$1" in
+    treesitter) printf '%s\n' "Tree-sitter" ;;
     ollmchat) printf '%s\n' OLLMchat ;;
     webkit) printf '%s\n' WebKit ;;
     speech) printf '%s\n' "Speech (STT / TTS)" ;;
@@ -265,6 +269,7 @@ package_group_title() {
 
 package_group_blurb() {
   case "$1" in
+    treesitter) printf '%s\n' "Syntax-highlighting parsers used by OLLMchat." ;;
     ollmchat) printf '%s\n' "Chat UI and the llama.cpp / FAISS libraries it uses." ;;
     webkit) printf '%s\n' "Automation-enabled WebKitGTK builds." ;;
     speech) printf '%s\n' "Sherpa-ONNX libraries and the IBus engine." ;;
@@ -634,7 +639,7 @@ DNF
 GRID
 
   if [[ -s "${work}/pkg-names" ]]; then
-    for gid in ollmchat webkit speech rooterm roobuilder other; do
+    for gid in ollmchat treesitter webkit speech rooterm roobuilder other; do
       [[ -s "${work}/group/${gid}" ]] || continue
       title="$(package_group_title "$gid")"
       blurb="$(package_group_blurb "$gid")"
