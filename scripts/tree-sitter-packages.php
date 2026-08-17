@@ -1512,10 +1512,13 @@ try {
     $missingPackages = [];
     
     foreach ($requiredPackages as $package) {
-        if ($buildRpm) {
-            exec("rpm -q " . escapeshellarg($package) . " >/dev/null 2>&1", $output, $returnCode);
+        if ($buildRpm && ($package === 'nodejs' || $package === 'npm')) {
+            $command = $package === 'nodejs' ? 'node' : 'npm';
+            exec('command -v ' . escapeshellarg($command) . ' >/dev/null 2>&1', $output, $returnCode);
+        } elseif ($buildRpm) {
+            exec('rpm -q ' . escapeshellarg($package) . ' >/dev/null 2>&1', $output, $returnCode);
         } else {
-            exec("dpkg-query -W " . escapeshellarg($package) . " >/dev/null 2>&1", $output, $returnCode);
+            exec('dpkg-query -W ' . escapeshellarg($package) . ' >/dev/null 2>&1', $output, $returnCode);
         }
         if ($returnCode !== 0) {
             $missingPackages[] = $package;
@@ -1526,7 +1529,17 @@ try {
         echo "Error: Missing required packages.\n";
         if ($buildRpm) {
             echo "You should install these:\n";
-            echo "sudo dnf install -y " . implode(' ', $missingPackages) . "\n";
+            $fedoraPackages = [];
+            foreach ($missingPackages as $package) {
+                if ($package === 'nodejs') {
+                    $fedoraPackages[] = 'nodejs22';
+                } elseif ($package === 'npm') {
+                    $fedoraPackages[] = 'nodejs22-npm';
+                } else {
+                    $fedoraPackages[] = $package;
+                }
+            }
+            echo 'sudo dnf install -y ' . implode(' ', $fedoraPackages) . "\n";
         } else {
             echo "You should install these:\n";
             echo "sudo apt-get install -y " . implode(' ', $missingPackages) . "\n";
