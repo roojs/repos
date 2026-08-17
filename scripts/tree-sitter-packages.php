@@ -81,11 +81,14 @@ class TreeSitterPackageBuilder {
     }
     
     private function resolvePriorPackagePath(string $filename) {
+        if ($filename === '') {
+            return '';
+        }
         $manifestPath = getenv('TREE_SITTER_MANIFEST') ?: '';
         if ($manifestPath === '') {
             return $filename;
         }
-        if ($filename !== '' && $filename[0] === '/') {
+        if ($filename[0] === '/') {
             return $filename;
         }
         return dirname($manifestPath) . '/' . $filename;
@@ -193,7 +196,7 @@ class TreeSitterPackageBuilder {
         }
 
         echo "Starting build process for " . count($parsers) . " parsers...\n";
-        echo "Output directory: {$this->baseDir}\n\n";
+        echo "Output directory: {$this->outputDir}\n\n";
 
         $this->configureGitSafeDirectories();
         
@@ -1003,7 +1006,7 @@ PKGCONFIG;
 
         if ($this->buildDeb) {
             $priorDeb = $this->resolvePriorPackagePath($this->priorManifest[$parser['id']]['deb'] ?? '');
-            if ($priorDeb !== '' && is_readable($priorDeb)) {
+            if ($priorDeb !== '' && is_file($priorDeb) && is_readable($priorDeb)) {
                 $targetDeb = $this->outputDir . '/' . basename($priorDeb);
                 copy($priorDeb, $targetDeb);
                 $manifestEntry['deb'] = $targetDeb;
@@ -1013,7 +1016,7 @@ PKGCONFIG;
 
         if ($this->buildRpm) {
             $priorRpm = $this->resolvePriorPackagePath($this->priorManifest[$parser['id']]['rpm'] ?? '');
-            if ($priorRpm !== '' && is_readable($priorRpm)) {
+            if ($priorRpm !== '' && is_file($priorRpm) && is_readable($priorRpm)) {
                 $targetRpm = $this->outputDir . '/' . basename($priorRpm);
                 copy($priorRpm, $targetRpm);
                 $manifestEntry['rpm'] = $targetRpm;

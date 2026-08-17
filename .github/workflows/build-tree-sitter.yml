@@ -148,9 +148,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="tree-sitter-$(date -u +%Y-%m-%d)"
-          gh release create "$tag" \
-            cache/output/libtree-sitter-*.deb \
-            cache/output/libtree-sitter-*.rpm \
-            cache/output/tree-sitter-manifest.json \
-            --title "$tag" \
-            --notes "Tree-sitter parser batch ${tag}"
+          shopt -s nullglob
+          assets=(cache/output/libtree-sitter-*.deb cache/output/libtree-sitter-*.rpm cache/output/tree-sitter-manifest.json)
+          if [[ "${#assets[@]}" -eq 0 ]]; then
+            echo "No release assets to publish." >&2
+            exit 1
+          fi
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "${assets[@]}" --clobber
+          else
+            gh release create "$tag" "${assets[@]}" --title "$tag" --notes "Tree-sitter parser batch ${tag}"
+          fi
