@@ -477,6 +477,50 @@
           "sha256": "0701b834ef4bf63dd21e0075626a51cfcb84a5d6c634efa14eb81d3f9d74d08c"
         }
       }
+    },
+    "repos": {
+      "tag": "tree-sitter-2026-08-17",
+      "packages": {
+        "libtree-sitter-bash-0.20.5-1.fc44.x86_64.rpm": {
+          "sha256": "13285499b7ecb95b9b795143a0460b50e0aafd21ec0d6d21d02dac3b285c0495"
+        },
+        "libtree-sitter-c-sharp-0.20.0-1.fc44.x86_64.rpm": {
+          "sha256": "7ce472aeaac223f1ae15b3de7a0fd9e35b3f24680f17390beab32afafa608e7d"
+        },
+        "libtree-sitter-cpp-0.20.5-1.fc44.x86_64.rpm": {
+          "sha256": "5f72cf2774218dcbcebdd66f80c9286cbb9e500c16189559ffddfc960fa131fe"
+        },
+        "libtree-sitter-go-0.20.0-1.fc44.x86_64.rpm": {
+          "sha256": "fc6442f4da4fa2f4f2f7d8d5a39d9f88b8c1943e3b7c12a804bde01b1ae109ea"
+        },
+        "libtree-sitter-java-0.20.2-1.fc44.x86_64.rpm": {
+          "sha256": "c1c446861e24c64fe2b7b56ee6c7a54ab38fdd84059cd1015485aca0228e1912"
+        },
+        "libtree-sitter-javascript-0.20.4-1.fc44.x86_64.rpm": {
+          "sha256": "9342642faaa1e5dcc81ad3b8b3c5887432b074b3eab4c735cf422d393afb54c8"
+        },
+        "libtree-sitter-markdown-0.20.8-1.fc44.x86_64.rpm": {
+          "sha256": "424f15239f3f8766a18a0b0e36744a97621013b381a5485d9ab124af293dfb14"
+        },
+        "libtree-sitter-php-0.20.0-1.fc44.x86_64.rpm": {
+          "sha256": "3389309a9b177b25a006a6d8bdd64a8192f271da44a5cf10fae5821a6fc30362"
+        },
+        "libtree-sitter-python-0.20.4-1.fc44.x86_64.rpm": {
+          "sha256": "52b22d3ad2b62a3c5d2a067f3323a6650cf6372e0ef266b1d6f2d8b879c4322f"
+        },
+        "libtree-sitter-rpmspec-0.20.8-1.fc44.x86_64.rpm": {
+          "sha256": "289b830079ef594bd51e38ac23b8d3acb9b839b3900de9d4fc6767bfd7456486"
+        },
+        "libtree-sitter-ruby-0.20.1-1.fc44.x86_64.rpm": {
+          "sha256": "1b53b4e5d18cdcf8b8e3d69bf3095486e39a4eafb9009ab112fe2c427475d893"
+        },
+        "libtree-sitter-rust-0.20.4-1.fc44.x86_64.rpm": {
+          "sha256": "39b2cf6db42ac3edaff0127ba57c4f4547fb9839d8754594c54cad6bd9fd6642"
+        },
+        "libtree-sitter-vala-0.20.8-1.fc44.x86_64.rpm": {
+          "sha256": "93cc137e8b5e0f66e8c7fbae9c82382b84668e413b89b7bfe3f0d013fc59b13b"
+        }
+      }
     }
   },
   "repos_json_sha256": "94e012eb935437e21efd41688bda0372a169f5a13db26149272615d8499cb927",
