@@ -43,6 +43,11 @@ repos_config_rpm_fedora_allowlist() {
   jq -c '.fedora // null' <<< "$project"
 }
 
+repos_config_rpm_publish_fedora() {
+  local project="$1"
+  jq -c '.publish_fedora // null' <<< "$project"
+}
+
 repos_config_opensuse_releases() {
   local config="$1"
   jq -r '.opensuse.releases[]? // empty' "$config"

@@ -646,9 +646,9 @@ merge_repo_index_entry() {
 }
 
 packages_from_repo_dir() {
-  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4" fedora_allowlist="${5:-null}"
+  local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4" fedora_allowlist="${5:-null}" publish_fedora="${6:-null}"
   local packages="{}"
-  local file base sha file_suites_json fc
+  local file base sha file_suites_json fc arch
   shopt -s nullglob
   for file in "${repo_dir}"/*."${package_type}"; do
     [[ -f "$file" ]] || continue
@@ -688,6 +688,15 @@ packages_from_repo_dir() {
         --argjson suites "$file_suites_json" \
         '. + {($name): {sha256: $sha, suites: $suites}}' \
         <<< "$packages")"
+    elif [[ "$publish_fedora" != "null" ]] && [[ "$base" =~ \.fc[0-9]+\.([^.]+)\.rpm$ ]]; then
+      arch="${BASH_REMATCH[1]}"
+      packages="$(jq \
+        --arg name "$base" \
+        --arg sha "$sha" \
+        --arg arch "$arch" \
+        --argjson fedora "$publish_fedora" \
+        '. + {($name): {sha256: $sha, arch: $arch, fedora: $fedora}}' \
+        <<< "$packages")"
     else
       packages="$(jq \
         --arg name "$base" \
@@ -697,7 +706,11 @@ packages_from_repo_dir() {
     fi
   done
   shopt -u nullglob
-  printf '%s\n' "$packages"
+  if [[ "$package_type" == "rpm" ]]; then
+    jq -c . <<< "$packages"
+  else
+    printf '%s\n' "$packages"
+  fi
 }
 
 github_release_tag_for_pattern() {
@@ -999,8 +1012,10 @@ while IFS= read -r repo; do
   tag=""
   suites_json="null"
   fedora_allowlist="null"
+  publish_fedora="null"
   if [[ "$package_type" == "rpm" ]]; then
     fedora_allowlist="$(repos_config_rpm_fedora_allowlist "$project")"
+    publish_fedora="$(repos_config_rpm_publish_fedora "$project")"
   fi
   repo_dir="${output}/${repo}"
   mkdir -p "$repo_dir"
@@ -1134,7 +1149,7 @@ while IFS= read -r repo; do
         continue
       fi
 
-      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json" "$fedora_allowlist")"
+      packages="$(packages_from_repo_dir "$repo_dir" "$package_type" "$suites_json" "$release_json" "$fedora_allowlist" "$publish_fedora")"
       if [[ "$packages" == "{}" ]]; then
         echo "Skipping ${owner}/${repo}@${tag}: no ${package_type} files matched release assets." >&2
         continue

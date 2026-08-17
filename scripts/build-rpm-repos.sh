@@ -30,35 +30,32 @@ for rpm in "${rpms[@]}"; do
     continue
   fi
 
+  if [[ -f "$index" ]]; then
+    meta="$(jq -c --arg file "$base" '
+      [
+        .[]
+        | .packages[$file]?
+        | select(.fedora and .arch)
+        | {fedora: .fedora, arch: .arch}
+      ]
+      | .[0] // empty
+    ' "$index")"
+    if [[ -n "$meta" ]]; then
+      arch="$(jq -r '.arch' <<< "$meta")"
+      while IFS= read -r fc; do
+        [[ -n "$fc" ]] || continue
+        publish_rpm "$rpm" "$fc" "$arch"
+      done < <(jq -r '.fedora[]' <<< "$meta")
+      continue
+    fi
+  fi
+
   if [[ "${base}" =~ \.fc([0-9]+)\.([^.]+)\.rpm$ ]]; then
     publish_rpm "$rpm" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}"
     continue
   fi
 
-  if [[ ! -f "$index" ]]; then
-    echo "Skipping ${base}: cannot parse Fedora release/arch from filename." >&2
-    continue
-  fi
-
-  meta="$(jq -c --arg file "$base" '
-    [
-      .[]
-      | .packages[$file]?
-      | select(.fedora and .arch)
-      | {fedora: .fedora, arch: .arch}
-    ]
-    | .[0] // empty
-  ' "$index")"
-  if [[ -z "$meta" ]]; then
-    echo "Skipping ${base}: no Fedora metadata in package index." >&2
-    continue
-  fi
-
-  arch="$(jq -r '.arch' <<< "$meta")"
-  while IFS= read -r fc; do
-    [[ -n "$fc" ]] || continue
-    publish_rpm "$rpm" "$fc" "$arch"
-  done < <(jq -r '.fedora[]' <<< "$meta")
+  echo "Skipping ${base}: cannot parse Fedora release/arch from filename." >&2
 done
 
 mapfile -t repo_dirs < <(find "${repo_root}/rpm" -mindepth 2 -maxdepth 2 -type d 2>/dev/null | sort)
