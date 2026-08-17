@@ -33,11 +33,19 @@ while IFS= read -r repo; do
   done < <(jq -r --arg repo "$repo" '.debs[$repo].packages | keys[]?' "$manifest")
 done < <(jq -r '.debs | keys[]?' "$manifest")
 
+published_packages_for_suite() {
+  local suite="$1" arch pkgfile
+  while IFS= read -r arch; do
+    [[ -n "$arch" ]] || continue
+    pkgfile="${repo_root}/dists/${suite}/main/binary-${arch}/Packages"
+    [[ -f "$pkgfile" ]] || continue
+    awk '/^Package: / { print $2 }' "$pkgfile"
+  done < <(jq -r '.apt.architectures[]' "$config") | sort -u
+}
+
 while IFS= read -r suite; do
   [[ -n "$suite" ]] || continue
-  while IFS= read -r line; do
-    [[ -n "$line" ]] || continue
-    pkg="$(awk '{print $1}' <<< "$line")"
+  while IFS= read -r pkg; do
     [[ -n "$pkg" ]] || continue
     if [[ -n "${allowed[${suite}:${pkg}]:-}" ]]; then
       continue
@@ -45,7 +53,7 @@ while IFS= read -r suite; do
     echo "Removing ${pkg} from ${suite} (not in manifest)"
     reprepro -b "$repo_root" remove "$suite" "$pkg"
     removed=$((removed + 1))
-  done < <(reprepro -b "$repo_root" list "$suite" 2>/dev/null || true)
+  done < <(published_packages_for_suite "$suite")
 done < <(jq -r '.apt.suites[]' "$config")
 
 if [[ "$removed" -gt 0 ]]; then
