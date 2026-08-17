@@ -14,7 +14,7 @@ When making code changes:
 1. Check out `main` and pull latest.
 2. Make changes on `main` — do **not** create `cursor/…` or other topic branches.
 3. Commit with a clear message.
-4. Push to `origin main`.
+4. **Always push** to `origin main` immediately after every commit — do not leave local commits unpushed.
 5. Do **not** use `ManagePullRequest`, `gh pr create`, or branch-and-PR workflows unless the user explicitly asks for a PR or a branch.
 
-The user prefers direct commits to this repo, not PR-based review or feature-branch workflows.
+The user prefers direct commits to this repo, not PR-based review or feature-branch workflows. Unpushed commits on `main` are not done until they are on `origin/main`.
