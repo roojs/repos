@@ -1,6 +1,6 @@
 # 3. OLLMchat RPMs and openSUSE FAISS
 
-Status: proposed
+Status: implemented (faiss import); OLLMchat RPM ingest still pending when upstream publishes
 
 Checklist: `docs/guide-to-writing-plans.md`
 
