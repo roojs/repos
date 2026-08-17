@@ -438,6 +438,18 @@
         }
       }
     },
+    "app.RooTerm": {
+      "tag": "v0.1.2",
+      "packages": {
+        "rooterm-0.1.2-2.fc42.x86_64.rpm": {
+          "sha256": "8d6fc7f8d6ede37f5282ead924c3b6d97c35237f19d9e6e576983fc561b1e480",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        }
+      }
+    },
     "ibus-sherpa-onnx": {
       "tag": "v0.3.2",
       "packages": {
@@ -458,6 +470,6 @@
       }
     }
   },
-  "repos_json_sha256": "023a37e52ccd84353d94d5e5bca283fc2ed926a2a6a5c00ea209388db4d3fe30",
+  "repos_json_sha256": "913f5f6457d880ca39d308a1acd211e48aa4de60185d050e35bb32719498add5",
   "distributions_sha256": "c580b532db1b83d63610fdc454f54edb9153ff6e1951d0f033aa9986c9ecf729"
 }
