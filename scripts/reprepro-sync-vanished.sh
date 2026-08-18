@@ -20,7 +20,7 @@ if [[ -n "$config" && -f "$config" && -d "${repo_root}/pool" ]]; then
 fi
 
 echo "Clearing reprepro targets no longer listed in conf/distributions ..."
-reprepro -b "$repo_root" clearvanished
+reprepro -b "$repo_root" --delete clearvanished
 
 echo "Exporting APT tree after clearvanished ..."
 reprepro -b "$repo_root" export
