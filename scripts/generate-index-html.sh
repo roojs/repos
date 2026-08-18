@@ -334,7 +334,7 @@ package_group_blurb() {
       printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> and the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses. llama.cpp and FAISS packages are repackaged from Debian."
       ;;
     webkit)
-      printf '%s\n' "Automation-enabled <a href=\"https://github.com/roojs/webkitgtk-automation\">WebKitGTK</a> builds."
+      printf '%s\n' "WebKitGTK builds with <strong>WebDriver</strong> automation. Install the runtime with <code>libwebkitgtk-6.0-webdriver4</code> and headers with <code>libwebkitgtk-6.0-webdriver-dev</code>."
       ;;
     speech)
       printf '%s\n' "<a href=\"https://github.com/roojs/sherpa-onnx\">Sherpa-ONNX</a> libraries and the <a href=\"https://github.com/roojs/ibus-sherpa-onnx\">IBus engine</a>."
@@ -407,22 +407,28 @@ pkg_repackaged_note() {
 
 pkg_desc() {
   local pkg="$1" desc note
-  if [[ -f "${work}/desc/${pkg}" ]]; then
-    desc="$(cat "${work}/desc/${pkg}")"
-  else
-    case "$pkg" in
-      libfaiss-dev) desc="FAISS vector search library" ;;
-      libfaiss) desc="FAISS vector search library" ;;
-      faiss-devel) desc="FAISS development headers" ;;
-      ollmchat) desc="Local LLM chat" ;;
-      rooterm) desc="Terminal emulator" ;;
-      ibus-sherpa-onnx) desc="IBus on-device speech recognition" ;;
-      roobuilder) desc="Vala UI builder" ;;
-      roojspacker) desc="JavaScript packer" ;;
-      libllama0|libllama-dev) desc="llama.cpp inference library" ;;
-      *) desc="" ;;
-    esac
-  fi
+  case "$pkg" in
+    libwebkitgtk-6.0-webdriver4) desc="WebKitGTK WebDriver runtime library" ;;
+    libwebkitgtk-6.0-webdriver-dev) desc="WebKitGTK WebDriver development files" ;;
+    *)
+      if [[ -f "${work}/desc/${pkg}" ]]; then
+        desc="$(cat "${work}/desc/${pkg}")"
+      else
+        case "$pkg" in
+          libfaiss-dev) desc="FAISS vector search library" ;;
+          libfaiss) desc="FAISS vector search library" ;;
+          faiss-devel) desc="FAISS development headers" ;;
+          ollmchat) desc="Local LLM chat" ;;
+          rooterm) desc="Terminal emulator" ;;
+          ibus-sherpa-onnx) desc="IBus on-device speech recognition" ;;
+          roobuilder) desc="Vala UI builder" ;;
+          roojspacker) desc="JavaScript packer" ;;
+          libllama0|libllama-dev) desc="llama.cpp inference library" ;;
+          *) desc="" ;;
+        esac
+      fi
+      ;;
+  esac
   note="$(pkg_repackaged_note "$pkg" || true)"
   if [[ -n "$note" ]]; then
     if [[ -n "$desc" ]]; then
@@ -443,11 +449,21 @@ if [[ -s "${work}/pkg-names" ]]; then
     [[ -n "$pkg" ]] || continue
     printf '%s\n' "$pkg" >> "${work}/group/$(package_group "$pkg")"
   done < "${work}/pkg-names"
+  for group_file in "${work}/group/"*; do
+    [[ -f "$group_file" ]] || continue
+    sort -u "$group_file" -o "$group_file"
+  done
 fi
 
 headline_version() {
   local ver="$1"
   ver="${ver#*:}"
+  if [[ "$ver" == *+* ]]; then
+    local upstream="${ver%%-*}"
+    local suffix="${ver#*+}"
+    printf '%s+%s\n' "$upstream" "$suffix"
+    return 0
+  fi
   if [[ "$ver" == *-* ]]; then
     ver="${ver%-*}"
   fi
@@ -591,6 +607,9 @@ write_opensuse_th() {
 
 is_fedora_upstream() {
   case "$1" in
+    *webdriver*)
+      return 1
+      ;;
     libllama*|llama-*|libggml*|ggml-*|*webkit*|*javascriptcore*)
       return 0
       ;;
@@ -602,6 +621,9 @@ is_fedora_upstream() {
 
 is_opensuse_upstream() {
   case "$1" in
+    *webdriver*)
+      return 1
+      ;;
     libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss|*webkit*|*javascriptcore*)
       return 0
       ;;
