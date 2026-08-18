@@ -7,8 +7,12 @@ out="${pages}/index.html"
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 root="$(cd "${script_dir}/.." && pwd)"
 config="${root}/config/repos.json"
+tree_sitter_config="${root}/config/tree-sitter.json"
 # shellcheck source=lib/repos-config.sh
 source "${script_dir}/lib/repos-config.sh"
+
+owner="$(jq -r '.owner' "$config")"
+github_base="https://github.com/${owner}"
 
 if [[ ! -d "$pages" ]]; then
   echo "Pages directory not found: ${pages}" >&2
@@ -43,7 +47,38 @@ html_escape() {
 
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
-mkdir -p "${work}/apt" "${work}/rpm" "${work}/opensuse" "${work}/allowlist" "${work}/always" "${work}/desc" "${work}/group"
+mkdir -p "${work}/apt" "${work}/rpm" "${work}/opensuse" "${work}/allowlist" "${work}/always" "${work}/desc" "${work}/group" "${work}/url"
+
+load_pkg_source_urls() {
+  local repo url
+  while IFS= read -r repo; do
+    [[ -n "$repo" ]] || continue
+    url="${github_base}/${repo}"
+    case "$repo" in
+      OLLMchat) printf '%s\n' "$url" > "${work}/url/ollmchat" ;;
+      app.RooTerm) printf '%s\n' "$url" > "${work}/url/rooterm" ;;
+      roobuilder)
+        printf '%s\n' "$url" > "${work}/url/roobuilder"
+        printf '%s\n' "$url" > "${work}/url/roojspacker"
+        ;;
+      ibus-sherpa-onnx) printf '%s\n' "$url" > "${work}/url/ibus-sherpa-onnx" ;;
+      sherpa-onnx) printf '%s\n' "$url" > "${work}/url/sherpa-onnx" ;;
+      webkitgtk-automation)
+        printf '%s\n' "$url" > "${work}/url/webkitgtk-automation"
+        ;;
+      repos) printf '%s\n' "$url" > "${work}/url/repos" ;;
+    esac
+  done < <(jq -r '.projects[].repo' "$config")
+
+  if [[ -f "$tree_sitter_config" ]]; then
+    while IFS=$'\t' read -r id url; do
+      [[ -n "$id" && -n "$url" ]] || continue
+      printf '%s\n' "$url" > "${work}/url/libtree-sitter-${id}"
+    done < <(jq -r '.parsers[] | "\(.id)\t\(.repo)"' "$tree_sitter_config")
+    printf '%s\n' "https://github.com/tree-sitter/tree-sitter" > "${work}/url/libtree-sitter-dev"
+  fi
+}
+load_pkg_source_urls
 
 # APT packages we never ingest because every supported suite already has them.
 printf '%s\n' libfaiss-dev > "${work}/always/packages"
@@ -292,34 +327,112 @@ package_group_title() {
 
 package_group_blurb() {
   case "$1" in
-    treesitter) printf '%s\n' "Syntax-highlighting parsers used by OLLMchat." ;;
-    ollmchat) printf '%s\n' "Chat UI and the llama.cpp / FAISS libraries it uses." ;;
-    webkit) printf '%s\n' "Automation-enabled WebKitGTK builds." ;;
-    speech) printf '%s\n' "Sherpa-ONNX libraries and the IBus engine." ;;
-    rooterm) printf '%s\n' "Terminal emulator." ;;
-    roobuilder) printf '%s\n' "Vala UI builder and JavaScript packer." ;;
+    treesitter)
+      printf '%s\n' "Syntax-highlighting parsers used by <a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a>. Each row links to the upstream grammar repository."
+      ;;
+    ollmchat)
+      printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> and the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses. llama.cpp and FAISS packages are repackaged from Debian."
+      ;;
+    webkit)
+      printf '%s\n' "Automation-enabled <a href=\"https://github.com/roojs/webkitgtk-automation\">WebKitGTK</a> builds."
+      ;;
+    speech)
+      printf '%s\n' "<a href=\"https://github.com/roojs/sherpa-onnx\">Sherpa-ONNX</a> libraries and the <a href=\"https://github.com/roojs/ibus-sherpa-onnx\">IBus engine</a>."
+      ;;
+    rooterm)
+      printf '%s\n' "<a href=\"https://github.com/roojs/app.RooTerm\">Terminal emulator</a>."
+      ;;
+    roobuilder)
+      printf '%s\n' "<a href=\"https://github.com/roojs/roobuilder\">Vala UI builder</a> and JavaScript packer."
+      ;;
     *) printf '%s\n' "" ;;
   esac
 }
 
-pkg_desc() {
-  local pkg="$1"
-  if [[ -f "${work}/desc/${pkg}" ]]; then
-    cat "${work}/desc/${pkg}"
+pkg_source_url() {
+  local pkg="$1" id url
+  if [[ -f "${work}/url/${pkg}" ]]; then
+    cat "${work}/url/${pkg}"
     return 0
   fi
   case "$pkg" in
-    libfaiss-dev) printf '%s\n' "FAISS vector search library" ;;
-    libfaiss) printf '%s\n' "FAISS vector search library" ;;
-    faiss-devel) printf '%s\n' "FAISS development headers" ;;
-    ollmchat) printf '%s\n' "Local LLM chat" ;;
-    rooterm) printf '%s\n' "Terminal emulator" ;;
-    ibus-sherpa-onnx) printf '%s\n' "IBus on-device speech recognition" ;;
-    roobuilder) printf '%s\n' "Vala UI builder" ;;
-    roojspacker) printf '%s\n' "JavaScript packer" ;;
-    libllama0|libllama-dev) printf '%s\n' "llama.cpp inference library" ;;
-    *) return 0 ;;
+    libllama*|llama-*|libggml*|ggml-*)
+      printf '%s\n' "https://github.com/ggml-org/llama.cpp"
+      return 0
+      ;;
+    libfaiss*|faiss*|python3-faiss)
+      printf '%s\n' "https://github.com/facebookresearch/faiss"
+      return 0
+      ;;
+    *webkit*|*javascriptcore*)
+      printf '%s\n' "${github_base}/webkitgtk-automation"
+      return 0
+      ;;
+    ibus-sherpa-onnx)
+      printf '%s\n' "${github_base}/ibus-sherpa-onnx"
+      return 0
+      ;;
+    *sherpa*)
+      printf '%s\n' "${github_base}/sherpa-onnx"
+      return 0
+      ;;
+    libtree-sitter-*)
+      id="${pkg#libtree-sitter-}"
+      id="${id%-dev}"
+      if [[ -f "${work}/url/libtree-sitter-${id}" ]]; then
+        cat "${work}/url/libtree-sitter-${id}"
+        return 0
+      fi
+      return 1
+      ;;
+    *)
+      return 1
+      ;;
   esac
+}
+
+pkg_repackaged_note() {
+  case "$1" in
+    libllama*|llama-*|libggml*|ggml-*)
+      printf '%s\n' "Repackaged from Debian."
+      ;;
+    libfaiss*|faiss*|python3-faiss|faiss-devel)
+      printf '%s\n' "Repackaged from Debian."
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+pkg_desc() {
+  local pkg="$1" desc note
+  if [[ -f "${work}/desc/${pkg}" ]]; then
+    desc="$(cat "${work}/desc/${pkg}")"
+  else
+    case "$pkg" in
+      libfaiss-dev) desc="FAISS vector search library" ;;
+      libfaiss) desc="FAISS vector search library" ;;
+      faiss-devel) desc="FAISS development headers" ;;
+      ollmchat) desc="Local LLM chat" ;;
+      rooterm) desc="Terminal emulator" ;;
+      ibus-sherpa-onnx) desc="IBus on-device speech recognition" ;;
+      roobuilder) desc="Vala UI builder" ;;
+      roojspacker) desc="JavaScript packer" ;;
+      libllama0|libllama-dev) desc="llama.cpp inference library" ;;
+      *) desc="" ;;
+    esac
+  fi
+  note="$(pkg_repackaged_note "$pkg" || true)"
+  if [[ -n "$note" ]]; then
+    if [[ -n "$desc" ]]; then
+      printf '%s %s\n' "$desc" "$note"
+    else
+      printf '%s\n' "$note"
+    fi
+    return 0
+  fi
+  [[ -n "$desc" ]] && printf '%s\n' "$desc"
 }
 
 if [[ -s "${work}/pkg-names" ]]; then
@@ -544,8 +657,15 @@ cell_opensuse() {
 }
 
 write_pkg_th() {
-  local pkg="$1" desc
-  printf '<th class="pkg" scope="row"><span class="pkg-name">%s</span>' "$(html_escape "$pkg")"
+  local pkg="$1" desc url
+  printf '<th class="pkg" scope="row"><span class="pkg-name">'
+  url="$(pkg_source_url "$pkg" || true)"
+  if [[ -n "$url" ]]; then
+    printf '<a href="%s" class="pkg-link">%s</a>' "$(html_escape "$url")" "$(html_escape "$pkg")"
+  else
+    printf '%s' "$(html_escape "$pkg")"
+  fi
+  printf '</span>'
   desc="$(pkg_desc "$pkg")"
   if [[ -n "$desc" ]]; then
     printf '<span class="pkg-desc">%s</span>' "$(html_escape "$desc")"
@@ -646,6 +766,8 @@ th, td { border: 1px solid #888; padding: 0.35rem 0.45rem; vertical-align: top; 
 th { background: #eee; }
 th.pkg { text-align: left; min-width: 9rem; max-width: 16rem; }
 .pkg-name { display: block; }
+.pkg-link { color: inherit; text-decoration: none; }
+.pkg-link:hover { text-decoration: underline; }
 .pkg-desc { display: block; font-weight: 400; font-size: 0.8em; color: #555; }
 th.suite .suite-release { display: block; font-variant-numeric: tabular-nums; }
 th.suite .suite-codename { display: block; font-weight: 400; font-size: 0.75em; color: #555; }
@@ -732,7 +854,7 @@ GRID
       blurb="$(package_group_blurb "$gid")"
       printf '<h3>%s</h3>\n' "$(html_escape "$title")"
       if [[ -n "$blurb" ]]; then
-        printf '<p class="group-lead">%s</p>\n' "$(html_escape "$blurb")"
+        printf '<p class="group-lead">%s</p>\n' "$blurb"
       fi
       write_group_table "${work}/group/${gid}"
     done
