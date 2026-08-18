@@ -808,7 +808,7 @@ HEAD
     write_apt_suite_intro "${ubuntu_columns[@]}"
     printf '.'
   fi
-  printf ' Architectures: <code>amd64</code>, <code>arm64</code>.</p>\n'
+  printf ' Architectures: <code>amd64</code>.</p>\n'
 
   cat <<'APT'
 <p>Add the signing key and the sources file, replacing <code>@suite@</code> with your suite from <code>lsb_release -cs</code>:</p>

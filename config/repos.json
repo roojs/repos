@@ -2,7 +2,7 @@
   "owner": "roojs",
   "apt": {
     "suites": ["trixie", "plucky", "questing", "resolute"],
-    "architectures": ["amd64", "arm64"]
+    "architectures": ["amd64"]
   },
   "opensuse": {
     "releases": ["tumbleweed"]
