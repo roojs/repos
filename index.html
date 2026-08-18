@@ -15,6 +15,8 @@ th, td { border: 1px solid #888; padding: 0.35rem 0.45rem; vertical-align: top; 
 th { background: #eee; }
 th.pkg { text-align: left; min-width: 9rem; max-width: 16rem; }
 .pkg-name { display: block; }
+.pkg-link { color: inherit; text-decoration: none; }
+.pkg-link:hover { text-decoration: underline; }
 .pkg-desc { display: block; font-weight: 400; font-size: 0.8em; color: #555; }
 th.suite .suite-release { display: block; font-variant-numeric: tabular-nums; }
 th.suite .suite-codename { display: block; font-weight: 400; font-size: 0.75em; color: #555; }
@@ -84,7 +86,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <span><strong>—</strong> — not available from us or from that distro</span>
 </p>
 <h3>OLLMchat</h3>
-<p class="group-lead">Chat UI and the llama.cpp / FAISS libraries it uses.</p>
+<p class="group-lead"><a href="https://github.com/roojs/OLLMchat">OLLMchat</a> and the <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> / <a href="https://github.com/facebookresearch/faiss">FAISS</a> libraries it uses. llama.cpp and FAISS packages are repackaged from Debian.</p>
 <div class="wrap"><table>
 <thead>
 <tr>
@@ -105,7 +107,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </thead>
 <tbody>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">faiss-devel</span><span class="pkg-desc">FAISS development headers</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/facebookresearch/faiss" class="pkg-link">faiss-devel</a></span><span class="pkg-desc">FAISS development headers Repackaged from Debian.</span></th>
 <td class="none">—</td>
 <td class="none">—</td>
 <td class="none">—</td>
@@ -114,7 +116,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libfaiss</span><span class="pkg-desc">FAISS vector search library</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/facebookresearch/faiss" class="pkg-link">libfaiss</a></span><span class="pkg-desc">FAISS vector search library Repackaged from Debian.</span></th>
 <td class="none">—</td>
 <td class="none">—</td>
 <td class="none">—</td>
@@ -123,7 +125,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libfaiss-dev</span><span class="pkg-desc">FAISS vector search library</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/facebookresearch/faiss" class="pkg-link">libfaiss-dev</a></span><span class="pkg-desc">FAISS vector search library Repackaged from Debian.</span></th>
 <td class="distro"><span class="ver">already in</span><span class="arch">Debian</span></td>
 <td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
 <td class="distro"><span class="ver">already in</span><span class="arch">Ubuntu</span></td>
@@ -132,7 +134,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml-dev</span><span class="pkg-desc">Tensor library for machine learning - development files</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libggml-dev</a></span><span class="pkg-desc">Tensor library for machine learning - development files Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
@@ -141,7 +143,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0</span><span class="pkg-desc">Tensor library for machine learning - libraries</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libggml0</a></span><span class="pkg-desc">Tensor library for machine learning - libraries Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
@@ -150,7 +152,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-blas</span><span class="pkg-desc">Tensor library for machine learning - BLAS backend</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libggml0-backend-blas</a></span><span class="pkg-desc">Tensor library for machine learning - BLAS backend Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
@@ -159,7 +161,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-rpc</span><span class="pkg-desc">Tensor library for machine learning - RPC backend</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libggml0-backend-rpc</a></span><span class="pkg-desc">Tensor library for machine learning - RPC backend Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
@@ -168,7 +170,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libggml0-backend-vulkan</span><span class="pkg-desc">Tensor library for machine learning - Vulkan backend</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libggml0-backend-vulkan</a></span><span class="pkg-desc">Tensor library for machine learning - Vulkan backend Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">0.18.1</span><span class="arch">amd64</span><span class="ver">0.19.0</span><span class="arch">arm64</span></td>
@@ -177,7 +179,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libllama-dev</span><span class="pkg-desc">LLM inference in C/C++ - headers and development files</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libllama-dev</a></span><span class="pkg-desc">LLM inference in C/C++ - headers and development files Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">10271+dfsg</span><span class="arch">amd64</span><span class="ver">10344+dfsg</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">10271+dfsg</span><span class="arch">amd64</span><span class="ver">10344+dfsg</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">10271+dfsg</span><span class="arch">amd64</span><span class="ver">10344+dfsg</span><span class="arch">arm64</span></td>
@@ -186,7 +188,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libllama0</span><span class="pkg-desc">LLM inference in C/C++ - libraries</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/ggml-org/llama.cpp" class="pkg-link">libllama0</a></span><span class="pkg-desc">LLM inference in C/C++ - libraries Repackaged from Debian.</span></th>
 <td class="ship"><span class="ver">10271+dfsg</span><span class="arch">amd64</span><span class="ver">10344+dfsg</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">10271+dfsg</span><span class="arch">amd64</span><span class="ver">10344+dfsg</span><span class="arch">arm64</span></td>
 <td class="ship"><span class="ver">10271+dfsg</span><span class="arch">amd64</span><span class="ver">10344+dfsg</span><span class="arch">arm64</span></td>
@@ -195,7 +197,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">ollmchat</span><span class="pkg-desc">OLLMchat - LLM chat application (all-in-one, local GGUF)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/OLLMchat" class="pkg-link">ollmchat</a></span><span class="pkg-desc">OLLMchat - LLM chat application (all-in-one, local GGUF)</span></th>
 <td class="ship"><span class="ver">1.2.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.2.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.2.4</span><span class="arch">amd64</span></td>
@@ -207,7 +209,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </table>
 </div>
 <h3>Tree-sitter</h3>
-<p class="group-lead">Syntax-highlighting parsers used by OLLMchat.</p>
+<p class="group-lead">Syntax-highlighting parsers used by <a href="https://github.com/roojs/OLLMchat">OLLMchat</a>. Each row links to the upstream grammar repository.</p>
 <div class="wrap"><table>
 <thead>
 <tr>
@@ -228,7 +230,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </thead>
 <tbody>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-bash</span><span class="pkg-desc">Tree-sitter parser for Bash language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-bash" class="pkg-link">libtree-sitter-bash</a></span><span class="pkg-desc">Tree-sitter parser for Bash language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.5</span><span class="arch">amd64</span></td>
@@ -237,7 +239,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-c-sharp</span><span class="pkg-desc">Tree-sitter parser for C_sharp language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-c-sharp" class="pkg-link">libtree-sitter-c-sharp</a></span><span class="pkg-desc">Tree-sitter parser for C_sharp language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
@@ -246,7 +248,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-cpp</span><span class="pkg-desc">Tree-sitter parser for Cpp language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-cpp" class="pkg-link">libtree-sitter-cpp</a></span><span class="pkg-desc">Tree-sitter parser for Cpp language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.5</span><span class="arch">amd64</span></td>
@@ -255,7 +257,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-go</span><span class="pkg-desc">Tree-sitter parser for Go language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-go" class="pkg-link">libtree-sitter-go</a></span><span class="pkg-desc">Tree-sitter parser for Go language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
@@ -264,7 +266,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-java</span><span class="pkg-desc">Tree-sitter parser for Java language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-java" class="pkg-link">libtree-sitter-java</a></span><span class="pkg-desc">Tree-sitter parser for Java language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.2</span><span class="arch">amd64</span></td>
@@ -273,7 +275,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-javascript</span><span class="pkg-desc">Tree-sitter parser for Javascript language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-javascript" class="pkg-link">libtree-sitter-javascript</a></span><span class="pkg-desc">Tree-sitter parser for Javascript language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
@@ -282,7 +284,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-markdown</span><span class="pkg-desc">Tree-sitter parser for Markdown language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter-grammars/tree-sitter-markdown" class="pkg-link">libtree-sitter-markdown</a></span><span class="pkg-desc">Tree-sitter parser for Markdown language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
@@ -291,7 +293,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-php</span><span class="pkg-desc">Tree-sitter parser for Php language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-php" class="pkg-link">libtree-sitter-php</a></span><span class="pkg-desc">Tree-sitter parser for Php language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.0</span><span class="arch">amd64</span></td>
@@ -300,7 +302,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-python</span><span class="pkg-desc">Tree-sitter parser for Python language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-python" class="pkg-link">libtree-sitter-python</a></span><span class="pkg-desc">Tree-sitter parser for Python language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
@@ -309,7 +311,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-rpmspec</span><span class="pkg-desc">Tree-sitter parsers for Rpmspec (runtime libraries)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://gitlab.com/cryptomilk/tree-sitter-rpmspec" class="pkg-link">libtree-sitter-rpmspec</a></span><span class="pkg-desc">Tree-sitter parsers for Rpmspec (runtime libraries)</span></th>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
@@ -318,7 +320,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-ruby</span><span class="pkg-desc">Tree-sitter parser for Ruby language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-ruby" class="pkg-link">libtree-sitter-ruby</a></span><span class="pkg-desc">Tree-sitter parser for Ruby language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.1</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.1</span><span class="arch">amd64</span></td>
@@ -327,7 +329,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-rust</span><span class="pkg-desc">Tree-sitter parser for Rust language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/tree-sitter/tree-sitter-rust" class="pkg-link">libtree-sitter-rust</a></span><span class="pkg-desc">Tree-sitter parser for Rust language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.4</span><span class="arch">amd64</span></td>
@@ -336,7 +338,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libtree-sitter-vala</span><span class="pkg-desc">Tree-sitter parser for Vala language (runtime library)</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/vala-lang/tree-sitter-vala" class="pkg-link">libtree-sitter-vala</a></span><span class="pkg-desc">Tree-sitter parser for Vala language (runtime library)</span></th>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.20.8</span><span class="arch">amd64</span></td>
@@ -348,7 +350,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </table>
 </div>
 <h3>WebKit</h3>
-<p class="group-lead">Automation-enabled WebKitGTK builds.</p>
+<p class="group-lead">Automation-enabled <a href="https://github.com/roojs/webkitgtk-automation">WebKitGTK</a> builds.</p>
 <div class="wrap"><table>
 <thead>
 <tr>
@@ -369,7 +371,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </thead>
 <tbody>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libwebkitgtk-6.0-4</span><span class="pkg-desc">Web content engine library for GTK</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/webkitgtk-automation" class="pkg-link">libwebkitgtk-6.0-4</a></span><span class="pkg-desc">Web content engine library for GTK</span></th>
 <td class="none">—</td>
 <td class="ship"><span class="ver">2.50.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">2.52.3</span><span class="arch">amd64</span></td>
@@ -378,7 +380,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="distro"><span class="ver">already in</span><span class="arch">openSUSE</span></td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libwebkitgtk-6.0-dev</span><span class="pkg-desc">Web content engine library for GTK - development files</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/webkitgtk-automation" class="pkg-link">libwebkitgtk-6.0-dev</a></span><span class="pkg-desc">Web content engine library for GTK - development files</span></th>
 <td class="none">—</td>
 <td class="ship"><span class="ver">2.50.4</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">2.52.3</span><span class="arch">amd64</span></td>
@@ -390,7 +392,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </table>
 </div>
 <h3>Speech (STT / TTS)</h3>
-<p class="group-lead">Sherpa-ONNX libraries and the IBus engine.</p>
+<p class="group-lead"><a href="https://github.com/roojs/sherpa-onnx">Sherpa-ONNX</a> libraries and the <a href="https://github.com/roojs/ibus-sherpa-onnx">IBus engine</a>.</p>
 <div class="wrap"><table>
 <thead>
 <tr>
@@ -411,7 +413,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </thead>
 <tbody>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">ibus-sherpa-onnx</span><span class="pkg-desc">IBus speech dictation engine using sherpa-onnx</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/ibus-sherpa-onnx" class="pkg-link">ibus-sherpa-onnx</a></span><span class="pkg-desc">IBus speech dictation engine using sherpa-onnx</span></th>
 <td class="ship"><span class="ver">0.3.3</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.3.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.3.3</span><span class="arch">amd64</span></td>
@@ -420,7 +422,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/sherpa-onnx" class="pkg-link">libsherpa-onnx-c-api</a></span></th>
 <td class="none">—</td>
 <td class="none">—</td>
 <td class="none">—</td>
@@ -429,7 +431,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-dev</span><span class="pkg-desc">Development files for sherpa-onnx C API</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/sherpa-onnx" class="pkg-link">libsherpa-onnx-c-api-dev</a></span><span class="pkg-desc">Development files for sherpa-onnx C API</span></th>
 <td class="ship"><span class="ver">1.13.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.13.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.13.5</span><span class="arch">amd64</span></td>
@@ -438,7 +440,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api-devel</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/sherpa-onnx" class="pkg-link">libsherpa-onnx-c-api-devel</a></span></th>
 <td class="none">—</td>
 <td class="none">—</td>
 <td class="none">—</td>
@@ -447,7 +449,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">libsherpa-onnx-c-api1</span><span class="pkg-desc">sherpa-onnx C API shared library</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/sherpa-onnx" class="pkg-link">libsherpa-onnx-c-api1</a></span><span class="pkg-desc">sherpa-onnx C API shared library</span></th>
 <td class="ship"><span class="ver">1.13.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.13.5</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.13.5</span><span class="arch">amd64</span></td>
@@ -459,7 +461,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </table>
 </div>
 <h3>RooTerm</h3>
-<p class="group-lead">Terminal emulator.</p>
+<p class="group-lead"><a href="https://github.com/roojs/app.RooTerm">Terminal emulator</a>.</p>
 <div class="wrap"><table>
 <thead>
 <tr>
@@ -480,7 +482,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </thead>
 <tbody>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">rooterm</span><span class="pkg-desc">SSH host manager and terminal for GNOME</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/app.RooTerm" class="pkg-link">rooterm</a></span><span class="pkg-desc">SSH host manager and terminal for GNOME</span></th>
 <td class="ship"><span class="ver">0.1.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.1.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">0.1.2</span><span class="arch">amd64</span></td>
@@ -492,7 +494,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </table>
 </div>
 <h3>RooBuilder</h3>
-<p class="group-lead">Vala UI builder and JavaScript packer.</p>
+<p class="group-lead"><a href="https://github.com/roojs/roobuilder">Vala UI builder</a> and JavaScript packer.</p>
 <div class="wrap"><table>
 <thead>
 <tr>
@@ -513,7 +515,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 </thead>
 <tbody>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">roobuilder</span><span class="pkg-desc">Vala and Javascript IDE</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/roobuilder" class="pkg-link">roobuilder</a></span><span class="pkg-desc">Vala and Javascript IDE</span></th>
 <td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">5.0.11</span><span class="arch">amd64</span></td>
@@ -522,7 +524,7 @@ gpgkey=https://roojs.github.io/repos/key.gpg
 <td class="none">—</td>
 </tr>
 <tr>
-<th class="pkg" scope="row"><span class="pkg-name">roojspacker</span><span class="pkg-desc">Javascript compressor, packer and documentation tool</span></th>
+<th class="pkg" scope="row"><span class="pkg-name"><a href="https://github.com/roojs/roobuilder" class="pkg-link">roojspacker</a></span><span class="pkg-desc">Javascript compressor, packer and documentation tool</span></th>
 <td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
 <td class="ship"><span class="ver">1.5.2</span><span class="arch">amd64</span></td>
