@@ -432,7 +432,10 @@ pkg_desc() {
     fi
     return 0
   fi
-  [[ -n "$desc" ]] && printf '%s\n' "$desc"
+  if [[ -n "$desc" ]]; then
+    printf '%s\n' "$desc"
+  fi
+  return 0
 }
 
 if [[ -s "${work}/pkg-names" ]]; then
