@@ -638,6 +638,29 @@ filter_rpm_index_by_fedora() {
   done < <(jq -r 'keys[]' <<< "$index")
 }
 
+filter_deb_index_by_architecture() {
+  local repo filename arch allowed
+  allowed="$(jq -c '.apt.architectures' "$config")"
+  while IFS= read -r repo; do
+    [[ -n "$repo" ]] || continue
+    while IFS= read -r filename; do
+      [[ -n "$filename" ]] || continue
+      [[ "$filename" == *.deb ]] || continue
+      if [[ "$filename" =~ _([^_]+)\.deb$ ]]; then
+        arch="${BASH_REMATCH[1]}"
+        if jq -en --arg arch "$arch" --argjson allowed "$allowed" '$allowed | index($arch) != null' >/dev/null; then
+          continue
+        fi
+      fi
+      index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+      echo "Dropping ${filename} from index: architecture not configured." >&2
+    done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' <<< "$index")
+    if jq -e --arg repo "$repo" '.[$repo].packages | length == 0' <<< "$index" >/dev/null; then
+      index="$(jq --arg repo "$repo" 'del(.[$repo])' <<< "$index")"
+    fi
+  done < <(jq -r 'keys[]' <<< "$index")
+}
+
 merge_repo_index_entry() {
   local repo="$1" tag="$2" packages="$3"
   if jq -e --arg repo "$repo" 'has($repo)' <<< "$index" >/dev/null; then
@@ -1254,6 +1277,10 @@ fi
 
 if [[ "$package_type" == "rpm" ]]; then
   filter_rpm_index_by_fedora
+fi
+
+if [[ "$package_type" == "deb" ]]; then
+  filter_deb_index_by_architecture
 fi
 
 persist_package_index

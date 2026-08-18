@@ -180,10 +180,17 @@ jobs:
         if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
         run: main/scripts/generate-distributions.sh main/config/repos.json > pages/conf/distributions
 
+      - name: Drop vanished reprepro targets
+        if: steps.changes.outputs.changed == 'true' || inputs.force == true || steps.prune.outputs.pruned == 'true' || steps.rpm-prune.outputs.pruned == 'true' || steps.missing.outputs.missing == 'true'
+        run: |
+          chmod +x main/scripts/reprepro-sync-vanished.sh
+          main/scripts/reprepro-sync-vanished.sh "${GITHUB_WORKSPACE}/pages" main/config/repos.json
+
       - name: Ingest packages with reprepro
         if: (steps.changes.outputs.changed == 'true' || inputs.force == true || steps.missing.outputs.missing == 'true') && steps.fetch-debs.outputs.found == 'true'
         working-directory: main
         env:
+          GH_TOKEN: ${{ github.token }}
           APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
         run: |
           chmod +x scripts/reprepro-ingest.sh
