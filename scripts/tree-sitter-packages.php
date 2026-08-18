@@ -1576,6 +1576,8 @@ try {
                     $rpmPackage = 'tree-sitter-devel';
                 } elseif ($package === 'libtree-sitter') {
                     $rpmPackage = 'libtree-sitter0_26';
+                } elseif ($package === 'php-cli') {
+                    $rpmPackage = 'php8-cli';
                 }
             }
             exec('rpm -q ' . escapeshellarg($rpmPackage) . ' >/dev/null 2>&1', $output, $returnCode);
@@ -1614,6 +1616,8 @@ try {
                     $susePackages[] = 'tree-sitter-devel';
                 } elseif ($package === 'libtree-sitter') {
                     $susePackages[] = 'libtree-sitter0_26';
+                } elseif ($package === 'php-cli') {
+                    $susePackages[] = 'php8-cli';
                 } else {
                     $susePackages[] = $package;
                 }
