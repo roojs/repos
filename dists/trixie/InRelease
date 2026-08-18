@@ -4,35 +4,26 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: trixie
-Date: Mon, 17 Aug 2026 09:30:07 UTC
-Architectures: amd64 arm64
+Date: Tue, 18 Aug 2026 14:45:37 UTC
+Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
  554565bb590459ab3a398983b1db653e 32244 main/binary-amd64/Packages
  41d699086de16447866c5183bdae42ac 7465 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
- 6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
- a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
- 32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
  a6f60399cb91892399e729269413064f9430944a 32244 main/binary-amd64/Packages
  2e842f0a34703412f4a9185cc133fabf99223cb9 7465 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
- b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
- 3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
- 6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
  014f3ef7b4e8e9f8007f8e6c4f6ee1a83594f1df76117eb568bdb073b02c9326 32244 main/binary-amd64/Packages
  5b0d162d9a7293c9353b14b7e07634e8a0ee9ad942601e14386d04c6b16b449b 7465 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
- 0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
- 71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
- 46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoLUoAAKCRADhhQ8Yzk0
-cHZzAQC5mQE5LcaSkeJ4WhII26dP6cHp06XJc4IBJp6ZfCw2ZQEAlDoOJuML/6Qz
-v5YE6XlMA6pdTfWdlUkBGuot1YaoDws=
-=+Uj/
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoRwEQAKCRADhhQ8Yzk0
+cNBDAP4rXk3o6Do+NDWSpexChis3pUDLHeQ9f7BMwkKeqnhA9gD/QuCwDttnTZyB
+YOI85YqcMm0BEAo2xb7OvO0CpEoa0AE=
+=MzYi
 -----END PGP SIGNATURE-----

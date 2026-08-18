@@ -1,28 +1,19 @@
 Origin: roojs
 Label: roojs
 Codename: plucky
-Date: Mon, 17 Aug 2026 09:30:08 UTC
-Architectures: amd64 arm64
+Date: Tue, 18 Aug 2026 14:45:59 UTC
+Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- adbf7f672df239f0f91c7c8c630e9e8c 36832 main/binary-amd64/Packages
- 2630f649b7062bbd1b6912cd3150324c 8736 main/binary-amd64/Packages.gz
+ b65686a75b43e9d051a25b2ee11e0b0e 36609 main/binary-amd64/Packages
+ 862dcd0e732b2d639f74b2e1a20fe65a 8679 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
- 6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
- a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
- 32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- 4d2d5b82f75c31e9d6597ac65dd993d8064a664f 36832 main/binary-amd64/Packages
- b0f5104a9bfd74753995f7e48f691af7943e59da 8736 main/binary-amd64/Packages.gz
+ b6ad939d8f16a998deab98abde0b92f9cbd2069d 36609 main/binary-amd64/Packages
+ e3f913bab4ad4cde7bf5a27db80fe24a34ab3cc2 8679 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
- b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
- 3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
- 6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- 2575c735047cda3672382fae05472b0f5eec3d168a1506a049dc5d4844bcc6cf 36832 main/binary-amd64/Packages
- 62f889a5ea1d18001d1897214bcfb2cef5769b51b39d9e335ce7fef54eea5cc1 8736 main/binary-amd64/Packages.gz
+ 1c3284c5e4ba8432c9a3afa82f3099b97b18c29045fe7bb20492e75755a4c5e9 36609 main/binary-amd64/Packages
+ 5cf1d9bcfbc19740c9693eee28664b0c8701826863437c992355af8143e89e25 8679 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
- 0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
- 71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
- 46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release

@@ -654,55 +654,21 @@ Description: Tree-sitter parser for Vala language (runtime library)
  This package provides only the runtime libraries. For development, use
  libtree-sitter-dev which provides the main Tree-sitter API.
 
-Package: libwebkitgtk-6.0-4
+Package: libwebkitgtk-6.0-webdriver-dev
 Source: webkit2gtk
-Version: 2.50.4-0ubuntu0.25.04.1+webkitgtk1
+Version: 2.50.4-0ubuntu0.25.04.1+webdriver1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 92892
-Depends: libjavascriptcoregtk-6.0-1 (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, libgles2, bubblewrap (>= 0.3.1), xdg-dbus-proxy, libatomic1 (>= 4.8), libc6 (>= 2.38), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.14.0), libdrm2 (>= 2.4.107), libenchant-2-2 (>= 2.2.3), libepoxy0 (>= 1.3), libexpat1 (>= 2.1~beta3), libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.11.1), libgbm1 (>= 21.3.0~rc1), libgcc-s1 (>= 4.0), libgcrypt20 (>= 1.11.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0t64 (>= 2.80.0), libgpg-error0 (>= 1.14), libgraphene-1.0-0 (>= 1.5.4), libgstreamer-gl1.0-0 (>= 1.14.0), libgstreamer-plugins-base1.0-0 (>= 1.23.1), libgstreamer1.0-0 (>= 1.25.1), libgtk-4-1 (>= 4.13.8), libharfbuzz-icu0 (>= 0.9.9), libharfbuzz0b (>= 1.8.6), libhyphen0 (>= 2.7.1), libicu76 (>= 76.1-1~), libjpeg8 (>= 8c), libjxl0.11 (>= 0.6.1), liblcms2-2 (>= 2.2+git20110628), libmanette-0.2-0 (>= 0.1.2), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libpng16-16t64 (>= 1.6.46), libseccomp2 (>= 0.0.0~20120605), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.8.7), libstdc++6 (>= 13.1), libsystemd0, libtasn1-6 (>= 4.14), libvulkan1 (>= 1.2.131.2), libwayland-client0 (>= 1.20.0), libwayland-egl1 (>= 1.15.0), libwayland-server0 (>= 1.0.2), libwebp7 (>= 1.5.0), libwebpdemux2 (>= 1.5.0), libwebpmux3 (>= 1.5.0), libwoff1 (>= 1.0.0), libx11-6, libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), zlib1g (>= 1:1.2.11)
-Recommends: gstreamer1.0-gl, libgl1-mesa-dri, xdg-desktop-portal-gtk
-Suggests: gstreamer1.0-libav, gstreamer1.0-plugins-bad, gstreamer1.0-alsa
-Multi-Arch: same
-Homepage: https://webkitgtk.org/
-Priority: optional
-Section: libs
-Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-4_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb
-Size: 24795986
-SHA256: 311f007a6ad36a28ef6c5127dfbd60b16b769ea42885afe669c924f5338496d0
-SHA1: 8071c78412808e1b1acfe4e97522c4033f62e367
-MD5sum: 266e0fed4e5321d6ad298072b6c01109
-Description: Web content engine library for GTK
- WebKit is a web content engine, derived from KHTML and KJS from KDE, and
- used primarily in Apple's Safari browser.  It is made to be embedded in
- other applications, such as mail readers, or web browsers.
- .
- It is able to display content such as HTML, SVG, XML, and others. It also
- supports DOM, XMLHttpRequest, XSLT, CSS, JavaScript/ECMAScript and more.
- .
- WebKitGTK is a WebKit port designed to be used in GTK applications.
- This build provides version 6.0 of the API and uses libsoup v3 for
- the networking stack and the GTK 4 widget toolkit.
- .
- This package contains the shared libraries.
-Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
-
-Package: libwebkitgtk-6.0-dev
-Source: webkit2gtk
-Version: 2.50.4-0ubuntu0.25.04.1+webkitgtk1
-Architecture: amd64
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 2370
-Depends: libwebkitgtk-6.0-4 (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), gir1.2-gtk-4.0-dev, gir1.2-soup-3.0-dev, gir1.2-webkit-6.0 (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1)
-Provides: gir1.2-webkit-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1), gir1.2-webkitwebprocessextension-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webkitgtk1)
+Installed-Size: 292
+Depends: libwebkitgtk-6.0-webdriver4 (= 2.50.4-0ubuntu0.25.04.1+webdriver1), libwebkitgtk-6.0-dev, libjavascriptcoregtk-6.0-dev (= 2.50.4-0ubuntu0.25.04.1+webdriver1), libgtk-4-dev, libsoup-3.0-dev
 Homepage: https://webkitgtk.org/
 Priority: optional
 Section: libdevel
-Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-dev_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb
-Size: 189052
-SHA256: fe4c692a5613c0b6fa979dece2c595b777483996dc11873b72cf75985d52a22c
-SHA1: e563c180ce7699bfc74dd0fd42e4de39b6c9f441
-MD5sum: dc0ec3d3f4a6bf237d66f8d9dfb8b938
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver1_amd64.deb
+Size: 47726
+SHA256: dce15740d211aba883910e471dcbfa7d5c29f10fb703a1adfec6eb1d9f2e5ab3
+SHA1: ea3a9f2fcee4f10018212864ddebd8b2c4660edb
+MD5sum: 6ae03f2c06755515727eda354402b29c
 Description: Web content engine library for GTK - development files
  WebKit is a web content engine, derived from KHTML and KJS from KDE, and
  used primarily in Apple's Safari browser.  It is made to be embedded in
@@ -716,6 +682,39 @@ Description: Web content engine library for GTK - development files
  the networking stack and the GTK 4 widget toolkit.
  .
  This package contains the development files.
+Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
+
+Package: libwebkitgtk-6.0-webdriver4
+Source: webkit2gtk
+Version: 2.50.4-0ubuntu0.25.04.1+webdriver1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 91004
+Depends: libjavascriptcoregtk-6.0-1, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, libgles2, bubblewrap (>= 0.3.1), xdg-dbus-proxy, libatomic1 (>= 4.8), libc6 (>= 2.38), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.14.0), libdrm2 (>= 2.4.107), libenchant-2-2 (>= 2.2.3), libepoxy0 (>= 1.3), libexpat1 (>= 2.1~beta3), libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.11.1), libgbm1 (>= 21.3.0~rc1), libgcc-s1 (>= 4.0), libgcrypt20 (>= 1.11.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0t64 (>= 2.80.0), libgpg-error0 (>= 1.14), libgraphene-1.0-0 (>= 1.5.4), libgstreamer-gl1.0-0 (>= 1.14.0), libgstreamer-plugins-base1.0-0 (>= 1.23.1), libgstreamer1.0-0 (>= 1.25.1), libgtk-4-1 (>= 4.13.8), libharfbuzz-icu0 (>= 0.9.9), libharfbuzz0b (>= 1.8.6), libhyphen0 (>= 2.7.1), libicu76 (>= 76.1-1~), libjpeg8 (>= 8c), libjxl0.11 (>= 0.6.1), liblcms2-2 (>= 2.2+git20110628), libmanette-0.2-0 (>= 0.1.2), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libpng16-16t64 (>= 1.6.46), libseccomp2 (>= 0.0.0~20120605), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.8.7), libstdc++6 (>= 13.1), libsystemd0, libtasn1-6 (>= 4.14), libvulkan1 (>= 1.2.131.2), libwayland-client0 (>= 1.20.0), libwayland-egl1 (>= 1.15.0), libwayland-server0 (>= 1.0.2), libwebp7 (>= 1.5.0), libwebpdemux2 (>= 1.5.0), libwebpmux3 (>= 1.5.0), libwoff1 (>= 1.0.0), libx11-6, libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), zlib1g (>= 1:1.2.11)
+Recommends: gstreamer1.0-gl, libgl1-mesa-dri, xdg-desktop-portal-gtk
+Suggests: gstreamer1.0-libav, gstreamer1.0-plugins-bad, gstreamer1.0-alsa
+Multi-Arch: same
+Homepage: https://webkitgtk.org/
+Priority: optional
+Section: libs
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver1_amd64.deb
+Size: 24441872
+SHA256: d0509ba43c2beee6d681a7b44a16d6f844fea4fa73d7b31740afc80e1ace7f7a
+SHA1: 5c2c7753bb7e95c422103e8c25894c98dc57bf74
+MD5sum: 28fa631b2b25e05852abc90fc6208e8f
+Description: Web content engine library for GTK
+ WebKit is a web content engine, derived from KHTML and KJS from KDE, and
+ used primarily in Apple's Safari browser.  It is made to be embedded in
+ other applications, such as mail readers, or web browsers.
+ .
+ It is able to display content such as HTML, SVG, XML, and others. It also
+ supports DOM, XMLHttpRequest, XSLT, CSS, JavaScript/ECMAScript and more.
+ .
+ WebKitGTK is a WebKit port designed to be used in GTK applications.
+ This build provides version 6.0 of the API and uses libsoup v3 for
+ the networking stack and the GTK 4 widget toolkit.
+ .
+ This package contains the shared libraries.
 Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
 
 Package: ollmchat

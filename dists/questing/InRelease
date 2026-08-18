@@ -4,35 +4,26 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: questing
-Date: Mon, 17 Aug 2026 09:30:09 UTC
-Architectures: amd64 arm64
+Date: Tue, 18 Aug 2026 14:46:00 UTC
+Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- b5c9f160d7f6616499dd664f45b68e7a 36779 main/binary-amd64/Packages
- 5d038e89f5d5dda1069894459e1eab74 8705 main/binary-amd64/Packages.gz
+ 1e94cd50dd98ea875b65001757e29c89 36635 main/binary-amd64/Packages
+ fc3ed5bada89703c3d3b01069e2db022 8677 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
- 6b3fd0db061a3aef00f13767fb8ba127 9858 main/binary-arm64/Packages
- a9deb1aee6512fdb4e2896321ea07e13 2403 main/binary-arm64/Packages.gz
- 32d63019314d66d7c2484313d243b174 119 main/binary-arm64/Release
 SHA1:
- f83f59c6a8e38414b0bf91b5b55d281b6869aac6 36779 main/binary-amd64/Packages
- 403d165097febbe8134455d96a90448dc332d917 8705 main/binary-amd64/Packages.gz
+ 8bf5a1df9da8c458195dc0f5c39e905cd84bec08 36635 main/binary-amd64/Packages
+ e66a499948c182074f683e4068211830af78cc0c 8677 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
- b54467212bb3cd552165f5a914b70f8d4f8dac19 9858 main/binary-arm64/Packages
- 3d18ccbe5f18b32c0c7613e8f59edcb083d74e62 2403 main/binary-arm64/Packages.gz
- 6c624eee48acca41f1ad0a9245b56a95f77d9d6f 119 main/binary-arm64/Release
 SHA256:
- 4495a3eadff8cd896cd424ef951075501c2e832899371bfd18086742d06951ff 36779 main/binary-amd64/Packages
- 2539a8928f700b765360a192b31501c9d0a2955c1fee3dba3150aa1b3b117166 8705 main/binary-amd64/Packages.gz
+ aa5dced8bc9045ac9556c5d2bcfeebd60720733eb409ac42b1782c6d2e8a34d7 36635 main/binary-amd64/Packages
+ 38f8fcbac539692791f7a3c311b23aafaa4521c0f95dd4dcf85c5c9beaf38f6a 8677 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
- 0c2ad07f53850cc09a21f86e91f2e3dc5c8636358d3f16f33b2bb63fd2f7f001 9858 main/binary-arm64/Packages
- 71f4e4bd7a03ab290b516ea4c9a148172cea7541acd047281e1fca72fce8b4c3 2403 main/binary-arm64/Packages.gz
- 46183ad20edd68f280dac93107308395eb9c5ddfe7401d2a1e18ac06cd38c5b0 119 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoLUoQAKCRADhhQ8Yzk0
-cPwaAP4j8XMDwnl0Xl1dx337gyIDtEc/fDuClh1e+7Mpm6+qswD9GS/lNFl1cTcI
-K3tBhuc9pyoy4KhyvntwPx85du2Lxw4=
-=XNYW
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoRwKQAKCRADhhQ8Yzk0
+cP0sAQD9GBcUpoj14dIHx1AQUxH4pbh8sox8GyXyGIOdA9edSwEAtdaMksZS9l3W
+jzmDtZuvMTYatC8Xoy7Na5NNzwTx2gY=
+=NQ6w
 -----END PGP SIGNATURE-----

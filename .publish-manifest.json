@@ -40,15 +40,6 @@
             "resolute"
           ]
         },
-        "libggml-dev_0.19.0-1_arm64.deb": {
-          "sha256": "98a11803bb4c5db5cb3cf8c83373a4cb42d9b66a215fc4169c4472ba19d19a85",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
-            "resolute"
-          ]
-        },
         "libggml0-backend-blas_0.18.1-1_amd64.deb": {
           "sha256": "c57a68863f49c2c4db2ad732aabc788c9d3afbe1ff8d6c4e1543d8e354bbad3a",
           "suites": [
@@ -60,15 +51,6 @@
         "libggml0-backend-blas_0.19.0-1_amd64.deb": {
           "sha256": "035fd3b4711b6cfb812621d8c876d9f28ccfbd4b8e3ec4253247a761ee5d18bd",
           "suites": [
-            "resolute"
-          ]
-        },
-        "libggml0-backend-blas_0.19.0-1_arm64.deb": {
-          "sha256": "267b3653f6c0d0afed226a8038ff8c0d4b0e4d3806bcf4113e1b06bc848b1f98",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
             "resolute"
           ]
         },
@@ -86,15 +68,6 @@
             "resolute"
           ]
         },
-        "libggml0-backend-rpc_0.19.0-1_arm64.deb": {
-          "sha256": "36fe1c5104c9d7a4f2b1d573ce0f174a936e5c9adab29421b224e200668b7bdf",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
-            "resolute"
-          ]
-        },
         "libggml0-backend-vulkan_0.18.1-1_amd64.deb": {
           "sha256": "22d6c18eb31d714e7fd866cea6449268aecdb587d554bad55780299228afc569",
           "suites": [
@@ -106,15 +79,6 @@
         "libggml0-backend-vulkan_0.19.0-1_amd64.deb": {
           "sha256": "52745d283611da8cdc470113bded1ad8f7a52a71ec704741d3a7513cb4f655ea",
           "suites": [
-            "resolute"
-          ]
-        },
-        "libggml0-backend-vulkan_0.19.0-1_arm64.deb": {
-          "sha256": "d5bdffd0b1e8d2f1d36491563b6409a1c46cbffcc3d9d4274c4b7e94f92d3f9c",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
             "resolute"
           ]
         },
@@ -132,15 +96,6 @@
             "resolute"
           ]
         },
-        "libggml0_0.19.0-1_arm64.deb": {
-          "sha256": "042bd56777de60d81c22a387e4469868d9b41a0ea3b3e8188bb4669c07c51e54",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
-            "resolute"
-          ]
-        },
         "libllama-dev_10271+dfsg-1_amd64.deb": {
           "sha256": "9e4ec2d1482d3f95725025fd5be6da89739973022b817d171a1b6fd259898d79",
           "suites": [
@@ -155,15 +110,6 @@
             "resolute"
           ]
         },
-        "libllama-dev_10344+dfsg-1_arm64.deb": {
-          "sha256": "9c0dc188022678f9a85fae4658ac2b43f5944aec26989a6a3fb06a684708c003",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
-            "resolute"
-          ]
-        },
         "libllama0_10271+dfsg-1_amd64.deb": {
           "sha256": "31e408cf608c27755dc3ec4e61e5ecc5ec65e7c28321e2dcc83df32e1d254930",
           "suites": [
@@ -175,15 +121,6 @@
         "libllama0_10344+dfsg-1_amd64.deb": {
           "sha256": "c2fea1c7b00f9c1b5ba76775fcc9ba9aa702fdf7cb0cccc9edc5c5a20c6e0e50",
           "suites": [
-            "resolute"
-          ]
-        },
-        "libllama0_10344+dfsg-1_arm64.deb": {
-          "sha256": "d63060a906a25660ef57701ba7aafcce0349820aae7b32fbf1da62c29b94c511",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing",
             "resolute"
           ]
         }
@@ -241,40 +178,40 @@
       }
     },
     "webkitgtk-automation": {
-      "tag": "build-plucky-20260816-6;build-questing-20260815-9;build-resolute-20260815-2",
+      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver1;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver1;webkit2gtk-2.52.3-0ubuntu0.26.04.3-webdriver1",
       "packages": {
-        "libwebkitgtk-6.0-4_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb": {
-          "sha256": "311f007a6ad36a28ef6c5127dfbd60b16b769ea42885afe669c924f5338496d0",
+        "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver1_amd64.deb": {
+          "sha256": "dce15740d211aba883910e471dcbfa7d5c29f10fb703a1adfec6eb1d9f2e5ab3",
           "suites": [
             "plucky"
           ]
         },
-        "libwebkitgtk-6.0-dev_2.50.4-0ubuntu0.25.04.1+webkitgtk1_amd64.deb": {
-          "sha256": "fe4c692a5613c0b6fa979dece2c595b777483996dc11873b72cf75985d52a22c",
+        "libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver1_amd64.deb": {
+          "sha256": "d0509ba43c2beee6d681a7b44a16d6f844fea4fa73d7b31740afc80e1ace7f7a",
           "suites": [
             "plucky"
           ]
         },
-        "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.25.10.1+webkitgtk1_amd64.deb": {
-          "sha256": "c02177a29b829c8e44672eaae1c3d7c9450d0f70d3cdd75b1fa72f1ef30652cd",
+        "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.25.10.1+webdriver1_amd64.deb": {
+          "sha256": "97e76bc216ef9ba6ae7a21e6657e45f029baf966393bbf16865a849584c09edc",
           "suites": [
             "questing"
           ]
         },
-        "libwebkitgtk-6.0-dev_2.52.3-0ubuntu0.25.10.1+webkitgtk1_amd64.deb": {
-          "sha256": "7f6593603503a3ad47d60ba65feda54022b30ee1de1507997e62f4ee0458406d",
+        "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.25.10.1+webdriver1_amd64.deb": {
+          "sha256": "6ddad64c5afcc47351ca892f7c9b0316be8dc3e55ef7202b64c16ea776a3dbf4",
           "suites": [
             "questing"
           ]
         },
-        "libwebkitgtk-6.0-4_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": {
-          "sha256": "bdcf81883df5eb241167a36ca6916494d4e9d85ed1441b47477ff2fe34e141d9",
+        "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.26.04.3+webdriver1_amd64.deb": {
+          "sha256": "aaaf2f0c8e0c58951e485da8b6de48c2d7efe68a60d14dcd9ed96a46bb3e6d4a",
           "suites": [
             "resolute"
           ]
         },
-        "libwebkitgtk-6.0-dev_2.52.3-0ubuntu0.26.04.3+webkitgtk1_amd64.deb": {
-          "sha256": "6318b5acf0eb0bf083baf773661a9e40c0747687576a252f3941266b9d0e04e1",
+        "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.26.04.3+webdriver1_amd64.deb": {
+          "sha256": "0a004162ca4eb7cf6b58974d1da6ab145f9dfe29aabca196de048cbadab55b34",
           "suites": [
             "resolute"
           ]
@@ -666,6 +603,6 @@
       }
     }
   },
-  "repos_json_sha256": "67fcf605fc680355d25aa91d1a303237cce2c102836e0e4a0dbf5b4ec39abadc",
-  "distributions_sha256": "c580b532db1b83d63610fdc454f54edb9153ff6e1951d0f033aa9986c9ecf729"
+  "repos_json_sha256": "eeb9147b046c5fddd03558f0761833166aab9914c72d4dcff29839b4a19edc2f",
+  "distributions_sha256": "c33d2afed34d5da9522cab919d0b95148b8e939e9c5bcb2b55e3e29f3f38a6fa"
 }
