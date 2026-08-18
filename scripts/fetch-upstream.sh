@@ -582,34 +582,55 @@ persist_package_index() {
 }
 
 filter_rpm_index_by_fedora() {
-  local repo project allowlist filename fc fedora_json
+  local repo project allowlist publish_opensuse filename fc fedora_json opensuse_json
   while IFS= read -r repo; do
     [[ -n "$repo" ]] || continue
     project="$(repos_config_project_json "$config" "$repo")"
     allowlist="$(repos_config_rpm_fedora_allowlist "$project")"
-    [[ "$allowlist" != "null" ]] || continue
+    publish_opensuse="$(repos_config_rpm_publish_opensuse "$project")"
+    [[ "$allowlist" != "null" || "$publish_opensuse" != "null" ]] || continue
     while IFS= read -r filename; do
       [[ -n "$filename" ]] || continue
       if [[ "$filename" =~ \.fc([0-9]+)\. ]]; then
         fc="${BASH_REMATCH[1]}"
-        if ! jq -en --argjson fc "$fc" --argjson list "$allowlist" '$list | index($fc) != null' >/dev/null; then
+        if [[ "$allowlist" != "null" ]] \
+          && ! jq -en --argjson fc "$fc" --argjson list "$allowlist" '$list | index($fc) != null' >/dev/null; then
           index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
           echo "Dropping ${filename} from index: fc${fc} not in fedora allowlist." >&2
         fi
         continue
       fi
-      fedora_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].fedora // null' <<< "$index")"
-      if [[ "$fedora_json" == "null" ]]; then
-        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-        echo "Dropping ${filename} from index: no Fedora release metadata." >&2
+
+      opensuse_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].opensuse // null' <<< "$index")"
+      if [[ "$opensuse_json" != "null" ]]; then
+        if [[ "$publish_opensuse" == "null" ]]; then
+          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+          echo "Dropping ${filename} from index: openSUSE publish disabled." >&2
+        elif ! jq -en --argjson allowlist "$publish_opensuse" --argjson opensuse "$opensuse_json" '
+          [ $opensuse[] | select($allowlist | index(.) != null) ] | length > 0
+        ' >/dev/null; then
+          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+          echo "Dropping ${filename} from index: openSUSE metadata not in allowlist." >&2
+        fi
         continue
       fi
-      if ! jq -en --argjson allowlist "$allowlist" --argjson fedora "$fedora_json" '
-        [ $fedora[] | select($allowlist | index(.) != null) ] | length > 0
-      ' >/dev/null; then
-        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-        echo "Dropping ${filename} from index: Fedora metadata not in allowlist." >&2
+
+      fedora_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].fedora // null' <<< "$index")"
+      if [[ "$fedora_json" != "null" ]]; then
+        if [[ "$allowlist" == "null" ]]; then
+          continue
+        fi
+        if ! jq -en --argjson allowlist "$allowlist" --argjson fedora "$fedora_json" '
+          [ $fedora[] | select($allowlist | index(.) != null) ] | length > 0
+        ' >/dev/null; then
+          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+          echo "Dropping ${filename} from index: Fedora metadata not in allowlist." >&2
+        fi
+        continue
       fi
+
+      index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+      echo "Dropping ${filename} from index: no Fedora or openSUSE release metadata." >&2
     done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' <<< "$index")
     if jq -e --arg repo "$repo" '.[$repo].packages | length == 0' <<< "$index" >/dev/null; then
       index="$(jq --arg repo "$repo" 'del(.[$repo])' <<< "$index")"
