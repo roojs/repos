@@ -28,9 +28,9 @@
       "repo": "webkitgtk-automation",
       "deb": {
         "release_tags": {
-          "build-plucky-*": ["plucky"],
-          "build-questing-*": ["questing"],
-          "build-resolute-*": ["resolute"]
+          "webkit2gtk-*-0ubuntu0.25.04.*-webdriver*": ["plucky"],
+          "webkit2gtk-*-0ubuntu0.25.10.*-webdriver*": ["questing"],
+          "webkit2gtk-*-0ubuntu0.26.04.*-webdriver*": ["resolute"]
         }
       }
     },
