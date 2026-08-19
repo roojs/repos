@@ -328,7 +328,7 @@ package_group_title() {
 package_group_blurb() {
   case "$1" in
     treesitter)
-      printf '%s\n' "Syntax-highlighting parsers used by <a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a>. Each row links to the upstream grammar repository."
+      printf '%s\n' "Grammar parsers used by <a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> to split documents for semantic search. Each row links to the upstream grammar repository."
       ;;
     ollmchat)
       printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> and the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses. llama.cpp and FAISS packages are repackaged from Debian."
