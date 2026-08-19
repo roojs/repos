@@ -66,6 +66,12 @@ while IFS= read -r repo; do
         echo "Already published: ${filename} (${suite})"
         continue
       fi
+      if grep -qiE 'already existing files can only be included again|cannot be included as' /tmp/reprepro.err \
+        && grep -qiE 'md5 expected:|sha1 expected:|sha256 expected:' /tmp/reprepro.err; then
+        echo "Skipping ${filename} (${suite}): upstream asset differs from pool copy at same version; keeping existing until upstream publishes a new release." >&2
+        cat /tmp/reprepro.err >&2
+        continue
+      fi
       cat /tmp/reprepro.err >&2
       exit 1
     done
