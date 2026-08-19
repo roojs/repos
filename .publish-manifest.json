@@ -34,8 +34,8 @@
             "questing"
           ]
         },
-        "libggml-dev_0.19.0-1_amd64.deb": {
-          "sha256": "b41b774c423f1a5be733800ae3e8a991507d69430db17a02d17b27c4de500193",
+        "libggml-dev_0.20.2-1_amd64.deb": {
+          "sha256": "ff9a6bb055509582842bc8ad80dd9f097e1d764edfa533f51b8647c08318f794",
           "suites": [
             "resolute"
           ]
@@ -48,8 +48,8 @@
             "questing"
           ]
         },
-        "libggml0-backend-blas_0.19.0-1_amd64.deb": {
-          "sha256": "035fd3b4711b6cfb812621d8c876d9f28ccfbd4b8e3ec4253247a761ee5d18bd",
+        "libggml0-backend-blas_0.20.2-1_amd64.deb": {
+          "sha256": "80720479cf7e2fabdc7f69e33ef81f5c83a44348d20fb064783597db6e266000",
           "suites": [
             "resolute"
           ]
@@ -62,8 +62,8 @@
             "questing"
           ]
         },
-        "libggml0-backend-rpc_0.19.0-1_amd64.deb": {
-          "sha256": "702f65efaaaab420db9e3ccfbed47f83f4fddf526ccc44532850626fe2c56713",
+        "libggml0-backend-rpc_0.20.2-1_amd64.deb": {
+          "sha256": "c38e916bcc27d90feba0b22dd324e2a7a3e3316b91530c775d776a96ebd4c5c6",
           "suites": [
             "resolute"
           ]
@@ -76,8 +76,8 @@
             "questing"
           ]
         },
-        "libggml0-backend-vulkan_0.19.0-1_amd64.deb": {
-          "sha256": "52745d283611da8cdc470113bded1ad8f7a52a71ec704741d3a7513cb4f655ea",
+        "libggml0-backend-vulkan_0.20.2-1_amd64.deb": {
+          "sha256": "dfeed69a191e39f6870b36463703b0934ab11de0bf21201fce44e5ec9f26b08b",
           "suites": [
             "resolute"
           ]
@@ -90,8 +90,8 @@
             "questing"
           ]
         },
-        "libggml0_0.19.0-1_amd64.deb": {
-          "sha256": "271c9d5070b2bd2d17ffe6e4fd8940f98824d450d75ab834c70e15fa6624712c",
+        "libggml0_0.20.2-1_amd64.deb": {
+          "sha256": "7b27b29b86f69921ce101b9885d418c55667b3d5633ae618dfa08b2f8b2404bc",
           "suites": [
             "resolute"
           ]
@@ -104,8 +104,8 @@
             "questing"
           ]
         },
-        "libllama-dev_10344+dfsg-1_amd64.deb": {
-          "sha256": "168a8e8b1c60a883bd51dc1fa12770049294a54ea921a9c3a98a653bc938e96a",
+        "libllama-dev_10438+dfsg-1_amd64.deb": {
+          "sha256": "92808de3c478087be83209c21545d892b0163526c115b1d9901018238ce60151",
           "suites": [
             "resolute"
           ]
@@ -118,8 +118,8 @@
             "questing"
           ]
         },
-        "libllama0_10344+dfsg-1_amd64.deb": {
-          "sha256": "c2fea1c7b00f9c1b5ba76775fcc9ba9aa702fdf7cb0cccc9edc5c5a20c6e0e50",
+        "libllama0_10438+dfsg-1_amd64.deb": {
+          "sha256": "253bca68989aed27e6f35c8b10d0193b68b4cc956bee2515d5f8b6dd1cc1fb67",
           "suites": [
             "resolute"
           ]
@@ -127,10 +127,10 @@
       }
     },
     "app.RooTerm": {
-      "tag": "v0.1.2",
+      "tag": "v0.1.3",
       "packages": {
-        "rooterm_0.1.2-1_amd64.deb": {
-          "sha256": "38087d7cb32777139ea127a1709bb416593ddd4a4bd7973053447e8838b9402a",
+        "rooterm_0.1.3-1_amd64.deb": {
+          "sha256": "9c795e7335f07fa834c28a4ee41aa4c143f8e9ffc30e023065d40180365304d5",
           "suites": [
             "trixie",
             "plucky",
@@ -141,10 +141,10 @@
       }
     },
     "ibus-sherpa-onnx": {
-      "tag": "v0.3.2",
+      "tag": "v0.3.4",
       "packages": {
-        "ibus-sherpa-onnx_0.3.2-1_amd64.deb": {
-          "sha256": "ef3ad96adb2e9a9d7ddda37ada9c5defa8020ec588df6ffe988b811f892268ca",
+        "ibus-sherpa-onnx_0.3.4-1_amd64.deb": {
+          "sha256": "bf85c010eea30f61507db0449d854a3b68881f2a08922dde80d8de8c4025ca9e",
           "suites": [
             "trixie",
             "plucky",
@@ -155,10 +155,10 @@
       }
     },
     "sherpa-onnx": {
-      "tag": "v1.13.5-roojs2",
+      "tag": "v1.13.6-roojs1",
       "packages": {
-        "libsherpa-onnx-c-api-dev_1.13.5-roojs2_amd64.deb": {
-          "sha256": "80765e6141fae2f83185d36da237dfa8e75f2ec0c3e55b4185bbb28d91c565d6",
+        "libsherpa-onnx-c-api-dev_1.13.6-roojs1_amd64.deb": {
+          "sha256": "660679519642c78908599fc26c8a827cb30706ba7818259ef50d4915d7d1fb9e",
           "suites": [
             "trixie",
             "plucky",
@@ -166,8 +166,8 @@
             "resolute"
           ]
         },
-        "libsherpa-onnx-c-api1_1.13.5-roojs2_amd64.deb": {
-          "sha256": "71cb2d75c38f18696ec406e6c2222746690653880fbf38173eda6df3ede66bb1",
+        "libsherpa-onnx-c-api1_1.13.6-roojs1_amd64.deb": {
+          "sha256": "15295590db15ee56d0074db0801a85798ca608fa310b5ce841bef55ba918dae7",
           "suites": [
             "trixie",
             "plucky",
@@ -385,10 +385,10 @@
       }
     },
     "app.RooTerm": {
-      "tag": "v0.1.2",
+      "tag": "v0.1.3",
       "packages": {
-        "rooterm-0.1.2-2.fc42.x86_64.rpm": {
-          "sha256": "8d6fc7f8d6ede37f5282ead924c3b6d97c35237f19d9e6e576983fc561b1e480",
+        "rooterm-0.1.3-2.fc44.x86_64.rpm": {
+          "sha256": "978b085e5ed7e2c4e71b9c9706363d5652eb3227f9137b14d7f5a0295dec87aa",
           "arch": "x86_64",
           "fedora": [
             44
@@ -397,21 +397,21 @@
       }
     },
     "ibus-sherpa-onnx": {
-      "tag": "v0.3.2",
+      "tag": "v0.3.4",
       "packages": {
-        "ibus-sherpa-onnx-0.3.2-1.fc44.x86_64.rpm": {
-          "sha256": "90b9a9e11761c1ed4cbb23778934a07bbfbc3852877b1dc423ee848f58d3e19e"
+        "ibus-sherpa-onnx-0.3.4-1.fc44.x86_64.rpm": {
+          "sha256": "ea345b01c97c940d9ccabef0ee262b73baf9088ce3e442ae5fcfbb984c232ebe"
         }
       }
     },
     "sherpa-onnx": {
-      "tag": "v1.13.5-roojs2",
+      "tag": "v1.13.6-roojs1",
       "packages": {
-        "libsherpa-onnx-c-api-1.13.5-roojs2.fc44.x86_64.rpm": {
-          "sha256": "798be80dadfcd609025c7b1a4c5fb06270b26ec76fc9075df7c695c55916962e"
+        "libsherpa-onnx-c-api-1.13.6-roojs1.fc44.x86_64.rpm": {
+          "sha256": "767c8b2e0b9ae98c54e8dc506927fd287be38c018ac3677ff931d52d7275dfe8"
         },
-        "libsherpa-onnx-c-api-devel-1.13.5-roojs2.fc44.x86_64.rpm": {
-          "sha256": "0701b834ef4bf63dd21e0075626a51cfcb84a5d6c634efa14eb81d3f9d74d08c"
+        "libsherpa-onnx-c-api-devel-1.13.6-roojs1.fc44.x86_64.rpm": {
+          "sha256": "f9c7c93f44ec76db41f692cd20fd6abe0e69514d650bb31d6c97cd2a6cc7bd8f"
         }
       }
     },
