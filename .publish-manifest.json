@@ -181,37 +181,37 @@
       "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver1;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver1;webkit2gtk-2.52.3-0ubuntu0.26.04.3-webdriver1",
       "packages": {
         "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver1_amd64.deb": {
-          "sha256": "dce15740d211aba883910e471dcbfa7d5c29f10fb703a1adfec6eb1d9f2e5ab3",
+          "sha256": "a963190bfefaf4d323e285c4f7cdd1681122c5f32dd9b15ea69c02fe71c10051",
           "suites": [
             "plucky"
           ]
         },
         "libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver1_amd64.deb": {
-          "sha256": "d0509ba43c2beee6d681a7b44a16d6f844fea4fa73d7b31740afc80e1ace7f7a",
+          "sha256": "37ff20db31a18f383846c8387e7b04da1f813b59a2ce92e6daa9557f01bb17fc",
           "suites": [
             "plucky"
           ]
         },
         "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.25.10.1+webdriver1_amd64.deb": {
-          "sha256": "97e76bc216ef9ba6ae7a21e6657e45f029baf966393bbf16865a849584c09edc",
+          "sha256": "af74581dbc63f1dff3e88f556a0d4304044df2eab9885fc86717d2d2017ec00a",
           "suites": [
             "questing"
           ]
         },
         "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.25.10.1+webdriver1_amd64.deb": {
-          "sha256": "6ddad64c5afcc47351ca892f7c9b0316be8dc3e55ef7202b64c16ea776a3dbf4",
+          "sha256": "fe0e4cad91947c41fd71b853e891f114c20e2e85756a0def64b74d8aa2b7d2d7",
           "suites": [
             "questing"
           ]
         },
         "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.26.04.3+webdriver1_amd64.deb": {
-          "sha256": "aaaf2f0c8e0c58951e485da8b6de48c2d7efe68a60d14dcd9ed96a46bb3e6d4a",
+          "sha256": "4130459b8b39bece1f7dd14ddf9fdfb1d2746ab6283fa0f1ba16ab26742791e2",
           "suites": [
             "resolute"
           ]
         },
         "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.26.04.3+webdriver1_amd64.deb": {
-          "sha256": "0a004162ca4eb7cf6b58974d1da6ab145f9dfe29aabca196de048cbadab55b34",
+          "sha256": "c3b9e40f3ad1cbfa44fbf6d344e8c2260189a3d92f42f187d656fb4b98a9fb30",
           "suites": [
             "resolute"
           ]
