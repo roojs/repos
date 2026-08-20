@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: resolute
-Date: Wed, 19 Aug 2026 04:57:06 UTC
+Date: Thu, 20 Aug 2026 06:41:33 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
@@ -22,8 +22,8 @@ SHA256:
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoU3owAKCRADhhQ8Yzk0
-cO4UAP4gXEEefi1KcfhFPCkI0/WSZ7zh6HpJsl0nJ3Ew580wRAD/Sw+d7g6xxJYh
-RNAjT/XUwdY1PKq3P6mcCqIvxfeXAwQ=
-=fcjx
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCaoahnQAKCRADhhQ8Yzk0
+cLmyAQCgoo+sa3Q771MC5fep08ynkfPyB6/cdQ3Nt3o2dT6E+wEAz7n3qqcL2cNI
+/ZKjADcJZVAIl7vLBYo1Odf8s5Z+SQk=
+=s724
 -----END PGP SIGNATURE-----
