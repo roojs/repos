@@ -24,22 +24,22 @@ Description: IBus speech dictation engine using sherpa-onnx
 
 Package: libggml-dev
 Source: ggml
-Version: 0.20.2-1
+Version: 0.21.0-1
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
 Installed-Size: 244
-Depends: libggml0 (= 0.20.2-1)
+Depends: libggml0 (= 0.21.0-1)
 Breaks: libggml, libggml-blas, libggml-cpu, libggml-hip, libggml-vulkan
 Replaces: libggml, libggml-blas, libggml-cpu, libggml-hip, libggml-vulkan
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libdevel
-Filename: pool/main/g/ggml/libggml-dev_0.20.2-1_amd64.deb
-Size: 45792
-SHA256: ff9a6bb055509582842bc8ad80dd9f097e1d764edfa533f51b8647c08318f794
-SHA1: 14c340b68f02a8b45d1fcee9aa32948d3c19be74
-MD5sum: 015d36fea5d9a47ef1b81ed523dedaa1
+Filename: pool/main/g/ggml/libggml-dev_0.21.0-1_amd64.deb
+Size: 46020
+SHA256: ca73518d368ed53f8df274906881af986b200889b1866843305a7ba2a3b4b626
+SHA1: d3359efca7ac601aec6b273c1a1fc5d4ffba5864
+MD5sum: 8d5a2e530d6a70c70490e753f9af018f
 Description: Tensor library for machine learning - development files
  ggml is a tensor library for machine learning with the following features:
  .
@@ -58,10 +58,10 @@ Description: Tensor library for machine learning - development files
 
 Package: libggml0
 Source: ggml
-Version: 0.20.2-1
+Version: 0.21.0-1
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 13031
+Installed-Size: 13067
 Depends: libc6 (>= 2.43), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libstdc++6 (>= 11)
 Suggests: libggml0-backend-blas, libggml0-backend-cuda, libggml0-backend-hip, libggml0-backend-rpc, libggml0-backend-vulkan
 Breaks: libggml, libggml0-backend-cpu
@@ -70,11 +70,11 @@ Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml0_0.20.2-1_amd64.deb
-Size: 1465524
-SHA256: 7b27b29b86f69921ce101b9885d418c55667b3d5633ae618dfa08b2f8b2404bc
-SHA1: f97bd29bd4f80fbc3f50d90b6d69b7dc9a918f78
-MD5sum: 0be566c632b8a96f6479b0631361c469
+Filename: pool/main/g/ggml/libggml0_0.21.0-1_amd64.deb
+Size: 1468328
+SHA256: bd2012b395cfef7db15fa8998150996773b2a40cdee033eb3f0000a1181ec745
+SHA1: dc83c5b1aae4ca0b3ce801fb671cde4180f29129
+MD5sum: 2f3f10af618597e3214aa5896a950b04
 Description: Tensor library for machine learning - libraries
  ggml is a tensor library for machine learning with the following features:
  .
@@ -93,22 +93,22 @@ Description: Tensor library for machine learning - libraries
 
 Package: libggml0-backend-blas
 Source: ggml
-Version: 0.20.2-1
+Version: 0.21.0-1
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
 Installed-Size: 68
-Depends: libggml0 (= 0.20.2-1), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
+Depends: libggml0 (= 0.21.0-1), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
 Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
-Provides: libggml0-backend (= 0.20.2-1)
+Provides: libggml0-backend (= 0.21.0-1)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml0-backend-blas_0.20.2-1_amd64.deb
-Size: 22500
-SHA256: 80720479cf7e2fabdc7f69e33ef81f5c83a44348d20fb064783597db6e266000
-SHA1: a4903ed3583b649eb732fa3f754ce78562497b93
-MD5sum: 61d4d7498cfb3940adbbd49bb0c91894
+Filename: pool/main/g/ggml/libggml0-backend-blas_0.21.0-1_amd64.deb
+Size: 22620
+SHA256: cccaa3631de662352270443d7a3d94300297ace133f03bcc4e80cf27b73f5f2b
+SHA1: 75646727f70aced37a4ae03c8f45db1e4903d8ae
+MD5sum: a3d3d3b14d487e0838449cc6c279313e
 Description: Tensor library for machine learning - BLAS backend
  ggml is a tensor library for machine learning with the following features:
  .
@@ -127,22 +127,22 @@ Description: Tensor library for machine learning - BLAS backend
 
 Package: libggml0-backend-rpc
 Source: ggml
-Version: 0.20.2-1
+Version: 0.21.0-1
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
 Installed-Size: 152
-Depends: libggml0 (= 0.20.2-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
+Depends: libggml0 (= 0.21.0-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
 Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
-Provides: libggml0-backend (= 0.20.2-1)
+Provides: libggml0-backend (= 0.21.0-1)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml0-backend-rpc_0.20.2-1_amd64.deb
-Size: 52904
-SHA256: c38e916bcc27d90feba0b22dd324e2a7a3e3316b91530c775d776a96ebd4c5c6
-SHA1: 934428d6eb3cd4a7eca4967624e4e366af06d7c4
-MD5sum: 5ac3a9a069c20bb9b1dce4adaaebc85a
+Filename: pool/main/g/ggml/libggml0-backend-rpc_0.21.0-1_amd64.deb
+Size: 53384
+SHA256: 5a80285990435624a049ba1b7d217dcbfab8485f898e1204a82d1435f717c716
+SHA1: c6cfe4ffb0734a3d250c405d8e4eea871bfa8fd0
+MD5sum: fae369013da9ade205588c1fd80e4549
 Description: Tensor library for machine learning - RPC backend
  ggml is a tensor library for machine learning with the following features:
  .
@@ -161,22 +161,22 @@ Description: Tensor library for machine learning - RPC backend
 
 Package: libggml0-backend-vulkan
 Source: ggml
-Version: 0.20.2-1
+Version: 0.21.0-1
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 51940
-Depends: libggml0 (= 0.20.2-1), libc6 (>= 2.43), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
+Installed-Size: 51980
+Depends: libggml0 (= 0.21.0-1), libc6 (>= 2.43), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
 Suggests: mesa-vulkan-drivers, nvidia-vulkan-icd
-Provides: libggml0-backend (= 0.20.2-1)
+Provides: libggml0-backend (= 0.21.0-1)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml0-backend-vulkan_0.20.2-1_amd64.deb
-Size: 5678604
-SHA256: dfeed69a191e39f6870b36463703b0934ab11de0bf21201fce44e5ec9f26b08b
-SHA1: a5b84d65ad508c08059077709cace30deac534db
-MD5sum: b3794ae8226774ddc92fe74981d86f44
+Filename: pool/main/g/ggml/libggml0-backend-vulkan_0.21.0-1_amd64.deb
+Size: 5684728
+SHA256: 2b4cfab00bd5e158445ca6a4aae9372e8cfa9a75a49ff6b4d63602752aeef222
+SHA1: fad036229637cc002ca7abe3a6b59c38bc22d004
+MD5sum: 1f4f45fe78b7e1b1ee24de53bba4e0ce
 Description: Tensor library for machine learning - Vulkan backend
  ggml is a tensor library for machine learning with the following features:
  .

@@ -34,8 +34,8 @@
             "questing"
           ]
         },
-        "libggml-dev_0.20.2-1_amd64.deb": {
-          "sha256": "ff9a6bb055509582842bc8ad80dd9f097e1d764edfa533f51b8647c08318f794",
+        "libggml-dev_0.21.0-1_amd64.deb": {
+          "sha256": "ca73518d368ed53f8df274906881af986b200889b1866843305a7ba2a3b4b626",
           "suites": [
             "resolute"
           ]
@@ -48,8 +48,8 @@
             "questing"
           ]
         },
-        "libggml0-backend-blas_0.20.2-1_amd64.deb": {
-          "sha256": "80720479cf7e2fabdc7f69e33ef81f5c83a44348d20fb064783597db6e266000",
+        "libggml0-backend-blas_0.21.0-1_amd64.deb": {
+          "sha256": "cccaa3631de662352270443d7a3d94300297ace133f03bcc4e80cf27b73f5f2b",
           "suites": [
             "resolute"
           ]
@@ -62,8 +62,8 @@
             "questing"
           ]
         },
-        "libggml0-backend-rpc_0.20.2-1_amd64.deb": {
-          "sha256": "c38e916bcc27d90feba0b22dd324e2a7a3e3316b91530c775d776a96ebd4c5c6",
+        "libggml0-backend-rpc_0.21.0-1_amd64.deb": {
+          "sha256": "5a80285990435624a049ba1b7d217dcbfab8485f898e1204a82d1435f717c716",
           "suites": [
             "resolute"
           ]
@@ -76,8 +76,8 @@
             "questing"
           ]
         },
-        "libggml0-backend-vulkan_0.20.2-1_amd64.deb": {
-          "sha256": "dfeed69a191e39f6870b36463703b0934ab11de0bf21201fce44e5ec9f26b08b",
+        "libggml0-backend-vulkan_0.21.0-1_amd64.deb": {
+          "sha256": "2b4cfab00bd5e158445ca6a4aae9372e8cfa9a75a49ff6b4d63602752aeef222",
           "suites": [
             "resolute"
           ]
@@ -90,8 +90,8 @@
             "questing"
           ]
         },
-        "libggml0_0.20.2-1_amd64.deb": {
-          "sha256": "7b27b29b86f69921ce101b9885d418c55667b3d5633ae618dfa08b2f8b2404bc",
+        "libggml0_0.21.0-1_amd64.deb": {
+          "sha256": "bd2012b395cfef7db15fa8998150996773b2a40cdee033eb3f0000a1181ec745",
           "suites": [
             "resolute"
           ]
