@@ -1,17 +1,17 @@
 Package: ibus-sherpa-onnx
-Version: 0.3.4-1
+Version: 0.3.5-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 294
-Depends: libadwaita-1-0 (>= 1.6~beta), libarchive13t64 (>= 3.0.4), libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgee-0.8-2 (>= 0.20.0), libglib2.0-0t64 (>= 2.64.0), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.0.0), libgtk-4-1 (>= 4.0.0), libibus-1.0-5 (>= 1.5.18), libicu76 (>= 76.1-1~), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libstdc++6 (>= 12), ibus, libsherpa-onnx-c-api1, gstreamer1.0-plugins-good, gstreamer1.0-plugins-base, gstreamer1.0-pipewire | gstreamer1.0-pulseaudio, pkexec, polkitd, libgtk-4-bin
+Installed-Size: 298
+Depends: libadwaita-1-0 (>= 1.6~beta), libarchive13t64 (>= 3.0.4), libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgee-0.8-2 (>= 0.20.0), libglib2.0-0t64 (>= 2.64.0), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.0.0), libgtk-4-1 (>= 4.9.3), libibus-1.0-5 (>= 1.5.18), libicu76 (>= 76.1-1~), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libstdc++6 (>= 12), ibus, libsherpa-onnx-c-api1, gstreamer1.0-plugins-good, gstreamer1.0-plugins-base, gstreamer1.0-pipewire | gstreamer1.0-pulseaudio, pkexec, polkitd, libgtk-4-bin
 Homepage: https://github.com/roojs/ibus-sherpa-onnx
 Priority: optional
 Section: utils
-Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.4-1_amd64.deb
-Size: 88334
-SHA256: bf85c010eea30f61507db0449d854a3b68881f2a08922dde80d8de8c4025ca9e
-SHA1: 18fd7c713282d1d6bbaf4e64bc7e5db5ea07ba63
-MD5sum: 87d7a5a60eb3f6ec07e780a68d20ff90
+Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.5-1_amd64.deb
+Size: 90466
+SHA256: efc253ff5e5986f803faefa130b0dbfe52689b2c3904ff3e7ba8c70ab051b119
+SHA1: 492d1851a2a4f833a462ba46897d25fb24323552
+MD5sum: 2d8d3630a984bba5b48114050b73ae10
 Description: IBus speech dictation engine using sherpa-onnx
  Local streaming speech-to-text as an IBus input method, powered by
  sherpa-onnx (Nemotron online transducer).

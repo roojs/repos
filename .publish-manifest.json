@@ -141,10 +141,10 @@
       }
     },
     "ibus-sherpa-onnx": {
-      "tag": "v0.3.4",
+      "tag": "v0.3.5",
       "packages": {
-        "ibus-sherpa-onnx_0.3.4-1_amd64.deb": {
-          "sha256": "bf85c010eea30f61507db0449d854a3b68881f2a08922dde80d8de8c4025ca9e",
+        "ibus-sherpa-onnx_0.3.5-1_amd64.deb": {
+          "sha256": "efc253ff5e5986f803faefa130b0dbfe52689b2c3904ff3e7ba8c70ab051b119",
           "suites": [
             "trixie",
             "plucky",
@@ -397,10 +397,10 @@
       }
     },
     "ibus-sherpa-onnx": {
-      "tag": "v0.3.4",
+      "tag": "v0.3.5",
       "packages": {
-        "ibus-sherpa-onnx-0.3.4-1.fc44.x86_64.rpm": {
-          "sha256": "ea345b01c97c940d9ccabef0ee262b73baf9088ce3e442ae5fcfbb984c232ebe"
+        "ibus-sherpa-onnx-0.3.5-1.fc44.x86_64.rpm": {
+          "sha256": "2ce410dc5407845eea4a1ffef846a5e0b9aaeb9831657983c5b1888aeef9f029"
         }
       }
     },
