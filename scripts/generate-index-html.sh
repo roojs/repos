@@ -292,7 +292,7 @@ package_group() {
     libtree-sitter-*)
       printf '%s\n' treesitter
       ;;
-    ollmchat*|liboc*|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss)
+    ollmchat*|liboc*|libollm*|libollamaweb*|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss)
       printf '%s\n' ollmchat
       ;;
     *webkit*|*javascriptcore*)

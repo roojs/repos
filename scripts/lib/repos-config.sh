@@ -58,6 +58,45 @@ repos_config_opensuse_releases() {
   jq -r '.opensuse.releases[]? // empty' "$config"
 }
 
+repos_config_deb_is_object() {
+  local project="$1"
+  jq -e '(.deb | type) == "object"' <<< "$project" >/dev/null
+}
+
+repos_config_release_tag_patterns() {
+  local project="$1"
+  if repos_config_deb_is_object "$project" \
+    && jq -e '(.deb.release_tags | type) == "object"' <<< "$project" >/dev/null; then
+    jq -r '.deb.release_tags | keys[]' <<< "$project"
+    return 0
+  fi
+  if jq -e '(.release_tags | type) == "object"' <<< "$project" >/dev/null; then
+    jq -r '.release_tags | keys[]' <<< "$project"
+    return 0
+  fi
+  return 1
+}
+
+repos_config_release_tag_suites() {
+  local config="$1" project="$2" pattern="$3"
+  local suites_val
+  if repos_config_deb_is_object "$project"; then
+    suites_val="$(jq -r --arg pattern "$pattern" '.deb.release_tags[$pattern] // empty' <<< "$project")"
+  else
+    suites_val="$(jq -r --arg pattern "$pattern" '.release_tags[$pattern] // empty' <<< "$project")"
+  fi
+  [[ -n "$suites_val" && "$suites_val" != "null" ]] || return 1
+  if [[ "$suites_val" == "default" ]]; then
+    repos_config_default_suites "$config"
+  else
+    jq -r --arg pattern "$pattern" '
+      if (.deb.release_tags? | type) == "object" then .deb.release_tags[$pattern][]
+      else .release_tags[$pattern][]
+      end
+    ' <<< "$project"
+  fi
+}
+
 repos_config_deb_suites() {
   local config="$1" project="$2" tag="$3"
 
@@ -65,21 +104,15 @@ repos_config_deb_suites() {
     return 1
   fi
 
-  if jq -e '.deb.release_tags' >/dev/null <<< "$project"; then
-    local pattern
-    while IFS= read -r pattern; do
-      [[ -n "$pattern" ]] || continue
-      if [[ "$tag" == $pattern ]]; then
-        local suites_val
-        suites_val="$(jq -r --arg pattern "$pattern" '.deb.release_tags[$pattern]' <<< "$project")"
-        if [[ "$suites_val" == "default" ]]; then
-          repos_config_default_suites "$config"
-        else
-          jq -r --arg pattern "$pattern" '.deb.release_tags[$pattern][]' <<< "$project"
-        fi
-        return 0
-      fi
-    done < <(jq -r '.deb.release_tags | keys[]' <<< "$project")
+  local pattern
+  while IFS= read -r pattern; do
+    [[ -n "$pattern" ]] || continue
+    if [[ "$tag" == $pattern ]]; then
+      repos_config_release_tag_suites "$config" "$project" "$pattern"
+      return 0
+    fi
+  done < <(repos_config_release_tag_patterns "$project" || true)
+  if repos_config_release_tag_patterns "$project" >/dev/null 2>&1; then
     return 1
   fi
 

@@ -785,12 +785,12 @@ github_release_tag_for_pattern() {
 
 github_release_tags_for_project() {
   local owner="$1" repo="$2" project="$3" pattern tag
-  if jq -e '.deb.release_tags' >/dev/null <<< "$project"; then
+  if repos_config_release_tag_patterns "$project" >/dev/null 2>&1; then
     while IFS= read -r pattern; do
       [[ -n "$pattern" ]] || continue
       tag="$(github_release_tag_for_pattern "$owner" "$repo" "$pattern")" || continue
       printf '%s\n' "$tag"
-    done < <(jq -r '.deb.release_tags | keys[]' <<< "$project")
+    done < <(repos_config_release_tag_patterns "$project")
     return 0
   fi
   tag="$(gh release view -R "${owner}/${repo}" --json tagName -q '.tagName // empty' 2>/dev/null || true)"
