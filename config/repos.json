@@ -8,7 +8,18 @@
     "releases": ["tumbleweed"]
   },
   "projects": [
-    { "repo": "OLLMchat" },
+    {
+      "repo": "OLLMchat",
+      "rpm": true,
+      "fedora": [44],
+      "publish_fedora": [44],
+      "publish_opensuse": ["tumbleweed"],
+      "deb": {
+        "release_tags": {
+          "*-packages": "default"
+        }
+      }
+    },
     {
       "repo": "llama.cpp",
       "pool": "https://deb.debian.org/debian/pool/main/l/llama.cpp",
