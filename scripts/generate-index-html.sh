@@ -406,7 +406,7 @@ pkg_repackaged_note() {
 }
 
 pkg_desc() {
-  local pkg="$1" desc note
+  local pkg="$1" desc note alias
   case "$pkg" in
     libwebkitgtk-6.0-webdriver4) desc="WebKitGTK WebDriver runtime library" ;;
     libwebkitgtk-6.0-webdriver-dev) desc="WebKitGTK WebDriver development files" ;;
@@ -427,9 +427,25 @@ pkg_desc() {
           *) desc="" ;;
         esac
       fi
+      if [[ -z "$desc" && -f "${work}/canonical/${pkg}/aliases" ]]; then
+        while IFS= read -r alias; do
+          [[ -n "$alias" ]] || continue
+          if [[ -f "${work}/desc/${alias}" ]]; then
+            desc="$(cat "${work}/desc/${alias}")"
+            break
+          fi
+        done < "${work}/canonical/${pkg}/aliases"
+      fi
       ;;
   esac
   note="$(pkg_repackaged_note "$pkg" || true)"
+  if [[ -z "$note" && -f "${work}/canonical/${pkg}/aliases" ]]; then
+    while IFS= read -r alias; do
+      [[ -n "$alias" ]] || continue
+      note="$(pkg_repackaged_note "$alias" || true)"
+      [[ -n "$note" ]] && break
+    done < "${work}/canonical/${pkg}/aliases"
+  fi
   if [[ -n "$note" ]]; then
     if [[ -n "$desc" ]]; then
       printf '%s %s\n' "$desc" "$note"
@@ -444,11 +460,145 @@ pkg_desc() {
   return 0
 }
 
-if [[ -s "${work}/pkg-names" ]]; then
+# Merge Debian and RPM rows that differ only by SONAME suffix or -dev/-devel.
+catalog_canonical_key() {
+  local pkg="$1" base="$1" kind="run"
+
+  if [[ "$base" == *-devel ]]; then
+    base="${base%-devel}"
+    kind="devel"
+  elif [[ "$base" == *-dev ]]; then
+    base="${base%-dev}"
+    kind="devel"
+  fi
+
+  case "$base" in
+    faiss) base="libfaiss" ;;
+    libocvector2-1) base="libocvector2" ;;
+    libsherpa-onnx-c-api1) base="libsherpa-onnx-c-api" ;;
+  esac
+
+  if [[ "$kind" == run ]]; then
+    case "$base" in
+      liboc*|libollm*)
+        if [[ "$base" =~ [0-9]$ ]]; then
+          base="${base%?}"
+        fi
+        ;;
+    esac
+  fi
+
+  printf '%s#%s\n' "$base" "$kind"
+}
+
+catalog_aliases_path() {
+  printf '%s\n' "${work}/canonical/${1}/aliases"
+}
+
+catalog_record_alias() {
+  local key="$1" alias="$2" path
+  path="$(catalog_aliases_path "$key")"
+  mkdir -p "$(dirname "$path")"
+  printf '%s\n' "$alias" >> "$path"
+}
+
+catalog_build_indices() {
+  local pkg key
+  mkdir -p "${work}/canonical"
+  if [[ ! -s "${work}/pkg-names" ]]; then
+    return 0
+  fi
   while IFS= read -r pkg; do
     [[ -n "$pkg" ]] || continue
-    printf '%s\n' "$pkg" >> "${work}/group/$(package_group "$pkg")"
+    key="$(catalog_canonical_key "$pkg")"
+    catalog_record_alias "$key" "$pkg"
   done < "${work}/pkg-names"
+  while IFS= read -r key_dir; do
+    [[ -n "$key_dir" ]] || continue
+    sort -u "${key_dir}/aliases" -o "${key_dir}/aliases"
+  done < <(find "${work}/canonical" -mindepth 1 -maxdepth 1 -type d -print)
+}
+
+catalog_preferred_apt_name() {
+  local key="$1" kind="${key#*#}" alias
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if [[ "$kind" == devel && "$alias" == *-dev ]]; then
+      printf '%s\n' "$alias"
+      return 0
+    fi
+    if [[ "$kind" == run && "$alias" != *-dev && "$alias" != *-devel ]]; then
+      if [[ -d "${work}/apt/${alias}" ]]; then
+        printf '%s\n' "$alias"
+        return 0
+      fi
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if [[ "$kind" == devel && "$alias" == *-dev ]]; then
+      printf '%s\n' "$alias"
+      return 0
+    fi
+    if [[ "$kind" == run && "$alias" != *-dev && "$alias" != *-devel ]]; then
+      printf '%s\n' "$alias"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  printf '%s\n' "${key%#*}"
+}
+
+catalog_preferred_rpm_name() {
+  local key="$1" kind="${key#*#}" alias
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if [[ "$kind" == devel && "$alias" == *-devel ]]; then
+      printf '%s\n' "$alias"
+      return 0
+    fi
+    if [[ "$kind" == run && "$alias" != *-dev && "$alias" != *-devel ]]; then
+      if [[ -d "${work}/rpm/${alias}" || -d "${work}/opensuse/${alias}" ]]; then
+        printf '%s\n' "$alias"
+        return 0
+      fi
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if [[ "$kind" == devel && "$alias" == *-devel ]]; then
+      printf '%s\n' "$alias"
+      return 0
+    fi
+    if [[ "$kind" == run && "$alias" != *-dev && "$alias" != *-devel ]]; then
+      printf '%s\n' "$alias"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  return 1
+}
+
+catalog_row_label() {
+  local key="$1" apt_name rpm_name
+  apt_name="$(catalog_preferred_apt_name "$key")"
+  rpm_name="$(catalog_preferred_rpm_name "$key" || true)"
+  if [[ -n "$rpm_name" && "$apt_name" != "$rpm_name" ]]; then
+    printf '%s / %s\n' "$apt_name" "$rpm_name"
+    return 0
+  fi
+  printf '%s\n' "$apt_name"
+}
+
+catalog_group_name() {
+  package_group "${1%#*}"
+}
+
+if [[ -s "${work}/pkg-names" ]]; then
+  catalog_build_indices
+  while IFS= read -r key_dir; do
+    [[ -n "$key_dir" ]] || continue
+    key="$(basename "$key_dir")"
+    printf '%s\n' "$key" >> "${work}/group/$(catalog_group_name "$key")"
+  done < <(find "${work}/canonical" -mindepth 1 -maxdepth 1 -type d -print | sort)
   for group_file in "${work}/group/"*; do
     [[ -f "$group_file" ]] || continue
     sort -u "$group_file" -o "$group_file"
@@ -640,13 +790,41 @@ rpm_pkg_name() {
   esac
 }
 
-cell_apt() {
-  local pkg="$1" suite="$2" html
-  if html="$(format_ship_html "${work}/apt/${pkg}/${suite}")"; then
-    printf 'ship\t%s\n' "$html"
-    return 0
+apt_has_key() {
+  local key="$1" suite="$2" alias
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if apt_has "$alias" "$suite"; then
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  return 1
+}
+
+is_default_source_key() {
+  local key="$1" suite="$2" alias
+  if apt_has_key "$key" "$suite"; then
+    return 1
   fi
-  if is_default_source "$pkg" "$suite"; then
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if is_default_source "$alias" "$suite"; then
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  return 1
+}
+
+cell_apt() {
+  local key="$1" suite="$2" html alias
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if html="$(format_ship_html "${work}/apt/${alias}/${suite}")"; then
+      printf 'ship\t%s\n' "$html"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  if is_default_source_key "$key" "$suite"; then
     printf 'distro\t%s\n' "$(already_in_html "$(apt_suite_distro "$suite")")"
     return 0
   fi
@@ -654,44 +832,58 @@ cell_apt() {
 }
 
 cell_rpm() {
-  local pkg="$1" fc="$2" html rpm_pkg
-  rpm_pkg="$(rpm_pkg_name "$pkg")"
-  if html="$(format_ship_html "${work}/rpm/${rpm_pkg}/${fc}")"; then
-    printf 'ship\t%s\n' "$html"
-    return 0
-  fi
-  if is_fedora_upstream "$pkg"; then
-    printf 'distro\t%s\n' "$(already_in_html Fedora)"
-    return 0
-  fi
+  local key="$1" fc="$2" html alias rpm_pkg
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    rpm_pkg="$(rpm_pkg_name "$alias")"
+    if html="$(format_ship_html "${work}/rpm/${rpm_pkg}/${fc}")"; then
+      printf 'ship\t%s\n' "$html"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if is_fedora_upstream "$alias"; then
+      printf 'distro\t%s\n' "$(already_in_html Fedora)"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
   printf 'none\t—\n'
 }
 
 cell_opensuse() {
-  local pkg="$1" release="$2" html rpm_pkg
-  rpm_pkg="$(rpm_pkg_name "$pkg")"
-  if html="$(format_ship_html "${work}/opensuse/${rpm_pkg}/${release}")"; then
-    printf 'ship\t%s\n' "$html"
-    return 0
-  fi
-  if is_opensuse_upstream "$pkg"; then
-    printf 'distro\t%s\n' "$(already_in_html openSUSE)"
-    return 0
-  fi
+  local key="$1" release="$2" html alias rpm_pkg
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    rpm_pkg="$(rpm_pkg_name "$alias")"
+    if html="$(format_ship_html "${work}/opensuse/${rpm_pkg}/${release}")"; then
+      printf 'ship\t%s\n' "$html"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
+  while IFS= read -r alias; do
+    [[ -n "$alias" ]] || continue
+    if is_opensuse_upstream "$alias"; then
+      printf 'distro\t%s\n' "$(already_in_html openSUSE)"
+      return 0
+    fi
+  done < "$(catalog_aliases_path "$key")"
   printf 'none\t—\n'
 }
 
 write_pkg_th() {
-  local pkg="$1" desc url
+  local key="$1" label desc url lookup
+  label="$(catalog_row_label "$key")"
+  lookup="$(catalog_preferred_apt_name "$key")"
   printf '<th class="pkg" scope="row"><span class="pkg-name">'
-  url="$(pkg_source_url "$pkg" || true)"
+  url="$(pkg_source_url "$lookup" || true)"
   if [[ -n "$url" ]]; then
-    printf '<a href="%s" class="pkg-link">%s</a>' "$(html_escape "$url")" "$(html_escape "$pkg")"
+    printf '<a href="%s" class="pkg-link">%s</a>' "$(html_escape "$url")" "$(html_escape "$label")"
   else
-    printf '%s' "$(html_escape "$pkg")"
+    printf '%s' "$(html_escape "$label")"
   fi
   printf '</span>'
-  desc="$(pkg_desc "$pkg")"
+  desc="$(pkg_desc "$key")"
   if [[ -n "$desc" ]]; then
     printf '<span class="pkg-desc">%s</span>' "$(html_escape "$desc")"
   fi
@@ -717,7 +909,7 @@ write_opensuse_td() {
 }
 
 write_group_table() {
-  local pkgfile="$1" pkg suite fc release
+  local keyfile="$1" key suite fc release
   local debian_span="${#debian_columns[@]}"
   local ubuntu_span="${#ubuntu_columns[@]}"
   local fedora_span="${#fedora_columns[@]}"
@@ -750,24 +942,24 @@ write_group_table() {
     write_opensuse_th "$release"
   done
   printf '</tr>\n</thead>\n<tbody>\n'
-  while IFS= read -r pkg; do
-    [[ -n "$pkg" ]] || continue
+  while IFS= read -r key; do
+    [[ -n "$key" ]] || continue
     printf '<tr>\n'
-    write_pkg_th "$pkg"
+    write_pkg_th "$key"
     for suite in "${debian_columns[@]}"; do
-      write_apt_td "$pkg" "$suite"
+      write_apt_td "$key" "$suite"
     done
     for suite in "${ubuntu_columns[@]}"; do
-      write_apt_td "$pkg" "$suite"
+      write_apt_td "$key" "$suite"
     done
     for fc in "${fedora_columns[@]}"; do
-      write_rpm_td "$pkg" "$fc"
+      write_rpm_td "$key" "$fc"
     done
     for release in "${opensuse_columns[@]}"; do
-      write_opensuse_td "$pkg" "$release"
+      write_opensuse_td "$key" "$release"
     done
     printf '</tr>\n'
-  done < "$pkgfile"
+  done < "$keyfile"
   printf '</tbody>\n</table>\n</div>\n'
 }
 
