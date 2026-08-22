@@ -1,10 +1,10 @@
 {
   "debs": {
     "OLLMchat": {
-      "tag": "v1.2.4-alpha",
+      "tag": "v1.3.0-packages",
       "packages": {
-        "ollmchat-remote-only_1.2.4.alpha-1_amd64.deb": {
-          "sha256": "e4c0edd6bbed006fa0a6b8d144b99bbbe41fe88f86c09a579733cc3f5d22e2cb",
+        "libocbwrap-dev_1.3.0-1_amd64.deb": {
+          "sha256": "c2ad0167e9eb3d08217dbbc1828226a47012ccb88d52cc5f5ea0a1edd204263e",
           "suites": [
             "trixie",
             "plucky",
@@ -12,8 +12,296 @@
             "resolute"
           ]
         },
-        "ollmchat_1.2.4.alpha-1_amd64.deb": {
-          "sha256": "06c5532495a8bc5aa58583ed21e0af13a9002ef07adf439276999e696f64f0c3",
+        "libocbwrap1_1.3.0-1_amd64.deb": {
+          "sha256": "e3242c70c17495c7afd15ccab1e70988a248c3d80448f3cd2607d42acd4ee891",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "liboccoder-dev_1.3.0-1_amd64.deb": {
+          "sha256": "3cf2ee9a8d441f3a5e3670ac65912bdb6880151d4a457d3f80369614fea91c5c",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "liboccoder1_1.3.0-1_amd64.deb": {
+          "sha256": "7c40412bb5ab431e62cc6fc0f1b8d4893ca5bd052f9d46641dc16d0ca8e7a7cb",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocfiles-dev_1.3.0-1_amd64.deb": {
+          "sha256": "581f109d6a49cedf19fd322ea33e359a5161a2f41068c120d119ed9c377fc239",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocfiles1_1.3.0-1_amd64.deb": {
+          "sha256": "9005e59f2a8aaf01867db6f7dea315918161a5671ab77378b9b7c3278f399b5a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libochf-dev_1.3.0-1_amd64.deb": {
+          "sha256": "45029ca600be6d8057668ce944a16b4d91169718f4b703e886dd30e989d75b7f",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libochf1_1.3.0-1_amd64.deb": {
+          "sha256": "01cdd4426de4113e9c2e37f0d26062d843ce335e5051e723f6cb1c794ec80d65",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocmarkdown-dev_1.3.0-1_amd64.deb": {
+          "sha256": "7abb4293128280ba75c77f163a9c04c3217296d21f67100a2f45f202f2c7d602",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocmarkdown1_1.3.0-1_amd64.deb": {
+          "sha256": "ddbb43b5de92b1ac895ecbaea9892fd7ca9463917454b81ae5072c8a57a2d6b8",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocmarkdowngtk-dev_1.3.0-1_amd64.deb": {
+          "sha256": "bd590f928d648372e01afba10e759476a739840d69ea88c4732a4973c96feac6",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocmarkdowngtk1_1.3.0-1_amd64.deb": {
+          "sha256": "bde2757a417840bb8fa7de278f0a7de1553c616bc25279d081c8e5a0c67f7ba4",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocmcp-dev_1.3.0-1_amd64.deb": {
+          "sha256": "5718ec381509a905802a6e1fa469ddac3b411b51cf78d4cde563d566240cfa8b",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocmcp1_1.3.0-1_amd64.deb": {
+          "sha256": "7860b3ad038b3b586c86e730ac5606a40077f249892b8171c5994e5da441066d",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocrpc-dev_1.3.0-1_amd64.deb": {
+          "sha256": "8b1490f37e8a3e0981b2f200935f2e2fe5f3c6cdaaf3012c731b365f0b14be7d",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocrpc1_1.3.0-1_amd64.deb": {
+          "sha256": "39a94e5e74a3ad41782be1a42a983ff496f917877ebcebf1970b4b04fa88417a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocsqlite-dev_1.3.0-1_amd64.deb": {
+          "sha256": "44d162e6ed0dc38d8593fc04e4bb19de902ced0138129bc79072868c3b2be95f",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocsqlite1_1.3.0-1_amd64.deb": {
+          "sha256": "004f6b47e43fea6e2e4ce055db20072ac7258a27e6d292642c0c99ca9489b8ea",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "liboctools-dev_1.3.0-1_amd64.deb": {
+          "sha256": "8699231d312edb3696d1af27e9a9d8a134c4c4f1a4f39c02e430ed0ac280211a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "liboctools1_1.3.0-1_amd64.deb": {
+          "sha256": "22c7d9978d4329a98a60b4ed99c7df65cd13124e0367f24482ad02a535d4d78c",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocvector2-1_1.3.0-1_amd64.deb": {
+          "sha256": "d0e037ef09a4ede90ee42239d94335c2a909d232d37b00477addc366328f7051",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocvector2-dev_1.3.0-1_amd64.deb": {
+          "sha256": "3c6389dffc8d344ef92443330b1d71028a723175464fb7235842859f77888d36",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocwebkit-dev_1.3.0-1_amd64.deb": {
+          "sha256": "efae791a5948773b2f1a0eb976585a0620fe448ff8e1f7b123044bb3edb86749",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libocwebkit1_1.3.0-1_amd64.deb": {
+          "sha256": "8bbdaf7bf866bd290558c7a1953ee0b52ce700533e8e11b105dd1f2ebeaad1e5",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libollamaweb-dev_1.3.0-1_amd64.deb": {
+          "sha256": "7e62a63404ecaf7fe15eb8718e4394efee7ed395c27b161f73ba8028c7e22648",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libollamaweb1_1.3.0-1_amd64.deb": {
+          "sha256": "969f17b1a2b348da2a0e0c717567e5efc8572aa7f128fefe46279344a9ff7b33",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libollmchat-dev_1.3.0-1_amd64.deb": {
+          "sha256": "9433d815ff1ff154de684e48f92bf8e55e018210c36c4f68805fc009e3e881e0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libollmchat1_1.3.0-1_amd64.deb": {
+          "sha256": "10b5d03e2abc16d5b3187e83ead1930e6348ab824bb6166227f5de9fd964ed98",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libollmchatgtk-dev_1.3.0-1_amd64.deb": {
+          "sha256": "3aee0971996c97f280325e47ff21ba9bbd6c6567e79dce4df28ba720ae8d7065",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "libollmchatgtk1_1.3.0-1_amd64.deb": {
+          "sha256": "aa993a253c763081e4c67e0517f24833fe1e1dd2fafde9de041930f007e8e447",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "ollmchat-doc_1.3.0-1_amd64.deb": {
+          "sha256": "c05eb7afdbd59ed9052587c0fc05b3e18ddd6e5c4129c4abf60179046cb9b8a0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "ollmchat-remote-only_1.3.0-1_amd64.deb": {
+          "sha256": "44ea85b406b451c291dea485afb7fb2134eec5e4772e92c892efc930d20a3208",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "ollmchat-tools_1.3.0-1_amd64.deb": {
+          "sha256": "537e07334af00a3b6fcbf5f62c5c44702467003c7e8552ed35fbc8dff1737509",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "ollmchat_1.3.0-1_amd64.deb": {
+          "sha256": "afaae8ea840b850a2ecd488bb0cae1a2e401bf990df46f1d85294c31638770b6",
           "suites": [
             "trixie",
             "plucky",
@@ -365,6 +653,473 @@
     }
   },
   "rpms": {
+    "OLLMchat": {
+      "tag": "v1.3.0-packages",
+      "packages": {
+        "libocbwrap-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "519d596202e2403fe3911d194c404f124283860865c8720a67b76b51dbdd5f0a",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocbwrap-1.3.0-1.x86_64.rpm": {
+          "sha256": "bbf9b8fa5398852c0cb075feb0dabadcdc3d4014f973e7318aeb984453e5c96b",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocbwrap-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "88d034e18c5ff951294d99f5f412c715fe4fbbc483b217e573bb17b24111a471",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocbwrap-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "f5330db8441eacb449d96346dc34be89bd6204979145be79bfd5d47c7e7c03ef",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "liboccoder-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "21b523a9e7cbf3890c9ddf3c4ff5d9b969a3250764e38e11a9c3c376974a34c8",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "liboccoder-1.3.0-1.x86_64.rpm": {
+          "sha256": "a4e5b78846c703679f7c4667431eb9918c22329df7892bb1cc936188b29f4cf0",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "liboccoder-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "09b09949e1f4296421e47301ff00aa2082c10c7fca00e0ecdc9304f0fefc7622",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "liboccoder-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "00d6752cae5ff5d05e4d935d9275970047ee879289f4c015ca8b548e66b0ec16",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocfiles-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "8072c940ef91ae49ad3b5a973e379a46367560ecb31739962c0a84a3811166a0",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocfiles-1.3.0-1.x86_64.rpm": {
+          "sha256": "485a5e35cb9470d37817151f0c8b57aa7e0ff0d1af35aa1b2747c056936d97e2",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocfiles-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "f2c60d9068267be4f760b7b4ac1bcc39950f03edecec3bb38d57d116a4746ea5",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocfiles-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "05075cc8fb2965267e6c1fc963596a397ccc34c6f2e792152fa55bd4f8957110",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libochf-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "298f6b043ac0621d65495cac95b380e6958a4774c9929051311fc657a989dc0f",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libochf-1.3.0-1.x86_64.rpm": {
+          "sha256": "cd8828a6ef125efb9119b41a9cf9bd7704778dd07657b4f7164c0f0d0d7cdd8a",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libochf-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "16287a60347ee95c7a884c4114eb52ba206bb92b4215336b6ff7f08a09427c8b",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libochf-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "de4b97f1ce2aa27df543bc36096d94d5a6e8184b9bf0af8edad558a770c6b65d",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocmarkdown-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "bb1f34d36ffe716a15e6fb3dfb45928e7f78a6e32d15f39255a8ce0af44e613a",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocmarkdown-1.3.0-1.x86_64.rpm": {
+          "sha256": "b567722a04b099f62d9a08a0056c0f62512f26fcebbdcd18a0ded1e870a9ce5e",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocmarkdown-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "073d503640280894266ba996c5a8cb20ce040f609d99d3eca568b832e3865668",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocmarkdown-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "2b574276333d7fc170989a873433cd6db86b5b985a4f6331eaa386125bf803d7",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocmarkdowngtk-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "d97e06d7512ae02064595fda889db8a13bf18ffb47833e5ba525bf4528627fd3",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocmarkdowngtk-1.3.0-1.x86_64.rpm": {
+          "sha256": "68ec31485e5a2ccc019b8ea8e0d67af072201d77e4c5c3b959caa51b399f3295",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocmarkdowngtk-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "f2e2df1e58dc3b69dc34724b549455744cc57f44a62da9c92bc21e793360b77d",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocmarkdowngtk-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "88741887c0ffd15b95742de14825e80a8c102eb93daf24ead2b18d3ebb7add22",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocmcp-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "a34f99356c9baf8bba870d456de6d6beaa05f1dc5ae4c66b9b8adf16895286ab",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocmcp-1.3.0-1.x86_64.rpm": {
+          "sha256": "6fb73cd8953ea83096aa7abd3ff2489b2fdf405826c01b21977d10eb1323897f",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocmcp-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "4f6b06f5bd18a73ab997de5df82e9663b097137d20373d739cdeb3ac8db0b291",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocmcp-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "09f9ec2b1de0b2935ff2a17476edf92a3844ab3caafc9bf93efe2b5255391eed",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocrpc-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "194f993b73c626872acf8c5434af00b0ac6bec62138d9f415099785c625e87c0",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocrpc-1.3.0-1.x86_64.rpm": {
+          "sha256": "e625a7917e5caaa9d697b6ba08bf88fb631f662b1d6ef0cec13b5761cb7d5efa",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocrpc-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "ea12daf38416aa2ee9eadbe87ef23c1fdb82d266b71b96b6e2629e5c2c971c13",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocrpc-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "cd666f7a5f8065055ed71d93cfd98a30b177dc407cbb76a861c3ee191af8c9f4",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocsqlite-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "130cc85fd3bcccb5e4c95c5c60a70fe92dfeae4e81ce1c710e4d45b7e55a1562",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocsqlite-1.3.0-1.x86_64.rpm": {
+          "sha256": "d6e082cc6a4c7eabb132c72f2b4df57347e35d6ad49016bf4a89f4bc143a7bc6",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocsqlite-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "7b8baae9842f24b3babe7ee26ec2716ad03c0b64f7570d3d2d5b06304a89001f",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocsqlite-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "9186c6164599ccb4c2c93f37b2a3c82ddb579e8ba305f0f487a0318445a5122f",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "liboctools-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "e6a7c2b4565619e9e3561255816e30c3a5ef8bc12ad60e4784cdff4d3cc11ef9",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "liboctools-1.3.0-1.x86_64.rpm": {
+          "sha256": "2220a11a16d52c7b868fe459abea58db5d09dfdb7841cbee703b6ebba026ec33",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "liboctools-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "32209ca3788894b7b0c18719d76cdd7b2ea335e589048eca73dcdab7183d49eb",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "liboctools-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "a2ba7ca1841fb6487c802b19e6a92c5da1d27cb43771d79a2cc9e0cd1501c29d",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocvector2-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "2b2daea7e1296b04b0d9a68c89938ff0f480c0a9439a356a718de84575ea9498",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocvector2-1.3.0-1.x86_64.rpm": {
+          "sha256": "e58b4dc7d1c8aa9fc9fdc42dc5bb455d57058e95cfa22ffe3f81cd6300c79c6d",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocvector2-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "b27c9de2b2935a274fdef462a7f02000017c9a7d2c223f56d42d0428d4e325a4",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocvector2-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "27b0f326c70489eb17409296beabd49fcdd6bcbd332f06d6c09452dccd25d415",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocwebkit-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "aad8524f67188ab51e2b1990b96c74f835710a61691d0dc1224d07671777e7ed",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocwebkit-1.3.0-1.x86_64.rpm": {
+          "sha256": "285e891c00e86a5bad3e454d0e450a0b2913c9478df87a41d83a49f5e5ee7317",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libocwebkit-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "08e001422d491cf30ce66a8b6bb5c45ca4008cc2cdce1b4b7710fe9443fe528c",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libocwebkit-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "fb400ff00ce05be78300d4b2c2d12b81e0b215ede1e264d32789aa10c13d1b73",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libollamaweb-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "6925a60a93731eabe070e78282c781ae32d7dc5b2200660fab79c9ecef76ad5b",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libollamaweb-1.3.0-1.x86_64.rpm": {
+          "sha256": "9a872027e5c7bdecdf04a1b69de197b79b50140ea30d1125e271cb55d9fd6464",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libollamaweb-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "b5e54f0750ca47394fe9c1ad8fc77151ca0077aab48dc6832677c12083e85acb",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libollamaweb-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "98970f07efc3128013bdedee98651a92d19906b08de9ec917a78c49e694f5e5c",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libollmchat-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "a2b9fe2d6a92bef47185b1c2dd89296b58e13302c9861b8603e114bee546482d",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libollmchat-1.3.0-1.x86_64.rpm": {
+          "sha256": "1d06bac917b75c94c241bd9e20cc219d42c4829f6e11a5b52b775159e42009d1",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libollmchat-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "6060291876a3929e300d1a56ed97fd832d54e08c7fea8477b9672e0475b01704",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libollmchat-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "376347155d3c4ac80585ff9574305225f8f9be197f996f38be7d2202b48dc70a",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libollmchatgtk-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "6b230a1d5e3f5562e178082b975b6d28ec7bbbf00d90237351688ea57e3d4289",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libollmchatgtk-1.3.0-1.x86_64.rpm": {
+          "sha256": "4ad9563da924cc47a1249b2fa17fbd9b3bf10a2f7f403c7a3fc981b0004e5a6d",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "libollmchatgtk-devel-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "9db1cc2ad78b3923d74306de8043c59224710e99054d19eff5df1e990f212781",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "libollmchatgtk-devel-1.3.0-1.x86_64.rpm": {
+          "sha256": "8c5f23461938b8c215f3b26dd8740b0cc754fcee6a2ed2ff28e3312121db95ec",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "ollmchat-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "ed3d46ab6604a5336a156752ebbad5cb3012433dfd8122f617bb19c02c5ffc92",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "ollmchat-1.3.0-1.x86_64.rpm": {
+          "sha256": "b58a3ebd41b7cbdee59bdd053426ead5734b89fe0e6785f4e5e07daa0980374d",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "ollmchat-doc-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "51fe5af91223d01cde376b358d054a382805e3a3b6d75febd7277a742fe2d72f",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "ollmchat-doc-1.3.0-1.x86_64.rpm": {
+          "sha256": "7f83ef2b5a3f4ecc096169398730934da9644a9753f17bc1b8de2f264a008733",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        },
+        "ollmchat-tools-1.3.0-1.fc44.x86_64.rpm": {
+          "sha256": "673da76508e897c3fe5abf80beed3c7e598c80d015dee4792d19ec19bad530f0",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "ollmchat-tools-1.3.0-1.x86_64.rpm": {
+          "sha256": "88fee3438788ec85b35c7c67a3cb5c306df65108da3669c3b79fa6fbed058eb3",
+          "arch": "x86_64",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        }
+      }
+    },
     "faiss": {
       "tag": "opensuse-tumbleweed",
       "packages": {
@@ -603,6 +1358,6 @@
       }
     }
   },
-  "repos_json_sha256": "eeb9147b046c5fddd03558f0761833166aab9914c72d4dcff29839b4a19edc2f",
+  "repos_json_sha256": "783993941c52ec49623eadcf0ec844fb48448276e11fb316f8178eb7cd76d7b1",
   "distributions_sha256": "c33d2afed34d5da9522cab919d0b95148b8e939e9c5bcb2b55e3e29f3f38a6fa"
 }
