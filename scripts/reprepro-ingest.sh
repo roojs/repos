@@ -74,6 +74,13 @@ while IFS= read -r repo; do
         cat /tmp/reprepro.err >&2
         continue
       fi
+      if grep -qi 'No section given' /tmp/reprepro.err; then
+        echo "No Section in ${filename}; including with --section misc"
+        if reprepro -b "$repo_root" includedeb --section misc "$suite" "$deb" 2>/tmp/reprepro.err; then
+          echo "Added ${filename} to ${suite} (${repo}@${tag})"
+          continue
+        fi
+      fi
       cat /tmp/reprepro.err >&2
       exit 1
     done
