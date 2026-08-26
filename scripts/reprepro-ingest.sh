@@ -29,10 +29,12 @@ if [[ -n "$config" && -f "$config" ]]; then
       deb="${incoming}/${repo}/${filename}"
       [[ -f "$deb" ]] && continue
       echo "Re-downloading missing ${filename} from ${owner}/${repo}@${tag}"
-      gh release download "$tag" -R "${owner}/${repo}" \
+      if ! gh release download "$tag" -R "${owner}/${repo}" \
         --pattern "$filename" \
         -D "${incoming}/${repo}" \
-        --clobber
+        --clobber; then
+        echo "Could not re-download ${filename} from ${owner}/${repo}@${tag}; skipping." >&2
+      fi
     done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' "$index")
   done < <(jq -r 'keys[]' "$index")
 fi
