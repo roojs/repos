@@ -6,6 +6,22 @@ For installation instructions, supported packages, and repository details, see:
 
 **https://roojs.github.io/repos/**
 
+## Clone
+
+`gh-pages` is the published APT/DNF tree (`pool/`, `dists/`, `rpm/`) and is hundreds of megabytes. A default `git clone` fetches every branch, including that one.
+
+```bash
+git clone --single-branch git@github.com:roojs/repos.git
+```
+
+If this checkout already has `gh-pages`, stop fetching it and drop the remote-tracking ref:
+
+```bash
+git config remote.origin.fetch '+refs/heads/main:refs/remotes/origin/main'
+git fetch --prune origin
+git gc --prune=now
+```
+
 ## AI assistance
 
 This repository was developed with the assistance of artificial intelligence.
