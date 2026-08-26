@@ -529,6 +529,20 @@
         }
       }
     },
+    "ubuntuzilla": {
+      "tag": "v154.0",
+      "packages": {
+        "thunderbird-mozilla-build_154.0-0ubuntu1_amd64.deb": {
+          "sha256": "e5782a8d0c1b2de1a93a872958b6ad350f9ca0af89826631aa4fc5fefd5235eb",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
+    },
     "repos": {
       "tag": "tree-sitter-2026-08-18",
       "packages": {
