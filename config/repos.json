@@ -46,6 +46,7 @@
       }
     },
     { "repo": "roobuilder" },
+    { "repo": "ubuntuzilla" },
     {
       "repo": "repos",
       "rpm": true,

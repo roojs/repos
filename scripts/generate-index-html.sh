@@ -67,6 +67,7 @@ load_pkg_source_urls() {
         printf '%s\n' "$url" > "${work}/url/webkitgtk-automation"
         ;;
       repos) printf '%s\n' "$url" > "${work}/url/repos" ;;
+      ubuntuzilla) printf '%s\n' "$url" > "${work}/url/thunderbird-mozilla-build" ;;
     esac
   done < <(jq -r '.projects[].repo' "$config")
 
@@ -307,6 +308,9 @@ package_group() {
     roobuilder|roojspacker)
       printf '%s\n' roobuilder
       ;;
+    thunderbird-mozilla-build)
+      printf '%s\n' ubuntuzilla
+      ;;
     *)
       printf '%s\n' other
       ;;
@@ -321,6 +325,7 @@ package_group_title() {
     speech) printf '%s\n' "Speech (STT / TTS)" ;;
     rooterm) printf '%s\n' RooTerm ;;
     roobuilder) printf '%s\n' RooBuilder ;;
+    ubuntuzilla) printf '%s\n' Thunderbird ;;
     *) printf '%s\n' Other ;;
   esac
 }
@@ -344,6 +349,9 @@ package_group_blurb() {
       ;;
     roobuilder)
       printf '%s\n' "<a href=\"https://github.com/roojs/roobuilder\">Vala UI builder</a> and JavaScript packer."
+      ;;
+    ubuntuzilla)
+      printf '%s\n' "Official Mozilla <a href=\"https://github.com/roojs/ubuntuzilla\">Thunderbird</a> Linux build, wrapped as a .deb so you can skip the snap."
       ;;
     *) printf '%s\n' "" ;;
   esac
@@ -374,6 +382,10 @@ pkg_source_url() {
       ;;
     *sherpa*)
       printf '%s\n' "${github_base}/sherpa-onnx"
+      return 0
+      ;;
+    thunderbird-mozilla-build)
+      printf '%s\n' "${github_base}/ubuntuzilla"
       return 0
       ;;
     libtree-sitter-*)
@@ -424,6 +436,7 @@ pkg_desc() {
           roobuilder) desc="Vala UI builder" ;;
           roojspacker) desc="JavaScript packer" ;;
           libllama0|libllama-dev) desc="llama.cpp inference library" ;;
+          thunderbird-mozilla-build) desc="Official Mozilla Thunderbird" ;;
           *) desc="" ;;
         esac
       fi
@@ -1065,7 +1078,7 @@ DNF
 GRID
 
   if [[ -s "${work}/pkg-names" ]]; then
-    for gid in ollmchat treesitter webkit speech rooterm roobuilder other; do
+    for gid in ollmchat treesitter webkit speech rooterm roobuilder ubuntuzilla other; do
       [[ -s "${work}/group/${gid}" ]] || continue
       title="$(package_group_title "$gid")"
       blurb="$(package_group_blurb "$gid")"
