@@ -443,10 +443,10 @@
       }
     },
     "sherpa-onnx": {
-      "tag": "v1.13.6-roojs1",
+      "tag": "v1.13.7-roojs1",
       "packages": {
-        "libsherpa-onnx-c-api-dev_1.13.6-roojs1_amd64.deb": {
-          "sha256": "660679519642c78908599fc26c8a827cb30706ba7818259ef50d4915d7d1fb9e",
+        "libsherpa-onnx-c-api-dev_1.13.7-roojs1_amd64.deb": {
+          "sha256": "1cd3d280098f7e4b78a4c87e41efd2b937f08f562d93f0cc414965eef777bba8",
           "suites": [
             "trixie",
             "plucky",
@@ -454,8 +454,8 @@
             "resolute"
           ]
         },
-        "libsherpa-onnx-c-api1_1.13.6-roojs1_amd64.deb": {
-          "sha256": "15295590db15ee56d0074db0801a85798ca608fa310b5ce841bef55ba918dae7",
+        "libsherpa-onnx-c-api1_1.13.7-roojs1_amd64.deb": {
+          "sha256": "c2e7a512797d1ddf2013621737b6cedf435461aaf7f496f544fb643a97ed31a7",
           "suites": [
             "trixie",
             "plucky",
@@ -466,7 +466,7 @@
       }
     },
     "webkitgtk-automation": {
-      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver2;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver2;webkit2gtk-2.52.3-0ubuntu0.26.04.3-webdriver2",
+      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver2;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver3;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver3",
       "packages": {
         "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver2_amd64.deb": {
           "sha256": "bae77e9ff70b192d8daaad49d89ff9a9b63e858a1636de130a4e6f81ecdf8dbd",
@@ -480,26 +480,26 @@
             "plucky"
           ]
         },
-        "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.25.10.1+webdriver2_amd64.deb": {
-          "sha256": "0bac950d050c2eb98aa7fc8b78cd2ab1f57dbaca954827bbb94950d26fabe57a",
+        "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.25.10.1+webdriver3_amd64.deb": {
+          "sha256": "eda7306c330d81f674b0b8d951d238fdfa41a1208a75e9a69a20dcabbb02e54c",
           "suites": [
             "questing"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.25.10.1+webdriver2_amd64.deb": {
-          "sha256": "b1379aa7d2a1179f1eaddcf7017290a0fffcf5b24a831adb46884e5b633f374a",
+        "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.25.10.1+webdriver3_amd64.deb": {
+          "sha256": "dc0d3b620268815b9f306bf306787ea73aabcbc12bb0807cb8be005c5acec408",
           "suites": [
             "questing"
           ]
         },
-        "libwebkitgtk-6.0-webdriver-dev_2.52.3-0ubuntu0.26.04.3+webdriver2_amd64.deb": {
-          "sha256": "9ffd4f2379258ab6d6cb74bb5bb82c60ed6ae31a0f991cbe66a00d119ef253c1",
+        "libwebkitgtk-6.0-webdriver-dev_2.52.6-0ubuntu0.26.04.1+webdriver3_amd64.deb": {
+          "sha256": "95f6ef3e8de34684336302ab14f5947f5efa4b2d2619152c764a89d4ab44d70d",
           "suites": [
             "resolute"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.52.3-0ubuntu0.26.04.3+webdriver2_amd64.deb": {
-          "sha256": "c88dc0fd1d31f5aa7fd0e3be1a12cf26fd102e068e465de258cfe03ce548afa4",
+        "libwebkitgtk-6.0-webdriver4_2.52.6-0ubuntu0.26.04.1+webdriver3_amd64.deb": {
+          "sha256": "e894da8fd909bb88804761443d33b7183d19336d4d05d436eb59e78d29ea1c67",
           "suites": [
             "resolute"
           ]
@@ -530,10 +530,10 @@
       }
     },
     "ubuntuzilla": {
-      "tag": "v154.0",
+      "tag": "v155.0",
       "packages": {
-        "thunderbird-mozilla-build_154.0-0ubuntu1_amd64.deb": {
-          "sha256": "e5782a8d0c1b2de1a93a872958b6ad350f9ca0af89826631aa4fc5fefd5235eb",
+        "thunderbird-mozilla-build_155.0-0ubuntu1_amd64.deb": {
+          "sha256": "8fca74812f41253b7b209a110d202b1c57768b81dab76e58f53617c353ef5a54",
           "suites": [
             "trixie",
             "plucky",
@@ -1174,13 +1174,13 @@
       }
     },
     "sherpa-onnx": {
-      "tag": "v1.13.6-roojs1",
+      "tag": "v1.13.7-roojs1",
       "packages": {
-        "libsherpa-onnx-c-api-1.13.6-roojs1.fc44.x86_64.rpm": {
-          "sha256": "767c8b2e0b9ae98c54e8dc506927fd287be38c018ac3677ff931d52d7275dfe8"
+        "libsherpa-onnx-c-api-1.13.7-roojs1.fc44.x86_64.rpm": {
+          "sha256": "9df2d372cc710de0c942fd12e3361fba6921249d4ec8c930907df2da2b1f0cb3"
         },
-        "libsherpa-onnx-c-api-devel-1.13.6-roojs1.fc44.x86_64.rpm": {
-          "sha256": "f9c7c93f44ec76db41f692cd20fd6abe0e69514d650bb31d6c97cd2a6cc7bd8f"
+        "libsherpa-onnx-c-api-devel-1.13.7-roojs1.fc44.x86_64.rpm": {
+          "sha256": "c38f321a47bd15d16afc394416e9c6d692df99c0359535b513357a6c63efcc00"
         }
       }
     },

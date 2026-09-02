@@ -1002,19 +1002,19 @@ Description: GTK chat widget library for OLLMchat
 
 Package: libsherpa-onnx-c-api-dev
 Source: sherpa-onnx
-Version: 1.13.6-roojs1
+Version: 1.13.7-roojs1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 246
-Depends: libsherpa-onnx-c-api1 (= 1.13.6-roojs1), libonnxruntime-dev
+Depends: libsherpa-onnx-c-api1 (= 1.13.7-roojs1), libonnxruntime-dev
 Homepage: https://github.com/roojs/sherpa-onnx
 Priority: optional
 Section: libdevel
-Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api-dev_1.13.6-roojs1_amd64.deb
-Size: 32672
-SHA256: 660679519642c78908599fc26c8a827cb30706ba7818259ef50d4915d7d1fb9e
-SHA1: 8337729d511a00d8ec8d2aacc9c72ad87afa2f98
-MD5sum: b9f04f66b761db3f2dfa9d4ace25ac88
+Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api-dev_1.13.7-roojs1_amd64.deb
+Size: 32676
+SHA256: 1cd3d280098f7e4b78a4c87e41efd2b937f08f562d93f0cc414965eef777bba8
+SHA1: 89995b98519a5b2db91a898ca55dbe729ab8e3fd
+MD5sum: a93842abeeb2befe576b22d686e0dd80
 Description: Development files for sherpa-onnx C API
  sherpa-onnx provides speech recognition and related APIs on top of
  ONNX Runtime.
@@ -1023,19 +1023,19 @@ Description: Development files for sherpa-onnx C API
 
 Package: libsherpa-onnx-c-api1
 Source: sherpa-onnx
-Version: 1.13.6-roojs1
+Version: 1.13.7-roojs1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 2978
+Installed-Size: 2982
 Depends: libc6 (>= 2.38), libgcc-s1 (>= 3.3.1), libonnxruntime1.21 (>= 1.21.0), libstdc++6 (>= 14)
 Homepage: https://github.com/roojs/sherpa-onnx
 Priority: optional
 Section: libs
-Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api1_1.13.6-roojs1_amd64.deb
-Size: 1074556
-SHA256: 15295590db15ee56d0074db0801a85798ca608fa310b5ce841bef55ba918dae7
-SHA1: 2f8828ec5ddecba37398400efc04cecb2db73101
-MD5sum: 7dbcaa6741f84553a4606321bbfb5d42
+Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api1_1.13.7-roojs1_amd64.deb
+Size: 1076716
+SHA256: c2e7a512797d1ddf2013621737b6cedf435461aaf7f496f544fb643a97ed31a7
+SHA1: 8e05463610566e3a3c3d0316a6f90870943256a5
+MD5sum: ab6d4a068d4dd14337db59f66ef932de
 Description: sherpa-onnx C API shared library
  sherpa-onnx provides speech recognition and related APIs on top of
  ONNX Runtime.
@@ -1586,17 +1586,17 @@ Description: SSH host manager and terminal for GNOME
  Ásbrú config import, port forwards, and local PTY sessions.
 
 Package: thunderbird-mozilla-build
-Version: 154.0-0ubuntu1
+Version: 155.0-0ubuntu1
 Maintainer: Daniel Folkinshteyn <nanotube@users.sourceforge.net>
 Architecture: amd64
 Provides: mail-reader, thunderbird
 Priority: optional
 Section: mail
-Filename: pool/main/t/thunderbird-mozilla-build/thunderbird-mozilla-build_154.0-0ubuntu1_amd64.deb
-Size: 86223016
-SHA256: e5782a8d0c1b2de1a93a872958b6ad350f9ca0af89826631aa4fc5fefd5235eb
-SHA1: f82c907dc9b8ded86e495eac170741078aeda35b
-MD5sum: 4f531d3493e3881c87dabf5311cd642c
+Filename: pool/main/t/thunderbird-mozilla-build/thunderbird-mozilla-build_155.0-0ubuntu1_amd64.deb
+Size: 86441304
+SHA256: 8fca74812f41253b7b209a110d202b1c57768b81dab76e58f53617c353ef5a54
+SHA1: 377e84fcd4dc1b19250dfbe4db0cddeced1a6682
+MD5sum: 71b0719c41628c6c73274e50159eb503
 Description: Mozilla Thunderbird, official Mozilla build, packaged for Ubuntu by the Ubuntuzilla project.
  This is the unmodified Mozilla release binary of Thunderbird, packaged into a .deb by the Ubuntuzilla project.
  .
