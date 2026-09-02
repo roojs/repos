@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: questing
-Date: Wed, 02 Sep 2026 10:36:02 UTC
+Date: Wed, 02 Sep 2026 13:20:41 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
@@ -22,8 +22,8 @@ SHA256:
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCapf8EwAKCRADhhQ8Yzk0
-cJbAAQDBD3yXglt4yYiPypDLoSfJQAicewl20FwizhbWNfHkSAEAnrHc+872I+Rk
-PpNU1VvYF4p83ns7Zjvp/2QDIlz5gg4=
-=POTd
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCapgiqQAKCRADhhQ8Yzk0
+cLcDAQDu2B7YLg4P/39RH85Xi/vNkX3mIHP5Qx3O2tWqx6hsLgD9Eip7IjJKmbyL
+6h3cAf3HcluviJ9u3S0SGcS6Hy8gHQA=
+=6Emi
 -----END PGP SIGNATURE-----

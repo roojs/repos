@@ -466,16 +466,16 @@
       }
     },
     "webkitgtk-automation": {
-      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver2;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver3;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver3",
+      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver3;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver3;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver3",
       "packages": {
-        "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver2_amd64.deb": {
-          "sha256": "bae77e9ff70b192d8daaad49d89ff9a9b63e858a1636de130a4e6f81ecdf8dbd",
+        "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver3_amd64.deb": {
+          "sha256": "039fc1a951660e53a73721d02901814802276542d42b4aa44ff30bd845f0d106",
           "suites": [
             "plucky"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver2_amd64.deb": {
-          "sha256": "2ea281a146bb0f42009b21c251ea0a05e9f8bfb3ef1345afdc587f451e9b3e69",
+        "libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver3_amd64.deb": {
+          "sha256": "ecf717c299f74adff178be2b50cb4988775bb43832c6effb65f999b0e35c4870",
           "suites": [
             "plucky"
           ]
