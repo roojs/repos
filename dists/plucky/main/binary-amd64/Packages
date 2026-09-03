@@ -1379,19 +1379,19 @@ Description: Tree-sitter parser for Vala language (runtime library)
 
 Package: libwebkitgtk-6.0-webdriver-dev
 Source: webkit2gtk
-Version: 2.50.4-0ubuntu0.25.04.1+webdriver3
+Version: 2.50.4-0ubuntu0.25.04.1+webdriver4
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 313
-Depends: libwebkitgtk-6.0-webdriver4 (= 2.50.4-0ubuntu0.25.04.1+webdriver3), libwebkitgtk-6.0-dev, libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev
+Depends: libwebkitgtk-6.0-webdriver4 (= 2.50.4-0ubuntu0.25.04.1+webdriver4), libwebkitgtk-6.0-dev, libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev
 Homepage: https://webkitgtk.org/
 Priority: optional
 Section: libdevel
-Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver3_amd64.deb
-Size: 68940
-SHA256: 039fc1a951660e53a73721d02901814802276542d42b4aa44ff30bd845f0d106
-SHA1: 38e5975d277d7bbb04c40e5f980c843d1dc4c768
-MD5sum: e63156158c04031abe9b0d8bcb268f6f
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver4_amd64.deb
+Size: 68888
+SHA256: f098d2c74ca611a92efffb9b4c71906eae3e5303dbdc8adb90f10b78769aa171
+SHA1: 352f95cf889c7501172b75361cdbd8ada5444a28
+MD5sum: 965b0c20e76f8de01dc93c51c507a7ba
 Description: pkg-config for libwebkitgtk-6.0-webdriver (thin -dev package)
  Ships webkitgtk-6.0-webdriver.pc only. API headers and vapi come from
  system libwebkitgtk-6.0-dev and libjavascriptcoregtk-6.0-dev.
@@ -1399,7 +1399,7 @@ Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.ali
 
 Package: libwebkitgtk-6.0-webdriver4
 Source: webkit2gtk
-Version: 2.50.4-0ubuntu0.25.04.1+webdriver3
+Version: 2.50.4-0ubuntu0.25.04.1+webdriver4
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 91025
@@ -1410,16 +1410,16 @@ Multi-Arch: same
 Homepage: https://webkitgtk.org/
 Priority: optional
 Section: libs
-Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver3_amd64.deb
-Size: 24440680
-SHA256: ecf717c299f74adff178be2b50cb4988775bb43832c6effb65f999b0e35c4870
-SHA1: 889610eaf03aadb3b693c5e3111743560de7c88d
-MD5sum: b033b9974540f00a556ae21d0a1acd41
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver4_amd64.deb
+Size: 24440472
+SHA256: 4e6646c811d5923359395b1949aeb7777e765058f09e42158a1858efbca177d1
+SHA1: 2afd983e9cba01711d7e6104a28988bd51e866e2
+MD5sum: ac26c2e68caf2ef7621b48ddf9544916
 Description: WebKitGTK 6.0 runtime with WebDriver interactions (parallel install)
  Parallel-install rebuild of Ubuntu libwebkitgtk-6.0. Coexists with
  system libwebkitgtk-6.0-4 and links against stock libjavascriptcoregtk-6.0-1.
- WebDriver interactions (#318171); navigator.webdriver defaults to false
- on controlled views (#165269). Packaged by roojs.
+ WebDriver interactions (#318171); navigator.webdriver policy API
+ (#165269, upstream Auto default). Packaged by roojs.
  .
  Use system webkitgtk-webdriver for the automation server; link apps
  against this library for Element Click / Send Keys on GTK4.

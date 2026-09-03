@@ -466,16 +466,16 @@
       }
     },
     "webkitgtk-automation": {
-      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver3;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver3;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver3",
+      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver4;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver3;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver4",
       "packages": {
-        "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver3_amd64.deb": {
-          "sha256": "039fc1a951660e53a73721d02901814802276542d42b4aa44ff30bd845f0d106",
+        "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver4_amd64.deb": {
+          "sha256": "f098d2c74ca611a92efffb9b4c71906eae3e5303dbdc8adb90f10b78769aa171",
           "suites": [
             "plucky"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver3_amd64.deb": {
-          "sha256": "ecf717c299f74adff178be2b50cb4988775bb43832c6effb65f999b0e35c4870",
+        "libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver4_amd64.deb": {
+          "sha256": "4e6646c811d5923359395b1949aeb7777e765058f09e42158a1858efbca177d1",
           "suites": [
             "plucky"
           ]
@@ -492,14 +492,14 @@
             "questing"
           ]
         },
-        "libwebkitgtk-6.0-webdriver-dev_2.52.6-0ubuntu0.26.04.1+webdriver3_amd64.deb": {
-          "sha256": "95f6ef3e8de34684336302ab14f5947f5efa4b2d2619152c764a89d4ab44d70d",
+        "libwebkitgtk-6.0-webdriver-dev_2.52.6-0ubuntu0.26.04.1+webdriver4_amd64.deb": {
+          "sha256": "5505a1f9db58f487fe4178ff6f840ee989f5a8c307800b120eeb73f758bb1bbe",
           "suites": [
             "resolute"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.52.6-0ubuntu0.26.04.1+webdriver3_amd64.deb": {
-          "sha256": "e894da8fd909bb88804761443d33b7183d19336d4d05d436eb59e78d29ea1c67",
+        "libwebkitgtk-6.0-webdriver4_2.52.6-0ubuntu0.26.04.1+webdriver4_amd64.deb": {
+          "sha256": "6be6a15ecfdf46c56a851ec1e57c3c8ceffa974e5d80c1edd3740e50cbdef4d0",
           "suites": [
             "resolute"
           ]
