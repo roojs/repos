@@ -1379,30 +1379,30 @@ Description: Tree-sitter parser for Vala language (runtime library)
 
 Package: libwebkitgtk-6.0-webdriver-dev
 Source: webkit2gtk
-Version: 2.50.4-0ubuntu0.25.04.1+webdriver4
+Version: 2.50.4-0ubuntu0.25.04.1+webdriver5
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 313
-Depends: libwebkitgtk-6.0-webdriver4 (= 2.50.4-0ubuntu0.25.04.1+webdriver4), libwebkitgtk-6.0-dev, libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev
+Installed-Size: 321
+Depends: libwebkitgtk-6.0-webdriver4 (= 2.50.4-0ubuntu0.25.04.1+webdriver5), libwebkitgtk-6.0-dev, libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev
 Homepage: https://webkitgtk.org/
 Priority: optional
 Section: libdevel
-Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver4_amd64.deb
-Size: 68888
-SHA256: f098d2c74ca611a92efffb9b4c71906eae3e5303dbdc8adb90f10b78769aa171
-SHA1: 352f95cf889c7501172b75361cdbd8ada5444a28
-MD5sum: 965b0c20e76f8de01dc93c51c507a7ba
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver5_amd64.deb
+Size: 69880
+SHA256: d1a097d88647de57f624232f7a9d18bbae4bb86a10c98c4300ea17f1a5a54e4a
+SHA1: b03b3e87dba8f43a8c98e6bdfe376b43b55a26d6
+MD5sum: 56bb6646fc6a8ee5708539d2854d354f
 Description: pkg-config for libwebkitgtk-6.0-webdriver (thin -dev package)
- Ships webkitgtk-6.0-webdriver.pc only. API headers and vapi come from
- system libwebkitgtk-6.0-dev and libjavascriptcoregtk-6.0-dev.
+ Ships webkitgtk-6.0-webdriver.pc plus navigator.webdriver GTK extension
+ header/vapi. Base WebKitGTK API comes from system libwebkitgtk-6.0-dev.
 Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
 
 Package: libwebkitgtk-6.0-webdriver4
 Source: webkit2gtk
-Version: 2.50.4-0ubuntu0.25.04.1+webdriver4
+Version: 2.50.4-0ubuntu0.25.04.1+webdriver5
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 91025
+Installed-Size: 91030
 Depends: libjavascriptcoregtk-6.0-1, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, libgles2, bubblewrap (>= 0.3.1), xdg-dbus-proxy, libatomic1 (>= 4.8), libc6 (>= 2.38), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.14.0), libdrm2 (>= 2.4.107), libenchant-2-2 (>= 2.2.3), libepoxy0 (>= 1.3), libexpat1 (>= 2.1~beta3), libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.11.1), libgbm1 (>= 21.3.0~rc1), libgcc-s1 (>= 4.0), libgcrypt20 (>= 1.11.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0t64 (>= 2.80.0), libgpg-error0 (>= 1.14), libgraphene-1.0-0 (>= 1.5.4), libgstreamer-gl1.0-0 (>= 1.14.0), libgstreamer-plugins-base1.0-0 (>= 1.23.1), libgstreamer1.0-0 (>= 1.25.1), libgtk-4-1 (>= 4.13.8), libharfbuzz-icu0 (>= 0.9.9), libharfbuzz0b (>= 1.8.6), libhyphen0 (>= 2.7.1), libicu76 (>= 76.1-1~), libjpeg8 (>= 8c), libjxl0.11 (>= 0.6.1), liblcms2-2 (>= 2.2+git20110628), libmanette-0.2-0 (>= 0.1.2), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libpng16-16t64 (>= 1.6.46), libseccomp2 (>= 0.0.0~20120605), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.8.7), libstdc++6 (>= 13.1), libsystemd0, libtasn1-6 (>= 4.14), libvulkan1 (>= 1.2.131.2), libwayland-client0 (>= 1.20.0), libwayland-egl1 (>= 1.15.0), libwayland-server0 (>= 1.0.2), libwebp7 (>= 1.5.0), libwebpdemux2 (>= 1.5.0), libwebpmux3 (>= 1.5.0), libwoff1 (>= 1.0.0), libx11-6, libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), zlib1g (>= 1:1.2.11)
 Recommends: gstreamer1.0-gl, libgl1-mesa-dri, xdg-desktop-portal-gtk
 Suggests: gstreamer1.0-libav, gstreamer1.0-plugins-bad, gstreamer1.0-alsa
@@ -1410,11 +1410,11 @@ Multi-Arch: same
 Homepage: https://webkitgtk.org/
 Priority: optional
 Section: libs
-Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver4_amd64.deb
-Size: 24440472
-SHA256: 4e6646c811d5923359395b1949aeb7777e765058f09e42158a1858efbca177d1
-SHA1: 2afd983e9cba01711d7e6104a28988bd51e866e2
-MD5sum: ac26c2e68caf2ef7621b48ddf9544916
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver4_2.50.4-0ubuntu0.25.04.1+webdriver5_amd64.deb
+Size: 24459672
+SHA256: 56bfeb9b211ddedd70256f4bf873856fd618463f07300350a2e88a77c624e96f
+SHA1: 404960013d31f348faad3ee7f33ec884f84ed0fe
+MD5sum: d726fa3746f11fad134afae014bda6e8
 Description: WebKitGTK 6.0 runtime with WebDriver interactions (parallel install)
  Parallel-install rebuild of Ubuntu libwebkitgtk-6.0. Coexists with
  system libwebkitgtk-6.0-4 and links against stock libjavascriptcoregtk-6.0-1.
