@@ -530,10 +530,10 @@
       }
     },
     "ubuntuzilla": {
-      "tag": "v155.0",
+      "tag": "v155.0.1",
       "packages": {
-        "thunderbird-mozilla-build_155.0-0ubuntu1_amd64.deb": {
-          "sha256": "8fca74812f41253b7b209a110d202b1c57768b81dab76e58f53617c353ef5a54",
+        "thunderbird-mozilla-build_155.0.1-0ubuntu1_amd64.deb": {
+          "sha256": "1e164a7c02c69503530eeddb3bc6c6377e58bffb5c4ea1156f549932258e47fc",
           "suites": [
             "trixie",
             "plucky",
