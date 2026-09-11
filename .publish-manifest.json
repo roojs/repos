@@ -443,10 +443,10 @@
       }
     },
     "sherpa-onnx": {
-      "tag": "v1.13.7-roojs1",
+      "tag": "v1.13.8-roojs1",
       "packages": {
-        "libsherpa-onnx-c-api-dev_1.13.7-roojs1_amd64.deb": {
-          "sha256": "1cd3d280098f7e4b78a4c87e41efd2b937f08f562d93f0cc414965eef777bba8",
+        "libsherpa-onnx-c-api-dev_1.13.8-roojs1_amd64.deb": {
+          "sha256": "f50d35ec66eacfd2ccd10e7970b5600666864897416258932119d21491661415",
           "suites": [
             "trixie",
             "plucky",
@@ -454,8 +454,8 @@
             "resolute"
           ]
         },
-        "libsherpa-onnx-c-api1_1.13.7-roojs1_amd64.deb": {
-          "sha256": "c2e7a512797d1ddf2013621737b6cedf435461aaf7f496f544fb643a97ed31a7",
+        "libsherpa-onnx-c-api1_1.13.8-roojs1_amd64.deb": {
+          "sha256": "95ff5d7cc209e4bcd730dec3e160427825fbca24d89fb170bf803458f6c61340",
           "suites": [
             "trixie",
             "plucky",
@@ -1174,13 +1174,13 @@
       }
     },
     "sherpa-onnx": {
-      "tag": "v1.13.7-roojs1",
+      "tag": "v1.13.8-roojs1",
       "packages": {
-        "libsherpa-onnx-c-api-1.13.7-roojs1.fc44.x86_64.rpm": {
-          "sha256": "9df2d372cc710de0c942fd12e3361fba6921249d4ec8c930907df2da2b1f0cb3"
+        "libsherpa-onnx-c-api-1.13.8-roojs1.fc44.x86_64.rpm": {
+          "sha256": "27b276f47492554bbcc41bdb8dc85c12a118209d3d8ce28d20f0f9888f0b4fa3"
         },
-        "libsherpa-onnx-c-api-devel-1.13.7-roojs1.fc44.x86_64.rpm": {
-          "sha256": "c38f321a47bd15d16afc394416e9c6d692df99c0359535b513357a6c63efcc00"
+        "libsherpa-onnx-c-api-devel-1.13.8-roojs1.fc44.x86_64.rpm": {
+          "sha256": "c5157c4cfa514a9f593dd8343399b192951c1f0b81beea9c528af1e8fa5acfc2"
         }
       }
     },

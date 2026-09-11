@@ -1002,19 +1002,19 @@ Description: GTK chat widget library for OLLMchat
 
 Package: libsherpa-onnx-c-api-dev
 Source: sherpa-onnx
-Version: 1.13.7-roojs1
+Version: 1.13.8-roojs1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 246
-Depends: libsherpa-onnx-c-api1 (= 1.13.7-roojs1), libonnxruntime-dev
+Depends: libsherpa-onnx-c-api1 (= 1.13.8-roojs1), libonnxruntime-dev
 Homepage: https://github.com/roojs/sherpa-onnx
 Priority: optional
 Section: libdevel
-Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api-dev_1.13.7-roojs1_amd64.deb
-Size: 32676
-SHA256: 1cd3d280098f7e4b78a4c87e41efd2b937f08f562d93f0cc414965eef777bba8
-SHA1: 89995b98519a5b2db91a898ca55dbe729ab8e3fd
-MD5sum: a93842abeeb2befe576b22d686e0dd80
+Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api-dev_1.13.8-roojs1_amd64.deb
+Size: 32904
+SHA256: f50d35ec66eacfd2ccd10e7970b5600666864897416258932119d21491661415
+SHA1: 27c403dd7887019a3b99eaea150cc3a1fb1c3b78
+MD5sum: 9a250964256eb1b983bd30dcd6c8f1d0
 Description: Development files for sherpa-onnx C API
  sherpa-onnx provides speech recognition and related APIs on top of
  ONNX Runtime.
@@ -1023,19 +1023,19 @@ Description: Development files for sherpa-onnx C API
 
 Package: libsherpa-onnx-c-api1
 Source: sherpa-onnx
-Version: 1.13.7-roojs1
+Version: 1.13.8-roojs1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 2982
+Installed-Size: 2990
 Depends: libc6 (>= 2.38), libgcc-s1 (>= 3.3.1), libonnxruntime1.21 (>= 1.21.0), libstdc++6 (>= 14)
 Homepage: https://github.com/roojs/sherpa-onnx
 Priority: optional
 Section: libs
-Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api1_1.13.7-roojs1_amd64.deb
-Size: 1076716
-SHA256: c2e7a512797d1ddf2013621737b6cedf435461aaf7f496f544fb643a97ed31a7
-SHA1: 8e05463610566e3a3c3d0316a6f90870943256a5
-MD5sum: ab6d4a068d4dd14337db59f66ef932de
+Filename: pool/main/s/sherpa-onnx/libsherpa-onnx-c-api1_1.13.8-roojs1_amd64.deb
+Size: 1080168
+SHA256: 95ff5d7cc209e4bcd730dec3e160427825fbca24d89fb170bf803458f6c61340
+SHA1: 701d4b2f3a51f32a99daba55ae6d3d30af9394b7
+MD5sum: d7a378fab8653f84811d60aeb57f715e
 Description: sherpa-onnx C API shared library
  sherpa-onnx provides speech recognition and related APIs on top of
  ONNX Runtime.
