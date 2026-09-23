@@ -1539,17 +1539,17 @@ Description: SSH host manager and terminal for GNOME
  Ásbrú config import, port forwards, and local PTY sessions.
 
 Package: thunderbird-mozilla-build
-Version: 156.0-0ubuntu1
+Version: 156.0.1-0ubuntu1
 Maintainer: Daniel Folkinshteyn <nanotube@users.sourceforge.net>
 Architecture: amd64
 Provides: mail-reader, thunderbird
 Priority: optional
 Section: mail
-Filename: pool/main/t/thunderbird-mozilla-build/thunderbird-mozilla-build_156.0-0ubuntu1_amd64.deb
-Size: 86671008
-SHA256: 3ce7447a0e9686b59b4b77a14ed3b5f9d928b8fb9b9653a3c34ff0c852f96893
-SHA1: ef7c98aa9d43aeb1093d5949e5d7f3bfd7e6146e
-MD5sum: 0ed5a56a29aaba1f3d749a644ae862a9
+Filename: pool/main/t/thunderbird-mozilla-build/thunderbird-mozilla-build_156.0.1-0ubuntu1_amd64.deb
+Size: 86663104
+SHA256: cbc342a1346594830f1d3670cb8be69da0ffe15bb14321ae976cfa27eca3d231
+SHA1: 5ae828f5aba98135a2849d12e16b52d25db968dd
+MD5sum: e65067674711bdb43a2dd72813620751
 Description: Mozilla Thunderbird, official Mozilla build, packaged for Ubuntu by the Ubuntuzilla project.
  This is the unmodified Mozilla release binary of Thunderbird, packaged into a .deb by the Ubuntuzilla project.
  .
