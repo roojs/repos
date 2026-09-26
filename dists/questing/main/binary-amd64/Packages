@@ -1,5 +1,5 @@
 Package: ibus-sherpa-onnx
-Version: 0.3.6-1
+Version: 0.3.7-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 302
@@ -7,11 +7,11 @@ Depends: libadwaita-1-0 (>= 1.6~beta), libarchive13t64 (>= 3.0.4), libatspi2.0-0
 Homepage: https://github.com/roojs/ibus-sherpa-onnx
 Priority: optional
 Section: utils
-Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.6-1_amd64.deb
-Size: 90330
-SHA256: db819da544e3d24bd49253a7d605715d82ab4da0fd0a61ef807b51856878784d
-SHA1: 30a80aba73924162a53e2313d4e22767f5f74f65
-MD5sum: 56e556b0685435f2e95d0b4f4229c31b
+Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.7-1_amd64.deb
+Size: 90698
+SHA256: 7c9001d349131ad47ecdec4c663879c75474860a0fc726b0549c57780b00c921
+SHA1: d76ddec15954aeca26ce49fa7dacce6fe1dffcd4
+MD5sum: a0588ad38435a0a144cdaa3c19536d52
 Description: IBus speech dictation engine using sherpa-onnx
  Local streaming speech-to-text as an IBus input method, powered by
  sherpa-onnx (Nemotron online transducer).
