@@ -58,6 +58,22 @@
           "tree-sitter-*": "default"
         }
       }
+    },
+    {
+      "repo": "php-llamacpp",
+      "deb": {
+        "release_tags": {
+          "v*": "default"
+        }
+      }
+    },
+    {
+      "repo": "php-fiass",
+      "deb": {
+        "release_tags": {
+          "v*": "default"
+        }
+      }
     }
   ]
 }

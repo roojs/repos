@@ -24,3 +24,52 @@ deb_pkg_name_from_filename() {
 
   printf '%s\n' "$base"
 }
+
+deb_arch_from_filename() {
+  local filename="$1" arch
+  for arch in amd64 arm64 all i386; do
+    if [[ "$filename" == *"_${arch}.deb" ]]; then
+      printf '%s\n' "$arch"
+      return 0
+    fi
+  done
+  return 1
+}
+
+deb_version_from_filename() {
+  local filename="$1" base="" arch
+  for arch in amd64 arm64 all i386; do
+    if [[ "$filename" == *"_${arch}.deb" ]]; then
+      base="${filename%_${arch}.deb}"
+      break
+    fi
+  done
+  [[ -n "$base" && "$base" == *_* ]] || return 1
+  printf '%s\n' "${base#*_}"
+}
+
+deb_local_suite_from_version() {
+  local version="$1" suite
+  [[ "$version" == *+* ]] || return 1
+  suite="${version#*+}"
+  suite="${suite%%~*}"
+  [[ -n "$suite" ]] || return 1
+  printf '%s\n' "$suite"
+}
+
+deb_local_suite_from_filename() {
+  local version suite
+  version="$(deb_version_from_filename "$1")" || return 1
+  deb_local_suite_from_version "$version"
+}
+
+# Per-suite .deb builds encode the target suite as upstream+SUITE in the version.
+deb_file_suites_json() {
+  local filename="$1" default_suites_json="$2"
+  local suite
+  if suite="$(deb_local_suite_from_filename "$filename" 2>/dev/null)"; then
+    jq -nc --arg s "$suite" '[ $s ]'
+    return 0
+  fi
+  printf '%s\n' "$default_suites_json"
+}

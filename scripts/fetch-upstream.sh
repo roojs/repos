@@ -10,6 +10,8 @@ previous_manifest="${5:-}"
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=lib/repos-config.sh
 source "${script_dir}/lib/repos-config.sh"
+# shellcheck source=lib/deb-pkg-name.sh
+source "${script_dir}/lib/deb-pkg-name.sh"
 
 if ! command -v gh >/dev/null 2>&1; then
   echo "gh CLI is required." >&2
@@ -648,6 +650,9 @@ filter_deb_index_by_architecture() {
       [[ "$filename" == *.deb ]] || continue
       if [[ "$filename" =~ _([^_]+)\.deb$ ]]; then
         arch="${BASH_REMATCH[1]}"
+        if [[ "$arch" == "all" ]]; then
+          continue
+        fi
         if jq -en --arg arch "$arch" --argjson allowed "$allowed" '$allowed | index($arch) != null' >/dev/null; then
           continue
         fi
@@ -730,6 +735,8 @@ packages_from_repo_dir() {
       file_suites_json="$suites_json"
       if [[ -n "${pool_file_suites[$base]+x}" ]]; then
         file_suites_json="$(printf '%s\n' ${pool_file_suites[$base]} | awk 'NF' | jq -R . | jq -s .)"
+      else
+        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json")"
       fi
       packages="$(jq \
         --arg name "$base" \
@@ -1235,6 +1242,8 @@ while IFS= read -r repo; do
       file_suites_json="$suites_json"
       if [[ -n "${pool_file_suites[$base]+x}" ]]; then
         file_suites_json="$(printf '%s\n' ${pool_file_suites[$base]} | awk 'NF' | jq -R . | jq -s .)"
+      else
+        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json")"
       fi
       packages="$(jq \
         --arg name "$base" \

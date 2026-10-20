@@ -293,7 +293,7 @@ package_group() {
     libtree-sitter-*)
       printf '%s\n' treesitter
       ;;
-    ollmchat*|liboc*|libollm*|libollamaweb*|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss)
+    ollmchat*|liboc*|libollm*|libollamaweb*|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss|php-llamacpp|php-faiss|php[0-9]*-llamacpp|php[0-9]*-faiss)
       printf '%s\n' ollmchat
       ;;
     *webkit*|*javascriptcore*)
@@ -336,7 +336,7 @@ package_group_blurb() {
       printf '%s\n' "Grammar parsers used by <a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> to split documents for semantic search. Each row links to the upstream grammar repository."
       ;;
     ollmchat)
-      printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> and the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses. llama.cpp and FAISS packages are repackaged from Debian."
+      printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a>, the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses, and the <a href=\"https://github.com/roojs/php-llamacpp\">php-llamacpp</a> / <a href=\"https://github.com/roojs/php-fiass\">php-faiss</a> PHP extensions. llama.cpp and FAISS library packages are repackaged from Debian."
       ;;
     webkit)
       printf '%s\n' "WebKitGTK builds with <strong>WebDriver</strong> automation. Install the runtime with <code>libwebkitgtk-6.0-webdriver4</code> and headers with <code>libwebkitgtk-6.0-webdriver-dev</code>."
@@ -370,6 +370,14 @@ pkg_source_url() {
       ;;
     libfaiss*|faiss*|python3-faiss)
       printf '%s\n' "https://github.com/facebookresearch/faiss"
+      return 0
+      ;;
+    php-llamacpp|php[0-9]*-llamacpp)
+      printf '%s\n' "${github_base}/php-llamacpp"
+      return 0
+      ;;
+    php-faiss|php[0-9]*-faiss)
+      printf '%s\n' "${github_base}/php-fiass"
       return 0
       ;;
     *webkit*|*javascriptcore*)
@@ -436,6 +444,10 @@ pkg_desc() {
           roobuilder) desc="Vala UI builder" ;;
           roojspacker) desc="JavaScript packer" ;;
           libllama0|libllama-dev) desc="llama.cpp inference library" ;;
+          php-llamacpp) desc="PHP meta package for llama.cpp extension" ;;
+          php-faiss) desc="PHP meta package for FAISS extension" ;;
+          php[0-9]*-llamacpp) desc="PHP llama.cpp extension module" ;;
+          php[0-9]*-faiss) desc="PHP FAISS extension module" ;;
           thunderbird-mozilla-build) desc="Official Mozilla Thunderbird" ;;
           *) desc="" ;;
         esac
