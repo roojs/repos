@@ -293,7 +293,10 @@ package_group() {
     libtree-sitter-*)
       printf '%s\n' treesitter
       ;;
-    ollmchat*|liboc*|libollm*|libollamaweb*|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss|php-llamacpp|php-faiss|php[0-9]*-llamacpp|php[0-9]*-faiss)
+    php-llamacpp|php-faiss|php[0-9]*-llamacpp|php[0-9]*-faiss)
+      printf '%s\n' phpext
+      ;;
+    ollmchat*|liboc*|libollm*|libollamaweb*|libllama*|llama-*|libggml*|ggml-*|libfaiss*|faiss*|python3-faiss)
       printf '%s\n' ollmchat
       ;;
     *webkit*|*javascriptcore*)
@@ -321,6 +324,7 @@ package_group_title() {
   case "$1" in
     treesitter) printf '%s\n' "Tree-sitter" ;;
     ollmchat) printf '%s\n' OLLMchat ;;
+    phpext) printf '%s\n' "PHP extensions" ;;
     webkit) printf '%s\n' WebKit ;;
     speech) printf '%s\n' "Speech (STT / TTS)" ;;
     rooterm) printf '%s\n' RooTerm ;;
@@ -336,7 +340,10 @@ package_group_blurb() {
       printf '%s\n' "Grammar parsers used by <a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> to split documents for semantic search. Each row links to the upstream grammar repository."
       ;;
     ollmchat)
-      printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a>, the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses, and the <a href=\"https://github.com/roojs/php-llamacpp\">php-llamacpp</a> / <a href=\"https://github.com/roojs/php-fiass\">php-faiss</a> PHP extensions. llama.cpp and FAISS library packages are repackaged from Debian."
+      printf '%s\n' "<a href=\"https://github.com/roojs/OLLMchat\">OLLMchat</a> and the <a href=\"https://github.com/ggml-org/llama.cpp\">llama.cpp</a> / <a href=\"https://github.com/facebookresearch/faiss\">FAISS</a> libraries it uses. llama.cpp and FAISS packages are repackaged from Debian."
+      ;;
+    phpext)
+      printf '%s\n' "PHP modules for local inference and vector search: <a href=\"https://github.com/roojs/php-llamacpp\">php-llamacpp</a> (llama.cpp) and <a href=\"https://github.com/roojs/php-fiass\">php-faiss</a> (FAISS). Install the meta package (<code>php-llamacpp</code> or <code>php-faiss</code>) for the default PHP version on each suite."
       ;;
     webkit)
       printf '%s\n' "WebKitGTK builds with <strong>WebDriver</strong> automation. Install the runtime with <code>libwebkitgtk-6.0-webdriver4</code> and headers with <code>libwebkitgtk-6.0-webdriver-dev</code>."
@@ -1090,7 +1097,7 @@ DNF
 GRID
 
   if [[ -s "${work}/pkg-names" ]]; then
-    for gid in ollmchat treesitter webkit speech rooterm roobuilder ubuntuzilla other; do
+    for gid in ollmchat phpext treesitter webkit speech rooterm roobuilder ubuntuzilla other; do
       [[ -s "${work}/group/${gid}" ]] || continue
       title="$(package_group_title "$gid")"
       blurb="$(package_group_blurb "$gid")"
