@@ -664,6 +664,112 @@
           ]
         }
       }
+    },
+    "php-llamacpp": {
+      "tag": "v0.1.0",
+      "packages": {
+        "php-llamacpp_0.1.0-1+plucky_all.deb": {
+          "sha256": "1f69ff612e01320085b31dcace233340f9c98cac008f0f17eb61f308222ab3fc",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "php-llamacpp_0.1.0-1+questing_all.deb": {
+          "sha256": "33d170259cc272e2db0bd04cab2505de26ae54f0ede685a19e4bcccd173d36ba",
+          "suites": [
+            "questing"
+          ]
+        },
+        "php-llamacpp_0.1.0-1+resolute_all.deb": {
+          "sha256": "2ba26a31861ff0940856efd73e98c0abffd38420beb390215aac56ef45502fed",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "php-llamacpp_0.1.0-1+trixie_all.deb": {
+          "sha256": "669bf6bced2b076fcb8d5b0adde54c2b6e394d79fea60b0f14897191f7525f6c",
+          "suites": [
+            "trixie"
+          ]
+        },
+        "php8.4-llamacpp_0.1.0-1+plucky_amd64.deb": {
+          "sha256": "db441ef2cf3f006e0b46d3089a9015a3736281dc9811e354b611e032e8993314",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "php8.4-llamacpp_0.1.0-1+questing_amd64.deb": {
+          "sha256": "e8211ca175cddf7e30461a8f391d267f5466173756cb12da8a1f2269efdeca54",
+          "suites": [
+            "questing"
+          ]
+        },
+        "php8.4-llamacpp_0.1.0-1+trixie_amd64.deb": {
+          "sha256": "8b7cafbfd6f8af91621bfbccf309a2039a6941407f9771d50cf3bebdfc4098af",
+          "suites": [
+            "trixie"
+          ]
+        },
+        "php8.5-llamacpp_0.1.0-1+resolute_amd64.deb": {
+          "sha256": "f38570f8003c155675cc0bfc979c1d642c4b1f24977fe81389f2c2e451cdf9c5",
+          "suites": [
+            "resolute"
+          ]
+        }
+      }
+    },
+    "php-fiass": {
+      "tag": "v0.1.0",
+      "packages": {
+        "php-faiss_0.1.0-1+plucky_all.deb": {
+          "sha256": "70e9f551dd10acfcffc43f2a8a04a7d7c109b31ac9ce215c95eb37fee8dcfade",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "php-faiss_0.1.0-1+questing_all.deb": {
+          "sha256": "fe147ee6ec0b233655f3837bce017c46bc0a9b4364ecabb19a96f6520a0c7342",
+          "suites": [
+            "questing"
+          ]
+        },
+        "php-faiss_0.1.0-1+resolute_all.deb": {
+          "sha256": "cdf458097bb6b506ba4dbcee0a285b3c55484acce14eb8cfc7d9027b4ff93e8f",
+          "suites": [
+            "resolute"
+          ]
+        },
+        "php-faiss_0.1.0-1+trixie_all.deb": {
+          "sha256": "c60ed277d78270ded78fb3636cdaa68d7e16f3e45b0743b5e14be0b1a976d231",
+          "suites": [
+            "trixie"
+          ]
+        },
+        "php8.4-faiss_0.1.0-1+plucky_amd64.deb": {
+          "sha256": "d021b6ae0151941fc5afd3834fcf85e011e0cc15309f18cb5ce0263409fac2b1",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "php8.4-faiss_0.1.0-1+questing_amd64.deb": {
+          "sha256": "4b2b94913b625325e64abe97ad9b397159107258bd861a958f72e489e642d7b2",
+          "suites": [
+            "questing"
+          ]
+        },
+        "php8.4-faiss_0.1.0-1+trixie_amd64.deb": {
+          "sha256": "28219e764f9626c28ab6d83c8ace8687bb6fcfdf3848ab343c00d3eaeb54a28e",
+          "suites": [
+            "trixie"
+          ]
+        },
+        "php8.5-faiss_0.1.0-1+resolute_amd64.deb": {
+          "sha256": "4e8df271099cf0fb56e64cde51499f8d5b233b5a3e58a4ea30696744e06cafef",
+          "suites": [
+            "resolute"
+          ]
+        }
+      }
     }
   },
   "rpms": {
@@ -1372,6 +1478,6 @@
       }
     }
   },
-  "repos_json_sha256": "1b59ae494e4709d0ae141637149243955d7b1fa6f43e49858a7613e0a92d7aa8",
+  "repos_json_sha256": "4228f6d40c166dcb91ad7a805d92c78e0f790ab3119125205aaf046335cd6b9b",
   "distributions_sha256": "c33d2afed34d5da9522cab919d0b95148b8e939e9c5bcb2b55e3e29f3f38a6fa"
 }

@@ -1528,6 +1528,96 @@ Description: Command-line tools for OLLMchat
   - oc-md2html: Markdown to HTML converter
   - oc-html2md: HTML to Markdown converter
 
+Package: php-faiss
+Version: 0.1.0-1+resolute
+Architecture: all
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 11
+Depends: php8.5-faiss
+Homepage: https://github.com/roojs/php-fiass
+Priority: optional
+Section: php
+Filename: pool/main/p/php-faiss/php-faiss_0.1.0-1+resolute_all.deb
+Size: 2914
+SHA256: cdf458097bb6b506ba4dbcee0a285b3c55484acce14eb8cfc7d9027b4ff93e8f
+SHA1: c6dda24ed7c457da4da34415a81393b5dc916c66
+MD5sum: 8bf0d704d67612cafb80f4cc6b765c40
+Description: FAISS similarity search for PHP
+ FaissIndex builds and searches an HNSW index through libfaiss.
+ .
+ This is an empty package that depends on the default PHP version
+ (currently 8.5).
+
+Package: php-llamacpp
+Version: 0.1.0-1+resolute
+Architecture: all
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 11
+Depends: php8.5-llamacpp (= 0.1.0-1+resolute)
+Homepage: https://github.com/roojs/php-llamacpp
+Priority: optional
+Section: php
+Filename: pool/main/p/php-llamacpp/php-llamacpp_0.1.0-1+resolute_all.deb
+Size: 2966
+SHA256: 2ba26a31861ff0940856efd73e98c0abffd38420beb390215aac56ef45502fed
+SHA1: b0fcc7b0741597c2c16b87cc01f3ac998de4d7be
+MD5sum: 24250e42aa5d1acbd6dafdf75cfa21ee
+Description: PHP extension for local GGUF embeddings
+ LlamaEmbed loads a GGUF model through libllama and returns
+ L2-normalized embedding vectors.
+ .
+ This package depends on the llamacpp module for the default PHP
+ version. When the default PHP changes, this dependency follows it,
+ so an upgrade installs the module built for the new PHP.
+
+Package: php8.5-faiss
+Source: php-faiss
+Version: 0.1.0-1+resolute
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 5555
+Depends: libblas3 | libblas.so.3, libc6 (>= 2.38), libgcc-s1 (>= 3.3.1), libglib2.0-0t64 (>= 2.12.0), libgomp1 (>= 6), liblapack3 | liblapack.so.3, libstdc++6 (>= 14), php-common (>= 1:7.0+33~), phpapi-20250925
+Provides: php-faiss
+Homepage: https://github.com/roojs/php-fiass
+Priority: optional
+Section: php
+Filename: pool/main/p/php-faiss/php8.5-faiss_0.1.0-1+resolute_amd64.deb
+Size: 1296740
+SHA256: 4e8df271099cf0fb56e64cde51499f8d5b233b5a3e58a4ea30696744e06cafef
+SHA1: fd888d5fe6092fcd9eb6c256c0262230142db98f
+MD5sum: 46660d3a8bfd141a6aa59261c4761fc4
+Description: FAISS similarity search for PHP 8.5
+ FaissIndex builds and searches an HNSW index through libfaiss.
+ .
+ This package is built for PHP 8.5. phpenmod registers the
+ faiss module for every SAPI of that version (cli, fpm, apache2,
+ and the rest). A SAPI installed later picks the module up from
+ that registry.
+
+Package: php8.5-llamacpp
+Source: php-llamacpp
+Version: 0.1.0-1+resolute
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 47
+Depends: libc6 (>= 2.14), php-common (>= 1:7.0+33~), phpapi-20250925, libllama0
+Homepage: https://github.com/roojs/php-llamacpp
+Priority: optional
+Section: php
+Filename: pool/main/p/php-llamacpp/php8.5-llamacpp_0.1.0-1+resolute_amd64.deb
+Size: 10930
+SHA256: f38570f8003c155675cc0bfc979c1d642c4b1f24977fe81389f2c2e451cdf9c5
+SHA1: 8ab93ed4b86146eaeb2b68e724a89689becc0a76
+MD5sum: 31681ffd00b91d00d4ee55a5ab24069c
+Description: PHP 8.5 extension for local GGUF embeddings
+ LlamaEmbed loads a GGUF model through libllama and returns
+ L2-normalized embedding vectors.
+ .
+ This package is the llamacpp module for PHP 8.5.
+ phpenmod enables it for every SAPI of that PHP (cli, fpm, apache2,
+ and the rest). A SAPI installed later picks the module up from
+ that registry.
+
 Package: roobuilder
 Version: 5.0.11
 Architecture: amd64
