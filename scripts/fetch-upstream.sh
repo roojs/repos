@@ -19,6 +19,7 @@ if ! command -v gh >/dev/null 2>&1; then
 fi
 
 owner="$(jq -r '.owner' "$config")"
+apt_suites_json="$(jq -c '.apt.suites' "$config")"
 mkdir -p "$output"
 index="{}"
 found=0
@@ -736,7 +737,7 @@ packages_from_repo_dir() {
       if [[ -n "${pool_file_suites[$base]+x}" ]]; then
         file_suites_json="$(printf '%s\n' ${pool_file_suites[$base]} | awk 'NF' | jq -R . | jq -s .)"
       else
-        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json")"
+        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json" "$apt_suites_json")"
       fi
       packages="$(jq \
         --arg name "$base" \
@@ -1243,7 +1244,7 @@ while IFS= read -r repo; do
       if [[ -n "${pool_file_suites[$base]+x}" ]]; then
         file_suites_json="$(printf '%s\n' ${pool_file_suites[$base]} | awk 'NF' | jq -R . | jq -s .)"
       else
-        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json")"
+        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json" "$apt_suites_json")"
       fi
       packages="$(jq \
         --arg name "$base" \

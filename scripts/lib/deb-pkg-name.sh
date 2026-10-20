@@ -64,12 +64,16 @@ deb_local_suite_from_filename() {
 }
 
 # Per-suite .deb builds encode the target suite as upstream+SUITE in the version.
+# Ignore other +suffixes (e.g. webkit +webdriver6, Debian +dfsg).
 deb_file_suites_json() {
-  local filename="$1" default_suites_json="$2"
+  local filename="$1" default_suites_json="$2" apt_suites_json="${3:-[]}"
   local suite
   if suite="$(deb_local_suite_from_filename "$filename" 2>/dev/null)"; then
-    jq -nc --arg s "$suite" '[ $s ]'
-    return 0
+    if jq -en --arg s "$suite" --argjson allowed "$apt_suites_json" \
+      '$allowed | index($s) != null' >/dev/null; then
+      jq -nc --arg s "$suite" '[ $s ]'
+      return 0
+    fi
   fi
   printf '%s\n' "$default_suites_json"
 }
