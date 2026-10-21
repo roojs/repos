@@ -1,19 +1,19 @@
 Origin: roojs
 Label: roojs
 Codename: plucky
-Date: Wed, 21 Oct 2026 03:47:37 UTC
+Date: Wed, 21 Oct 2026 06:44:00 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 4cb55e400f66d15abe2ce15aaea578f4 71280 main/binary-amd64/Packages
- 52680cbf6678dc33b776d8834e6b0f46 15342 main/binary-amd64/Packages.gz
+ df488ec61ff387efadb20622e3f67ec4 71301 main/binary-amd64/Packages
+ 08a9b276e839d767a20bc5803cc0fedf 15347 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
 SHA1:
- 04b2dadcbb644bbc91b2f20cdcd812fb22cd4c72 71280 main/binary-amd64/Packages
- 5454374cfc0cb2b45d7d6b6c49d4b86f5b7301c7 15342 main/binary-amd64/Packages.gz
+ 6d1dda1786ce885a8fd9819801e240a5d114459e 71301 main/binary-amd64/Packages
+ da848f69b3e467bd853d77cf007adf127fab36dd 15347 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
 SHA256:
- d926e81d112d6d7d6cb412bfd3ef4e80bf2552683836f93d7a4786d5a82486c5 71280 main/binary-amd64/Packages
- 5fa59e37d226740feae67dbb6e8d80ef9f7230318567d6591b6199ff8d132e53 15342 main/binary-amd64/Packages.gz
+ 1632c7650df59af7ebb3c60189cdcf02b26e4794ff6a0d4db9feb4a32ab26d96 71301 main/binary-amd64/Packages
+ 4e8407dec81d386b4bddc1beff5133557e408193285371945ac611e827417d13 15347 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release

@@ -1549,19 +1549,19 @@ Description: FAISS similarity search for PHP
  (currently 8.5).
 
 Package: php-llamacpp
-Version: 0.1.1-1+resolute
+Version: 0.1.2-1+resolute
 Architecture: all
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 11
-Depends: php8.5-llamacpp (= 0.1.1-1+resolute)
+Depends: php8.5-llamacpp (= 0.1.2-1+resolute)
 Homepage: https://github.com/roojs/php-llamacpp
 Priority: optional
 Section: php
-Filename: pool/main/p/php-llamacpp/php-llamacpp_0.1.1-1+resolute_all.deb
-Size: 3076
-SHA256: 43ffcea5471f3c7084cc8e269cdc3bf18f1e24529d5c9d1d311adfadfaed5ae5
-SHA1: 7074ee650227be4279a40ab185fdbed2b069915c
-MD5sum: 049a746695a9001293d1dda4a16f5970
+Filename: pool/main/p/php-llamacpp/php-llamacpp_0.1.2-1+resolute_all.deb
+Size: 3174
+SHA256: 26c719fed5e0c1bf2dcd3d9d20b833883f202fd39dd2c9474fea8a70f5b290a7
+SHA1: 68689037faf40b1ff3b4187e02edbd418592cfa2
+MD5sum: 1ae5436ad8e02b6d82f2d4265e4714b3
 Description: PHP extension for local GGUF embeddings
  LlamaEmbed loads a GGUF model through libllama and returns
  L2-normalized embedding vectors.
@@ -1596,19 +1596,19 @@ Description: FAISS similarity search for PHP 8.5
 
 Package: php8.5-llamacpp
 Source: php-llamacpp
-Version: 0.1.1-1+resolute
+Version: 0.1.2-1+resolute
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 47
-Depends: libc6 (>= 2.14), libllama0 (>= 8681+dfsg), php-common (>= 1:7.0+33~), phpapi-20250925
+Depends: libc6 (>= 2.14), libggml0 (>= 0.9.5), libllama0 (>= 8681+dfsg), php-common (>= 1:7.0+33~), phpapi-20250925
 Homepage: https://github.com/roojs/php-llamacpp
 Priority: optional
 Section: php
-Filename: pool/main/p/php-llamacpp/php8.5-llamacpp_0.1.1-1+resolute_amd64.deb
-Size: 11054
-SHA256: 8b2204da8821ac48c853420230a38ee1ea15688bfa21e6268e8f7583e9217fd5
-SHA1: 85519af8f7f6870f7569c336c1eab0b8cdfc2e74
-MD5sum: 0ca9479c6f4f50c8d6edf673ef5689d0
+Filename: pool/main/p/php-llamacpp/php8.5-llamacpp_0.1.2-1+resolute_amd64.deb
+Size: 11666
+SHA256: 14b416d038ab61b8143f417edf51acc67421d775f91117e585ced163f8886596
+SHA1: 22e8b645afbc628fc23c58ed93cf9809000632eb
+MD5sum: 0bc8d776462d071999c138492608bddb
 Description: PHP 8.5 extension for local GGUF embeddings
  LlamaEmbed loads a GGUF model through libllama and returns
  L2-normalized embedding vectors.
