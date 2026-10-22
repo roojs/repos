@@ -1,17 +1,17 @@
 Package: ibus-sherpa-onnx
-Version: 0.3.8-1
+Version: 0.3.9-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 406
-Depends: libadwaita-1-0 (>= 1.6~beta), libarchive13t64 (>= 3.0.4), libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgee-0.8-2 (>= 0.20.0), libglib2.0-0t64 (>= 2.64.0), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.0.0), libgtk-4-1 (>= 4.9.3), libibus-1.0-5 (>= 1.5.18), libicu76 (>= 76.1-1~), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libstdc++6 (>= 12), ibus, libsherpa-onnx-c-api1, gstreamer1.0-plugins-good, gstreamer1.0-plugins-base, gstreamer1.0-pipewire | gstreamer1.0-pulseaudio, pkexec, polkitd, libgtk-4-bin
+Installed-Size: 454
+Depends: libadwaita-1-0 (>= 1.6~beta), libarchive13t64 (>= 3.0.4), libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgee-0.8-2 (>= 0.20.0), libglib2.0-0t64 (>= 2.80.0), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.0.0), libgtk-4-1 (>= 4.9.3), libibus-1.0-5 (>= 1.5.18), libicu76 (>= 76.1-1~), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libstdc++6 (>= 12), ibus, libsherpa-onnx-c-api1, gstreamer1.0-plugins-good, gstreamer1.0-plugins-base, gstreamer1.0-pipewire | gstreamer1.0-pulseaudio, pkexec, polkitd, libgtk-4-bin
 Homepage: https://github.com/roojs/ibus-sherpa-onnx
 Priority: optional
 Section: utils
-Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.8-1_amd64.deb
-Size: 120918
-SHA256: f1d4b68c948da619fd463ec80a1a6e3f85f5e8e387d18362d50b43fa2e36135e
-SHA1: d3a87e5c8e709945d79980ed37b10675d81c624a
-MD5sum: b497cffc88843ba07627bf3fb9b0b912
+Filename: pool/main/i/ibus-sherpa-onnx/ibus-sherpa-onnx_0.3.9-1_amd64.deb
+Size: 130670
+SHA256: a7caf82e9d64c6861c4bd7c9e3b4147eb5e4eb030e0bb9be46fd14f3bc26a184
+SHA1: 1b43eeea90f40101e8d2acbaf557b7d7d8dbba98
+MD5sum: e2c00c4f8a79688507c18910db891953
 Description: IBus speech dictation engine using sherpa-onnx
  Local streaming speech-to-text as an IBus input method, powered by
  sherpa-onnx (Nemotron online transducer).
