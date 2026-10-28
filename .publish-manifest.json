@@ -530,10 +530,10 @@
       }
     },
     "ubuntuzilla": {
-      "tag": "v158.0.1",
+      "tag": "v159.0",
       "packages": {
-        "thunderbird-mozilla-build_158.0.1-0ubuntu1_amd64.deb": {
-          "sha256": "313936151c1f181cd98fb8384cbb22f4ead07a559e3b9c5318cf05d27ee7f052",
+        "thunderbird-mozilla-build_159.0-0ubuntu1_amd64.deb": {
+          "sha256": "67b3ac5508ee0ab06281c20fa8543e73bc74fb0385b2674a0d86a21bc4cd3cfe",
           "suites": [
             "trixie",
             "plucky",
@@ -1243,15 +1243,15 @@
     "faiss": {
       "tag": "opensuse-tumbleweed",
       "packages": {
-        "faiss-devel-1.10.0-2.6.x86_64.rpm": {
-          "sha256": "f17748d99aab36e504ce3ba870a3d53672eae4940ab038d6b13fe1b202a9a3fb",
+        "faiss-devel-1.15.1-1.1.x86_64.rpm": {
+          "sha256": "6fcbb6f07397b1f7fb5fce1b361b995eaf58c57259744816d385ca6ec4e3e7e4",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libfaiss-1.10.0-2.6.x86_64.rpm": {
-          "sha256": "f0c6a2559f81492698052fb8216581633e93ed2b8ed3098cc7bb2efd0699ee73",
+        "libfaiss-1.15.1-1.1.x86_64.rpm": {
+          "sha256": "c63293ae17d0bd8ba9ebbed6220f910c9fbb21dd0782fb3461ed46393c6db2b5",
           "arch": "x86_64",
           "fedora": [
             44
