@@ -11,6 +11,12 @@ if [[ -n "$config" && -f "$config" && -d "${repo_root}/pool" ]]; then
     base="$(basename "$deb")"
     [[ "$base" =~ _([^_]+)\.deb$ ]] || continue
     arch="${BASH_REMATCH[1]}"
+    # Architecture "all" is not a CPU architecture. Those packages are indexed
+    # into every binary-* list (php-faiss, php-llamacpp, …) and must stay in
+    # the pool. Deleting them leaves signed Packages entries that 404.
+    if [[ "$arch" == "all" ]]; then
+      continue
+    fi
     if jq -en --arg arch "$arch" --argjson allowed "$allowed" '$allowed | index($arch) != null' >/dev/null; then
       continue
     fi
