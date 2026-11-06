@@ -65,8 +65,14 @@ deb_local_suite_from_filename() {
 
 # Per-suite .deb builds encode the target suite as upstream+SUITE in the version.
 # Ignore other +suffixes (e.g. webkit +webdriver6, Debian +dfsg).
+#
+# $4 is a JSON array of suites that already have their own +suite build of this
+# same package. The unsuffixed build is kept off those suites. OLLMchat's
+# Ubuntu libocrpc1 depends on libgirepository-2.0-0; the +trixie build depends
+# on libgirepository-1.0-1. Publishing the Ubuntu .deb into trixie as well
+# makes that suite uninstallable.
 deb_file_suites_json() {
-  local filename="$1" default_suites_json="$2" apt_suites_json="${3:-[]}"
+  local filename="$1" default_suites_json="$2" apt_suites_json="${3:-[]}" exclude_suites_json="${4:-[]}"
   local suite
   if suite="$(deb_local_suite_from_filename "$filename" 2>/dev/null)"; then
     if jq -en --arg s "$suite" --argjson allowed "$apt_suites_json" \
@@ -75,5 +81,28 @@ deb_file_suites_json() {
       return 0
     fi
   fi
-  printf '%s\n' "$default_suites_json"
+  if [[ -z "$exclude_suites_json" || "$exclude_suites_json" == "[]" ]]; then
+    printf '%s\n' "$default_suites_json"
+    return 0
+  fi
+  jq -nc --argjson defaults "$default_suites_json" --argjson exclude "$exclude_suites_json" \
+    '$defaults - $exclude'
+}
+
+# Filenames on stdin. For each build whose +suffix is a configured APT suite,
+# print "pkg:arch<TAB>suite". Callers use this to keep the unsuffixed sibling
+# off that suite.
+deb_dedicated_suites_tsv() {
+  local apt_suites_json="$1" filename suite pkg arch
+  while IFS= read -r filename; do
+    [[ -n "$filename" ]] || continue
+    suite="$(deb_local_suite_from_filename "$filename" 2>/dev/null)" || continue
+    if ! jq -en --arg s "$suite" --argjson allowed "$apt_suites_json" \
+      '$allowed | index($s) != null' >/dev/null; then
+      continue
+    fi
+    pkg="$(deb_pkg_name_from_filename "$filename")" || continue
+    arch="$(deb_arch_from_filename "$filename")" || continue
+    printf '%s:%s\t%s\n' "$pkg" "$arch" "$suite"
+  done
 }

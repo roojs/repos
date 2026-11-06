@@ -699,7 +699,28 @@ packages_from_repo_dir() {
   local repo_dir="$1" package_type="$2" suites_json="$3" release_json="$4" fedora_allowlist="${5:-null}" publish_fedora="${6:-null}" publish_opensuse="${7:-null}"
   local packages="{}"
   local file base sha file_suites_json fc arch
+  local -A deb_dedicated_suites=()
+  local -a deb_names=()
+  local scan_file scan_base scan_key scan_suite exclude_json pkg_name pkg_arch pkg_key
   shopt -s nullglob
+  if [[ "$package_type" == "deb" ]]; then
+    for scan_file in "${repo_dir}"/*.deb; do
+      [[ -f "$scan_file" ]] || continue
+      scan_base="$(basename "$scan_file")"
+      if [[ -n "$release_json" ]] && ! jq -e --arg name "$scan_base" --arg ext "$package_type" \
+        '[.assets[] | select(.name == $name and (.name | endswith("." + $ext)))] | length > 0' \
+        <<< "$release_json" >/dev/null; then
+        continue
+      fi
+      deb_names+=("$scan_base")
+    done
+    if [[ "${#deb_names[@]}" -gt 0 ]]; then
+      while IFS=$'\t' read -r scan_key scan_suite; do
+        [[ -n "$scan_key" && -n "$scan_suite" ]] || continue
+        deb_dedicated_suites[$scan_key]="${deb_dedicated_suites[$scan_key]:-} ${scan_suite}"
+      done < <(printf '%s\n' "${deb_names[@]}" | deb_dedicated_suites_tsv "$apt_suites_json")
+    fi
+  fi
   for file in "${repo_dir}"/*."${package_type}"; do
     [[ -f "$file" ]] || continue
     base="$(basename "$file")"
@@ -737,7 +758,17 @@ packages_from_repo_dir() {
       if [[ -n "${pool_file_suites[$base]+x}" ]]; then
         file_suites_json="$(printf '%s\n' ${pool_file_suites[$base]} | awk 'NF' | jq -R . | jq -s .)"
       else
-        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json" "$apt_suites_json")"
+        exclude_json='[]'
+        pkg_name="$(deb_pkg_name_from_filename "$base" 2>/dev/null || true)"
+        pkg_arch="$(deb_arch_from_filename "$base" 2>/dev/null || true)"
+        pkg_key="${pkg_name}:${pkg_arch}"
+        if [[ -n "${deb_dedicated_suites[$pkg_key]:-}" ]]; then
+          exclude_json="$(printf '%s\n' ${deb_dedicated_suites[$pkg_key]} | awk 'NF' | sort -u | jq -R . | jq -s -c .)"
+        fi
+        if [[ "$exclude_json" != "[]" ]] && ! deb_local_suite_from_filename "$base" >/dev/null 2>&1; then
+          echo "Keeping ${base} off $(jq -r 'join(", ")' <<< "$exclude_json"): those suites have their own build." >&2
+        fi
+        file_suites_json="$(deb_file_suites_json "$base" "$file_suites_json" "$apt_suites_json" "$exclude_json")"
       fi
       packages="$(jq \
         --arg name "$base" \
