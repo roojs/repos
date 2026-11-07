@@ -1,19 +1,19 @@
 Origin: roojs
 Label: roojs
 Codename: resolute
-Date: Fri, 06 Nov 2026 09:21:11 UTC
+Date: Sat, 07 Nov 2026 02:30:01 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 7775c0c3fe5bbee73d8bb5fd721fb935 71423 main/binary-amd64/Packages
- 8a4acdab62eb76164d143b978534823f 15357 main/binary-amd64/Packages.gz
+ 205b5e15c9a8d510016bf7b89eb14adb 71423 main/binary-amd64/Packages
+ 723c5e2ed559893159b9a958e7f852ef 15342 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
 SHA1:
- bacab940e589cfa1aa15cfe23b0bcc9920cc03a3 71423 main/binary-amd64/Packages
- 120684e744a7ae0c099138db08518ffae4f86553 15357 main/binary-amd64/Packages.gz
+ c59f4361d06d38bc815707abedae09b4b43d4307 71423 main/binary-amd64/Packages
+ 8996219233f1a487b60b967c5a1e5e75b7c68448 15342 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
 SHA256:
- 65f8ab8d9c90e8f94b503fd24296945c491d702a9355bd938a8b1dd1c86e05f4 71423 main/binary-amd64/Packages
- 7c5274faf23cc50f73e900f7479461b0b84775afe4f88a123c9ba8be27dbf807 15357 main/binary-amd64/Packages.gz
+ dfa4de6bac915829dab9a1c87e076977340793c920386cb60eca7808b39dccc3 71423 main/binary-amd64/Packages
+ 2795cd96d5ccd1c54ac389cd746a51e7523901983a26f004bf8185f4e32a8c44 15342 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
