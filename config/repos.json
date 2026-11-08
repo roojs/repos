@@ -74,6 +74,17 @@
           "v*": "default"
         }
       }
+    },
+    {
+      "repo": "argusrm",
+      "rpm": true,
+      "fedora": [44],
+      "publish_fedora": [44],
+      "deb": {
+        "release_tags": {
+          "v*": "default"
+        }
+      }
     }
   ]
 }

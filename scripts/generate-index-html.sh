@@ -68,6 +68,11 @@ load_pkg_source_urls() {
         ;;
       repos) printf '%s\n' "$url" > "${work}/url/repos" ;;
       ubuntuzilla) printf '%s\n' "$url" > "${work}/url/thunderbird-mozilla-build" ;;
+      argusrm)
+        printf '%s\n' "$url" > "${work}/url/argusrm-server"
+        printf '%s\n' "$url" > "${work}/url/argusrm-agent"
+        printf '%s\n' "$url" > "${work}/url/argusrm-controller"
+        ;;
     esac
   done < <(jq -r '.projects[].repo' "$config")
 
@@ -314,6 +319,9 @@ package_group() {
     thunderbird-mozilla-build)
       printf '%s\n' ubuntuzilla
       ;;
+    argusrm*)
+      printf '%s\n' argusrm
+      ;;
     *)
       printf '%s\n' other
       ;;
@@ -330,6 +338,7 @@ package_group_title() {
     rooterm) printf '%s\n' RooTerm ;;
     roobuilder) printf '%s\n' RooBuilder ;;
     ubuntuzilla) printf '%s\n' Thunderbird ;;
+    argusrm) printf '%s\n' Argus ;;
     *) printf '%s\n' Other ;;
   esac
 }
@@ -359,6 +368,9 @@ package_group_blurb() {
       ;;
     ubuntuzilla)
       printf '%s\n' "Official Mozilla <a href=\"https://github.com/roojs/ubuntuzilla\">Thunderbird</a> Linux build, wrapped as a .deb so you can skip the snap."
+      ;;
+    argusrm)
+      printf '%s\n' "<a href=\"https://github.com/roojs/argusrm\">Argus</a> remote desktop manager: server, Linux agent, and controller."
       ;;
     *) printf '%s\n' "" ;;
   esac
@@ -401,6 +413,10 @@ pkg_source_url() {
       ;;
     thunderbird-mozilla-build)
       printf '%s\n' "${github_base}/ubuntuzilla"
+      return 0
+      ;;
+    argusrm-*)
+      printf '%s\n' "${github_base}/argusrm"
       return 0
       ;;
     libtree-sitter-*)
@@ -456,6 +472,9 @@ pkg_desc() {
           php[0-9]*-llamacpp) desc="PHP llama.cpp extension module" ;;
           php[0-9]*-faiss) desc="PHP FAISS extension module" ;;
           thunderbird-mozilla-build) desc="Official Mozilla Thunderbird" ;;
+          argusrm-server) desc="Argus remote management server" ;;
+          argusrm-agent) desc="Argus remote management agent" ;;
+          argusrm-controller) desc="Argus controller" ;;
           *) desc="" ;;
         esac
       fi
@@ -1097,7 +1116,7 @@ DNF
 GRID
 
   if [[ -s "${work}/pkg-names" ]]; then
-    for gid in ollmchat phpext treesitter webkit speech rooterm roobuilder ubuntuzilla other; do
+    for gid in ollmchat phpext treesitter webkit speech rooterm roobuilder argusrm ubuntuzilla other; do
       [[ -s "${work}/group/${gid}" ]] || continue
       title="$(package_group_title "$gid")"
       blurb="$(package_group_blurb "$gid")"
