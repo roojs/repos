@@ -1280,6 +1280,38 @@
           ]
         }
       }
+    },
+    "argusrm": {
+      "tag": "v0.1.0",
+      "packages": {
+        "argusrm-agent_0.1.0-1_amd64.deb": {
+          "sha256": "ebf6db2d8bd1325a820d98da5d37112a34568087a0e97261034560fcd8950296",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "argusrm-controller_0.1.0-1_amd64.deb": {
+          "sha256": "c9eb23c28dac95e7aa052689b585f8045cf585ef59f30a0b90f85050f3ef01a5",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        },
+        "argusrm-server_0.1.0-1_amd64.deb": {
+          "sha256": "c4d153af7f6eb6a89b34035c16d45851f43df15c8fde3884cab86c2f0ec87664",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing",
+            "resolute"
+          ]
+        }
+      }
     }
   },
   "rpms": {
@@ -1986,8 +2018,34 @@
           ]
         }
       }
+    },
+    "argusrm": {
+      "tag": "v0.1.0",
+      "packages": {
+        "argusrm-agent-0.1.0-1.fc44.x86_64.rpm": {
+          "sha256": "95309c25c6d1564994a10b358c2e4862ec9e15fd41715e4c29f40eb457ee4eed",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "argusrm-controller-0.1.0-1.fc44.x86_64.rpm": {
+          "sha256": "bc7441c328b1a4f984c33d452bc7cedbc4191bb9420874409b1e24c1a7d0aa75",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        },
+        "argusrm-server-0.1.0-1.fc44.x86_64.rpm": {
+          "sha256": "0cde22a22676cb426c9d9ff327aaf4a8977dac3f7d0d290bf6a0b5c44e557ba6",
+          "arch": "x86_64",
+          "fedora": [
+            44
+          ]
+        }
+      }
     }
   },
-  "repos_json_sha256": "4228f6d40c166dcb91ad7a805d92c78e0f790ab3119125205aaf046335cd6b9b",
+  "repos_json_sha256": "da4bf93383abc187fb6a3d6b221f202de2ed85318c22a987b5e40180ea419335",
   "distributions_sha256": "c33d2afed34d5da9522cab919d0b95148b8e939e9c5bcb2b55e3e29f3f38a6fa"
 }
