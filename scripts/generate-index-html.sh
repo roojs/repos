@@ -338,7 +338,7 @@ package_group_title() {
     rooterm) printf '%s\n' RooTerm ;;
     roobuilder) printf '%s\n' RooBuilder ;;
     ubuntuzilla) printf '%s\n' Thunderbird ;;
-    argusrm) printf '%s\n' Argus ;;
+    argusrm) printf '%s\n' "Argos RM" ;;
     *) printf '%s\n' Other ;;
   esac
 }
@@ -370,7 +370,7 @@ package_group_blurb() {
       printf '%s\n' "Official Mozilla <a href=\"https://github.com/roojs/ubuntuzilla\">Thunderbird</a> Linux build, wrapped as a .deb so you can skip the snap."
       ;;
     argusrm)
-      printf '%s\n' "<a href=\"https://github.com/roojs/argusrm\">Argus</a> remote desktop manager: server, Linux agent, and controller."
+      printf '%s\n' "<a href=\"https://github.com/roojs/argusrm\">Argos RM</a> is a remote management application for managing servers and desktop clients."
       ;;
     *) printf '%s\n' "" ;;
   esac
@@ -453,6 +453,9 @@ pkg_desc() {
   case "$pkg" in
     libwebkitgtk-6.0-webdriver4) desc="WebKitGTK WebDriver runtime library" ;;
     libwebkitgtk-6.0-webdriver-dev) desc="WebKitGTK WebDriver development files" ;;
+    argusrm-server|argusrm-server#run) desc="Argos RM server" ;;
+    argusrm-agent|argusrm-agent#run) desc="Argos RM agent for servers and desktops" ;;
+    argusrm-controller|argusrm-controller#run) desc="Argos RM controller" ;;
     *)
       if [[ -f "${work}/desc/${pkg}" ]]; then
         desc="$(cat "${work}/desc/${pkg}")"
@@ -472,9 +475,6 @@ pkg_desc() {
           php[0-9]*-llamacpp) desc="PHP llama.cpp extension module" ;;
           php[0-9]*-faiss) desc="PHP FAISS extension module" ;;
           thunderbird-mozilla-build) desc="Official Mozilla Thunderbird" ;;
-          argusrm-server) desc="Argus remote management server" ;;
-          argusrm-agent) desc="Argus remote management agent" ;;
-          argusrm-controller) desc="Argus controller" ;;
           *) desc="" ;;
         esac
       fi
