@@ -1677,6 +1677,28 @@ Description: PHP 8.4 extension for local GGUF embeddings
  and the rest). A SAPI installed later picks the module up from
  that registry.
 
+Package: pixie
+Version: 0.1.0-1+questing
+Architecture: all
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 53
+Depends: bash, ca-certificates, curl, jq, tar, xz-utils
+Homepage: https://github.com/roojs/pixie-pkg
+Priority: optional
+Section: devel
+Filename: pool/main/p/pixie/pixie_0.1.0-1+questing_all.deb
+Size: 12360
+SHA256: 44526c1146f4d87174a2ce2df2afbba4ca9855d6acd08bee70c45e8b7106e3d6
+SHA1: ed955218162767c47520254d973338747a162389
+MD5sum: 0e87a3a098b1ef37effbcd7411484fff
+Description: package manager for Pixiewood pixie libraries
+ pixie installs the prebuilt Android GTK libraries published by
+ pixiewood-pkgs. A system install keeps them in /usr/lib/pixie.
+ A user install keeps them in ~/.local/lib/pixie.
+ .
+ The command is pixie. install, pull, and apply are the operations
+ a build uses.
+
 Package: roobuilder
 Version: 5.0.11
 Architecture: amd64

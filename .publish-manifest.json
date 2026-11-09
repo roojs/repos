@@ -1324,6 +1324,35 @@
           ]
         }
       }
+    },
+    "pixie-pkg": {
+      "tag": "v0.1.0",
+      "packages": {
+        "pixie_0.1.0-1+plucky_all.deb": {
+          "sha256": "548795ccf5f7907afc022987452e0de93f142a4762c17689a4d604d1174e8ecd",
+          "suites": [
+            "plucky"
+          ]
+        },
+        "pixie_0.1.0-1+questing_all.deb": {
+          "sha256": "44526c1146f4d87174a2ce2df2afbba4ca9855d6acd08bee70c45e8b7106e3d6",
+          "suites": [
+            "questing"
+          ]
+        },
+        "pixie_0.1.0-1+trixie_all.deb": {
+          "sha256": "184777e3058d3072dd8809a0a4144d604964affa757356f914460f546b70e2db",
+          "suites": [
+            "trixie"
+          ]
+        },
+        "pixie_0.1.0-1_all.deb": {
+          "sha256": "c5f9fd3fee4a44f011545b11988c077c98a7efb21d798d3039740c2f2dc7370e",
+          "suites": [
+            "resolute"
+          ]
+        }
+      }
     }
   },
   "rpms": {
@@ -2056,8 +2085,27 @@
           ]
         }
       }
+    },
+    "pixie-pkg": {
+      "tag": "v0.1.0",
+      "packages": {
+        "pixie-0.1.0-1.fc44.noarch.rpm": {
+          "sha256": "406d76bb56116b67c88d9967ba97a5a4d7b0d0a79b195d4326d53685e358c987",
+          "arch": "noarch",
+          "fedora": [
+            44
+          ]
+        },
+        "pixie-0.1.0-1.noarch.rpm": {
+          "sha256": "67501e4ba2be7de02c8c246c0666d5251645f8c21e620228e088501e8ca2a3d1",
+          "arch": "noarch",
+          "opensuse": [
+            "tumbleweed"
+          ]
+        }
+      }
     }
   },
-  "repos_json_sha256": "66d9bd16ddac42d6dba38fd8c17f4805227fd08a75c02f008cb64130eb820598",
+  "repos_json_sha256": "97bd32c3d99c55ae513c9f499bafe9f785ec7e66bb4b1c9bafeae31cfa27dfe8",
   "distributions_sha256": "c33d2afed34d5da9522cab919d0b95148b8e939e9c5bcb2b55e3e29f3f38a6fa"
 }
