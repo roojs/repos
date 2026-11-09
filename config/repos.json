@@ -39,6 +39,7 @@
       "repo": "webkitgtk-automation",
       "deb": {
         "release_tags": {
+          "webkit2gtk-*-deb13u*-webdriver*": ["trixie"],
           "webkit2gtk-*-0ubuntu0.25.04.*-webdriver*": ["plucky"],
           "webkit2gtk-*-0ubuntu0.25.10.*-webdriver*": ["questing"],
           "webkit2gtk-*-0ubuntu0.26.04.*-webdriver*": ["resolute"]
