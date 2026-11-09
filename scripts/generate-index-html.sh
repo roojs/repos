@@ -73,6 +73,7 @@ load_pkg_source_urls() {
         printf '%s\n' "$url" > "${work}/url/argusrm-agent"
         printf '%s\n' "$url" > "${work}/url/argusrm-controller"
         ;;
+      pixie-pkg) printf '%s\n' "$url" > "${work}/url/pixie" ;;
     esac
   done < <(jq -r '.projects[].repo' "$config")
 
@@ -322,6 +323,9 @@ package_group() {
     argusrm*)
       printf '%s\n' argusrm
       ;;
+    pixie)
+      printf '%s\n' pixie
+      ;;
     *)
       printf '%s\n' other
       ;;
@@ -339,6 +343,7 @@ package_group_title() {
     roobuilder) printf '%s\n' RooBuilder ;;
     ubuntuzilla) printf '%s\n' Thunderbird ;;
     argusrm) printf '%s\n' "Argos RM" ;;
+    pixie) printf '%s\n' pixie ;;
     *) printf '%s\n' Other ;;
   esac
 }
@@ -371,6 +376,9 @@ package_group_blurb() {
       ;;
     argusrm)
       printf '%s\n' "<a href=\"https://github.com/roojs/argusrm\">Argos RM</a> is a remote management application for managing servers and desktop clients."
+      ;;
+    pixie)
+      printf '%s\n' "<a href=\"https://github.com/roojs/pixie-pkg\">pixie</a> installs prebuilt Android libraries published as <code>.pixie</code> files by <a href=\"https://github.com/roojs/pixiewood-pkgs\">pixiewood-pkgs</a>."
       ;;
     *) printf '%s\n' "" ;;
   esac
@@ -419,6 +427,10 @@ pkg_source_url() {
       printf '%s\n' "${github_base}/argusrm"
       return 0
       ;;
+    pixie)
+      printf '%s\n' "${github_base}/pixie-pkg"
+      return 0
+      ;;
     libtree-sitter-*)
       id="${pkg#libtree-sitter-}"
       id="${id%-dev}"
@@ -456,6 +468,7 @@ pkg_desc() {
     argusrm-server|argusrm-server#run) desc="Argos RM server" ;;
     argusrm-agent|argusrm-agent#run) desc="Argos RM agent for servers and desktops" ;;
     argusrm-controller|argusrm-controller#run) desc="Argos RM controller" ;;
+    pixie|pixie#run) desc="package manager for Pixiewood pixie libraries" ;;
     *)
       if [[ -f "${work}/desc/${pkg}" ]]; then
         desc="$(cat "${work}/desc/${pkg}")"
@@ -1116,7 +1129,7 @@ DNF
 GRID
 
   if [[ -s "${work}/pkg-names" ]]; then
-    for gid in ollmchat phpext treesitter webkit speech rooterm roobuilder argusrm ubuntuzilla other; do
+    for gid in ollmchat phpext treesitter webkit speech rooterm roobuilder pixie argusrm ubuntuzilla other; do
       [[ -s "${work}/group/${gid}" ]] || continue
       title="$(package_group_title "$gid")"
       blurb="$(package_group_blurb "$gid")"
