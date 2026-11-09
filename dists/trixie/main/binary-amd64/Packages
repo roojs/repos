@@ -1436,6 +1436,52 @@ Description: Tree-sitter parser for Vala language (runtime library)
  This package provides only the runtime libraries. For development, use
  libtree-sitter-dev which provides the main Tree-sitter API.
 
+Package: libwebkitgtk-6.0-webdriver-dev
+Source: webkit2gtk
+Version: 2.54.0-1~deb13u3+webdriver1
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 326
+Depends: libwebkitgtk-6.0-webdriver4 (= 2.54.0-1~deb13u3+webdriver1), libwebkitgtk-6.0-dev, libgtk-4-dev, libsoup-3.0-dev, libjavascriptcoregtk-6.0-dev
+Homepage: https://webkitgtk.org/
+Priority: optional
+Section: libdevel
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver-dev_2.54.0-1~deb13u3+webdriver1_amd64.deb
+Size: 72180
+SHA256: d37e33544b336b8e3e5b9977d728c289c117451f54a10539530394907d83e6b3
+SHA1: b35c2e5d88535bc7d73f2afea51007dd586f4b26
+MD5sum: 6d880109d9f2f93830eded99092700f2
+Description: pkg-config for libwebkitgtk-6.0-webdriver (thin -dev package)
+ Ships webkitgtk-6.0-webdriver.pc plus navigator.webdriver GTK extension
+ header/vapi. Base WebKitGTK API comes from system libwebkitgtk-6.0-dev.
+
+Package: libwebkitgtk-6.0-webdriver4
+Source: webkit2gtk
+Version: 2.54.0-1~deb13u3+webdriver1
+Architecture: amd64
+Maintainer: Alan Knowles <alan@roojs.com>
+Installed-Size: 98182
+Depends: libjavascriptcoregtk-6.0-1, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, libgles2, bubblewrap (>= 0.3.1), xdg-dbus-proxy, libatomic1 (>= 4.8), libavif16 (>= 1.2.1), libc6 (>= 2.38), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdrm2 (>= 2.4.107), libenchant-2-2 (>= 2.2.3), libepoxy0 (>= 1.3), libexpat1 (>= 2.1~beta3), libflite1 (>= 2.0.0-release), libfontconfig1 (>= 2.12.6), libfreetype6 (>= 2.11.1), libgbm1 (>= 21.3.0~rc1), libgcc-s1 (>= 4.0), libgcrypt20 (>= 1.11.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0t64 (>= 2.80.0), libgpg-error0 (>= 1.14), libgraphene-1.0-0 (>= 1.5.4), libgstreamer-gl1.0-0 (>= 1.14.0), libgstreamer-plugins-base1.0-0 (>= 1.23.1), libgstreamer1.0-0 (>= 1.25.1), libgtk-4-1 (>= 4.15.4), libharfbuzz-icu0 (>= 0.9.9), libharfbuzz0b (>= 1.8.6), libhyphen0 (>= 2.7.1), libicu76 (>= 76.1-1~), libjpeg62-turbo (>= 1:1.5.0), libjxl0.11 (>= 0.6.1), liblcms2-2 (>= 2.2+git20110628), libmanette-0.2-0 (>= 0.2.0), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libpng16-16t64 (>= 1.6.46), libseccomp2 (>= 0.0.0~20120605), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.8.7), libstdc++6 (>= 13.1), libsystemd0, libtasn1-6 (>= 4.14), libvulkan1 (>= 1.2.131.2), libwayland-client0 (>= 1.20.0), libwayland-egl1 (>= 1.15.0), libwayland-server0 (>= 1.0.2), libwebp7 (>= 1.5.0), libwebpdemux2 (>= 1.5.0), libwebpmux3 (>= 1.5.0), libx11-6, libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), zlib1g (>= 1:1.2.11.dfsg)
+Recommends: gstreamer1.0-gl, libgl1-mesa-dri, xdg-desktop-portal-gtk, gstreamer1.0-libav, gstreamer1.0-plugins-bad
+Suggests: gstreamer1.0-alsa
+Multi-Arch: same
+Homepage: https://webkitgtk.org/
+Priority: optional
+Section: libs
+Filename: pool/main/w/webkit2gtk/libwebkitgtk-6.0-webdriver4_2.54.0-1~deb13u3+webdriver1_amd64.deb
+Size: 24591096
+SHA256: 40f4401514c531722ca56863d5d0fbc4f5a41b8582bdaa74a3a445c14f81c4b2
+SHA1: 97584820cabd5befcd0843020c123204a4e30bca
+MD5sum: c7be9fe0b1936630561066459e8ea260
+Description: WebKitGTK 6.0 runtime with WebDriver interactions (parallel install)
+ Parallel-install rebuild of Ubuntu libwebkitgtk-6.0. Coexists with
+ system libwebkitgtk-6.0-4 and links against stock libjavascriptcoregtk-6.0-1.
+ WebDriver interactions (#318171); navigator.webdriver policy API
+ (#165269, upstream Auto default). Packaged by roojs.
+ .
+ Use system webkitgtk-webdriver for the automation server; link apps
+ against this library for Element Click / Send Keys on GTK4.
+
 Package: ollmchat
 Version: 1.4.7-1+trixie
 Architecture: amd64

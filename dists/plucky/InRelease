@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: plucky
-Date: Sun, 08 Nov 2026 12:45:53 UTC
+Date: Mon, 09 Nov 2026 04:36:48 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
@@ -22,8 +22,8 @@ SHA256:
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCavBvAQAKCRADhhQ8Yzk0
-cHrvAP9M65UlKNiJ0EsX5JCnVhlOaqbWbkFfq+xPLjzcbnp0DgEAl8Fpovfk4LaA
-UfB9jiRPI7ugodMMTsZTZ6HOMA6GjA8=
-=oOrb
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCavFN4AAKCRADhhQ8Yzk0
+cDJTAQDrfMv9EuKucOqsxLUpOL+zg8+aFA6zNgh3scKUUx2SxQD+K5n8JKqCrcHz
+7lRoC4HdXOZMzQJ2L4G5owgMQIl0gwg=
+=JphS
 -----END PGP SIGNATURE-----

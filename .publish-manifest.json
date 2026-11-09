@@ -976,7 +976,7 @@
       }
     },
     "webkitgtk-automation": {
-      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver6;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver5;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver6",
+      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver6;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver5;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver6;webkit2gtk-2.54.0-1-deb13u3-webdriver1",
       "packages": {
         "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver6_amd64.deb": {
           "sha256": "7004fd11bf2b810aa3609dea6806bfc20ee1ccc1164cc43c37b59d380735941b",
@@ -1012,6 +1012,18 @@
           "sha256": "f70f3c546676e9a2317ab2b0e77fc9db3e6722056783a22e7cbd35e486b2dba6",
           "suites": [
             "resolute"
+          ]
+        },
+        "libwebkitgtk-6.0-webdriver-dev_2.54.0-1.deb13u3+webdriver1_amd64.deb": {
+          "sha256": "d37e33544b336b8e3e5b9977d728c289c117451f54a10539530394907d83e6b3",
+          "suites": [
+            "trixie"
+          ]
+        },
+        "libwebkitgtk-6.0-webdriver4_2.54.0-1.deb13u3+webdriver1_amd64.deb": {
+          "sha256": "40f4401514c531722ca56863d5d0fbc4f5a41b8582bdaa74a3a445c14f81c4b2",
+          "suites": [
+            "trixie"
           ]
         }
       }
@@ -2046,6 +2058,6 @@
       }
     }
   },
-  "repos_json_sha256": "da4bf93383abc187fb6a3d6b221f202de2ed85318c22a987b5e40180ea419335",
+  "repos_json_sha256": "66d9bd16ddac42d6dba38fd8c17f4805227fd08a75c02f008cb64130eb820598",
   "distributions_sha256": "c33d2afed34d5da9522cab919d0b95148b8e939e9c5bcb2b55e3e29f3f38a6fa"
 }
