@@ -1,61 +1,68 @@
 Package: argusrm-agent
 Source: argusrm
-Version: 0.1.1-1
+Version: 0.1.2-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 218
-Depends: libadwaita-1-0 (>= 1.5~beta), libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.80.0), libgtk-4-1 (>= 4.12.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9)
+Installed-Size: 178
+Depends: libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.80.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9)
 Recommends: avahi-daemon
+Breaks: argusrm-agent-cli
+Replaces: argusrm-agent-cli
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-agent_0.1.1-1_amd64.deb
-Size: 67244
-SHA256: d0fe9b4289024e7ceb2e068f8dd2804c6a42b3838f8f7a53d5f04bb7583f650c
-SHA1: 9fbd1b46be1c7df1a21dcf1584b32c30a327fbfe
-MD5sum: d7ce64d916d03fe1518bbc1d5cefade2
-Description: Argus remote management agent
- This package installs the agent on a managed Linux machine. Registration
- enables and starts its systemd or SysV service.
+Filename: pool/main/a/argusrm/argusrm-agent_0.1.2-1_amd64.deb
+Size: 52406
+SHA256: 55c58e41966d407fd9e14004b8ae5f526c21440783c7ebf079ee14168549e6c0
+SHA1: 6bf2926cada62c3230b18788a594101f4baa2159
+MD5sum: 88705edf63c4f07dab8fa8b1642cb44b
+Description: Argus Remote Manager command-line agent
+ This package installs the agent on a managed Linux machine. The command
+ is argusrm-agent. It does not use GTK. Registration from the command
+ line enables and starts its systemd or SysV service. This is the package
+ to install on a server.
 
 Package: argusrm-controller
 Source: argusrm
-Version: 0.1.1-1
+Version: 0.1.2-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 187
-Depends: libadwaita-1-0 (>= 1.5~beta), libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libgee-0.8-2 (>= 0.10.1), libglib2.0-0t64 (>= 2.64.0), libgtk-4-1 (>= 4.12.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libsqlite3-0 (>= 3.5.9)
+Installed-Size: 284
+Depends: libadwaita-1-0 (>= 1.5~beta), libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.64.0), libgtk-4-1 (>= 4.0.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libsqlite3-0 (>= 3.5.9)
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-controller_0.1.1-1_amd64.deb
-Size: 61824
-SHA256: b9c1a79ec666cd29e157c8138b14b4050e9e9427ba37d375a05c9f7d13049cdd
-SHA1: 8958cc355a5c99d426cb19797c3f10bbac7d4a84
-MD5sum: 2a683c3f015f2626662467bda8716358
-Description: Argus controller
- This package contains the desktop and command-line controller. It enrolls
- with an Argus server, lists agents, and runs a command on one agent.
+Filename: pool/main/a/argusrm/argusrm-controller_0.1.2-1_amd64.deb
+Size: 92760
+SHA256: ee4c34bff862b06355120964a7b0a10e1b4a27f106a7312fd63fcf02fbea1319
+SHA1: f5dadb857cfd79e768bf367370861cb60449cc36
+MD5sum: 4e2f8a44b0bc3400436f753869263051
+Description: Argus Remote Manager controller
+ This package contains the desktop controller. It enrolls with an Argus
+ Remote Manager server and opens the management window. Registration on
+ the server uses argusrm-controller-cli from the server package.
 
 Package: argusrm-server
 Source: argusrm
-Version: 0.1.1-1
+Version: 0.1.2-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 455
-Depends: libc6 (>= 2.34), libgee-0.8-2 (>= 0.8.3), libgit2-glib-1.0-0 (>= 0.26.2), libglib2.0-0t64 (>= 2.60.0), libgnutls30t64 (>= 3.7.2), libjson-glib-1.0-0 (>= 1.5.2), libnftables1 (>= 1.0.2), libnl-3-200 (>= 3.2.21), libnl-route-3-200 (>= 3.7.0), libsoup-3.0-0 (>= 3.1.3), libsqlite3-0 (>= 3.5.9)
+Installed-Size: 558
+Depends: libc6 (>= 2.34), libgee-0.8-2 (>= 0.10.1), libgit2-glib-1.0-0 (>= 0.26.2), libglib2.0-0t64 (>= 2.60.0), libgnutls30t64 (>= 3.7.2), libjson-glib-1.0-0 (>= 1.5.2), libnftables1 (>= 1.0.2), libnl-3-200 (>= 3.2.21), libnl-route-3-200 (>= 3.7.0), libsoup-3.0-0 (>= 3.1.3), libsqlite3-0 (>= 3.5.9)
 Recommends: avahi-daemon
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-server_0.1.1-1_amd64.deb
-Size: 131462
-SHA256: 669e4454f3be9682bd568367feda9099fc5f09bb26fdb6e4a3f613b10683f91e
-SHA1: b911c819a9222f4fb919b8034cee2b7a81572e05
-MD5sum: 7421011924c44a3f873b01f9a4312b1f
-Description: Argus remote management server
- Argus enrolls managed machines, provides authenticated downloads, and
- coordinates remote management operations.
+Filename: pool/main/a/argusrm/argusrm-server_0.1.2-1_amd64.deb
+Size: 158074
+SHA256: db9616ad82d0fcc2608dde1cd7289a43238c3ba93b7c5bfca9379ea1417076fb
+SHA1: 9592a6d948e1add6171ba7f9ae4fcf607b823cf6
+MD5sum: 20345f479fef4b7b572c95476de9ee4d
+Description: Argus Remote Manager server
+ Argus Remote Manager enrolls managed machines, provides authenticated
+ downloads, and coordinates remote management operations. This package
+ includes argusrm-controller-cli, the command-line controller that opens
+ registration on the server. That command does not use GTK.
 
 Package: ibus-sherpa-onnx
 Version: 0.3.9-1

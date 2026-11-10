@@ -4,26 +4,26 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: resolute
-Date: Mon, 09 Nov 2026 05:17:49 UTC
+Date: Tue, 10 Nov 2026 07:36:08 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 4eae1af279951e202f59c515584e78f0 75005 main/binary-amd64/Packages
- 2b2a853d1265d602e92be667f224960d 16328 main/binary-amd64/Packages.gz
+ 2a2f2d923dde1256e58d5d4875cb7aad 75346 main/binary-amd64/Packages
+ 731588a56cb53ad438c50ed3190faaab 16462 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
 SHA1:
- 7744fd98ad3cdb8c1a6789a51b37e97d7705324d 75005 main/binary-amd64/Packages
- 11fb0e155402395214804686d7bf0556b4a97e19 16328 main/binary-amd64/Packages.gz
+ b8f3bb1888f687abf8706a0d21eb8f5fb3432123 75346 main/binary-amd64/Packages
+ 529bb017f18587a88a4759669710efd85b768b27 16462 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
 SHA256:
- 49d5ba4db21176be6ab7709b5e89e73e2165e24f4256e520a4d47d05dbeeb086 75005 main/binary-amd64/Packages
- fad3f522ae5c32c4bc30db56ccd5c41bfe060b222ce319980a8226e7084538c7 16328 main/binary-amd64/Packages.gz
+ b04b9d31e25f41b87ca9868afa59712b0203a4d9ccb10307c461903ffd635744 75346 main/binary-amd64/Packages
+ 6a17cd4b413d228817bd48aca2c253ff1aeac39aae29edcc05cb4ea890ab44af 16462 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCavFXfQAKCRADhhQ8Yzk0
-cPxyAQC9hHFBC0/ykqQCQ0JOzzURv1Aoj15PGF7BpKZZREchSgD+JJTVsVW32nbl
-ISY0nFcTx2wML7QQmXauk51hobVzPAw=
-=xncA
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCavLJaAAKCRADhhQ8Yzk0
+cHKCAP9LtsYEogmhWHLJDwXswEDtwceBF2MPa0kKqbxZbu+WOQEAq+NZ5N1NbObP
+vcPgILfFKrzGd2fToj8rH62BoOyKVwc=
+=jaxi
 -----END PGP SIGNATURE-----
