@@ -1684,26 +1684,26 @@ Description: PHP 8.4 extension for local GGUF embeddings
  and the rest). A SAPI installed later picks the module up from
  that registry.
 
-Package: pixie
-Version: 0.1.0-1+plucky
+Package: pixie-pkg
+Version: 0.2.0-1+plucky
 Architecture: all
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 53
+Installed-Size: 65
 Depends: bash, ca-certificates, curl, jq, tar, xz-utils
 Homepage: https://github.com/roojs/pixie-pkg
 Priority: optional
 Section: devel
-Filename: pool/main/p/pixie/pixie_0.1.0-1+plucky_all.deb
-Size: 12352
-SHA256: 548795ccf5f7907afc022987452e0de93f142a4762c17689a4d604d1174e8ecd
-SHA1: f9aba1138d1d1f89cd44e439df1386d5f4814898
-MD5sum: 1b61a6a594952a4f0d0bd8d66b0e45a9
+Filename: pool/main/p/pixie-pkg/pixie-pkg_0.2.0-1+plucky_all.deb
+Size: 15378
+SHA256: 6bbd309e11e8a81d1f390200a496e794aae36352b5303cdfa2bfacee1d2508ee
+SHA1: ebf538bc9dd485f3523d03b611882c0510ab2877
+MD5sum: 8d1332f6cefc9253bc4fdb3a3bbda3b3
 Description: package manager for Pixiewood pixie libraries
- pixie installs the prebuilt Android GTK libraries published by
+ pixie-pkg installs the prebuilt Android GTK libraries published by
  pixiewood-pkgs. A system install keeps them in /usr/lib/pixie.
  A user install keeps them in ~/.local/lib/pixie.
  .
- The command is pixie. install, pull, and apply are the operations
+ The command is pixie-pkg. install, pull, and apply are the operations
  a build uses.
 
 Package: roobuilder
