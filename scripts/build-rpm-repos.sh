@@ -41,6 +41,7 @@ for rpm in "${rpms[@]}"; do
   fi
 
   if [[ -f "$index" ]]; then
+    published=0
     meta="$(jq -c --arg file "$base" '
       [
         .[]
@@ -56,7 +57,7 @@ for rpm in "${rpms[@]}"; do
         [[ -n "$fc" ]] || continue
         publish_rpm "$rpm" "$fc" "$arch"
       done < <(jq -r '.fedora[]' <<< "$meta")
-      continue
+      published=1
     fi
 
     meta="$(jq -c --arg file "$base" '
@@ -74,6 +75,10 @@ for rpm in "${rpms[@]}"; do
         [[ -n "$release" ]] || continue
         publish_rpm_opensuse "$rpm" "$release" "$arch"
       done < <(jq -r '.opensuse[]' <<< "$meta")
+      published=1
+    fi
+
+    if [[ "$published" -eq 1 ]]; then
       continue
     fi
   fi

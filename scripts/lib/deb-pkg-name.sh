@@ -71,6 +71,10 @@ deb_local_suite_from_filename() {
 # Ubuntu libocrpc1 depends on libgirepository-2.0-0; the +trixie build depends
 # on libgirepository-1.0-1. Publishing the Ubuntu .deb into trixie as well
 # makes that suite uninstallable.
+#
+# A release that ships one unsuffixed .deb, with no +suite sibling, is published
+# to every suite in $2. pixie-pkg does this: the package is a shell script
+# (Architecture: all) and the apt suites share that one file.
 deb_file_suites_json() {
   local filename="$1" default_suites_json="$2" apt_suites_json="${3:-[]}" exclude_suites_json="${4:-[]}"
   local suite

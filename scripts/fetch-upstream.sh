@@ -586,6 +586,7 @@ persist_package_index() {
 
 filter_rpm_index_by_fedora() {
   local repo project allowlist publish_opensuse filename fc fedora_json opensuse_json
+  local keep_opensuse keep_fedora
   while IFS= read -r repo; do
     [[ -n "$repo" ]] || continue
     project="$(repos_config_project_json "$config" "$repo")"
@@ -605,35 +606,46 @@ filter_rpm_index_by_fedora() {
       fi
 
       opensuse_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].opensuse // null' <<< "$index")"
-      if [[ "$opensuse_json" != "null" ]]; then
-        if [[ "$publish_opensuse" == "null" ]]; then
-          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-          echo "Dropping ${filename} from index: openSUSE publish disabled." >&2
-        elif ! jq -en --argjson allowlist "$publish_opensuse" --argjson opensuse "$opensuse_json" '
+      fedora_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].fedora // null' <<< "$index")"
+      keep_opensuse=false
+      keep_fedora=false
+      if [[ "$opensuse_json" != "null" && "$publish_opensuse" != "null" ]] \
+        && jq -en --argjson allowlist "$publish_opensuse" --argjson opensuse "$opensuse_json" '
           [ $opensuse[] | select($allowlist | index(.) != null) ] | length > 0
         ' >/dev/null; then
-          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-          echo "Dropping ${filename} from index: openSUSE metadata not in allowlist." >&2
-        fi
-        continue
+        keep_opensuse=true
       fi
-
-      fedora_json="$(jq -c --arg repo "$repo" --arg file "$filename" '.[$repo].packages[$file].fedora // null' <<< "$index")"
       if [[ "$fedora_json" != "null" ]]; then
-        if [[ "$allowlist" == "null" ]]; then
-          continue
-        fi
-        if ! jq -en --argjson allowlist "$allowlist" --argjson fedora "$fedora_json" '
+        if [[ "$allowlist" == "null" ]] || jq -en --argjson allowlist "$allowlist" --argjson fedora "$fedora_json" '
           [ $fedora[] | select($allowlist | index(.) != null) ] | length > 0
         ' >/dev/null; then
-          index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+          keep_fedora=true
+        fi
+      fi
+
+      # One dist-tag-free RPM can carry both Fedora and openSUSE targets.
+      # Drop a side that is not allowed, and drop the file only when neither remains.
+      if [[ "$keep_opensuse" == false && "$keep_fedora" == false ]]; then
+        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
+        if [[ "$opensuse_json" != "null" && "$publish_opensuse" == "null" && "$fedora_json" == "null" ]]; then
+          echo "Dropping ${filename} from index: openSUSE publish disabled." >&2
+        elif [[ "$opensuse_json" != "null" && "$fedora_json" == "null" ]]; then
+          echo "Dropping ${filename} from index: openSUSE metadata not in allowlist." >&2
+        elif [[ "$fedora_json" != "null" && "$opensuse_json" == "null" ]]; then
           echo "Dropping ${filename} from index: Fedora metadata not in allowlist." >&2
+        else
+          echo "Dropping ${filename} from index: no Fedora or openSUSE release metadata." >&2
         fi
         continue
       fi
-
-      index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file])' <<< "$index")"
-      echo "Dropping ${filename} from index: no Fedora or openSUSE release metadata." >&2
+      if [[ "$opensuse_json" != "null" && "$keep_opensuse" == false ]]; then
+        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file].opensuse)' <<< "$index")"
+        echo "Dropping openSUSE metadata for ${filename}." >&2
+      fi
+      if [[ "$fedora_json" != "null" && "$keep_fedora" == false ]]; then
+        index="$(jq --arg repo "$repo" --arg file "$filename" 'del(.[$repo].packages[$file].fedora)' <<< "$index")"
+        echo "Dropping Fedora metadata for ${filename}." >&2
+      fi
     done < <(jq -r --arg repo "$repo" '.[$repo].packages | keys[]?' <<< "$index")
     if jq -e --arg repo "$repo" '.[$repo].packages | length == 0' <<< "$index" >/dev/null; then
       index="$(jq --arg repo "$repo" 'del(.[$repo])' <<< "$index")"
@@ -665,6 +677,23 @@ filter_deb_index_by_architecture() {
       index="$(jq --arg repo "$repo" 'del(.[$repo])' <<< "$index")"
     fi
   done < <(jq -r 'keys[]' <<< "$index")
+}
+
+# Print "name<TAB>arch" for an RPM filename.
+# Fedora builds are name-version-release.fcNN.arch.rpm.
+# A dist-tag-free file is name-version-release.arch.rpm (openSUSE, or a
+# single package shared by every RPM repository).
+rpm_name_arch_from_filename() {
+  local base="$1"
+  if [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.fc[0-9]+\.([^.]+)\.rpm$ ]]; then
+    printf '%s\t%s\n' "${BASH_REMATCH[1]}" "${BASH_REMATCH[4]}"
+    return 0
+  fi
+  if [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
+    printf '%s\t%s\n' "${BASH_REMATCH[1]}" "${BASH_REMATCH[4]}"
+    return 0
+  fi
+  return 1
 }
 
 merge_repo_index_entry() {
@@ -700,8 +729,10 @@ packages_from_repo_dir() {
   local packages="{}"
   local file base sha file_suites_json fc arch
   local -A deb_dedicated_suites=()
+  local -A rpm_fedora_builds=()
   local -a deb_names=()
   local scan_file scan_base scan_key scan_suite exclude_json pkg_name pkg_arch pkg_key
+  local scan_name scan_arch rpm_name rpm_arch share_fedora share_opensuse fedora_json opensuse_json
   shopt -s nullglob
   if [[ "$package_type" == "deb" ]]; then
     for scan_file in "${repo_dir}"/*.deb; do
@@ -721,6 +752,21 @@ packages_from_repo_dir() {
       done < <(printf '%s\n' "${deb_names[@]}" | deb_dedicated_suites_tsv "$apt_suites_json")
     fi
   fi
+  if [[ "$package_type" == "rpm" ]]; then
+    for scan_file in "${repo_dir}"/*.rpm; do
+      [[ -f "$scan_file" ]] || continue
+      scan_base="$(basename "$scan_file")"
+      [[ "$scan_base" == *debuginfo* || "$scan_base" == *debugsource* ]] && continue
+      [[ "$scan_base" =~ \.fc[0-9]+\. ]] || continue
+      if [[ -n "$release_json" ]] && ! jq -e --arg name "$scan_base" --arg ext "$package_type" \
+        '[.assets[] | select(.name == $name and (.name | endswith("." + $ext)))] | length > 0' \
+        <<< "$release_json" >/dev/null; then
+        continue
+      fi
+      IFS=$'\t' read -r scan_name scan_arch < <(rpm_name_arch_from_filename "$scan_base") || continue
+      rpm_fedora_builds["${scan_name}:${scan_arch}"]=1
+    done
+  fi
   for file in "${repo_dir}"/*."${package_type}"; do
     [[ -f "$file" ]] || continue
     base="$(basename "$file")"
@@ -739,8 +785,18 @@ packages_from_repo_dir() {
             continue
           fi
         fi
-      elif [[ "$publish_opensuse" != "null" ]] && [[ "${base}" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
-        :
+      elif [[ "${base}" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
+        rpm_name="${BASH_REMATCH[1]}"
+        rpm_arch="${BASH_REMATCH[4]}"
+        if [[ "$publish_opensuse" != "null" ]]; then
+          :
+        elif [[ "$publish_fedora" != "null" && -z "${rpm_fedora_builds[${rpm_name}:${rpm_arch}]:-}" ]]; then
+          :
+        elif [[ "$fedora_allowlist" != "null" ]]; then
+          rm -f "$file"
+          echo "Skipping ${base}: cannot parse Fedora release from filename." >&2
+          continue
+        fi
       elif [[ "$fedora_allowlist" != "null" ]]; then
         rm -f "$file"
         echo "Skipping ${base}: cannot parse Fedora release from filename." >&2
@@ -785,15 +841,50 @@ packages_from_repo_dir() {
         --argjson fedora "$publish_fedora" \
         '. + {($name): {sha256: $sha, arch: $arch, fedora: $fedora}}' \
         <<< "$packages")"
-    elif [[ "$publish_opensuse" != "null" ]] && [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]] && [[ "$base" != *\.fc* ]]; then
+    elif [[ ! "$base" =~ \.fc[0-9]+\. ]] && [[ "$base" =~ ^(.+)-([^-]+)-([^-]+)\.([^.]+)\.rpm$ ]]; then
+      rpm_name="${BASH_REMATCH[1]}"
       arch="${BASH_REMATCH[4]}"
-      packages="$(jq \
-        --arg name "$base" \
-        --arg sha "$sha" \
-        --arg arch "$arch" \
-        --argjson opensuse "$publish_opensuse" \
-        '. + {($name): {sha256: $sha, arch: $arch, opensuse: $opensuse}}' \
-        <<< "$packages")"
+      share_fedora=false
+      share_opensuse=false
+      if [[ "$publish_opensuse" != "null" ]]; then
+        share_opensuse=true
+      fi
+      # A .fcNN file is the Fedora build. The dist-tag-free sibling stays on
+      # openSUSE. When the release has no Fedora build of this package, the
+      # one file is a shell script shared by every configured RPM repository
+      # (pixie-pkg: pixie-pkg-VERSION-1.noarch.rpm).
+      if [[ "$publish_fedora" != "null" && -z "${rpm_fedora_builds[${rpm_name}:${arch}]:-}" ]]; then
+        share_fedora=true
+        echo "Sharing ${base} across Fedora $(jq -r 'map("fc" + tostring) | join(", ")' <<< "$publish_fedora"): no dist-tagged build in this release." >&2
+      fi
+      if [[ "$share_fedora" == false && "$share_opensuse" == false ]]; then
+        packages="$(jq \
+          --arg name "$base" \
+          --arg sha "$sha" \
+          '. + {($name): {sha256: $sha}}' \
+          <<< "$packages")"
+      else
+        fedora_json='null'
+        opensuse_json='null'
+        if [[ "$share_fedora" == true ]]; then
+          fedora_json="$publish_fedora"
+        fi
+        if [[ "$share_opensuse" == true ]]; then
+          opensuse_json="$publish_opensuse"
+        fi
+        packages="$(jq \
+          --arg name "$base" \
+          --arg sha "$sha" \
+          --arg arch "$arch" \
+          --argjson fedora "$fedora_json" \
+          --argjson opensuse "$opensuse_json" \
+          '. + {($name): (
+              {sha256: $sha, arch: $arch}
+              + (if $fedora == null then {} else {fedora: $fedora} end)
+              + (if $opensuse == null then {} else {opensuse: $opensuse} end)
+            )}' \
+          <<< "$packages")"
+      fi
     else
       packages="$(jq \
         --arg name "$base" \
@@ -1091,6 +1182,11 @@ rpm_pool_should_skip() {
   done < <(rpm_pool_seed_names)
   return 0
 }
+
+# Tests source this file with FETCH_UPSTREAM_LIB_ONLY=1 and stop before fetching.
+if [[ "${FETCH_UPSTREAM_LIB_ONLY:-}" == 1 && "${BASH_SOURCE[0]}" != "$0" ]]; then
+  return 0
+fi
 
 while IFS= read -r repo; do
   [[ -n "$repo" ]] || continue
