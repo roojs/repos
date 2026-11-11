@@ -1326,28 +1326,28 @@
       }
     },
     "pixie-pkg": {
-      "tag": "v0.2.0",
+      "tag": "v0.3.0",
       "packages": {
-        "pixie-pkg_0.2.0-1+plucky_all.deb": {
-          "sha256": "6bbd309e11e8a81d1f390200a496e794aae36352b5303cdfa2bfacee1d2508ee",
+        "pixie-pkg_0.3.0-1+plucky_all.deb": {
+          "sha256": "538b99cccee6347df7f729f525837a5df2cff4e09417843841c06789db495ae0",
           "suites": [
             "plucky"
           ]
         },
-        "pixie-pkg_0.2.0-1+questing_all.deb": {
-          "sha256": "13d515df0315ab5ba5f54d3cc679d08cbf68cf9530724c58ec1588af2fb92ca6",
+        "pixie-pkg_0.3.0-1+questing_all.deb": {
+          "sha256": "0d45077b3eb79ed4dac7e4119e3313c4d936cf9472b88fb963e3be231f7cd720",
           "suites": [
             "questing"
           ]
         },
-        "pixie-pkg_0.2.0-1+trixie_all.deb": {
-          "sha256": "3d5e3697717ecfe64d02ac350cbc077a4a8dee54141e7ed23e168eedf4217893",
+        "pixie-pkg_0.3.0-1+trixie_all.deb": {
+          "sha256": "b7ffa2748770ab2cb4b5615ccb25c8b2927d1f0f1cd2afb1c6e1be20f030857f",
           "suites": [
             "trixie"
           ]
         },
-        "pixie-pkg_0.2.0-1_all.deb": {
-          "sha256": "569612515f39d2dc57919e551635db533942ced674d97520ffe4fa18868537a0",
+        "pixie-pkg_0.3.0-1_all.deb": {
+          "sha256": "c22489877e9c6c9399f2779fdaa09d06e5f02ee8d3163260207c552b5425b272",
           "suites": [
             "resolute"
           ]
@@ -2094,17 +2094,17 @@
       }
     },
     "pixie-pkg": {
-      "tag": "v0.2.0",
+      "tag": "v0.3.0",
       "packages": {
-        "pixie-pkg-0.2.0-1.fc44.noarch.rpm": {
-          "sha256": "710438599667add010fea87a40a81e3b45b65c07b3f9ada234ceb474086de067",
+        "pixie-pkg-0.3.0-1.fc44.noarch.rpm": {
+          "sha256": "1d9c942a7803196109488b8c7c026f269312749ab2470c3802cd8f2dca37f980",
           "arch": "noarch",
           "fedora": [
             44
           ]
         },
-        "pixie-pkg-0.2.0-1.noarch.rpm": {
-          "sha256": "3b11e4df5d03e6a14502a1b1fafa95413a40950eb2506da51735e89575b37679",
+        "pixie-pkg-0.3.0-1.noarch.rpm": {
+          "sha256": "2ba09519a3d71b130a121e25e3233f17edf3e1b1fe14a31881722acb4ac88168",
           "arch": "noarch",
           "opensuse": [
             "tumbleweed"

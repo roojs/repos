@@ -1685,7 +1685,7 @@ Description: PHP 8.4 extension for local GGUF embeddings
  that registry.
 
 Package: pixie-pkg
-Version: 0.2.0-1+questing
+Version: 0.3.0-1+questing
 Architecture: all
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 65
@@ -1693,11 +1693,11 @@ Depends: bash, ca-certificates, curl, jq, tar, xz-utils
 Homepage: https://github.com/roojs/pixie-pkg
 Priority: optional
 Section: devel
-Filename: pool/main/p/pixie-pkg/pixie-pkg_0.2.0-1+questing_all.deb
-Size: 15374
-SHA256: 13d515df0315ab5ba5f54d3cc679d08cbf68cf9530724c58ec1588af2fb92ca6
-SHA1: 33bb077b5e03ae91b73bc6b909e487860833a995
-MD5sum: a6f34551a6bd4088ef662b5ba0d07566
+Filename: pool/main/p/pixie-pkg/pixie-pkg_0.3.0-1+questing_all.deb
+Size: 15778
+SHA256: 0d45077b3eb79ed4dac7e4119e3313c4d936cf9472b88fb963e3be231f7cd720
+SHA1: ee9aad55a94d7d3b5d49ffdbd61d643e0d7924c5
+MD5sum: 0c6ba5353f45f190f118522eabc52e00
 Description: package manager for Pixiewood pixie libraries
  pixie-pkg installs the prebuilt Android GTK libraries published by
  pixiewood-pkgs. A system install keeps them in /usr/lib/pixie.
