@@ -1,820 +1,820 @@
 {
   "debs": {
     "OLLMchat": {
-      "tag": "v1.4.10-packages",
+      "tag": "v1.4.11-packages",
       "packages": {
-        "libocbwrap-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "20ed1c343cf402c87b5be670d09a06eabffbc0efb6bf94b6aa674418afe036cf",
+        "libocbwrap-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "3292285ef47585195106ac8020a8b147bac2ac7cc7fdc85e274353977cb9725a",
           "suites": [
             "plucky"
           ]
         },
-        "libocbwrap-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "1be9d4306ec91e7d080f8fa1a3f6d99cde8ea87c220c0ec9061e542c01ae8fd6",
+        "libocbwrap-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "427716e65862f90799bd9b6112841e6a9133bddf416f79b8511ad59522e94065",
           "suites": [
             "questing"
           ]
         },
-        "libocbwrap-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "e06b635a1d699bb510976a178659779d6d016b247fb4133a7b91446505a4b75d",
+        "libocbwrap-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "c3e505603ac4de107135ee98864c4b19b06d76ef370ab98e598f378f82aa4c4a",
           "suites": [
             "trixie"
           ]
         },
-        "libocbwrap-dev_1.4.10-1_amd64.deb": {
-          "sha256": "6a4afb204834c270137cff0be9d15e61973fd9d3f654e83e9234bffafb561a7a",
+        "libocbwrap-dev_1.4.11-1_amd64.deb": {
+          "sha256": "5b7f38b14c4d6758934fbefe9397d2e5226ae4e83be99f0dec0be6fb7edb939f",
           "suites": [
             "resolute"
           ]
         },
-        "libocbwrap1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "97ee8357d9f7f988e42c76b8347daf36f64597ace1e0f72661901563fe899dea",
+        "libocbwrap1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "6f0cb94156ea5e883f36c88c73a4cf42862cbc9d3051e1846bd696d9572246ec",
           "suites": [
             "plucky"
           ]
         },
-        "libocbwrap1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "2b656f859eab6cf114c0e7ef243d64a15f8e5c12413ff630406858e8fedfc28a",
+        "libocbwrap1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "9029f4eb299c3267bdcee2a0e184e52434b7a2a5827ec3d7567c23d4fb141e2b",
           "suites": [
             "questing"
           ]
         },
-        "libocbwrap1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "4af3d63e0e2b14f25bc3376a69db8d4aa6bc0d2151bb01399cbc1a71e9309278",
+        "libocbwrap1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "1501e02cea5c35203ede2e23305abb476a2089238bc4093c73216c37f0c5c650",
           "suites": [
             "trixie"
           ]
         },
-        "libocbwrap1_1.4.10-1_amd64.deb": {
-          "sha256": "9883636ac300e874fd6a9b46774b549e699bc698fee9f924262c9270c3799fe1",
+        "libocbwrap1_1.4.11-1_amd64.deb": {
+          "sha256": "2099ebbcf7a588ca1ee43b64a40951122449640e3e5d5f7d50c0ccb5fa157b76",
           "suites": [
             "resolute"
           ]
         },
-        "liboccoder-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "ff6653497d1595f7764861a0385830afc2f13536b528488841a7a96a3bf119c3",
+        "liboccoder-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "ac794fa4e3b2dce60febce94dfe8f4615948d7f34090513a65efccf954910c34",
           "suites": [
             "plucky"
           ]
         },
-        "liboccoder-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "5049eca0be554fe397c0738287d3c7f12db9a6f41fe52cbd4d207c746bb804f3",
+        "liboccoder-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "06426fe5c8d509b2cb90af498f2d2711d245c80f83ce782c1ce5522b2db02554",
           "suites": [
             "questing"
           ]
         },
-        "liboccoder-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "51dc1ed0949920810d9df7c084906db5d931770fb06d920525f2c4b2c2dfdef5",
+        "liboccoder-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "b96104ee51a08ab6f92932157942462a9871d8e918d8a689c7e7d58640da2a11",
           "suites": [
             "trixie"
           ]
         },
-        "liboccoder-dev_1.4.10-1_amd64.deb": {
-          "sha256": "d5309ea841e4f7c3bfa08ea269cb071e1454a0faf5f474ee36f978ee20df8829",
+        "liboccoder-dev_1.4.11-1_amd64.deb": {
+          "sha256": "499d9b43a480752139e9ac1db0d131ec3d5a1ff47f3f31d19c75764f67133a90",
           "suites": [
             "resolute"
           ]
         },
-        "liboccoder1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "11a95904364f4fa29d505ce352b19bddbcdafb2553c555559311619d1ddc52b0",
+        "liboccoder1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "7804a81fef62f63c7e5fbd5d139d3479a6396e57db989ee09a66a0592b31f8d1",
           "suites": [
             "plucky"
           ]
         },
-        "liboccoder1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "db1284c5475db52320fe1b79fcad3283bed3de9a89f3d83b8427f13b1d9686d0",
+        "liboccoder1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "da2e01e379f9595d944f81d3cb7c982f15b0febebe354332b88d73a6d1bd7ffa",
           "suites": [
             "questing"
           ]
         },
-        "liboccoder1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "41b5a32761c2cbcfb13aaad5c807cddcede5ceca63991124838af642748c1133",
+        "liboccoder1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "e328fc12728f59e4ff02dde0c195457755d2fb08e4739d2c31dbd691e037014a",
           "suites": [
             "trixie"
           ]
         },
-        "liboccoder1_1.4.10-1_amd64.deb": {
-          "sha256": "c56e2bf49f96db9780742c0669088aaca2871d4a7d4d476677570c1897f276cd",
+        "liboccoder1_1.4.11-1_amd64.deb": {
+          "sha256": "f05cba6f048f072945c4ad8715c0482e4bbd6e755566200c3c1fc730e154e3f9",
           "suites": [
             "resolute"
           ]
         },
-        "libocfiles-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "890e1a9d20b61829786349498af1d9859eadf6acfe1a9716b9d99fcd5968f1b3",
+        "libocfiles-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "12272766c9fa608bf61e2fa13b51452e6ba3835994f3dc74f0942aff9e3a346b",
           "suites": [
             "plucky"
           ]
         },
-        "libocfiles-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "e1ab6978f865d588ac6e32f042f59032368706b1dfe878ceb7cd6d13f88bc920",
+        "libocfiles-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "e7d3f3666afa101478c2c9e8ea21f0b50b8134ce2545282e701f1777bcbc1c3b",
           "suites": [
             "questing"
           ]
         },
-        "libocfiles-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "c1e018ed6d769a76679145de0d5e04d7d9020042f264e60d5e1bd62d20baf5e9",
+        "libocfiles-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "06aab49d3cb12119c18acadd8251ff9fcbb7fa1c7590f1197d81621d3e462fb8",
           "suites": [
             "trixie"
           ]
         },
-        "libocfiles-dev_1.4.10-1_amd64.deb": {
-          "sha256": "83932354afa70c9852a95ea88dd4529741ac3300ff9d6f6d7bffc131dd3b330a",
+        "libocfiles-dev_1.4.11-1_amd64.deb": {
+          "sha256": "0d369b88b348e55333d6155f8906fd173602d19003d41151dce8408ac1c13fb2",
           "suites": [
             "resolute"
           ]
         },
-        "libocfiles1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "3aa4f0013dc338677208e453cf5c9008449bd69450886c7875d730ca37b4fe25",
+        "libocfiles1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "48c59f994f02210f7accdabb056ab07b49f73ff24655fd8dfc11d576d15d8a90",
           "suites": [
             "plucky"
           ]
         },
-        "libocfiles1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "e5862ff34d737f28ff828e1c336290df966350d7ad283b5d46f253a6f2b84e50",
+        "libocfiles1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "1a1b1b41567ff90a7f0fae8a19c8943d1b1d4c1af21efd69200bd8210519ead6",
           "suites": [
             "questing"
           ]
         },
-        "libocfiles1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "a012e6bae7f266e76939ffaffaa7a4d5dc86b4c064c040dbab9de7dfdb9c3214",
+        "libocfiles1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "bb3f14f6512712180a76fc7ae1178f430ecf6f82a662031070b8d5ae33013788",
           "suites": [
             "trixie"
           ]
         },
-        "libocfiles1_1.4.10-1_amd64.deb": {
-          "sha256": "c8d1ffde7b6c8143963662c96f2de5f48f15237c70a5389a91eff77b545f0201",
+        "libocfiles1_1.4.11-1_amd64.deb": {
+          "sha256": "0bad4d33cbd3f9c14dd81b254b983a162de77de882c715a165fdc64fc86dcede",
           "suites": [
             "resolute"
           ]
         },
-        "libochf-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "a5eed5252192579d60eec0c7a75c8c4208dc0b109fa21ae772ca57f290de7784",
+        "libochf-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "62ed5310a3bff45445f1212ed9c692bfe4a634242d13d44d635b60cd4122d85f",
           "suites": [
             "plucky"
           ]
         },
-        "libochf-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "61b6c8d9b4a887341176c6207ff9d9c60b9679e97b6d4f3ebee767b9d8d9df0c",
+        "libochf-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "c5fe71e2be0b1d55ef99eb372211b99be30478774a78ae9130a1bc4af65a2e8e",
           "suites": [
             "questing"
           ]
         },
-        "libochf-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "f2f238c9c2686562b5d0ed267ed444398507611cb65828f3765e244a19dbcac8",
+        "libochf-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "71186275510066617c9f5281d34c7b75e77607311ac4271199da7ffa5fb0b8f7",
           "suites": [
             "trixie"
           ]
         },
-        "libochf-dev_1.4.10-1_amd64.deb": {
-          "sha256": "b7b1c98f7c806a61066dedab129c2365d24c239570be141be2090f3cdfe85cea",
+        "libochf-dev_1.4.11-1_amd64.deb": {
+          "sha256": "f6cd4771a452c605d7e3bbc8dc81674987c46f0d2ea835287476fcdfa063286c",
           "suites": [
             "resolute"
           ]
         },
-        "libochf1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "90a45eb3eb9e0c7b58ffe43f260677cf27886a905899b41b33081c5e41991af0",
+        "libochf1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "c7825ef49905705913295da511999feecff4c411bbf7142ab689299bf93fb3bc",
           "suites": [
             "plucky"
           ]
         },
-        "libochf1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "938410f077648e3160ce6ac04200684612868f578b868ef62b9a79eff5870892",
+        "libochf1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "63eb37bfdb7a42fd0bb076fdfc65728b007833d9364776a100bb690fba225797",
           "suites": [
             "questing"
           ]
         },
-        "libochf1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "22bbe262f6fedf14c9d0681601c64b4d2673f825c596b8742065e384a588136d",
+        "libochf1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "ad41743b817acaa25f2d7275937812176fa17d27c52eac2dcf9e6ebb1f4d58d2",
           "suites": [
             "trixie"
           ]
         },
-        "libochf1_1.4.10-1_amd64.deb": {
-          "sha256": "6f292f05334bd46dc26988642a3e939678fc0695fd8b2575016d17a43d3e7849",
+        "libochf1_1.4.11-1_amd64.deb": {
+          "sha256": "4577b9f9c4da64592cfd44fd262c3ad9e661fcff4cceb2e61cb9d652e25f8ec2",
           "suites": [
             "resolute"
           ]
         },
-        "libocmarkdown-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "3dc8fd77f18445170596bd24dfac6a4b25e8c7234674a67bd1f28c43c796fbb7",
+        "libocmarkdown-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "8a91905ceea1a109f8d16d097b168b9115804ed55c3a92f206742370241f34cf",
           "suites": [
             "plucky"
           ]
         },
-        "libocmarkdown-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "bcc2c2737115e9b3defc6fc20595000a8a345a40367f4cc43c9430841d508a4b",
+        "libocmarkdown-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "085cd02ada0951f22430d35daeb26dc153eec4c4edefee27da13578935515574",
           "suites": [
             "questing"
           ]
         },
-        "libocmarkdown-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "7905bd2110753eaae921070b5a68978a333db008144f22500f1050789753546b",
+        "libocmarkdown-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "fec6f72a57cc9855ca0b87d8b4ea84eb40c90011c0ccfceb64dde145a9d01160",
           "suites": [
             "trixie"
           ]
         },
-        "libocmarkdown-dev_1.4.10-1_amd64.deb": {
-          "sha256": "12b12ea1a4144374d310352131e8843155992bf50be2d7e9cd2c7e8fd7d31946",
+        "libocmarkdown-dev_1.4.11-1_amd64.deb": {
+          "sha256": "035c510775ab0b2abaeb2033aed43293d1cbf8d2ce4e880991ab6f45715c2414",
           "suites": [
             "resolute"
           ]
         },
-        "libocmarkdown1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "ffda0627a615898d842c9806e471ef0c5cda44c3f63b5552446eb313ac15781a",
+        "libocmarkdown1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "4fe2448803cea3dbacedf2a7f348d18a83ad21363c8753dc8ee776f45a5e244e",
           "suites": [
             "plucky"
           ]
         },
-        "libocmarkdown1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "aaa6dd729ade6e0c14512c769080ef8c590077aebb87153f9bb9f315f1d21a6f",
+        "libocmarkdown1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "f2b16036557a7b8717bbc058ab6863a77ddc9413a4e18324f6a4ff9fc25a0610",
           "suites": [
             "questing"
           ]
         },
-        "libocmarkdown1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "b2ad24c0617a8ffbb998cec1cc1fe3f5d1b0f4387a8bd18739952c6d245bab42",
+        "libocmarkdown1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "6982ed39fa97d30d082e9395cc9762273aa5792064dc4769565c4f719e6a1129",
           "suites": [
             "trixie"
           ]
         },
-        "libocmarkdown1_1.4.10-1_amd64.deb": {
-          "sha256": "ae697f6a0f4b9466f6e8302f5e28e966536beed9edcfd788a019e68f9fcd4d45",
+        "libocmarkdown1_1.4.11-1_amd64.deb": {
+          "sha256": "eaebe87fb8c2742c47c2f6ce28f439bf31142c35508576f72d427dd4c5739d6b",
           "suites": [
             "resolute"
           ]
         },
-        "libocmarkdowngtk-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "6e011c9242916cc70f310ca70ff3159f63725c2f9dce9b12aabb9228500f4d6a",
+        "libocmarkdowngtk-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "a9424cc799350524febec147e0b334a7e109a762e4a7ad8244cf9aca00f3baee",
           "suites": [
             "plucky"
           ]
         },
-        "libocmarkdowngtk-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "2a354b4aed840f75eb2fab5bafed5bf2351aa3ae3cd3f1f411b9e00509ddcf20",
+        "libocmarkdowngtk-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "740f141dcc131b1ac51dca1c5137e611160bc0e55968dbf85805ff9e9a5dfe7f",
           "suites": [
             "questing"
           ]
         },
-        "libocmarkdowngtk-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "f6bc2a03e5caa9231390751ee7a6fb7cb730d509cc17ecdaa67bee4e2bc071c7",
+        "libocmarkdowngtk-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "0fecbd8a1f4aa8a0fcc5cbc5a7e3af28044693e276956856f7405354e161b3b6",
           "suites": [
             "trixie"
           ]
         },
-        "libocmarkdowngtk-dev_1.4.10-1_amd64.deb": {
-          "sha256": "56170c7971f27cc7783b7de08bb9e20a4b36546ae8b046c6586b30513e222a7c",
+        "libocmarkdowngtk-dev_1.4.11-1_amd64.deb": {
+          "sha256": "e8e81e7f8a0645f28f08e21f12619a3a0cb194f24d2355e318894fafe67e71d8",
           "suites": [
             "resolute"
           ]
         },
-        "libocmarkdowngtk1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "19b5843acc53364414af8342b4dc33224b11baba88ba014af04f6ea0b85ee4a6",
+        "libocmarkdowngtk1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "b964ff21d6d745f14d66e2353ec438afe928b0638ea668206a45f507d3ef5cfc",
           "suites": [
             "plucky"
           ]
         },
-        "libocmarkdowngtk1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "c38f9985a3bc993704b809cd81751b54f98207d247978ad8ff1999cccda8e16d",
+        "libocmarkdowngtk1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "2e6366ccfc37c409d7ccdbf00eeb1a8fe74db5a74f7178d75b3d7f2f79ffa520",
           "suites": [
             "questing"
           ]
         },
-        "libocmarkdowngtk1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "a80409c1e661843e43e4d1e4cd10d505b5c9e974226ce153622e646a4ca80a8f",
+        "libocmarkdowngtk1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "7549bf9c18b99efcb1dd146566c5aa1d402353a1d06765487ba4086dbf4e1923",
           "suites": [
             "trixie"
           ]
         },
-        "libocmarkdowngtk1_1.4.10-1_amd64.deb": {
-          "sha256": "cc7679b4c02dade55257d6c157fc7bf6082a6ca79ecf107c464ae4f264702c76",
+        "libocmarkdowngtk1_1.4.11-1_amd64.deb": {
+          "sha256": "efca236ca37ff06d3bc44702b6d8ffb22c3bd1f09adbaebdb580e95f16091330",
           "suites": [
             "resolute"
           ]
         },
-        "libocmcp-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "108550ac03b4915cc5a81289c54a53878e4e9168dcafa657b378fbce26120b56",
+        "libocmcp-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "ff3563c812f30bc2bc673f4fe9e35d1d6580c0753e429fd4c25d7809188734a9",
           "suites": [
             "plucky"
           ]
         },
-        "libocmcp-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "5ed5a1d46c220f7dc01be50f1690664faeacf2b06930214ccb7bf91d6e5d92c9",
+        "libocmcp-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "3f34c461ca4aa32d86ea76e13ae1501b90b0fc3253de8057b3a87500a1ba2cf1",
           "suites": [
             "questing"
           ]
         },
-        "libocmcp-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "a711a3d73ff70093e2b561c3a29dcbfe594a912f0eabe78038f16dab9f43d9b1",
+        "libocmcp-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "276584125e011e36973502f7cbda41104eb745992b31f62569aa5cfe547fc578",
           "suites": [
             "trixie"
           ]
         },
-        "libocmcp-dev_1.4.10-1_amd64.deb": {
-          "sha256": "89d1bcda49adf909070e1446cb20cf5fb244c118f7f31715b39adda42a36ab00",
+        "libocmcp-dev_1.4.11-1_amd64.deb": {
+          "sha256": "6de9e051a092b86b612fc5c20404abc0b66f998162718c973e1902a4d479ce08",
           "suites": [
             "resolute"
           ]
         },
-        "libocmcp1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "17715305be607f6d03aee13b52ddcba453b419aa05fee666b010baa4a371a529",
+        "libocmcp1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "14d85f3c3b4e264c6044b09e6f90ea86417103e5a3f433e0ad7e7ed0a0a7960e",
           "suites": [
             "plucky"
           ]
         },
-        "libocmcp1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "f4554dcabc2cf938d263fc6c81970151c3a1f484a5d311feb129ff952c251f42",
+        "libocmcp1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "0b57ddb00e874f34ef0e9c64a0c94f8d212b5c6071850eda2a59b40c5d367a2a",
           "suites": [
             "questing"
           ]
         },
-        "libocmcp1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "39acbb5314efbdaccce030c757ec74bbb800454775ef4b00338c3059aa8c0e63",
+        "libocmcp1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "36dfc41898d5c7480b48d81d16442513a1d67485e13d5e0b201113e2fedb4599",
           "suites": [
             "trixie"
           ]
         },
-        "libocmcp1_1.4.10-1_amd64.deb": {
-          "sha256": "2b89b850c6b7638a4025aaf2b63c39c1fe190d8b9b501b01d899e215508509aa",
+        "libocmcp1_1.4.11-1_amd64.deb": {
+          "sha256": "844d8e1b0689cd57407ac4d46497fcc27f3a729c1517bbda858e99f472a79a6b",
           "suites": [
             "resolute"
           ]
         },
-        "libocrpc-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "689d9e60e49ac33b2d4c5a1ee5966ca97786f69f9cae5a95477fa619714add0a",
+        "libocrpc-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "ff4c3931a5fc64e5dfb4ee63a5a8053bc1a3052acf52edd68720d0f24eca224c",
           "suites": [
             "plucky"
           ]
         },
-        "libocrpc-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "4c1a8a67aa411c9ee5df1906a16b331be21f0c039f65197ac465f72999ebb13b",
+        "libocrpc-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "95ce2d99e1263fc0d41e7b46f81174788d0f0114ecf5a28a60ae2aa02f23211c",
           "suites": [
             "questing"
           ]
         },
-        "libocrpc-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "6fad8e9fe49125ff9503ec820d9ba99f66875aa887f765c5cfe02b702a2bba80",
+        "libocrpc-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "432e1350340e34115c9e5802c674fdf19750ca8782ca74e2bbd616ced7e75bd7",
           "suites": [
             "trixie"
           ]
         },
-        "libocrpc-dev_1.4.10-1_amd64.deb": {
-          "sha256": "6f7bf351f8779f5d4758ad8d581757d226a7a7000a55fa46089d90ed3e4f87db",
+        "libocrpc-dev_1.4.11-1_amd64.deb": {
+          "sha256": "fbf032e59e4e71c4787444195041f15248f35a82c7e0f4d911f7ef9bb03fdfc2",
           "suites": [
             "resolute"
           ]
         },
-        "libocrpc1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "9daec0097d4faece4d586b3c53645e0d209ef0005dc5b6215bd0ff53d340d41a",
+        "libocrpc1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "ebdcfaa3e100ed40c2f54f2232af4d9ccf1679e40ad4b2f00eb0c260ae3aee35",
           "suites": [
             "plucky"
           ]
         },
-        "libocrpc1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "c32cdcff1b9a877bb65542991e19cdde56431e459b674737866a3d3f9ccf52fb",
+        "libocrpc1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "38c73780421af6da507ce7fd20858a582ed0838ff06ec29524c0931637999e44",
           "suites": [
             "questing"
           ]
         },
-        "libocrpc1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "4ae7dc7a37219f4bf0d6e4722c0406f6d4142e308b62ca784a743f6fcf4326d8",
+        "libocrpc1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "8e909770c9a0f488e21837628c01e27f82011d80fb626acc31c514ae8610fede",
           "suites": [
             "trixie"
           ]
         },
-        "libocrpc1_1.4.10-1_amd64.deb": {
-          "sha256": "210740d483f474f6cf3bd349857d275af398e5c651439f2b8307c20c4f1687ff",
+        "libocrpc1_1.4.11-1_amd64.deb": {
+          "sha256": "2da5f991ac6e1c95e82ca7de645b4caa98fcf09dccf26c5e690d14f86b1cf2e4",
           "suites": [
             "resolute"
           ]
         },
-        "libocsqlite-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "0316fbe7235f00e9b2b1b36665b3a645ea3e6bd4eb1249f1e40674c976f4d1b7",
+        "libocsqlite-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "0b75192efeb27945ea7694d2e1ea39a85e2e112d8fbef95936c1af916726b565",
           "suites": [
             "plucky"
           ]
         },
-        "libocsqlite-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "b0ed8221b8f580be2883e4b569afdb6f15a46254ab684b3ba2b4c4e030e75b7e",
+        "libocsqlite-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "0fa0aac11333822aefe2d444319b80efbf0fe717291e03af8d550ae4f563dd87",
           "suites": [
             "questing"
           ]
         },
-        "libocsqlite-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "8d3c4e423b95cded3d29a15f1f03a695b8020282bce34d6eeca451fd56e7e86a",
+        "libocsqlite-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "9ecd540dfc5d0148c3b4e873e7a8544b9459b8b587685b88932bfaf867551cc2",
           "suites": [
             "trixie"
           ]
         },
-        "libocsqlite-dev_1.4.10-1_amd64.deb": {
-          "sha256": "3225e4944e45121f46ce53a7548e5cd72c01039ba99b576b0d691b24bcc5fd55",
+        "libocsqlite-dev_1.4.11-1_amd64.deb": {
+          "sha256": "62ce939c5a9a77caa444d5b13ae0199647f2fdfec61f586b805d4710b18dea29",
           "suites": [
             "resolute"
           ]
         },
-        "libocsqlite1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "c3cc5c0f4bc798c92ed13637176fa45fa88b0049476d8ee453df2f312e9bdf7c",
+        "libocsqlite1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "cd869996220e7455c3009ddfc019700882159212c6610a7637be6ec1fdad4417",
           "suites": [
             "plucky"
           ]
         },
-        "libocsqlite1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "a89b6edbfa2e4425ac0c66111f0de984ebe232d1649f96480b8afa4843800ed6",
+        "libocsqlite1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "f0f047b54238a86a9d3cd14be9f00d261292e0568e42b007b7a61e50f14c751b",
           "suites": [
             "questing"
           ]
         },
-        "libocsqlite1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "4cb894514f67289e67356a7a980a99a53ba648c017f4c838266c324b83c4aa64",
+        "libocsqlite1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "acfbc5addf20803f09a6c0542862d1980c500ae3fb3c2375b2e8ab738c034ec8",
           "suites": [
             "trixie"
           ]
         },
-        "libocsqlite1_1.4.10-1_amd64.deb": {
-          "sha256": "fa51d447e4737fdc7ec5247db5a8cc377b34546553d797accd57fa92eed0f34b",
+        "libocsqlite1_1.4.11-1_amd64.deb": {
+          "sha256": "25f76e5e310c0d16ae054a2b7ed77492a511255c6111d601a04563ee92072bc6",
           "suites": [
             "resolute"
           ]
         },
-        "liboctools-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "8169ae65caf52bf0cc24c06ca5fc3a42a9157d8854a985084bc9bfdff6fa20b6",
+        "liboctools-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "508f6fef85b15c05e93d52b45b800361dbf65c7041d7d226ac9ee72ca8cec86a",
           "suites": [
             "plucky"
           ]
         },
-        "liboctools-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "2f97e21def7a81b86a5838b57d3d444b9ccdca4ef0f1ecc8d3ffd4a7c97874e5",
+        "liboctools-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "63eea8286b8aed7f874670546b47ee358559cee945285467d18aec2ba15b4154",
           "suites": [
             "questing"
           ]
         },
-        "liboctools-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "f3a6a3bdfaf2ffd016f2c52daa974615e20ef0195c5c585b5a0b1ce87bed6494",
+        "liboctools-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "9d36c06f93cc833854266513cdeb2f892766d5384e5a7665aa4a4acca788fc6c",
           "suites": [
             "trixie"
           ]
         },
-        "liboctools-dev_1.4.10-1_amd64.deb": {
-          "sha256": "ce0ad7aeadea43762c83222108a0c9285525b6b3bb824bd54881a39e414a6c5a",
+        "liboctools-dev_1.4.11-1_amd64.deb": {
+          "sha256": "7c797489dec8c2fc8e6c9577ef011bff8dfd74c26abbad5c7195a53e3daaabbc",
           "suites": [
             "resolute"
           ]
         },
-        "liboctools1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "e2200aec58ef8b5a70d47a925ec6db1ef914ade3eb5f8931b36578cfe31776a3",
+        "liboctools1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "fe511972381544d78a46235036793a3a5d076f14e3b8aa535099aa12e9c35bf3",
           "suites": [
             "plucky"
           ]
         },
-        "liboctools1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "312815017a1c32acda8a703928a8dad441817a25f58fe84fbca8657fd9a3c68c",
+        "liboctools1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "b301d44c3cfb504e1136c9d16c4cbea9aa08d71343d8b90197a21cc1cad27fcb",
           "suites": [
             "questing"
           ]
         },
-        "liboctools1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "9c1c93249bd4739372e56fe061f7022fd448c01d7f84f6ec860cef183462bc54",
+        "liboctools1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "f9f354f06effcffe474be9baa11e2aa1e9ad59e76d4ccce157734e7c3312271d",
           "suites": [
             "trixie"
           ]
         },
-        "liboctools1_1.4.10-1_amd64.deb": {
-          "sha256": "8bb13522c18b486c6a61105b3cffcca6d0588e132c3526cb549e620fb3a03f68",
+        "liboctools1_1.4.11-1_amd64.deb": {
+          "sha256": "a9ef80997f94059f0655ac31ab6080f9e5187dcc3c79364929f68b40eb6d7217",
           "suites": [
             "resolute"
           ]
         },
-        "libocvector2-1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "65c6bad0cb242abc09ef191b4fc5accd98b1cb43afbdce62e2ed7cacf2b96559",
+        "libocvector2-1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "13b76fcbdf83d9b062013fcf47bc08f66ee2cc533093c1189ff03375b70c5970",
           "suites": [
             "plucky"
           ]
         },
-        "libocvector2-1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "af11acd319cf80766cf3ae287086199be495399298b72812cfc03cf7dea57588",
+        "libocvector2-1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "95b9db2ed1185dd2f3fc07b8fc9de60f77aba3395fd7fe1fa64595ef3c62e4a8",
           "suites": [
             "questing"
           ]
         },
-        "libocvector2-1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "39cc664907534c4436f5683d742248d82b19cc836a9ea22331a8ff74f09d153c",
+        "libocvector2-1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "d15361726d7be090c3f8ddf114f16694abe2f4dc480db4c8832afbf052f8411b",
           "suites": [
             "trixie"
           ]
         },
-        "libocvector2-1_1.4.10-1_amd64.deb": {
-          "sha256": "f8bf66544cd856696fef0d6466fd90c097d9a34d475f0eb92e074976a97b99c8",
+        "libocvector2-1_1.4.11-1_amd64.deb": {
+          "sha256": "c48c0aa86fabbb58ff60dfc71d9de197bb619a6d1b261095aeb8c0f62c0a5d42",
           "suites": [
             "resolute"
           ]
         },
-        "libocvector2-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "eb662fadb56b9271d64caef8fd003d3b38300169874578826921a36495ee43eb",
+        "libocvector2-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "4f267448429a1a9ef2bb8c5feee924954eb32738e254738ae45e05d98b846ab3",
           "suites": [
             "plucky"
           ]
         },
-        "libocvector2-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "0f694803f5e963e72cb9a72e86ab5412328ac50dada32fdb8a791730f0bab81e",
+        "libocvector2-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "da3f956ff243481b5a97ff3b538849b623f8a1c8d390622011e5da67079fb702",
           "suites": [
             "questing"
           ]
         },
-        "libocvector2-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "1efe0a4d26b06c3aa095e7f256c6c79b21d2707bec6e22fee71ca96d1758f86a",
+        "libocvector2-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "89fae8618d8a037ce20cfdf988ea7a54517d961211d4a581737f82b786059478",
           "suites": [
             "trixie"
           ]
         },
-        "libocvector2-dev_1.4.10-1_amd64.deb": {
-          "sha256": "c968edc5cec1733945f6c2d1c8a854397d88ae6bc72b6bc35f9b3b63b6117bc6",
+        "libocvector2-dev_1.4.11-1_amd64.deb": {
+          "sha256": "15231384da786d2842184b581b2b57e543c4afac5e11774799496a4b7733308a",
           "suites": [
             "resolute"
           ]
         },
-        "libocwebkit-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "ee21ca484ce882d74ded5e251b2653a711d6d75c380ae2b4c851c4456f9c63cc",
+        "libocwebkit-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "0d4abbc7c8e73603ffd4c444d8ab1df7f3cf93ae961102324542224f570d8756",
           "suites": [
             "plucky"
           ]
         },
-        "libocwebkit-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "28bb749b722c8257f23cf9da4008ac5ad00a0e880289f5008061accc901c26b8",
+        "libocwebkit-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "4cffa2aee4bfb6f38ce9d8b058d179f951ee78c30ba5cc555206cd1e8910dbbf",
           "suites": [
             "questing"
           ]
         },
-        "libocwebkit-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "5c8ca4750e3a042311d2a5e53e3ade89368656dbbceb8a91c196d9133e9ecc69",
+        "libocwebkit-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "47bf6bf5255bbcc8cd5e96bfef15ccf979cd54ce727e48c3a6c528f214353ff1",
           "suites": [
             "trixie"
           ]
         },
-        "libocwebkit-dev_1.4.10-1_amd64.deb": {
-          "sha256": "9c92f0f5e2e77e0daddacb4f5782f7f3250dfae170e1874c610af6204148d7b5",
+        "libocwebkit-dev_1.4.11-1_amd64.deb": {
+          "sha256": "95d615109acdea8d2818d221da5447a94f04b598eaa5c84e336265ac4df3d0d9",
           "suites": [
             "resolute"
           ]
         },
-        "libocwebkit1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "837c2a1b6cb0d1429f9ed52bb760861b61214d85afb078c018aa815d03e123c6",
+        "libocwebkit1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "73dc0f363a1fd8028310c2f831ee00a3263d332dbea7ce73a50d34febc030dc7",
           "suites": [
             "plucky"
           ]
         },
-        "libocwebkit1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "2b2ea6e4fa156338f1dafee0b50f1aa425e808671677cfb44038a1aed483a342",
+        "libocwebkit1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "3024ce452e8a9fd9370ef30c4df2ddcfdbf1a7176101f5460aafdc8e324672e1",
           "suites": [
             "questing"
           ]
         },
-        "libocwebkit1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "2978096d47bbf6f115c097a81f498df1f978ac4fee10379d358a11dc1d258cfb",
+        "libocwebkit1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "03770c4925be92987b201eb74b43b927378db16c8cb9ef691f34fb8ce5880b3a",
           "suites": [
             "trixie"
           ]
         },
-        "libocwebkit1_1.4.10-1_amd64.deb": {
-          "sha256": "4a37214a95cb5ee4d63376f2cc2d96b9bf4fa6e0aed4b61cd2d5ef07eaac3d5a",
+        "libocwebkit1_1.4.11-1_amd64.deb": {
+          "sha256": "8957ddfad33f6a573520b75972b01727538fc0fad6e8533d24e5a5a750110467",
           "suites": [
             "resolute"
           ]
         },
-        "libollamaweb-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "1609ee4db4ab63e36c662cbd63bb7f5da08ae9f6ea529514b5835427067e9f6c",
+        "libollamaweb-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "5c1c44159d920511c79616a497a96a319b2add4b1e616ede77d32f947f0df250",
           "suites": [
             "plucky"
           ]
         },
-        "libollamaweb-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "0841cc1bdb6d6d9ed7216ae2b67fe286ef9fd4239087117f31db8da6be1357c5",
+        "libollamaweb-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "5076e14d5a4563fc534577390bcd62e71917e4ac8881c1013ed26864a9784b73",
           "suites": [
             "questing"
           ]
         },
-        "libollamaweb-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "eee32a82677e9ed5646dfe3783a203b884ab0a5f322608d90b2c24933c195208",
+        "libollamaweb-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "e22a16f7963ce72872ca82b2465ac86d53600779040db2f1c36133537fd326a3",
           "suites": [
             "trixie"
           ]
         },
-        "libollamaweb-dev_1.4.10-1_amd64.deb": {
-          "sha256": "ae73f9fed5c3e9dde04511f207ecb7daec355fc30556f230029598255ac99d81",
+        "libollamaweb-dev_1.4.11-1_amd64.deb": {
+          "sha256": "b5e071465b8516b01328dde0a15acef59fc9be36caa9ac0fe75ffdc8d45e7f4b",
           "suites": [
             "resolute"
           ]
         },
-        "libollamaweb1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "ab4bbe05d7dcb43c99973daf937aba07c144cb92d6522812acfdc26a98e90ad7",
+        "libollamaweb1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "2d0f92276ab10cb84e645ba5c81169a61032187f0c255eb04a0556dc3f5e7473",
           "suites": [
             "plucky"
           ]
         },
-        "libollamaweb1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "3b88c86b8027e881baa467f838a062ce060cb4dc1ebd107e675fe215b31da010",
+        "libollamaweb1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "060ba9565111541d7fa809592784b5efc1354607659cc73d5b24bc3abea8df0e",
           "suites": [
             "questing"
           ]
         },
-        "libollamaweb1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "5321e15e4f3942f5d748ef158b195491243d1172de7bc302ffbfc43165507a81",
+        "libollamaweb1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "fdd709572a9edca4313d5b8e4ce2bce9a82e64e85d77e8b0f96c956e29153f07",
           "suites": [
             "trixie"
           ]
         },
-        "libollamaweb1_1.4.10-1_amd64.deb": {
-          "sha256": "0a5f4ccea1de420647ba89ddf6cef6fd20b77a3632c1b98b06e5a158e135c4cb",
+        "libollamaweb1_1.4.11-1_amd64.deb": {
+          "sha256": "4a5169cfdf16133f246760cb596c3629e87b1cd68441ecadc7f7da720a108b9b",
           "suites": [
             "resolute"
           ]
         },
-        "libollmchat-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "f99045d9486e3b3596cdda51b94d16a87178f0f9d1881040122ab21169c13e2f",
+        "libollmchat-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "d502174c6df24e60d5ccb25162ff771ad9f73f633aaa7f27a38fba477b43b886",
           "suites": [
             "plucky"
           ]
         },
-        "libollmchat-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "b6306e48632eb14afd780dc89df5c795775b99cd5a46e08dd6dfff1f6ed4b27f",
+        "libollmchat-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "a4650bee06b489a8f0143c348258b0315a9244b3afb5a75b1c91668f3b5aa3d2",
           "suites": [
             "questing"
           ]
         },
-        "libollmchat-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "b13ed510be7befc89f2b27ff58abce5afcf16d748ab1f2ae9a57d1911e6900dd",
+        "libollmchat-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "65704c5bee22828efee218e8c4bcf445c956a6e2b922113dd169642aaa5c72fb",
           "suites": [
             "trixie"
           ]
         },
-        "libollmchat-dev_1.4.10-1_amd64.deb": {
-          "sha256": "b8f8c4889efc561dbf15e6c23b8893166fbafd2824abcc09993e15b6c68ca46c",
+        "libollmchat-dev_1.4.11-1_amd64.deb": {
+          "sha256": "ddaf2fd7ae518449ce1bac9be6a3002606157777a47130781570057b428542d2",
           "suites": [
             "resolute"
           ]
         },
-        "libollmchat1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "da9493280255626d8ee3cd0153efbfdc3d6eeb403b8067fcdbd7e68f948fa54b",
+        "libollmchat1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "e3e85d97ecf91b6804f36a7be5efc3700746e9ec1232e13743190196d95e4bbd",
           "suites": [
             "plucky"
           ]
         },
-        "libollmchat1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "c016b578ae3bada47b7226f31e704a9796c1a92e7508aeff1c6976d5c0084cf0",
+        "libollmchat1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "942ce4a0b8fc6b61d4845d2075ad777a5b5d1734ba9ee911835416112a650537",
           "suites": [
             "questing"
           ]
         },
-        "libollmchat1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "5ee8ecc2adaabd45dd184e37f1e19e37a38af3cd7812717bf4308a40eb46b9f3",
+        "libollmchat1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "7e45213628c207742fa2f0fef37a08f28ccf4923b18a91e34cec394337d22f29",
           "suites": [
             "trixie"
           ]
         },
-        "libollmchat1_1.4.10-1_amd64.deb": {
-          "sha256": "45142946d9b251c278f85532ce6be14803db5ae366f925603660e4f960edea80",
+        "libollmchat1_1.4.11-1_amd64.deb": {
+          "sha256": "03ff9a995307fc96e46aa864907f2d90822756dd0b97339361acf77587f02662",
           "suites": [
             "resolute"
           ]
         },
-        "libollmchatgtk-dev_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "13e6b51ce3feff781a8f4ddcad9c39489c43e990910f150dd3976fb01241f53c",
+        "libollmchatgtk-dev_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "1808e1edeba1da8838c757cac062d2f1b87ceb7a448dabd32ca2564c3084196e",
           "suites": [
             "plucky"
           ]
         },
-        "libollmchatgtk-dev_1.4.10-1+questing_amd64.deb": {
-          "sha256": "f1d4071456ab72efd519aaf4898e29dee7c60554e58f73680c81df3b6df46d53",
+        "libollmchatgtk-dev_1.4.11-1+questing_amd64.deb": {
+          "sha256": "eeaee48e49d985e299e5b7e355457563cee11b6bb360ae9f8991bfc43d2bf9dd",
           "suites": [
             "questing"
           ]
         },
-        "libollmchatgtk-dev_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "4ca2addcd2c1ba3ca2731d036654f0035e6d1ee66ff978d83907459c38638b66",
+        "libollmchatgtk-dev_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "dd0c171e97656421ec1f56b7e610718e7f760fc207b1a99a46981f63ec3acb33",
           "suites": [
             "trixie"
           ]
         },
-        "libollmchatgtk-dev_1.4.10-1_amd64.deb": {
-          "sha256": "9c1e03ba37cd22d8de34d471573493e19454d4dc2830dae8e87a27269979ed68",
+        "libollmchatgtk-dev_1.4.11-1_amd64.deb": {
+          "sha256": "da0230a85b6ae8bd0276719141ca2df013816032d23a57acf3dfdbd87ea70574",
           "suites": [
             "resolute"
           ]
         },
-        "libollmchatgtk1_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "8bfeb22bce002e2a03b5be31a75e8af3e40928de5c599972d5d50dda109b5cd8",
+        "libollmchatgtk1_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "a8a60f8b4494079006a03c5ea49dc6f86a9c5a4e04334da26f9f677da6c590e4",
           "suites": [
             "plucky"
           ]
         },
-        "libollmchatgtk1_1.4.10-1+questing_amd64.deb": {
-          "sha256": "3c5802e4c4cbd37857fc5f01be05fa8d959c384fde7e336afac98391361ed93d",
+        "libollmchatgtk1_1.4.11-1+questing_amd64.deb": {
+          "sha256": "dfddcd6b28d4738c35584dc9363dd06642e28f873f4d561b4f1f4d9c4d310b62",
           "suites": [
             "questing"
           ]
         },
-        "libollmchatgtk1_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "ee3b2778f17de1b994b65b5b840562e50cafb341b3c2fd1c6a6f5395abf5821b",
+        "libollmchatgtk1_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "7c2091c967d898073120e18ca3dca5ffd528152eb81bc1f86e000911d6fad74d",
           "suites": [
             "trixie"
           ]
         },
-        "libollmchatgtk1_1.4.10-1_amd64.deb": {
-          "sha256": "ca361ed18428e401e4826fac19a87c194145e824f5a5b2092cafbbf2445d8890",
+        "libollmchatgtk1_1.4.11-1_amd64.deb": {
+          "sha256": "0dd47a0e0c2cb7cc8917619fa9eed2b2d4c217753c493ca6529a8ccdad9c1057",
           "suites": [
             "resolute"
           ]
         },
-        "ollmchat-doc_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "f3f2d83335e8daf41c4c8976b25d64fc653ae8f89cfdb62f59e33f89b334aa4a",
+        "ollmchat-doc_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "ce77e64e150289fe8f7121e298b3d01d5bd074dc2136d1f928100939a0acb961",
           "suites": [
             "plucky"
           ]
         },
-        "ollmchat-doc_1.4.10-1+questing_amd64.deb": {
-          "sha256": "6398df475582c317ef40003b5d15214d758b22445c3462169aa3d66b4f843bc2",
+        "ollmchat-doc_1.4.11-1+questing_amd64.deb": {
+          "sha256": "eae14b875d718f56b42b3149479b8480b6202dad6973d3b86ffd7336a4af32ac",
           "suites": [
             "questing"
           ]
         },
-        "ollmchat-doc_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "48de9c951fd3610d5ef703c74e2acc9dc0c3b181fdb6ae2419996972866d040f",
+        "ollmchat-doc_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "be132922b0f3f7e169f8fe4904e09eb7d2f2f25e307e497f2a3ee466df52792d",
           "suites": [
             "trixie"
           ]
         },
-        "ollmchat-doc_1.4.10-1_amd64.deb": {
-          "sha256": "821245993d12b66398633525dce00d06139100374d74f7539be525ef3028b173",
+        "ollmchat-doc_1.4.11-1_amd64.deb": {
+          "sha256": "7bfdfe4f671a628fc6bd4ef2d46c8d5b7450bdfc75b49c67feec6d8ef619b5cf",
           "suites": [
             "resolute"
           ]
         },
-        "ollmchat-remote-only_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "97b1fc0ad673621b170947cc176dae064604eb83951c7514bbb9d97bedb4bae9",
+        "ollmchat-remote-only_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "b15c3efc7f9d2debd6f54bfc68d52a1958905b4daa98cbd8d083be0ac2e97700",
           "suites": [
             "plucky"
           ]
         },
-        "ollmchat-remote-only_1.4.10-1+questing_amd64.deb": {
-          "sha256": "de7e8445eafa1d4944be058ea4601bc6e3af94732f5b1dcccebf0185530c2896",
+        "ollmchat-remote-only_1.4.11-1+questing_amd64.deb": {
+          "sha256": "73427054380a204727ca4a858f999a77ad06b230fac9f107eae3d582b93c7748",
           "suites": [
             "questing"
           ]
         },
-        "ollmchat-remote-only_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "da33bae85c359393bf1e7ac532cd1ac4eec77037e2aee93a87c0da5fd10cc6eb",
+        "ollmchat-remote-only_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "3175e59fee0f80635b0c909ed78e73af26d6889e7d6affc11a2d20d648709114",
           "suites": [
             "trixie"
           ]
         },
-        "ollmchat-remote-only_1.4.10-1_amd64.deb": {
-          "sha256": "c451996b634927c8e48634eff53f34c2f5e1baaa636d64d3a3b49d7d75b40121",
+        "ollmchat-remote-only_1.4.11-1_amd64.deb": {
+          "sha256": "a76d8cc64858472f2379403ae721b06cd2510a4561b5d8a8c7fb7101d4a8c9ac",
           "suites": [
             "resolute"
           ]
         },
-        "ollmchat-tools_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "0b0a707b86bc517981a116e0296898f57a0a1f7a1d6a6954a556c604a339c5c5",
+        "ollmchat-tools_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "c37a36e52e86d66b7aff1ff50dfe11343a044a154d916e6eafa7931eb4c77226",
           "suites": [
             "plucky"
           ]
         },
-        "ollmchat-tools_1.4.10-1+questing_amd64.deb": {
-          "sha256": "936ed8ea3f9cbfd6171a641a2702516578d7937b3fd7d809fffe3c81a9f56ebc",
+        "ollmchat-tools_1.4.11-1+questing_amd64.deb": {
+          "sha256": "eea1e0d32ba94246de1cb11f2abcc2962bc84149986e990899c45b7485e8ee10",
           "suites": [
             "questing"
           ]
         },
-        "ollmchat-tools_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "daf05fea9d0ea47358bcea3cca0b43c8a3093490004e10b27c368cdfd423aa18",
+        "ollmchat-tools_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "bad5da4b6d3ba87bedf71789746894b63b8e274730f6867a589c5475d83fd208",
           "suites": [
             "trixie"
           ]
         },
-        "ollmchat-tools_1.4.10-1_amd64.deb": {
-          "sha256": "66f75f42a8ca9a09abe07cd89f09d5ee1e2ecbd7d2f0fe6aec60baa5722e730d",
+        "ollmchat-tools_1.4.11-1_amd64.deb": {
+          "sha256": "e0479ac182e8fe27d98678f3ba6d7cb89bd0a0dcae94bba09c84f675df23d93e",
           "suites": [
             "resolute"
           ]
         },
-        "ollmchat_1.4.10-1+plucky_amd64.deb": {
-          "sha256": "5303ed7b01de6cdfb3f50278f8b58a7f5c67ffffa936d319497204e9b7be9021",
+        "ollmchat_1.4.11-1+plucky_amd64.deb": {
+          "sha256": "094e883601c2e36e7d4f341388ad97ef3b946cbf82cfcb40de4c44a0e1428e64",
           "suites": [
             "plucky"
           ]
         },
-        "ollmchat_1.4.10-1+questing_amd64.deb": {
-          "sha256": "7348c2425ba426b55fdfdad2fa9e7ed6b2e7ac43b9b597522d76a5c34db13f87",
+        "ollmchat_1.4.11-1+questing_amd64.deb": {
+          "sha256": "14220e97212ebce958b92a1ec5f18e7310327348b46222f05eae1cca28bb662c",
           "suites": [
             "questing"
           ]
         },
-        "ollmchat_1.4.10-1+trixie_amd64.deb": {
-          "sha256": "45e7e610cbe35a04709cd29480e38ee5e6acbf9e38321136d21ff22f8f9662e9",
+        "ollmchat_1.4.11-1+trixie_amd64.deb": {
+          "sha256": "be885448b6ec1826419ce3ff7daac6346b654c23b2747ebda7abfd64dc9d0c8a",
           "suites": [
             "trixie"
           ]
         },
-        "ollmchat_1.4.10-1_amd64.deb": {
-          "sha256": "21691a7d588a3bdc193873bee9d299a5bdfee25d40268d451f3f88dd9eca3373",
+        "ollmchat_1.4.11-1_amd64.deb": {
+          "sha256": "94a0639240a4df0db86f70002097dd633e6c1537a841344d4dfe150520f0158f",
           "suites": [
             "resolute"
           ]
@@ -1342,465 +1342,465 @@
   },
   "rpms": {
     "OLLMchat": {
-      "tag": "v1.4.10-packages",
+      "tag": "v1.4.11-packages",
       "packages": {
-        "libocbwrap-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "a5366edc170bfa7b79967339a508ad15aa790980136d19f2588a80d452a9f1b2",
+        "libocbwrap-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "82a81923102411c7e8fca26c7eca92a694604c2a9cc7d617892a12b5ed2386b4",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocbwrap-1.4.10-1.x86_64.rpm": {
-          "sha256": "583ffa8718854e1f8a2f9d23fe10eeb373978fd15bf8215f8d9f5231a8245665",
+        "libocbwrap-1.4.11-1.x86_64.rpm": {
+          "sha256": "8dc4826dd4e3a7e306aa3d398851af49c18bf736dc364a6eb8640e3e8134ba9c",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocbwrap-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "e2b9a23973ca20b3a73b26f8d528f9131e51328f26ccd39f4fcab1d63b34e5ac",
+        "libocbwrap-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "752111f97b724e452ea0478c2eed3a9132136dc62b4bad0ba719bc9acff147ae",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocbwrap-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "d496de0a0be5d5bf4e32b8754515a77e6e8eaa68af0e242769bae5d32e81a627",
+        "libocbwrap-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "cbad23a87cc171031ab612165a915ed6122266c29e0b58d4ef7ca1b138877418",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "liboccoder-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "7cc28d90b3d853f48604b4bb51f325ab8049dae4e5d1193bb61021a4d1da6d60",
+        "liboccoder-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "e2daed054eba540f2d1f492ee649ad7fcb902751e56d88c27fe7eb905108b125",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "liboccoder-1.4.10-1.x86_64.rpm": {
-          "sha256": "5ec17e3b5f068b2acb422b5c5d2520d682c9a5df5ab80c6a951d3c638819b6a8",
+        "liboccoder-1.4.11-1.x86_64.rpm": {
+          "sha256": "92f22401d0c7da59ac7770cfdd4e12def5de3b16bc8cb17d45521f7fa7aca70e",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "liboccoder-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "93ece4f69bf8cccb85441c324180427c4421bc4644fc5cd0b817b65e16219fc9",
+        "liboccoder-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "f67495604fc9b2d75b811c58f38a0733cf2fbc9ed312a1f3f870b4e1356c4d7b",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "liboccoder-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "18c33bb728d1c6eee530959e92c7c108e0813b56642bca442083acd2a991dbf9",
+        "liboccoder-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "4ddd862968d7c13103632b64032f3c421f28df8b67e797c205aecc5c9d83cba7",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocfiles-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "83e3f15e6d6245408fe390ba1417b08f81e2caa7fa516a22b27235078db0cba2",
+        "libocfiles-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "811cf8f3c28400a2e89f103a08edda3787fe0d0684c7a814a16caa2c7dc3d72a",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocfiles-1.4.10-1.x86_64.rpm": {
-          "sha256": "9da50b1e739996a95b8b751775208bdbcf7ea6e86aad5c6b094d6398ac6248eb",
+        "libocfiles-1.4.11-1.x86_64.rpm": {
+          "sha256": "2c25a7021954f1a9b475775cc41d16d1e436a9f3da67ca4e4727e4dcbd53c941",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocfiles-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "614ef3f2dbfd5a77caef093d1aa8f0d9d59728babf8c0faa29bfdac7bff2273e",
+        "libocfiles-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "ca68ed6fc42db2f8736fc8bca2e1d5d35ddacfd8b6bfc2c9290610cbf89bcc56",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocfiles-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "02489ca54a9b4df4b1cccdf6dad06390797213f4f7e29528edb5fd6ea79dd782",
+        "libocfiles-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "1e6f43d4774835d42e5713de70b199a4b2a93ef472da351fa6b06b0b9c3b3cff",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libochf-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "c89fc19811123b078fd1c0becb031fe1be410aa3a3fd75145dde36f6080af1c9",
+        "libochf-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "87b576983c4e52c939a00c3ade05879d6ee112a0727d00981afd3f8004be7d66",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libochf-1.4.10-1.x86_64.rpm": {
-          "sha256": "a1f92e9aa2c2307f7e76995982d22442fa6a53d8f08f684d1ccb348f3a25ece1",
+        "libochf-1.4.11-1.x86_64.rpm": {
+          "sha256": "3092d04c967a671b27904a25d56771b123f318073d8443330abdda1bc8d6c6a1",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libochf-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "34a9c1bf9fd52573bfc1988bd3036968917303596512b3b663b1495785f0404a",
+        "libochf-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "7c5a822d352d6514d39888871468ab77905c71ba30d0466d739465217f6841f4",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libochf-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "d8a337f6104d13062f3ab5d382551a1037ec38fab78d8817394aa1a696c88c32",
+        "libochf-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "79982bf84293f16167c3669c8f4eaf731f59ae53059d206cd58f790eefdc58b0",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocmarkdown-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "83223396547d7af6e19ba07863c72703610bb919a494769b48b8c367ace9763d",
+        "libocmarkdown-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "0974107719717735c138913794964f10b36898ba3f89d68b973d795214107f75",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocmarkdown-1.4.10-1.x86_64.rpm": {
-          "sha256": "2676c576a6c6792e51122ac0bf414bfcd858eb3531c5bb3c4812ea735052bb54",
+        "libocmarkdown-1.4.11-1.x86_64.rpm": {
+          "sha256": "9dc129017001b0aabbcf54c82635dbd645d463631a3c4f9d2232c96d99a657d0",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocmarkdown-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "19d75fad48f6480c583d34f0067a53b2f69f418600dbabc46d54770db7649ef0",
+        "libocmarkdown-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "f08868115d701f4ad6ad20d851175ece04203b90a258e0097c89ab89524e87bf",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocmarkdown-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "73233fff110ad513eb53b59a2b4a0eb9ba5431325096cbc6ea356bdb1b37249c",
+        "libocmarkdown-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "9ba26500f7add10e86495ddbb0820b7e70125ed1e3babde6dd0cffaf2ee0764c",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocmarkdowngtk-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "ec09051f004d6749b27b7629aca304f0d65ee5e6ffae6aa847846ade9cfe8da7",
+        "libocmarkdowngtk-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "4abbf26e3b6db8eb2dfb105a3af75474ffe6382c0ce68c7d1a9277b1a89c53ef",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocmarkdowngtk-1.4.10-1.x86_64.rpm": {
-          "sha256": "a2ea9f6cc0c2eef8ce06e716d3aed0841e51d171092e08143c8cb6f2f4be42df",
+        "libocmarkdowngtk-1.4.11-1.x86_64.rpm": {
+          "sha256": "0e5b4baf6ac9196da342cd1bf2bf7ba7d08ba497ed3f2b45bc707ed0b9000c49",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocmarkdowngtk-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "d51b3877fa4c74c5d5d6197d442a0b701971f72743b419d1e6e2d943dc2615e1",
+        "libocmarkdowngtk-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "4f71d3362070734dc2e793007c0f79e1fc6e42dc05b0b97bc9e49d31fb08dc96",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocmarkdowngtk-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "d5e8f6863795ea38608d019f8155cf1b80f3bb3f1107dc2d6c016f3c9c2c31e0",
+        "libocmarkdowngtk-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "b7d682996917b0322a5ce5ef4d74ffc0afa874c0cba92d6af91b10e4f473dc38",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocmcp-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "221b50a9dc2381bf19af3bd18ee46a2e80e56bb50a98c104a499a868bce61ff3",
+        "libocmcp-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "67fde2cc2a4bf3c3c3d4ffbac1b28de3269d4c158990058f74baf33f2a77eb49",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocmcp-1.4.10-1.x86_64.rpm": {
-          "sha256": "277fd64d9482615972892030ec9a9131a877da3c11f4a8ab87052019172b98f8",
+        "libocmcp-1.4.11-1.x86_64.rpm": {
+          "sha256": "064c1201573aefa92195a8a20d2d8ba6900575f55f2da0d1a11bdb16fc288e48",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocmcp-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "14f21f93449e35b10e0fb61224dc722d463e43a9e343775f58ffc5e543d23a27",
+        "libocmcp-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "438427853c78a955b6ed6c5361ae77e7d36fd5ae386129df69ac462a8aba4daa",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocmcp-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "4aa15a0e2e3a41e4c42217dec1d0683c8defa898f008987fea2e95562ad6fa1c",
+        "libocmcp-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "fbdcbd566cf3f098a5b111ea9b5f481fd0b27bb83fe36fb1e10804e0df5dec58",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocrpc-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "19264e242b0159cf5d5b92a2b02f2fb6e343bbf2d9001093385135fb3373c37b",
+        "libocrpc-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "f2ec5c4e087b1ed0dbf29880f10472e21a9aba2314669738f7a5c70039632d94",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocrpc-1.4.10-1.x86_64.rpm": {
-          "sha256": "1a685be2c87785e7db47a58fc2ccbdcefce4bf0d4618fcf8ed32fe5e84333d16",
+        "libocrpc-1.4.11-1.x86_64.rpm": {
+          "sha256": "94b20ad98bb1da7d0ede93ed54025d010ecb53482092e8a8170d58b10283a820",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocrpc-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "cb5120ef6e8b356526f5060fbe3bbb49c132de2ad2915748e842cc8f1f851ed2",
+        "libocrpc-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "cda8a2a5d1631c232cf50e5d3faec5df7c8152c5a00a6d6b569436c445f8bae4",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocrpc-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "a544eb840b9a60e6d7de5acb6fd340f916a9f9cb744b0f4173201722a3ee5462",
+        "libocrpc-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "0fcc9fc1775478010bb291c7969cc770f9f771278eee01247b7ec5384d066c1c",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocsqlite-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "477b0096075296f0460a1226cd3c5b97a6b252f0cea2d6237227e2c7620383e0",
+        "libocsqlite-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "6c9afbfe3f8158001924f8609fd0bfa3b7fa3b31a9a2e10866803aa0937d0b98",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocsqlite-1.4.10-1.x86_64.rpm": {
-          "sha256": "35b460f133c11ca07b8955a9a3fe59c2212d5a5c117208a50f9fab4231de30c8",
+        "libocsqlite-1.4.11-1.x86_64.rpm": {
+          "sha256": "daabcac1e2b6dc19e48ec92ba39a146d61189ce6a6d472de567511aad84fe340",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocsqlite-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "d9482f676976d4246bb48caba7cfb86a32d190cf3c1f310703b6f41abf2975ed",
+        "libocsqlite-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "0aefde9b3c6ae9470200d884c0eacf382a98181fd73f932a351c6ff19f0d5791",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocsqlite-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "2776f5db6927afd981d34e8cd5a44a3de606ea503db5b40dc57c78565f33e2b9",
+        "libocsqlite-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "aa7a73f0e7699460572160dc6718371f9fa0f9d11764ee72b0f63d57f08d024d",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "liboctools-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "d68fc1439218bf4533e99d6e4af78f6f1b83043aa4bcf2fced6531e6d9710aa3",
+        "liboctools-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "37d4bb15ff801d87daed6ce31df15b659a95a9097e7e2e8fb38703589ade7d67",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "liboctools-1.4.10-1.x86_64.rpm": {
-          "sha256": "af1cdbc5b8e910a0e8c935011c2bd962c7dd1c39067170191a98743a4c4dd852",
+        "liboctools-1.4.11-1.x86_64.rpm": {
+          "sha256": "8677c2ed04118b2419153c66a9fb702c311ff069abda9882989e82ba1a4d8074",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "liboctools-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "f39dede59ac9191b2ba08f0846fc8c0b9fe5dfb14d3ccf099587f1da0688488e",
+        "liboctools-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "93ef53dd8f59d7b5704e3446960acd430eeb2df93daa2181e24d4f2ee0996a4f",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "liboctools-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "01ed9c4ffe1edff520825215da2826d44169ba544522ae80f3eea51b2a2fc282",
+        "liboctools-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "4984db5c483f32fa4132038735af08260d4994b75a468d3c4e7c855efee015a7",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocvector2-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "f182ecbbe427436d1b6ad9ab842a8b41e2a933a54832018d95eeafcaf531b57a",
+        "libocvector2-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "d0274bed7e2e9d0337e0ef4a0bb630d99ced9bbcf6b89d10c4ada68cb4e2f573",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocvector2-1.4.10-1.x86_64.rpm": {
-          "sha256": "dc4ebadd98e6bd82c3a2d977e214d3a5f52bdd16dfa8a69ecbd9ba342b81f457",
+        "libocvector2-1.4.11-1.x86_64.rpm": {
+          "sha256": "c79622d3ae4ff618650e72f61d64f09abfd47b767f4e70a71512e1bbe6284cdd",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocvector2-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "c99b2da4cb9e8bd7f66a4b412bca4f2a87a6c2d74a1f289d8d5e1e1073097d13",
+        "libocvector2-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "683bb499f85bc24b49f1e2e3f4ccb3f2a2abcc7cfe02f2d652c49c5bfbd973e9",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocvector2-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "08ca75a3494ec9e2149a0e5fb2033a46d94488930d89204deddcec89dabcdd2f",
+        "libocvector2-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "64071e295fc8603de9937dab862395058830cd627288a87cbb9c2ff81d3f02f8",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocwebkit-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "caad0cebba03d59f38a1fc12175aaf758ed2ea8a6927c79ecc6a4a608bf4e2a1",
+        "libocwebkit-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "80a277fe35fd94d36d28074242ffb7e8781e72be38d0acd5711765e86d07f255",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocwebkit-1.4.10-1.x86_64.rpm": {
-          "sha256": "14544d03381704ffe6a2d26aeff192f60514f4df888057ed172b17908ce0b025",
+        "libocwebkit-1.4.11-1.x86_64.rpm": {
+          "sha256": "d28f680c1b3bb954ddb33e4646b6d36f19f5d1b06b8d73f0a9dbb51cabf6cec0",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libocwebkit-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "01e11253e1f91df4947902e03a8199a11f76e6eb013c4d93a14531fd27177820",
+        "libocwebkit-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "5d0f66a54a208e3fce46246e323a474afca2f7b3076870c4f498e48ab2ed9ecc",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libocwebkit-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "7260e926ab64b31ff30c385b3b2b8494e12c92c591cfd4338403099a24c04146",
+        "libocwebkit-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "ce12d8e20ad7a7b6940b0f6af585d7ed46dbdcecc61f7591c158cfdbc9054e9d",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libollamaweb-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "90c0ca321bfc8b46cfc3e6ef8e3fcf618d3cadef6f8dd87bae530b6fe8b8dfec",
+        "libollamaweb-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "c0b587f5c584738aa099a302eed26f02a704afb7ee685114210ccfb40cb368ad",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libollamaweb-1.4.10-1.x86_64.rpm": {
-          "sha256": "56e61c1de22eaceff7280ff3332b87f4c50ffdd1741854d232ce99e970142dea",
+        "libollamaweb-1.4.11-1.x86_64.rpm": {
+          "sha256": "b50ed3acd544ecbfefeb36307eafa1ae2c826e4dee818e20ce1dcdf4497ce31a",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libollamaweb-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "61b8b8c7f3c8533633ad0e75d8d38e0e5935652fe82f61b58b91fe072bdb3d57",
+        "libollamaweb-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "ab8145c329cd1125d1a9a8fd94d0353cbdf1b8274b7a70d241efb4cfca22c66c",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libollamaweb-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "32e3ac677421a931665fcaed7e25a08c3be9a2b8a47decc3c6e676a061780d45",
+        "libollamaweb-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "65144b30c41664cc9f2e3ab6bf3a55321533dce91647f70694c84886883d4c2b",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libollmchat-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "f0e84ca212f046e3f7382b168816efe613ce93671692ff049be0947dd28674fe",
+        "libollmchat-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "2eb932290c310f2081ddf48c01d1745eac915b6f5e6491c8c766678f229a2fa1",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libollmchat-1.4.10-1.x86_64.rpm": {
-          "sha256": "78795172ac7068619cfc3d53ee226404b96f168ad045b364b13f7c3959558a4c",
+        "libollmchat-1.4.11-1.x86_64.rpm": {
+          "sha256": "5a1c862f0a9b196cc29896018b29dda72866ef9d25f0478e65333b04e5094359",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libollmchat-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "734a662eec25adfdcd15a3c7392f601ed309330b88cf2d0dff07445833162d0b",
+        "libollmchat-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "28b3b628ef964239e4cd0171049b3103fc1c218ddf11d51b3f2a59229f87f729",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libollmchat-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "2728bb68eef9c30c52855fa50e31a9a776e4ffe4e7b04eb1ce4cada93b37429c",
+        "libollmchat-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "ab74a17cd84c93091ac4b87fdccc22d925d8a4736892a51060b34aa8736fa9f1",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libollmchatgtk-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "f322924ccf1f175f5d30aa491d65d0450b42c2d79aebbcb5e95a3d5b7c5f84ef",
+        "libollmchatgtk-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "b982c0e246c126ff9fa8b6143747518bc32a020d6cb5087e378178565f91c947",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libollmchatgtk-1.4.10-1.x86_64.rpm": {
-          "sha256": "d30f89e07acffc76cac139dbd36692dd0ee3d8d96d2af4ed671a86f7542100e9",
+        "libollmchatgtk-1.4.11-1.x86_64.rpm": {
+          "sha256": "16725c9930155845a6372dd3bac35fc6c6a954d791135eb493a390c48872dfc8",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "libollmchatgtk-devel-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "a938c1a91cd443cfcf041e77e29466e05aad82c49f1bb008b305b85f37ebe9f1",
+        "libollmchatgtk-devel-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "b9979af6f432bfbc4f0f1fa7a426cb35aac5da051121bd2f12041608a2ee5dad",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "libollmchatgtk-devel-1.4.10-1.x86_64.rpm": {
-          "sha256": "4cff102a99541d3713528cce9e827af0eddb75ca6ea8b1d1310f87ccd52074e6",
+        "libollmchatgtk-devel-1.4.11-1.x86_64.rpm": {
+          "sha256": "2cd0e49049bc5f51a01f245ba3141ade48674ae130176edcfc56cfb9afd6fb86",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "ollmchat-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "39f1557c54d91bbe613ec512efa05ffdebbbfae5be02a14bdbb73d5f32d24fe2",
+        "ollmchat-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "effd9d10d8301ce22d4d2be7fb40ef22c41cb01195a21be670bc12ed811f7a0f",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "ollmchat-1.4.10-1.x86_64.rpm": {
-          "sha256": "dd1d17c625456480d306d1e7953c947ac3cb0e63c311cb5b788d86eeecaf9801",
+        "ollmchat-1.4.11-1.x86_64.rpm": {
+          "sha256": "26624632097c8171cfc3a4b6c06c8bab54b7f430e92249e8131cf823c89f8b8f",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "ollmchat-doc-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "e0c06183421c3204ad151c733666fc404d1012d26e8d7786b4ff9648a936070d",
+        "ollmchat-doc-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "a1ead240d5e239ec3968916e268daae401fef6f03bbc04a445f53f9c7ce7fbb0",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "ollmchat-doc-1.4.10-1.x86_64.rpm": {
-          "sha256": "8eb340755d68f65df1004c26e04c698202e0586db39eb8b084f62e03f6ed3fe8",
+        "ollmchat-doc-1.4.11-1.x86_64.rpm": {
+          "sha256": "ec9d99e4a77cee876f8931f208f242783ed33205e456f31cac00f19088ec4e2f",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
           ]
         },
-        "ollmchat-tools-1.4.10-1.fc44.x86_64.rpm": {
-          "sha256": "9dc672af57ab1aeebf3fb96ebb7353bedddcb64ec956f7ff45da7a0c92435c10",
+        "ollmchat-tools-1.4.11-1.fc44.x86_64.rpm": {
+          "sha256": "f6a9136cda99adaabb0e59baf611002800eb7ecbe1d8f3ea97a93c7c3a5f5587",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "ollmchat-tools-1.4.10-1.x86_64.rpm": {
-          "sha256": "13b280fc441a080480a7886671cebddac1e96cc30efa4711a7cc1ebdf620a79f",
+        "ollmchat-tools-1.4.11-1.x86_64.rpm": {
+          "sha256": "46d1703683c21e00cfd5df0911ebf610b5eee66c61b7fccfe2316fba06d97669",
           "arch": "x86_64",
           "opensuse": [
             "tumbleweed"
