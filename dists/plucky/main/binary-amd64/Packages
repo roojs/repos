@@ -345,22 +345,22 @@ Description: LLM inference in C/C++ - libraries
 
 Package: libocbwrap-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 88
-Depends: libocbwrap1 (= 1.4.12-1+plucky), libgee-0.8-dev, libglib2.0-dev, libseccomp-dev
+Depends: libocbwrap1 (= 1.4.14-1+plucky), libgee-0.8-dev, libglib2.0-dev, libseccomp-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocbwrap-dev_1.4.12-1+plucky_amd64.deb
-Size: 14434
-SHA256: 5e255719ff04cf631edc239ed2821adc6e3d5846f1281c662fa48ed266ed0f45
-SHA1: d911f9e99ebb2b5c7b1aec2cbf78556457a247e8
-MD5sum: 3d3afeb21f3f47946ae4c49e4a38fac7
+Filename: pool/main/o/ollmchat/libocbwrap-dev_1.4.14-1+plucky_amd64.deb
+Size: 14846
+SHA256: e1447da8b0550193518f8d008921c619504de296b76c6c734780bdc38fa6ed99
+SHA1: 3cbd1a18a9bb2b90d92dfc19357f87555a211e01
+MD5sum: 2c679218c96987182a5fe34cff4c3b24
 Description: Development files for libocbwrap
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -369,7 +369,7 @@ Description: Development files for libocbwrap
 
 Package: libocbwrap1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 152
@@ -381,11 +381,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocbwrap1_1.4.12-1+plucky_amd64.deb
-Size: 51522
-SHA256: 19aebdabecce3371b51d936d3affb26e786a770a41ee1fc936d8b0c94abf3da7
-SHA1: a6a55b1470f69b8c7388e1ceb4488010d5e10f46
-MD5sum: 2d5de4803afa0a83a3c923d3921133b8
+Filename: pool/main/o/ollmchat/libocbwrap1_1.4.14-1+plucky_amd64.deb
+Size: 51956
+SHA256: 681b6acdaf68bfa8feca2be6d69fe6f62b64af97f92e186bc354081429b651e9
+SHA1: abf4d96152801ef57ae3d1af5f762ce2b6e32d92
+MD5sum: affaa593ba6006ebfab2611279f26815
 Description: Bubblewrap and seccomp helper library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -394,22 +394,22 @@ Description: Bubblewrap and seccomp helper library for OLLMchat
 
 Package: liboccoder-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 421
-Depends: liboccoder1 (= 1.4.12-1+plucky), libocsqlite-dev (= 1.4.12-1+plucky), libocfiles-dev (= 1.4.12-1+plucky), libollmchat-dev (= 1.4.12-1+plucky), libocmarkdown-dev (= 1.4.12-1+plucky), liboctools-dev (= 1.4.12-1+plucky)
+Depends: liboccoder1 (= 1.4.14-1+plucky), libocsqlite-dev (= 1.4.14-1+plucky), libocfiles-dev (= 1.4.14-1+plucky), libollmchat-dev (= 1.4.14-1+plucky), libocmarkdown-dev (= 1.4.14-1+plucky), liboctools-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/liboccoder-dev_1.4.12-1+plucky_amd64.deb
-Size: 32432
-SHA256: c0fdd5906a4bb48ea6c54d82720a7f7687f1bc6d04922e9ee6ce1742695cf4dd
-SHA1: 5114daa89286f14b3f35efb7e817f9fb43fa9ec5
-MD5sum: ba074d8d48a2f237ba8975011d6947c5
+Filename: pool/main/o/ollmchat/liboccoder-dev_1.4.14-1+plucky_amd64.deb
+Size: 32912
+SHA256: 9e3fcbf7a106780de7e9b92857ea2401a4e34ee091771980f427afe65077669b
+SHA1: ad21a9bf84e13c1c56da4affb800d598886d97d8
+MD5sum: c7afa3cb0ed539589f0958768789300b
 Description: Development files for liboccoder
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -418,22 +418,22 @@ Description: Development files for liboccoder
 
 Package: liboccoder1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 1104
-Depends: libadwaita-1-0 (>= 1.0.0), libc6 (>= 2.14), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.74.0), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjson-glib-1.0-0 (>= 1.5.2), libocsqlite1 (= 1.4.12-1+plucky), libocfiles1 (= 1.4.12-1+plucky), libollmchat1 (= 1.4.12-1+plucky), libocmarkdown1 (= 1.4.12-1+plucky), liboctools1 (= 1.4.12-1+plucky)
+Installed-Size: 1116
+Depends: libadwaita-1-0 (>= 1.0.0), libc6 (>= 2.14), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.74.0), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjson-glib-1.0-0 (>= 1.5.2), libocsqlite1 (= 1.4.14-1+plucky), libocfiles1 (= 1.4.14-1+plucky), libollmchat1 (= 1.4.14-1+plucky), libocmarkdown1 (= 1.4.14-1+plucky), liboctools1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/liboccoder1_1.4.12-1+plucky_amd64.deb
-Size: 340440
-SHA256: 6bd03e86b2d30f7f90c2dca835dc69ce4ce7eeb17bdfa36eb5c86467b1fa50ca
-SHA1: 8bec5f927b852de8957601606ba7400d9a6d1239
-MD5sum: 764bd164dbf8bf88b81534ac252c2f57
+Filename: pool/main/o/ollmchat/liboccoder1_1.4.14-1+plucky_amd64.deb
+Size: 346118
+SHA256: 9e443daf912721099499a0adaf025283513aaea589e29e47fa722221e6620694
+SHA1: 030c93c9d2b893d66073113b395719995a7be9e2
+MD5sum: 2439aa8e07b6a8744396d1350e14d6e6
 Description: Code editor and agent UI library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -442,22 +442,22 @@ Description: Code editor and agent UI library for OLLMchat
 
 Package: libocfiles-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 356
-Depends: libocfiles1 (= 1.4.12-1+plucky), libocsqlite-dev (= 1.4.12-1+plucky), libocrpc-dev (= 1.4.12-1+plucky)
+Depends: libocfiles1 (= 1.4.14-1+plucky), libocsqlite-dev (= 1.4.14-1+plucky), libocrpc-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocfiles-dev_1.4.12-1+plucky_amd64.deb
-Size: 25570
-SHA256: 02df078f8bedcfa77f5fff0083a5d2dcd1a7e9994116865897fd301ceb88196c
-SHA1: f5821736a436dbf8be79d781ee8bc404db8663fc
-MD5sum: acef590f7bbfece6ea8f0a77234cc04e
+Filename: pool/main/o/ollmchat/libocfiles-dev_1.4.14-1+plucky_amd64.deb
+Size: 25982
+SHA256: 3799b64262161c5b73f4e91a19dcda655a6d87866f7c230368a25df29d6b3bda
+SHA1: ad2b3033b8449ef37db7a162c25f29f5cf9eaec5
+MD5sum: e0cf53626cf5f91a6ae6bd52b45edc54
 Description: Development files for libocfiles
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -466,22 +466,22 @@ Description: Development files for libocfiles
 
 Package: libocfiles1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 450
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.68.0), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.12-1+plucky), libocrpc1 (= 1.4.12-1+plucky)
+Installed-Size: 454
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.68.0), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.14-1+plucky), libocrpc1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocfiles1_1.4.12-1+plucky_amd64.deb
-Size: 133270
-SHA256: 94f9726a242557e8cbb14aca134fb7ec3676e523ef9c05388afc33d7043e5606
-SHA1: 23cc443d8d6ed5b8063357c31871dd01d3d4767e
-MD5sum: b69433b3a10ea099cad35d0ce741ec0e
+Filename: pool/main/o/ollmchat/libocfiles1_1.4.14-1+plucky_amd64.deb
+Size: 133390
+SHA256: 42ca985b5187448413e418992cb959aa52f871866d328d5efe0553c1fe9be3cc
+SHA1: 1855ab53cf1c149b79f9c67ab30592f4ebafd4a0
+MD5sum: a7d46f4e9a5c9fc6ad5d26ca908d26df
 Description: File and project management library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -490,22 +490,22 @@ Description: File and project management library for OLLMchat
 
 Package: libochf-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 26
-Depends: libochf1 (= 1.4.12-1+plucky), libocrpc-dev (= 1.4.12-1+plucky), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
+Depends: libochf1 (= 1.4.14-1+plucky), libocrpc-dev (= 1.4.14-1+plucky), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libochf-dev_1.4.12-1+plucky_amd64.deb
-Size: 11578
-SHA256: ac594de55e1d087692897d07e35cdbae0f2329fc26bf60bc0baf85380a8de60d
-SHA1: 0b3312119bf06576ab566cde22cd0837c90f40a8
-MD5sum: 2a5b309d4d1f0a3c8841ddb41da9040f
+Filename: pool/main/o/ollmchat/libochf-dev_1.4.14-1+plucky_amd64.deb
+Size: 11988
+SHA256: 602ac7296c31d6fc0969449fcf16758a2c3af3ccc3e9613330999db7e68db560
+SHA1: fce0ba926ea97b438caa762da71c3c1128d23bed
+MD5sum: b5d181bdb6c37d75a0bd091a38266833
 Description: Development files for libochf
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -514,22 +514,22 @@ Description: Development files for libochf
 
 Package: libochf1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 158
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libocrpc1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libocrpc1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libochf1_1.4.12-1+plucky_amd64.deb
-Size: 46098
-SHA256: bfc2de0b6383e5a7eafde2b88a5573e2202eae7c373a51e8c4c6d9bd8f0359d4
-SHA1: 36e7bd356990ea80071dd290c2cf49b3ebe8588f
-MD5sum: 2efd19dce766e6c26abfc6e7c58173fb
+Filename: pool/main/o/ollmchat/libochf1_1.4.14-1+plucky_amd64.deb
+Size: 46510
+SHA256: 5c8ef6887c53b9c65f393d6cdbc83b627838a8b42beedd213f0f69955944fc38
+SHA1: d93da4cd642830f19e67135bef1e1bbe6ba84a9b
+MD5sum: f1d0dcb0e7eeb33616d3d2316b34a727
 Description: Hugging Face Hub catalog library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -538,22 +538,22 @@ Description: Hugging Face Hub catalog library for OLLMchat
 
 Package: libocmarkdown-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 234
-Depends: libocmarkdown1 (= 1.4.12-1+plucky), libgee-0.8-dev, libglib2.0-dev
+Depends: libocmarkdown1 (= 1.4.14-1+plucky), libgee-0.8-dev, libglib2.0-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocmarkdown-dev_1.4.12-1+plucky_amd64.deb
-Size: 21626
-SHA256: 38cea7f3b1d1a7eb277b42c8443b33cc7d76e13d2fb426f6eedf0eb009eb8dde
-SHA1: 1c308d05f6be34c2adfdcffd3083d73163efc6bc
-MD5sum: 1f02dc2ee26013679bb81939f8f9b286
+Filename: pool/main/o/ollmchat/libocmarkdown-dev_1.4.14-1+plucky_amd64.deb
+Size: 22044
+SHA256: b5aea3cefe50ca6a8fc21a1aaaa3d0686051b0c0cafb070dfd8bf8cf273caf98
+SHA1: 327d64409901f2bc16f5bae4fad87b05aba111a0
+MD5sum: bbe11ec27ec93160be44ff22801be3da
 Description: Development files for libocmarkdown
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -562,7 +562,7 @@ Description: Development files for libocmarkdown
 
 Package: libocmarkdown1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 373
@@ -573,11 +573,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocmarkdown1_1.4.12-1+plucky_amd64.deb
-Size: 118058
-SHA256: dbd3bf876ad925be3c8ce552b8d410bbace703ccd0ecf49ad6752e6e3fe8f083
-SHA1: a111fda2a3ff6afe5337d2a6b51915293a63bfa2
-MD5sum: 460c0cdedec511dd3e30416e13233dec
+Filename: pool/main/o/ollmchat/libocmarkdown1_1.4.14-1+plucky_amd64.deb
+Size: 118492
+SHA256: a08f8ead6dcc784294f5b05860a0e3582ee315c294566d2fbecdf02fb1ce6937
+SHA1: 746a2e8088d478db6900620607951c09cf2af21d
+MD5sum: b54a25599bfa3d04f372bf3a3e9b769a
 Description: Markdown parsing library
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -586,22 +586,22 @@ Description: Markdown parsing library
 
 Package: libocmarkdowngtk-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 67
-Depends: libocmarkdowngtk1 (= 1.4.12-1+plucky), libocmarkdown-dev (= 1.4.12-1+plucky), libgtk-4-dev, libgtksourceview-5-dev
+Depends: libocmarkdowngtk1 (= 1.4.14-1+plucky), libocmarkdown-dev (= 1.4.14-1+plucky), libgtk-4-dev, libgtksourceview-5-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocmarkdowngtk-dev_1.4.12-1+plucky_amd64.deb
-Size: 14160
-SHA256: 0cccd1b09fe0e8942fb0b22f0188c529379b18863d9f24d6dd10d46bb26dc241
-SHA1: 8e65cb5de6eb30769d088e2c7c3a27294374a998
-MD5sum: c8add50dfd0e98260a388c7f152245c4
+Filename: pool/main/o/ollmchat/libocmarkdowngtk-dev_1.4.14-1+plucky_amd64.deb
+Size: 14580
+SHA256: 6e9139b30bfd43b6bda4679a2899534e2a807c42af3368d2ab8e0c461e7dca9d
+SHA1: 50ed066db20bb9a0b81e775d1d713128fa4760b7
+MD5sum: b15207783a26fc391fb24a8348a8d621
 Description: Development files for libocmarkdowngtk
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -610,22 +610,22 @@ Description: Development files for libocmarkdowngtk
 
 Package: libocmarkdowngtk1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 157
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.38.0), libgtk-4-1 (>= 4.0.0), libgtksourceview-5-0 (>= 3.13.90), libpango-1.0-0 (>= 1.14.0), libocmarkdown1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.38.0), libgtk-4-1 (>= 4.0.0), libgtksourceview-5-0 (>= 3.13.90), libpango-1.0-0 (>= 1.14.0), libocmarkdown1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocmarkdowngtk1_1.4.12-1+plucky_amd64.deb
-Size: 52132
-SHA256: 45918960fb799a725a867a58189b8a0fe2ce607b43e70634bc624ed2c2031009
-SHA1: 1f27758fcec4ef1a4fb7b58ba16b9288aa9ce728
-MD5sum: c6b21297bb2122d6aa3ae859d9e65a95
+Filename: pool/main/o/ollmchat/libocmarkdowngtk1_1.4.14-1+plucky_amd64.deb
+Size: 52532
+SHA256: c2f28830ff5f945f6c39a74b259a48bf21ff6f1952d393e67745cdaf1745ff42
+SHA1: 82f1f62f4f01b7bee2a098b94ab20a0504ecc16a
+MD5sum: 68f73801cc854938823de9280d46efb2
 Description: GTK markdown rendering library
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -634,22 +634,22 @@ Description: GTK markdown rendering library
 
 Package: libocmcp-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 26
-Depends: libocmcp1 (= 1.4.12-1+plucky), libollmchat-dev (= 1.4.12-1+plucky), libocfiles-dev (= 1.4.12-1+plucky), libocbwrap-dev (= 1.4.12-1+plucky)
+Depends: libocmcp1 (= 1.4.14-1+plucky), libollmchat-dev (= 1.4.14-1+plucky), libocfiles-dev (= 1.4.14-1+plucky), libocbwrap-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocmcp-dev_1.4.12-1+plucky_amd64.deb
-Size: 11598
-SHA256: 6ba3d0b35967361fa11e74c9bc2cc8b22b61ae8bcf535f23069de74a8d21843c
-SHA1: b838aba64eb7454728b47e0b39c6c6a81820c837
-MD5sum: 995147573718c282972a190ef1956004
+Filename: pool/main/o/ollmchat/libocmcp-dev_1.4.14-1+plucky_amd64.deb
+Size: 12006
+SHA256: df2b9b59b1d1b454c08dc50bf40ecaa4204c59ccb9f8f84b1476c16a989abe99
+SHA1: f1fc06c874c3bfae5d6ec436bea1c8d51e3be3a4
+MD5sum: 82f32a1e81acacaf60c838cd5513dfc2
 Description: Development files for libocmcp
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -658,22 +658,22 @@ Description: Development files for libocmcp
 
 Package: libocmcp1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 174
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.12-1+plucky), libocfiles1 (= 1.4.12-1+plucky), libocbwrap1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.14-1+plucky), libocfiles1 (= 1.4.14-1+plucky), libocbwrap1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocmcp1_1.4.12-1+plucky_amd64.deb
-Size: 51692
-SHA256: fc439baa1eb9dac5146d456e6e4ed10ec94fb08af300b31fbb6dec403d2e3e2d
-SHA1: 7175cbc0b56b8e9dd65ea3b98c7d86e1618e1c99
-MD5sum: 3c1d71cf51c3ec09d944a96793a16e83
+Filename: pool/main/o/ollmchat/libocmcp1_1.4.14-1+plucky_amd64.deb
+Size: 52102
+SHA256: 801bcb660aa7c6d1aa16b425f21acf4c9f979787625a1e21fa19645e18bf1f01
+SHA1: a2bd95f961594dd5528e231e68d1a6c0db0e20b1
+MD5sum: 5177a178b55131cc0b3e3feac57cc545
 Description: MCP integration library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -682,22 +682,22 @@ Description: MCP integration library for OLLMchat
 
 Package: libocrpc-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 165
-Depends: libocrpc1 (= 1.4.12-1+plucky), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
+Depends: libocrpc1 (= 1.4.14-1+plucky), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocrpc-dev_1.4.12-1+plucky_amd64.deb
-Size: 24810
-SHA256: 705db79559e9c63bc30a105bce663c713884339adf4b29193bbc897a4e278a70
-SHA1: b1aeb4d6c9c98140580fcd0ddb32b64bdacc91f7
-MD5sum: 970b2df6682f0becb0b6dbf7996f17bb
+Filename: pool/main/o/ollmchat/libocrpc-dev_1.4.14-1+plucky_amd64.deb
+Size: 25218
+SHA256: 5c00da8426a0dde3d9fc4855234ee6c55dae0b430cd518574860caac1f3142bf
+SHA1: 50d4b1359e3af148010c440225d63bd6e399581c
+MD5sum: c80e967f31aafeb7855dda5ae7fddfc5
 Description: Development files for libocrpc
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -707,10 +707,10 @@ Description: Development files for libocrpc
 
 Package: libocrpc1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 558
+Installed-Size: 562
 Depends: libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.27), libffi8 (>= 3.4), libgee-0.8-2 (>= 0.14.0), libgirepository-1.0-1 (>= 1.45.4), libglib2.0-0t64 (>= 2.68.0), libgnutls30t64 (>= 3.7.2), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.1.1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
@@ -718,11 +718,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocrpc1_1.4.12-1+plucky_amd64.deb
-Size: 179624
-SHA256: 2081caf7572e74002d620a86f776fd986ada2fda9df753edf39b0eb6f3076b89
-SHA1: bbc2e3a12f4c1fc36b0c29020a4decee1ea8889d
-MD5sum: badae728b34deeb994d27b72ed7e05e6
+Filename: pool/main/o/ollmchat/libocrpc1_1.4.14-1+plucky_amd64.deb
+Size: 181410
+SHA256: f419c49d424963e1b699bf630b6cfcaac6b27056c290bd524412ee61b2661803
+SHA1: a944b3154d3f0f1a6d8370a62ba2be94a267d631
+MD5sum: 0f3a9d9ca758424d1f55c02e88de47cb
 Description: Binary RPC wire library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -731,22 +731,22 @@ Description: Binary RPC wire library for OLLMchat
 
 Package: libocsqlite-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 67
-Depends: libocsqlite1 (= 1.4.12-1+plucky), libglib2.0-dev, libsqlite3-dev
+Depends: libocsqlite1 (= 1.4.14-1+plucky), libglib2.0-dev, libsqlite3-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocsqlite-dev_1.4.12-1+plucky_amd64.deb
-Size: 14942
-SHA256: 613336394d9c2fe6dbecbd2bb8b56dc2d124068bceac3f0efddd401e8b354dd5
-SHA1: b5587c702faff4795724c555565ef396cce776dd
-MD5sum: cd5210dde7db8891139dc6edf8b2af81
+Filename: pool/main/o/ollmchat/libocsqlite-dev_1.4.14-1+plucky_amd64.deb
+Size: 15364
+SHA256: d9179726cb83834e642714707319ede684f1cf87507c60f064999935bb1d03d8
+SHA1: fd0a9cae5ba9c04191ace0be6a7aea7f4566cfd1
+MD5sum: 950fbd301879a957d1308111fd5ac822
 Description: Development files for libocsqlite
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -755,7 +755,7 @@ Description: Development files for libocsqlite
 
 Package: libocsqlite1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 94
@@ -766,11 +766,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocsqlite1_1.4.12-1+plucky_amd64.deb
-Size: 35388
-SHA256: 874464a618529f15bf429abfb5f3dd70767da64a02aecd6126d192bf3f0f070e
-SHA1: 85e634dcd1c05beacc56c3feb78294b49197a305
-MD5sum: af6aec03dbcf8eccbd6e8721420cfdd4
+Filename: pool/main/o/ollmchat/libocsqlite1_1.4.14-1+plucky_amd64.deb
+Size: 35828
+SHA256: 6f984a1e64753110ed770428d441cf5b61c06b37b0fc95b8f2599ea3b7a82afa
+SHA1: a225e33f2a381adb58f2d684de9c05eb3f67038e
+MD5sum: 7e37b39afa0dafd663c3067cad4648f4
 Description: SQLite helper library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -779,22 +779,22 @@ Description: SQLite helper library for OLLMchat
 
 Package: liboctools-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 194
-Depends: liboctools1 (= 1.4.12-1+plucky), libollmchat-dev (= 1.4.12-1+plucky), libocfiles-dev (= 1.4.12-1+plucky), libocmarkdown-dev (= 1.4.12-1+plucky), libollamaweb-dev (= 1.4.12-1+plucky), libocrpc-dev (= 1.4.12-1+plucky), libochf-dev (= 1.4.12-1+plucky), libocwebkit-dev (= 1.4.12-1+plucky), libocbwrap-dev (= 1.4.12-1+plucky)
+Depends: liboctools1 (= 1.4.14-1+plucky), libollmchat-dev (= 1.4.14-1+plucky), libocfiles-dev (= 1.4.14-1+plucky), libocmarkdown-dev (= 1.4.14-1+plucky), libollamaweb-dev (= 1.4.14-1+plucky), libocrpc-dev (= 1.4.14-1+plucky), libochf-dev (= 1.4.14-1+plucky), libocwebkit-dev (= 1.4.14-1+plucky), libocbwrap-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/liboctools-dev_1.4.12-1+plucky_amd64.deb
-Size: 19518
-SHA256: e3aeb4acac09e8320787c080ec134f2ab59f140eaa8be766f110eced9f3282a5
-SHA1: 79dbb2a758dd335ff3f49dee7b5bd25915578859
-MD5sum: 754f55a5affead737fda07bb851b2817
+Filename: pool/main/o/ollmchat/liboctools-dev_1.4.14-1+plucky_amd64.deb
+Size: 19936
+SHA256: bcad457237e9da1e205b641579fa994f5971299631d44ac9e3d62606be9cd7f4
+SHA1: 88789724ed2a8e9fa8560b756765df556e90e06a
+MD5sum: 5cae13d0911d3adefbe477eb2b92c509
 Description: Development files for liboctools
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -803,22 +803,22 @@ Description: Development files for liboctools
 
 Package: liboctools1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 546
-Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.66.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.12-1+plucky), libocfiles1 (= 1.4.12-1+plucky), libocmarkdown1 (= 1.4.12-1+plucky), libollamaweb1 (= 1.4.12-1+plucky), libocrpc1 (= 1.4.12-1+plucky), libochf1 (= 1.4.12-1+plucky), libocwebkit1 (= 1.4.12-1+plucky), libocbwrap1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.66.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.14-1+plucky), libocfiles1 (= 1.4.14-1+plucky), libocmarkdown1 (= 1.4.14-1+plucky), libollamaweb1 (= 1.4.14-1+plucky), libocrpc1 (= 1.4.14-1+plucky), libochf1 (= 1.4.14-1+plucky), libocwebkit1 (= 1.4.14-1+plucky), libocbwrap1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/liboctools1_1.4.12-1+plucky_amd64.deb
-Size: 165844
-SHA256: 5f6d6c7b4e63b4645562ed32788873ad4db682a1cb118508fd41ad6a53b381d9
-SHA1: a85fdb72734ab41d3d14ca24f1d2b7d8acda8d90
-MD5sum: 5638353b51e8fa0c6934be923f2eb578
+Filename: pool/main/o/ollmchat/liboctools1_1.4.14-1+plucky_amd64.deb
+Size: 166230
+SHA256: 9e39a5d385e202ac69419c474809a1c69b0e2eb7d84f1f77af51c2059498a83e
+SHA1: 92ff2c6fbbad5fe94f9e37345d09a331452f313c
+MD5sum: a52629845815a6a86ce7228472dd9fad
 Description: LLM tool implementations for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -827,22 +827,22 @@ Description: LLM tool implementations for OLLMchat
 
 Package: libocvector2-1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 7878
-Depends: libblas3 | libblas.so.3, libc6 (>= 2.38), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.68.0), libgomp1 (>= 6), libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 14), libocsqlite1 (= 1.4.12-1+plucky), libollmchat1 (= 1.4.12-1+plucky)
+Depends: libblas3 | libblas.so.3, libc6 (>= 2.38), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.68.0), libgomp1 (>= 6), libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 14), libocsqlite1 (= 1.4.14-1+plucky), libollmchat1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocvector2-1_1.4.12-1+plucky_amd64.deb
-Size: 1390532
-SHA256: 613ae2149c24113e4ef77b97e9b4130294427c732656f956bb9961f64ab22c61
-SHA1: 5177c3e185178393a2fbe6b291e45656a03052af
-MD5sum: 42b3710cc395a144c7cdd00dd932557f
+Filename: pool/main/o/ollmchat/libocvector2-1_1.4.14-1+plucky_amd64.deb
+Size: 1389388
+SHA256: cb3ea83a87b68795a6f2217cfaadf7243069423b7a0f1c5ae0d6cf70e79b86f7
+SHA1: 97ab9a0d809eb3830e30b9561517977d4675acdc
+MD5sum: ba8955bdebb2e32679b01ddd6cc7bf69
 Description: Vector search library for the OLLMchat file daemon
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -851,22 +851,22 @@ Description: Vector search library for the OLLMchat file daemon
 
 Package: libocvector2-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 27
-Depends: libocvector2-1 (= 1.4.12-1+plucky), libocsqlite-dev (= 1.4.12-1+plucky), libollmchat-dev (= 1.4.12-1+plucky)
+Depends: libocvector2-1 (= 1.4.14-1+plucky), libocsqlite-dev (= 1.4.14-1+plucky), libollmchat-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocvector2-dev_1.4.12-1+plucky_amd64.deb
-Size: 12198
-SHA256: ec209c37482e549dd8a9c06152ea12bf5c46a4946933cae3bdfdbfe9386e6dd9
-SHA1: 0a2324369dc878c91e9eaba78abb3168bdcce553
-MD5sum: fc0fe2972523871558725b58f4f87f1f
+Filename: pool/main/o/ollmchat/libocvector2-dev_1.4.14-1+plucky_amd64.deb
+Size: 12598
+SHA256: 601e1dfc2d481f39da2af4ac453431922fa0cca3d1f2a7700b50e93a0ad28182
+SHA1: 807db61dd44f77d9062f936aeaa0af240476c726
+MD5sum: 25945c9cf69d463ea9b310a7213b2ce0
 Description: Development files for libocvector2
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -875,22 +875,22 @@ Description: Development files for libocvector2
 
 Package: libocwebkit-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 29
-Depends: libocwebkit1 (= 1.4.12-1+plucky), libollmchat-dev (= 1.4.12-1+plucky), libgtk-4-dev, libwebkitgtk-6.0-dev, libwebkitgtk-6.0-webdriver-dev, libatspi2.0-dev
+Depends: libocwebkit1 (= 1.4.14-1+plucky), libollmchat-dev (= 1.4.14-1+plucky), libgtk-4-dev, libwebkitgtk-6.0-dev, libwebkitgtk-6.0-webdriver-dev, libatspi2.0-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocwebkit-dev_1.4.12-1+plucky_amd64.deb
-Size: 12272
-SHA256: cdef6a370da37dc14ddd72dfddabd3b5b34ba81b8ebba88c214ce7d92cdbadcd
-SHA1: 801fcc87dbbef70f0289843c875baa05d75476be
-MD5sum: ad1bb1ce4a03a50fd983cbfaef4bf3c3
+Filename: pool/main/o/ollmchat/libocwebkit-dev_1.4.14-1+plucky_amd64.deb
+Size: 12684
+SHA256: 4eb9af64b1ab7676396633d07f3605296002f48b03b7eec3b98ba542d36edb49
+SHA1: 2483ec6ebc1dfd09acacc4b68eb3f1e5b2660cb8
+MD5sum: f745f38e95ad60b6ed5021cdc1b2cbde
 Description: Development files for libocwebkit
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -899,22 +899,22 @@ Description: Development files for libocwebkit
 
 Package: libocwebkit1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 286
-Depends: libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.4), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.68.0), libgtk-4-1 (>= 4.7.2), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libwebkitgtk-6.0-webdriver4 (>= 2.50.4-0ubuntu0.25.04.1+webdriver6), libollmchat1 (= 1.4.12-1+plucky)
+Depends: libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.4), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.68.0), libgtk-4-1 (>= 4.7.2), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libwebkitgtk-6.0-webdriver4 (>= 2.50.4-0ubuntu0.25.04.1+webdriver6), libollmchat1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocwebkit1_1.4.12-1+plucky_amd64.deb
-Size: 88806
-SHA256: 520ed9b64d9b415e8eb466038dc8beebd86a302e64d5932a1d5fcf2afa6372e1
-SHA1: e618008b60debc6b19d83f72cd16108e6f61771e
-MD5sum: e43f607da94be86c28ab182591ec15b7
+Filename: pool/main/o/ollmchat/libocwebkit1_1.4.14-1+plucky_amd64.deb
+Size: 89218
+SHA256: e00b70bdb7cf360f2c93856873f29c8fe74d312f065f891deb1080d4bb694f04
+SHA1: 191fd49effa643465d63c827878e3f85031a60c0
+MD5sum: c0e4f96e22fc8e4659ee045cb62b6d3c
 Description: WebKitGTK browser-tool library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -923,22 +923,22 @@ Description: WebKitGTK browser-tool library for OLLMchat
 
 Package: libollamaweb-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 24
-Depends: libollamaweb1 (= 1.4.12-1+plucky), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev, libxml2-dev
+Depends: libollamaweb1 (= 1.4.14-1+plucky), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev, libxml2-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libollamaweb-dev_1.4.12-1+plucky_amd64.deb
-Size: 11542
-SHA256: 364e7811685b4ba9367a5ec737be720b9cb0c60bf0a1012258a4e4ecb8f632fd
-SHA1: a63d9153346a7f375cce56c1a603c5cc7b965241
-MD5sum: 1ac23064a71d6795d18446f1d7727588
+Filename: pool/main/o/ollmchat/libollamaweb-dev_1.4.14-1+plucky_amd64.deb
+Size: 11952
+SHA256: a81cfed1773f122ac158d18c9e9fdf8269309f09d1e7cdb24428fdaea1665fb0
+SHA1: 41d0b794b1af03dba6f29b214222940848cf6c43
+MD5sum: c13fb72426d06f54072b7720d5c84ae6
 Description: Development files for libollamaweb
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -947,7 +947,7 @@ Description: Development files for libollamaweb
 
 Package: libollamaweb1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 130
@@ -958,11 +958,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libollamaweb1_1.4.12-1+plucky_amd64.deb
-Size: 45230
-SHA256: 9b01f2ba73bfcfae1c652f3d808afbc6066bd5950cabf0cdd9210383861157c1
-SHA1: 75c91c97d4b8c31f4344bc876e2c425264e24d32
-MD5sum: 3cfa659c6f89d8b258e081467e4efdeb
+Filename: pool/main/o/ollmchat/libollamaweb1_1.4.14-1+plucky_amd64.deb
+Size: 45658
+SHA256: 5a13fc4ec12fbd65b1120beabc4c8b528d58a4b09e33de75a32fdae1b26c2e88
+SHA1: ff93f78d1c8b07bd38fefe96b526f7212cd6d91c
+MD5sum: e56f6f43a75c1a2fd9af21fd2b513abc
 Description: Ollama HTTP client library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -971,22 +971,22 @@ Description: Ollama HTTP client library for OLLMchat
 
 Package: libollmchat-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 869
-Depends: libollmchat1 (= 1.4.12-1+plucky), libocsqlite-dev (= 1.4.12-1+plucky), libocmarkdown-dev (= 1.4.12-1+plucky), libollamaweb-dev (= 1.4.12-1+plucky), libocrpc-dev (= 1.4.12-1+plucky)
+Depends: libollmchat1 (= 1.4.14-1+plucky), libocsqlite-dev (= 1.4.14-1+plucky), libocmarkdown-dev (= 1.4.14-1+plucky), libollamaweb-dev (= 1.4.14-1+plucky), libocrpc-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libollmchat-dev_1.4.12-1+plucky_amd64.deb
-Size: 45422
-SHA256: 50d9efdfe1fc50e13a08334f2772ebe0e4877b76bd6551d6525d176338529098
-SHA1: 3a83badf6328cd385636390e58dcddc20707f794
-MD5sum: 2eb68a283641ae6b8adbcdf8f9951c48
+Filename: pool/main/o/ollmchat/libollmchat-dev_1.4.14-1+plucky_amd64.deb
+Size: 45870
+SHA256: 29ec90daf39712a6b8bce4ce6c6f819d9b315165a4ec81da55b635e2db5c1eb8
+SHA1: 6952c31cdaba8accf292c1dec9364f64d9835f08
+MD5sum: 00c9bcc3921a9eac9b54189187a463a5
 Description: Development files for libollmchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -995,22 +995,22 @@ Description: Development files for libollmchat
 
 Package: libollmchat1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 1840
-Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.66.0), libjson-glib-1.0-0 (>= 1.5.2), libllama0 (>= 10271+dfsg), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.12-1+plucky), libocmarkdown1 (= 1.4.12-1+plucky), libollamaweb1 (= 1.4.12-1+plucky), libocrpc1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.66.0), libjson-glib-1.0-0 (>= 1.5.2), libllama0 (>= 10271+dfsg), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.14-1+plucky), libocmarkdown1 (= 1.4.14-1+plucky), libollamaweb1 (= 1.4.14-1+plucky), libocrpc1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libollmchat1_1.4.12-1+plucky_amd64.deb
-Size: 410732
-SHA256: 8c3eb1e40df4e7b522d7478f0d4a548269543a0382c6ad8b9e374e4c932bc0e4
-SHA1: e5e466c0ec61be4f3e85f731f54eccb3709a5e8c
-MD5sum: e40ee87cc9d7336e06c9a6e46891d3c3
+Filename: pool/main/o/ollmchat/libollmchat1_1.4.14-1+plucky_amd64.deb
+Size: 411382
+SHA256: 55c977131d13267c4c2113342b179f3d1179e99ad77da6212ca3200c423160e5
+SHA1: 1ef1865331e500e89820228a9f43fd37d4c83941
+MD5sum: 9b8a8452dedb956d0fc4bb20f7810a18
 Description: Base library for Ollama/OpenAI API access
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1020,22 +1020,22 @@ Description: Base library for Ollama/OpenAI API access
 
 Package: libollmchatgtk-dev
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 93
-Depends: libollmchatgtk1 (= 1.4.12-1+plucky), libollmchat-dev (= 1.4.12-1+plucky), libocmarkdowngtk-dev (= 1.4.12-1+plucky)
+Depends: libollmchatgtk1 (= 1.4.14-1+plucky), libollmchat-dev (= 1.4.14-1+plucky), libocmarkdowngtk-dev (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libollmchatgtk-dev_1.4.12-1+plucky_amd64.deb
-Size: 16388
-SHA256: 0ad12738af5c08076ee9a3270b3ea5035bd80ff2c4a58d75dfa4e527cfbfad2d
-SHA1: 7be2adf8bf79c449fb73a371ca76c3f47202e211
-MD5sum: 86aac728d052f198f4c9c695772b34eb
+Filename: pool/main/o/ollmchat/libollmchatgtk-dev_1.4.14-1+plucky_amd64.deb
+Size: 16800
+SHA256: 96e4e04b1659135aff6cb48df0e37e7b0605a57a811d323d57f9a186c1cb9635
+SHA1: 4bec5a11556c1064e3e8f28e80721b23d8b7a495
+MD5sum: c494e597fdb0b07d8b0cfc5d869beff2
 Description: Development files for libollmchatgtk
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1044,22 +1044,22 @@ Description: Development files for libollmchatgtk
 
 Package: libollmchatgtk1
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 237
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.54.0), libgtk-4-1 (>= 4.0.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libollmchat1 (= 1.4.12-1+plucky), libocmarkdown1 (= 1.4.12-1+plucky), libocmarkdowngtk1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.54.0), libgtk-4-1 (>= 4.0.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libollmchat1 (= 1.4.14-1+plucky), libocmarkdown1 (= 1.4.14-1+plucky), libocmarkdowngtk1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libollmchatgtk1_1.4.12-1+plucky_amd64.deb
-Size: 74708
-SHA256: 1146294568380f305edffa9f4d4cb26870cf0998a11868b4be36bc55d051fd5e
-SHA1: afd6da5836a268ae3faf6baa272298fcc6968e8f
-MD5sum: ecf79c8b5ee6a71636495c7a09370f72
+Filename: pool/main/o/ollmchat/libollmchatgtk1_1.4.14-1+plucky_amd64.deb
+Size: 75128
+SHA256: b7b5785af3a46bb07229ed1bdd719c01cb08ba96bde5443a2f5200e0cf07f42c
+SHA1: cfa217f36a604a229b60b91a2840d7f65cc4314b
+MD5sum: 8c29c5b6eefa605d5fc5c442b18414d4
 Description: GTK chat widget library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1492,21 +1492,21 @@ Description: WebKitGTK 6.0 runtime with WebDriver interactions (parallel install
 Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
 
 Package: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 5572
-Depends: libadwaita-1-0 (>= 1.5~beta), libc6 (>= 2.38), libgee-0.8-2 (>= 0.14.0), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.80.0), libgnutls30t64 (>= 3.7.2), libgtk-4-1 (>= 4.12.0), libjson-glib-1.0-0 (>= 1.5.2), libsqlite3-0 (>= 3.5.9), libtree-sitter0 (>= 0.19), libollmchat1 (= 1.4.12-1+plucky), libollmchatgtk1 (= 1.4.12-1+plucky), liboccoder1 (= 1.4.12-1+plucky), liboctools1 (= 1.4.12-1+plucky), libocmcp1 (= 1.4.12-1+plucky), libocvector2-1 (= 1.4.12-1+plucky), libocfiles1 (= 1.4.12-1+plucky), libocrpc1 (= 1.4.12-1+plucky), libocsqlite1 (= 1.4.12-1+plucky), libocmarkdown1 (= 1.4.12-1+plucky), libocmarkdowngtk1 (= 1.4.12-1+plucky), libollamaweb1 (= 1.4.12-1+plucky), libochf1 (= 1.4.12-1+plucky), libocwebkit1 (= 1.4.12-1+plucky), libocbwrap1 (= 1.4.12-1+plucky)
+Installed-Size: 5592
+Depends: libadwaita-1-0 (>= 1.6~beta), libc6 (>= 2.38), libgee-0.8-2 (>= 0.14.0), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.80.0), libgnutls30t64 (>= 3.7.2), libgtk-4-1 (>= 4.12.0), libjson-glib-1.0-0 (>= 1.5.2), libsqlite3-0 (>= 3.5.9), libtree-sitter0 (>= 0.19), libollmchat1 (= 1.4.14-1+plucky), libollmchatgtk1 (= 1.4.14-1+plucky), liboccoder1 (= 1.4.14-1+plucky), liboctools1 (= 1.4.14-1+plucky), libocmcp1 (= 1.4.14-1+plucky), libocvector2-1 (= 1.4.14-1+plucky), libocfiles1 (= 1.4.14-1+plucky), libocrpc1 (= 1.4.14-1+plucky), libocsqlite1 (= 1.4.14-1+plucky), libocmarkdown1 (= 1.4.14-1+plucky), libocmarkdowngtk1 (= 1.4.14-1+plucky), libollamaweb1 (= 1.4.14-1+plucky), libochf1 (= 1.4.14-1+plucky), libocwebkit1 (= 1.4.14-1+plucky), libocbwrap1 (= 1.4.14-1+plucky)
 Recommends: bubblewrap, ollmchat-tools
 Conflicts: ollmchat-remote-only
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: gnome
-Filename: pool/main/o/ollmchat/ollmchat_1.4.12-1+plucky_amd64.deb
-Size: 695676
-SHA256: d085e8d97406ece85bf85b90878633bc56cb57a48d201fa0140052a42d9001ac
-SHA1: a57bfac39129547e5645c32c914f526af248749e
-MD5sum: 898a6f83656d7385b01eb489b2f7bc9b
+Filename: pool/main/o/ollmchat/ollmchat_1.4.14-1+plucky_amd64.deb
+Size: 703484
+SHA256: d860b0c05f5f768cd9f309c109abcc9ccab86bbd45011ddfed29a3c716a55497
+SHA1: ba965eb4fdf243827132f4009625059795ea35c3
+MD5sum: 159cb18faade6c50689759ccb584560d
 Description: OLLMchat - LLM chat application
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1521,18 +1521,18 @@ Description: OLLMchat - LLM chat application
 
 Package: ollmchat-doc
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 893
+Installed-Size: 896
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: doc
-Filename: pool/main/o/ollmchat/ollmchat-doc_1.4.12-1+plucky_amd64.deb
-Size: 751198
-SHA256: 0244c6c09cd06a6bb6489d0606b60e5b659b58e4376c3b8a2322dfa04574c326
-SHA1: c0818298520318c4dca564295b67388e0ecad5ce
-MD5sum: 137aa66804cc865c6981bdf432242b2e
+Filename: pool/main/o/ollmchat/ollmchat-doc_1.4.14-1+plucky_amd64.deb
+Size: 753498
+SHA256: 7aa084fb8da77c1913efbffec6cddfb813b798765d3da9c3b152691d1ef121d8
+SHA1: 1df54362e163eb7f608f9794d131c4d6f14ad830
+MD5sum: 928302924d024f3366f95ea816cbcf51
 Description: Example and test executables for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1542,20 +1542,20 @@ Description: Example and test executables for OLLMchat
 
 Package: ollmchat-remote-only
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 21782
-Depends: libadwaita-1-0 (>= 1.5~beta), libatspi2.0-0t64 (>= 2.9.90), libavahi-gobject0 (>= 0.6.22), libblas3 | libblas.so.3, libc6 (>= 2.38), libcairo2 (>= 1.2.4), libffi8 (>= 3.4), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.14.0), libgirepository-1.0-1 (>= 1.45.4), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.80.0), libgnutls30t64 (>= 3.7.2), libgomp1 (>= 6), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libpango-1.0-0 (>= 1.14.0), libseccomp2 (>= 2.5.0), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.1.1), libsqlite3-0 (>= 3.6.11), libstdc++6 (>= 14), libtree-sitter0 (>= 0.19), libwebkitgtk-6.0-webdriver4 (>= 2.50.4-0ubuntu0.25.04.1+webdriver6), libxml2 (>= 2.7.4)
+Installed-Size: 21822
+Depends: libadwaita-1-0 (>= 1.6~beta), libatspi2.0-0t64 (>= 2.9.90), libavahi-gobject0 (>= 0.6.22), libblas3 | libblas.so.3, libc6 (>= 2.38), libcairo2 (>= 1.2.4), libffi8 (>= 3.4), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.14.0), libgirepository-1.0-1 (>= 1.45.4), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.80.0), libgnutls30t64 (>= 3.7.2), libgomp1 (>= 6), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libpango-1.0-0 (>= 1.14.0), libseccomp2 (>= 2.5.0), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 3.1.1), libsqlite3-0 (>= 3.6.11), libstdc++6 (>= 14), libtree-sitter0 (>= 0.19), libwebkitgtk-6.0-webdriver4 (>= 2.50.4-0ubuntu0.25.04.1+webdriver6), libxml2 (>= 2.7.4)
 Conflicts: libocbwrap-dev, libocbwrap1, liboccoder-dev, liboccoder1, libocfiles-dev, libocfiles1, libochf-dev, libochf1, libocmarkdown-dev, libocmarkdown1, libocmarkdowngtk-dev, libocmarkdowngtk1, libocmcp-dev, libocmcp1, libocrpc-dev, libocrpc1, libocsqlite-dev, libocsqlite1, liboctools-dev, liboctools1, libocvector2-1, libocvector2-dev, libocwebkit-dev, libocwebkit1, libollamaweb-dev, libollamaweb1, libollmchat-dev, libollmchat1, libollmchatgtk-dev, libollmchatgtk1, ollmchat, ollmchat-doc, ollmchat-tools
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: gnome
-Filename: pool/main/o/ollmchat/ollmchat-remote-only_1.4.12-1+plucky_amd64.deb
-Size: 3679180
-SHA256: 63beeec1e61937045e3e051e57ac9dde91f55f016c6cf626b223fd3901176fad
-SHA1: 61e9b66f7c43b21fc37e16821084f281354eee49
-MD5sum: dc88dc259af6c3d3e7b593ffc47cbd80
+Filename: pool/main/o/ollmchat/ollmchat-remote-only_1.4.14-1+plucky_amd64.deb
+Size: 3694246
+SHA256: 4b5bcc9a6fb772fa7717d90247574bc0783450e1ae8427a7e0108eb4e26b8c1a
+SHA1: a1ee4147724a2315ddcfe5b2d0ca1f657cfd18f4
+MD5sum: ddcb9a144eaedbee580e6a22d9c39c9d
 Description: OLLMchat - LLM chat application (remote backends only)
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1570,22 +1570,22 @@ Description: OLLMchat - LLM chat application (remote backends only)
 
 Package: ollmchat-tools
 Source: ollmchat
-Version: 1.4.12-1+plucky
+Version: 1.4.14-1+plucky
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 48
-Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.12.0), libocmarkdown1 (= 1.4.12-1+plucky)
+Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.12.0), libocmarkdown1 (= 1.4.14-1+plucky)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: utils
-Filename: pool/main/o/ollmchat/ollmchat-tools_1.4.12-1+plucky_amd64.deb
-Size: 14838
-SHA256: 0cca8cac6bd8e65acaf294564c46b8e692964bf36d6d7c9331810871adbb68f6
-SHA1: f56768dd369ed1575472087d4e7c94e768c14875
-MD5sum: 5bdef7c873105a801fba1bef6ab97f8b
+Filename: pool/main/o/ollmchat/ollmchat-tools_1.4.14-1+plucky_amd64.deb
+Size: 15244
+SHA256: 368a1dd4fb04120d4d7dc639bde9a2a7793b59009270856ff405bf618ac47631
+SHA1: 84de395c3635fbee1ee45ecb990514e6fb43226a
+MD5sum: 29aadedc29ccdd419846debf68bc3192
 Description: Command-line tools for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
