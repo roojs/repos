@@ -925,10 +925,10 @@
       }
     },
     "app.RooTerm": {
-      "tag": "v0.1.3",
+      "tag": "v0.1.5",
       "packages": {
-        "rooterm_0.1.3-1_amd64.deb": {
-          "sha256": "9c795e7335f07fa834c28a4ee41aa4c143f8e9ffc30e023065d40180365304d5",
+        "rooterm_0.1.5-1_amd64.deb": {
+          "sha256": "d56b166c445a6a4935c99ffa5ffadfb54746a31905733e6aa2cb21d9321aec2f",
           "suites": [
             "trixie",
             "plucky",
@@ -1828,10 +1828,10 @@
       }
     },
     "app.RooTerm": {
-      "tag": "v0.1.3",
+      "tag": "v0.1.5",
       "packages": {
-        "rooterm-0.1.3-2.fc44.x86_64.rpm": {
-          "sha256": "978b085e5ed7e2c4e71b9c9706363d5652eb3227f9137b14d7f5a0295dec87aa",
+        "rooterm-0.1.5-2.fc44.x86_64.rpm": {
+          "sha256": "baad9595044ae69fd9e3535f21b9f3c89387eb806e46715c371556761b3e5680",
           "arch": "x86_64",
           "fedora": [
             44
