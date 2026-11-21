@@ -1,19 +1,19 @@
 Origin: roojs
 Label: roojs
 Codename: questing
-Date: Thu, 19 Nov 2026 15:14:55 UTC
+Date: Sat, 21 Nov 2026 14:13:11 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 312b972181f5c4f5d043c65d12f5a028 76983 main/binary-amd64/Packages
- f142e42ce5f0aed0497e6293b1008985 16548 main/binary-amd64/Packages.gz
+ feeb8ba70bc5aff78da1c4ef6c810af4 76983 main/binary-amd64/Packages
+ 23465a1e4706c3b46ce074d52363f8d7 16544 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
 SHA1:
- 5104bb59579e703c595f6c28e4d4dc057deae3d6 76983 main/binary-amd64/Packages
- 38d3444b285fd2959a11dc88b7669136a481a69b 16548 main/binary-amd64/Packages.gz
+ 663c4718419e7e41fab100aa5b5d3136089cc483 76983 main/binary-amd64/Packages
+ 266d8cd2e7603a982c16e0b05ddfeb8729c25156 16544 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
 SHA256:
- 42a8eaaee7b0227b5a17eeb70a25140d23590c30f1cc1cda6799ddfbeb607b62 76983 main/binary-amd64/Packages
- 11086c0c80c9f3cb27c360b565deebe3e7fae331931740ec2bf52655d40b3e80 16548 main/binary-amd64/Packages.gz
+ 0a46a9d89b0c0b3f2dc33b0d40f22abd36441d6300a53cfc76560208dfa86e6d 76983 main/binary-amd64/Packages
+ 98b9a139b6e0085ad466dd2b95e2b84ebc2cd9e0200e0a0f306c9a74cc88f259 16544 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
