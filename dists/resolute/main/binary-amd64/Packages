@@ -345,22 +345,22 @@ Description: LLM inference in C/C++ - libraries
 
 Package: libocbwrap-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 89
-Depends: libocbwrap1 (= 1.4.15-1), libgee-0.8-dev, libglib2.0-dev, libseccomp-dev
+Depends: libocbwrap1 (= 1.4.16-1), libgee-0.8-dev, libglib2.0-dev, libseccomp-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocbwrap-dev_1.4.15-1_amd64.deb
-Size: 15252
-SHA256: 69b4d5828f94ad1d9ff67c86f10f3323ec4db34bdf5bb664587816b4c6400f0f
-SHA1: b398a4e21041ff1a92051d7f447aec7d498d5af8
-MD5sum: 7d746a4f1a13f793a5822f247f8c2730
+Filename: pool/main/o/ollmchat/libocbwrap-dev_1.4.16-1_amd64.deb
+Size: 16006
+SHA256: 4d4e5cac4a983f3464c7d872475410c6c608f9ef2efc97e4e4d647f522ef5c36
+SHA1: cf658f19bf43436b106cfe7d82e12f58407e4f08
+MD5sum: 1d7d31fd8c60107892325b4c4a663b60
 Description: Development files for libocbwrap
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -369,7 +369,7 @@ Description: Development files for libocbwrap
 
 Package: libocbwrap1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 149
@@ -381,11 +381,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocbwrap1_1.4.15-1_amd64.deb
-Size: 50752
-SHA256: 260b86c8dcc034a5b11603a60cf97c626028bda23c5c8293ff0535a158e29218
-SHA1: 551e69488f62cde9687676615ada92991f8eb3a0
-MD5sum: 2a1e83965f10480ad47a365e8cc0e55e
+Filename: pool/main/o/ollmchat/libocbwrap1_1.4.16-1_amd64.deb
+Size: 51486
+SHA256: a5bf7dbe68e163e1c8c9c635fd45db8e3cf85807ddb6e1b17cf42ff577378ed7
+SHA1: ccf1ff13aedbdd2e2187c198f93e5ce69bb3fa2e
+MD5sum: 8f06b2027c69c35f25142e5a6226e043
 Description: Bubblewrap and seccomp helper library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -394,22 +394,22 @@ Description: Bubblewrap and seccomp helper library for OLLMchat
 
 Package: liboccoder-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 422
-Depends: liboccoder1 (= 1.4.15-1), libocsqlite-dev (= 1.4.15-1), libocfiles-dev (= 1.4.15-1), libollmchat-dev (= 1.4.15-1), libocmarkdown-dev (= 1.4.15-1), liboctools-dev (= 1.4.15-1)
+Depends: liboccoder1 (= 1.4.16-1), libocsqlite-dev (= 1.4.16-1), libocfiles-dev (= 1.4.16-1), libollmchat-dev (= 1.4.16-1), libocmarkdown-dev (= 1.4.16-1), liboctools-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/liboccoder-dev_1.4.15-1_amd64.deb
-Size: 33316
-SHA256: 3dbac20ba5177ce014bbd52be4362f15b972ee58301aa045e78612f056e11857
-SHA1: 77a48577ce49d85697dfcfcf1c2317dda4ad797d
-MD5sum: ac6cf08442b3eede39309295a1271b01
+Filename: pool/main/o/ollmchat/liboccoder-dev_1.4.16-1_amd64.deb
+Size: 34074
+SHA256: 1922f79fcf95e55380688ca3455505e94d33ec93dac17887e3742e04e0b7e86d
+SHA1: 8e2da9eddcc9f64616ff4bda0a0a3391ed621c1f
+MD5sum: 7e5dda94cc95320a38fe128b548fe5fd
 Description: Development files for liboccoder
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -418,22 +418,22 @@ Description: Development files for liboccoder
 
 Package: liboccoder1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 1097
-Depends: libadwaita-1-0 (>= 1.0.0), libc6 (>= 2.14), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjson-glib-1.0-0 (>= 1.5.2), libocsqlite1 (= 1.4.15-1), libocfiles1 (= 1.4.15-1), libollmchat1 (= 1.4.15-1), libocmarkdown1 (= 1.4.15-1), liboctools1 (= 1.4.15-1)
+Depends: libadwaita-1-0 (>= 1.0.0), libc6 (>= 2.14), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.12.0), libgtksourceview-5-0 (>= 5.2.0), libjson-glib-1.0-0 (>= 1.5.2), libocsqlite1 (= 1.4.16-1), libocfiles1 (= 1.4.16-1), libollmchat1 (= 1.4.16-1), libocmarkdown1 (= 1.4.16-1), liboctools1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/liboccoder1_1.4.15-1_amd64.deb
-Size: 341564
-SHA256: a8caaab0964b629ffdcb1d8872656af5e165d91992a28a7fa9c91a981dea368b
-SHA1: 7b17cdf501885dcafd94846c110196abc63d48ad
-MD5sum: 215554e4fb6c83cf8be476bcb0b811cc
+Filename: pool/main/o/ollmchat/liboccoder1_1.4.16-1_amd64.deb
+Size: 342310
+SHA256: 29fc37e40a2e71583fff935efe0a1c7210bb205f42a3a2eca105adca170fdea8
+SHA1: a7265fa9de51cec23fd6c8d1d15dee8158be8b98
+MD5sum: 4ecd6decb0d9b36f531aa572b1c11558
 Description: Code editor and agent UI library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -442,22 +442,22 @@ Description: Code editor and agent UI library for OLLMchat
 
 Package: libocfiles-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 357
-Depends: libocfiles1 (= 1.4.15-1), libocsqlite-dev (= 1.4.15-1), libocrpc-dev (= 1.4.15-1)
+Depends: libocfiles1 (= 1.4.16-1), libocsqlite-dev (= 1.4.16-1), libocrpc-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocfiles-dev_1.4.15-1_amd64.deb
-Size: 26386
-SHA256: 676ee1006cae3351ce35e1a3d5197bba6c0b028aa5360a2205eb5a3a391f7db1
-SHA1: 6651fe04d97d1a5068860f39ce42efc1fdc0b0b0
-MD5sum: a301437c412e548444adfc4754497c02
+Filename: pool/main/o/ollmchat/libocfiles-dev_1.4.16-1_amd64.deb
+Size: 27130
+SHA256: d5987e1032d2a574bc6a6c661ce87f66d7d4fd522e09264f468561b6c5f2e8dc
+SHA1: 87c5c759085f7a416ca62182624bb036d6309ec8
+MD5sum: 17852ae6edffa32335857b5b5fd8fe96
 Description: Development files for libocfiles
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -466,22 +466,22 @@ Description: Development files for libocfiles
 
 Package: libocfiles1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 447
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.15-1), libocrpc1 (= 1.4.15-1)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.16-1), libocrpc1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocfiles1_1.4.15-1_amd64.deb
-Size: 131014
-SHA256: bdff6566813210a264b6bdfca0b9bbb541867b9ce476acc2a21ada710a524775
-SHA1: 6deaaf2e87bbf17280281ad762d9f0bd3e002f18
-MD5sum: 8464a456793e7475635f7fdf1fd80db1
+Filename: pool/main/o/ollmchat/libocfiles1_1.4.16-1_amd64.deb
+Size: 131766
+SHA256: 4bf84a12c34cd7eef9684a7c6cfad020f550d9d7b7f8ec560dff8be3ceff0e37
+SHA1: 0262a4aee0a057595df2b7f0fb757829f5a3af6b
+MD5sum: 29ed3c20d12228ed648d0bfdafc0ac80
 Description: File and project management library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -490,22 +490,22 @@ Description: File and project management library for OLLMchat
 
 Package: libochf-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 27
-Depends: libochf1 (= 1.4.15-1), libocrpc-dev (= 1.4.15-1), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
+Depends: libochf1 (= 1.4.16-1), libocrpc-dev (= 1.4.16-1), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libochf-dev_1.4.15-1_amd64.deb
-Size: 12386
-SHA256: 2eed6fa05de056411050a36609d794406c812f457e1fb13640a4107c3566cef2
-SHA1: e165aaca896084de1dfbc6a696dc591f24709e3d
-MD5sum: 8a0b0f1439d097d1e1372ed80c4453f7
+Filename: pool/main/o/ollmchat/libochf-dev_1.4.16-1_amd64.deb
+Size: 13132
+SHA256: ed9f5aa944ec58d15adf17edd7962a2f42ab6fb16f2757d011b82f93eee8e44f
+SHA1: f76621e095c1cf76e0d5978fceb2c42b40ba3c6c
+MD5sum: 3123824be067f030b87bb23893cca810
 Description: Development files for libochf
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -514,22 +514,22 @@ Description: Development files for libochf
 
 Package: libochf1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 155
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libocrpc1 (= 1.4.15-1)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libocrpc1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libochf1_1.4.15-1_amd64.deb
-Size: 46780
-SHA256: 4b138fce6835ae724fb9c94ce6720f754601ae5734f36826f5b8c4b998ea726a
-SHA1: 93f9c42af444bf04e4c47a970e7a19312d311d1c
-MD5sum: b1cf5db5898b752a15cf56a009d24d5e
+Filename: pool/main/o/ollmchat/libochf1_1.4.16-1_amd64.deb
+Size: 47530
+SHA256: 43adc95c869d5cc6601e12ff396049372ea494c36a16b529c6aef01c824ee35a
+SHA1: a0a9a475d0a1fe716cb0c55a665e0fc50cd38503
+MD5sum: b73c00d679f87d48f592a03f5a414378
 Description: Hugging Face Hub catalog library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -538,22 +538,22 @@ Description: Hugging Face Hub catalog library for OLLMchat
 
 Package: libocmarkdown-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 235
-Depends: libocmarkdown1 (= 1.4.15-1), libgee-0.8-dev, libglib2.0-dev
+Depends: libocmarkdown1 (= 1.4.16-1), libgee-0.8-dev, libglib2.0-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocmarkdown-dev_1.4.15-1_amd64.deb
-Size: 22456
-SHA256: e3846867eb718f09a878343b3217f75282717e9e1859485d4ebfe2abae98c794
-SHA1: 2e404fc09db9a7e5eab7edef47ad64705590db4d
-MD5sum: 11d66ce3284beff06a94f0c54a454e2a
+Filename: pool/main/o/ollmchat/libocmarkdown-dev_1.4.16-1_amd64.deb
+Size: 23216
+SHA256: 502d61c41c5e484930f9f22632de5feab9b1106b34d0fd08f776cf48ae8e6700
+SHA1: 90db1135b019b9e8585881bddfd1b7b27a7c1e71
+MD5sum: 94d8afde4316da1100c0966cd53bdc3d
 Description: Development files for libocmarkdown
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -562,7 +562,7 @@ Description: Development files for libocmarkdown
 
 Package: libocmarkdown1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 366
@@ -573,11 +573,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocmarkdown1_1.4.15-1_amd64.deb
-Size: 115888
-SHA256: 3d33b7c7e949605e3026f995fe340fa4ba408678fa24ddfd7839e1a6e13b79e0
-SHA1: d85090404a06d760d3c0f2cc82b904d7ecad09a2
-MD5sum: 5a48a2b98635fd74befccddca1875477
+Filename: pool/main/o/ollmchat/libocmarkdown1_1.4.16-1_amd64.deb
+Size: 116646
+SHA256: 8d3605dbf55f51d3a032d13fd6507e9ca924afa2e6dfb57e3d43889cf1e6475a
+SHA1: 27fd7db35a7e2ded5d1ff50823c404953fa915ea
+MD5sum: 7999791e82b7a223805de9efa30b42d6
 Description: Markdown parsing library
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -586,22 +586,22 @@ Description: Markdown parsing library
 
 Package: libocmarkdowngtk-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 68
-Depends: libocmarkdowngtk1 (= 1.4.15-1), libocmarkdown-dev (= 1.4.15-1), libgtk-4-dev, libgtksourceview-5-dev
+Depends: libocmarkdowngtk1 (= 1.4.16-1), libocmarkdown-dev (= 1.4.16-1), libgtk-4-dev, libgtksourceview-5-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocmarkdowngtk-dev_1.4.15-1_amd64.deb
-Size: 14990
-SHA256: 428cc776ab43f7ad7e82a960e70f2d64e711902283326bed614bd999618af036
-SHA1: 470063d4cdc68934bac833217528788dba4ba0fd
-MD5sum: 004d50e572ac43f172b7395d360efa77
+Filename: pool/main/o/ollmchat/libocmarkdowngtk-dev_1.4.16-1_amd64.deb
+Size: 15748
+SHA256: 0daf0f4ff3d43130b3a5ec3436ab41d8eabadade85fbc9d1837f9a3d8506763d
+SHA1: 0696644e470c62ea4324e25861b2be3bd24899d9
+MD5sum: 595e22a46a87682aaab2f38e548b808c
 Description: Development files for libocmarkdowngtk
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -610,22 +610,22 @@ Description: Development files for libocmarkdowngtk
 
 Package: libocmarkdowngtk1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 154
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.0.0), libgtksourceview-5-0 (>= 3.13.90), libpango-1.0-0 (>= 1.14.0), libocmarkdown1 (= 1.4.15-1)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.0.0), libgtksourceview-5-0 (>= 3.13.90), libpango-1.0-0 (>= 1.14.0), libocmarkdown1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocmarkdowngtk1_1.4.15-1_amd64.deb
-Size: 51246
-SHA256: a0c13d1e5cb8499f41a0b68cc5eb4fe2a5588a8e61e5de6c07e56ae03a1fea7e
-SHA1: 0149eccce3a5cfd5f0265db86ac59872927978d1
-MD5sum: b850a75b634952b69f8f5877c5986b87
+Filename: pool/main/o/ollmchat/libocmarkdowngtk1_1.4.16-1_amd64.deb
+Size: 51984
+SHA256: 22e1f37cc438c53b43cc95edf737edf6a333f1b7b71ae93533c1db3966791d02
+SHA1: c12df99f8b2c7498b1d399fb64254d93dba76cdd
+MD5sum: 483058e03b9708e44ba11274b6bcfb47
 Description: GTK markdown rendering library
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -634,22 +634,22 @@ Description: GTK markdown rendering library
 
 Package: libocmcp-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 27
-Depends: libocmcp1 (= 1.4.15-1), libollmchat-dev (= 1.4.15-1), libocfiles-dev (= 1.4.15-1), libocbwrap-dev (= 1.4.15-1)
+Depends: libocmcp1 (= 1.4.16-1), libollmchat-dev (= 1.4.16-1), libocfiles-dev (= 1.4.16-1), libocbwrap-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocmcp-dev_1.4.15-1_amd64.deb
-Size: 12410
-SHA256: 01090cd25a93ebfcd2e9f6748db28ac6fa8a1d8b258fc33af796d3baf59ee700
-SHA1: a66f4059727542c1e712bd180737b0bbe79ff60b
-MD5sum: 3c5ff10bfab4601f675fffc0bd28d6f4
+Filename: pool/main/o/ollmchat/libocmcp-dev_1.4.16-1_amd64.deb
+Size: 13156
+SHA256: 9db0a83b8fdb404339b4e3aaee9ea0a5f02cabc4cce4f5bd0aa9a71d014d232c
+SHA1: c25b3488a1666225222e698d00c2fbfda4d3f126
+MD5sum: e224533487ea5226d9bd47a86a1322ec
 Description: Development files for libocmcp
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -658,22 +658,22 @@ Description: Development files for libocmcp
 
 Package: libocmcp1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 171
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.15-1), libocfiles1 (= 1.4.15-1), libocbwrap1 (= 1.4.15-1)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.44.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.16-1), libocfiles1 (= 1.4.16-1), libocbwrap1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocmcp1_1.4.15-1_amd64.deb
-Size: 52884
-SHA256: d23fc867acfbdc5ca4b9025abef569ed15733f814042b310c67c73762db34644
-SHA1: f9b21c1de92bc0af343701662c8fda609d4cb3d8
-MD5sum: f4c5be5b0a92562fcd09385769318bfa
+Filename: pool/main/o/ollmchat/libocmcp1_1.4.16-1_amd64.deb
+Size: 53628
+SHA256: 6e6144b1868372020566af6b3e5667cbce87c284f60ed193441c71d8178b43ba
+SHA1: 1d8759377f39bb77269ce61719c7c895b207676b
+MD5sum: 2c20f008d1defcf46fe671038606f37a
 Description: MCP integration library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -682,22 +682,22 @@ Description: MCP integration library for OLLMchat
 
 Package: libocrpc-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 166
-Depends: libocrpc1 (= 1.4.15-1), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
+Depends: libocrpc1 (= 1.4.16-1), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocrpc-dev_1.4.15-1_amd64.deb
-Size: 25654
-SHA256: c6cc3cae9f09c2ed99b646f677847aa5987b1d8505474fc8fc7c53f0f600b6a7
-SHA1: 8d67c19cc99a392e820d7f7db2a372e847a91cd0
-MD5sum: 77d575de742ba89a079f6850f851a050
+Filename: pool/main/o/ollmchat/libocrpc-dev_1.4.16-1_amd64.deb
+Size: 26380
+SHA256: 8b27b01bcddac66f7eb7301f93938c711ed2eba5f7987982f5632e802d258bc4
+SHA1: d9d05283ed8960393548f420a690efbc998d3d56
+MD5sum: b1e0ee71339213d22d99f83d01e82349
 Description: Development files for libocrpc
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -707,7 +707,7 @@ Description: Development files for libocrpc
 
 Package: libocrpc1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 559
@@ -718,11 +718,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocrpc1_1.4.15-1_amd64.deb
-Size: 180854
-SHA256: 44c0fa25b0cc235fef92bee35564caab9ae3821c59f3180fb2543a80abff1e09
-SHA1: 617bc19595cb7a92e28e9a8b5af889b92dcb06cb
-MD5sum: 6c72c236acd80c360db3ab67e5b6eb2b
+Filename: pool/main/o/ollmchat/libocrpc1_1.4.16-1_amd64.deb
+Size: 181786
+SHA256: 6b2205c41ab3151cbc529ad98439fe1994291683ab2ddc0c1c4206bcfd0a8e1b
+SHA1: 3084a81e972c3522a22f3526d47ed821152c254a
+MD5sum: 6b4ecde41145ed778605519dba9bd792
 Description: Binary RPC wire library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -731,22 +731,22 @@ Description: Binary RPC wire library for OLLMchat
 
 Package: libocsqlite-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 68
-Depends: libocsqlite1 (= 1.4.15-1), libglib2.0-dev, libsqlite3-dev
+Depends: libocsqlite1 (= 1.4.16-1), libglib2.0-dev, libsqlite3-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocsqlite-dev_1.4.15-1_amd64.deb
-Size: 15784
-SHA256: 49cf4284276665978da07774033ef70631dfc8e27c97ef284082fada0c661229
-SHA1: 51a7c72818098a4aa9d51f62a12366ddb40f3a32
-MD5sum: d7ac12338a2d1135b550e15e8951924f
+Filename: pool/main/o/ollmchat/libocsqlite-dev_1.4.16-1_amd64.deb
+Size: 16530
+SHA256: 084e92be4b23c9259492eebca48b6757ceb57a53ff27fa86cfaeac4b5029ca55
+SHA1: 17f80061faad8e5488dcec3e28c43302d893b2b1
+MD5sum: dbdddd5862274e67dc91e015c4d4390e
 Description: Development files for libocsqlite
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -755,7 +755,7 @@ Description: Development files for libocsqlite
 
 Package: libocsqlite1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 95
@@ -766,11 +766,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocsqlite1_1.4.15-1_amd64.deb
-Size: 35104
-SHA256: 1483bd63bc6dde0853f1007d8db74417932d1262ed6f670d98c9619b094db5fa
-SHA1: 9323d17a8e426d962e994226e84790ccb0c56578
-MD5sum: d2762b85ca4ae375f76d4528e27d5b81
+Filename: pool/main/o/ollmchat/libocsqlite1_1.4.16-1_amd64.deb
+Size: 35848
+SHA256: a3f5d97fa1c3fc840e7b04b8a8dd173ffc28a228a457ba2e5960315afd3cae6e
+SHA1: 4fe88166bfc89cf5fd5300a28644cc5607c46458
+MD5sum: 6dbbe54dfd80ffaac36cf7054aea96cd
 Description: SQLite helper library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -779,22 +779,22 @@ Description: SQLite helper library for OLLMchat
 
 Package: liboctools-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 195
-Depends: liboctools1 (= 1.4.15-1), libollmchat-dev (= 1.4.15-1), libocfiles-dev (= 1.4.15-1), libocmarkdown-dev (= 1.4.15-1), libollamaweb-dev (= 1.4.15-1), libocrpc-dev (= 1.4.15-1), libochf-dev (= 1.4.15-1), libocwebkit-dev (= 1.4.15-1), libocbwrap-dev (= 1.4.15-1)
+Depends: liboctools1 (= 1.4.16-1), libollmchat-dev (= 1.4.16-1), libocfiles-dev (= 1.4.16-1), libocmarkdown-dev (= 1.4.16-1), libollamaweb-dev (= 1.4.16-1), libocrpc-dev (= 1.4.16-1), libochf-dev (= 1.4.16-1), libocwebkit-dev (= 1.4.16-1), libocbwrap-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/liboctools-dev_1.4.15-1_amd64.deb
-Size: 20372
-SHA256: 2cd72c1786aac0272935323df7ffac69e17c0f8a88ac84f4d1d8f1390c39293e
-SHA1: 094511ac7cbab66d6fc3c84bd529fbf2f1e6b2e6
-MD5sum: ba7f6685259344d4f21f6d56b4fb743b
+Filename: pool/main/o/ollmchat/liboctools-dev_1.4.16-1_amd64.deb
+Size: 21120
+SHA256: b916f0bc782368fd8d5972fe5a4937e934956201d5eaddc93cdafbccf2be6cd7
+SHA1: 922e89e289b785025dc7434975f8e265a0316380
+MD5sum: d859fc537b3b9774e29af026a2c2832f
 Description: Development files for liboctools
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -803,22 +803,22 @@ Description: Development files for liboctools
 
 Package: liboctools1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 539
-Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.15-1), libocfiles1 (= 1.4.15-1), libocmarkdown1 (= 1.4.15-1), libollamaweb1 (= 1.4.15-1), libocrpc1 (= 1.4.15-1), libochf1 (= 1.4.15-1), libocwebkit1 (= 1.4.15-1), libocbwrap1 (= 1.4.15-1)
+Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libollmchat1 (= 1.4.16-1), libocfiles1 (= 1.4.16-1), libocmarkdown1 (= 1.4.16-1), libollamaweb1 (= 1.4.16-1), libocrpc1 (= 1.4.16-1), libochf1 (= 1.4.16-1), libocwebkit1 (= 1.4.16-1), libocbwrap1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/liboctools1_1.4.15-1_amd64.deb
-Size: 164664
-SHA256: dc30cb91592cbef1eaa7b6f17f1a8705b84c6ed8497ce53824eb39e845e2d85e
-SHA1: 3553073a36f36c85bf6725d961bc042195d1bef1
-MD5sum: 528a035655d277826ad10c19d61f3dbe
+Filename: pool/main/o/ollmchat/liboctools1_1.4.16-1_amd64.deb
+Size: 165402
+SHA256: 860f201c88b55bdc2d8d2cf954a6eca06852dfb54d03a8531a44185f25a62260
+SHA1: 9f2f5559e0cefb48aac8350aeef4dc93eb147b5c
+MD5sum: 47758dbfd43ba61b99fe07359c1a25bc
 Description: LLM tool implementations for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -827,22 +827,22 @@ Description: LLM tool implementations for OLLMchat
 
 Package: libocvector2-1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 5551
-Depends: libblas3 | libblas.so.3, libc6 (>= 2.43), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgomp1 (>= 6), libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 14), libocsqlite1 (= 1.4.15-1), libollmchat1 (= 1.4.15-1)
+Depends: libblas3 | libblas.so.3, libc6 (>= 2.43), libgcc-s1 (>= 3.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgomp1 (>= 6), libjson-glib-1.0-0 (>= 1.5.2), liblapack3 | liblapack.so.3, libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 14), libocsqlite1 (= 1.4.16-1), libollmchat1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocvector2-1_1.4.15-1_amd64.deb
-Size: 1303898
-SHA256: c4a05b6638785b67a469e289c13273521b809b376f17379d2302c8df7edc87dd
-SHA1: d80f63f25750af8455d1d6f88274b0594b434dc4
-MD5sum: 832d298149b1a2434661af31ce04aaee
+Filename: pool/main/o/ollmchat/libocvector2-1_1.4.16-1_amd64.deb
+Size: 1304606
+SHA256: fc352f746ca81ba91cd9219e2e419d0f39f25480ae5e63a71429909b07e9af28
+SHA1: 8e9d941f0cda0f5537c764da5ed46919c5da5879
+MD5sum: fa9183e2e37996b98f08080348fd67a8
 Description: Vector search library for the OLLMchat file daemon
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -851,22 +851,22 @@ Description: Vector search library for the OLLMchat file daemon
 
 Package: libocvector2-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 28
-Depends: libocvector2-1 (= 1.4.15-1), libocsqlite-dev (= 1.4.15-1), libollmchat-dev (= 1.4.15-1)
+Depends: libocvector2-1 (= 1.4.16-1), libocsqlite-dev (= 1.4.16-1), libollmchat-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocvector2-dev_1.4.15-1_amd64.deb
-Size: 13006
-SHA256: b785504308b92678c2414b423fe36f1000f34b897b7f6042583c07212454e315
-SHA1: 9a5ec26081d09f6a7f4f9b3848ae2d4b8d44acab
-MD5sum: 03f2b2c8432b5b0407395ab6d34c3c81
+Filename: pool/main/o/ollmchat/libocvector2-dev_1.4.16-1_amd64.deb
+Size: 13750
+SHA256: 27d0422c8f52a71d346645898c06b8b7d4a86386ab9c93dd5e6ec4cd316b30a7
+SHA1: 224d5133aa8cce8da39fd5a8293c38ab32920287
+MD5sum: 956347a221128863e2e8519ce8080c2b
 Description: Development files for libocvector2
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -875,22 +875,22 @@ Description: Development files for libocvector2
 
 Package: libocwebkit-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 30
-Depends: libocwebkit1 (= 1.4.15-1), libollmchat-dev (= 1.4.15-1), libgtk-4-dev, libwebkitgtk-6.0-dev, libwebkitgtk-6.0-webdriver-dev, libatspi2.0-dev
+Depends: libocwebkit1 (= 1.4.16-1), libollmchat-dev (= 1.4.16-1), libgtk-4-dev, libwebkitgtk-6.0-dev, libwebkitgtk-6.0-webdriver-dev, libatspi2.0-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libocwebkit-dev_1.4.15-1_amd64.deb
-Size: 13088
-SHA256: 44e96c27e2d6937883aa4f6d598fd55ad60279658fb159134ee434ff65238cdb
-SHA1: b695cf59ea92a9166fdd092558f77c8cfe15fd85
-MD5sum: 126b9d589b16b40bde55b0d73563b84c
+Filename: pool/main/o/ollmchat/libocwebkit-dev_1.4.16-1_amd64.deb
+Size: 13836
+SHA256: 157828477dbfaacd0e1be95462f57464d90838a5f11dd6ce812681152f1f5f50
+SHA1: 9bc0abfdbb37440654b336c0af114e279b039357
+MD5sum: a030bb5de9489686e7ab445dc1c39450
 Description: Development files for libocwebkit
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -899,22 +899,22 @@ Description: Development files for libocwebkit
 
 Package: libocwebkit1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 283
-Depends: libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.4), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.7.2), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libwebkitgtk-6.0-webdriver4 (>= 2.52.6-0ubuntu0.26.04.1+webdriver6), libollmchat1 (= 1.4.15-1)
+Depends: libatspi2.0-0t64 (>= 2.9.90), libc6 (>= 2.4), libcairo2 (>= 1.2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.7.2), libjavascriptcoregtk-6.0-1, libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libwebkitgtk-6.0-webdriver4 (>= 2.52.6-0ubuntu0.26.04.1+webdriver6), libollmchat1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libocwebkit1_1.4.15-1_amd64.deb
-Size: 88492
-SHA256: 4ef5aec3757d518f3274f7ba594596d3740b05f2e5b539690bbecacf40118dbf
-SHA1: 7be22c1aaa421591f92ce1806c0da4ed04a88cfe
-MD5sum: 34a036169c989643e36ae59b12e95dae
+Filename: pool/main/o/ollmchat/libocwebkit1_1.4.16-1_amd64.deb
+Size: 89168
+SHA256: 564bc0a114e69ed459a23c6045dcf2d9f4318cbccf10e51cbe37428eb4cfe7a8
+SHA1: 6c7ba4bf60fd1ca8f7e5bd66a3dafd4b2efc0352
+MD5sum: 8a567ee7be7980ff866f700fc1a3e242
 Description: WebKitGTK browser-tool library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -923,22 +923,22 @@ Description: WebKitGTK browser-tool library for OLLMchat
 
 Package: libollamaweb-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 25
-Depends: libollamaweb1 (= 1.4.15-1), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev, libxml2-dev
+Depends: libollamaweb1 (= 1.4.16-1), libgee-0.8-dev, libglib2.0-dev, libjson-glib-dev, libsoup-3.0-dev, libgnutls28-dev, libxml2-dev
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libollamaweb-dev_1.4.15-1_amd64.deb
-Size: 12358
-SHA256: efd9b51bba316f7e69843839f2bac07bdcd596802da1697895e652c4bcf3074f
-SHA1: 90a07612be5c7fec5f6b0a378675b6b81e4fba9f
-MD5sum: 4f9579b722d01dd361fd6d6112c9f09f
+Filename: pool/main/o/ollmchat/libollamaweb-dev_1.4.16-1_amd64.deb
+Size: 13106
+SHA256: 45dae6294eecd210ab9053328b8840461ad7b80136df9705779043fdd60c8945
+SHA1: 22533c130a1d045b3595933da1eae7bcc4e8442d
+MD5sum: ae1d2c805c3a325ae15471e59444c0e4
 Description: Development files for libollamaweb
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -947,7 +947,7 @@ Description: Development files for libollamaweb
 
 Package: libollamaweb1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 127
@@ -958,11 +958,11 @@ Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libollamaweb1_1.4.15-1_amd64.deb
-Size: 45014
-SHA256: 694ca781ab0e63fc66a47d8f3a6c0ab661e7252fcae57c5ede6afc377abc3d7b
-SHA1: b5bc7550b7c74551d3579e1d3107edc88411e6b0
-MD5sum: 4ebbf00b3c8da7ebf5d6d6ce0661258f
+Filename: pool/main/o/ollmchat/libollamaweb1_1.4.16-1_amd64.deb
+Size: 45754
+SHA256: a98fe64d2bdd79a57f001dd2e072daa471a679e5a0b4bf54c50e785fa47d702c
+SHA1: 4d97fa9769de48f56571e432caf76f98c08dd7b7
+MD5sum: 721708b94af8a4c1f691796f3c355118
 Description: Ollama HTTP client library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -971,22 +971,22 @@ Description: Ollama HTTP client library for OLLMchat
 
 Package: libollmchat-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 871
-Depends: libollmchat1 (= 1.4.15-1), libocsqlite-dev (= 1.4.15-1), libocmarkdown-dev (= 1.4.15-1), libollamaweb-dev (= 1.4.15-1), libocrpc-dev (= 1.4.15-1)
+Depends: libollmchat1 (= 1.4.16-1), libocsqlite-dev (= 1.4.16-1), libocmarkdown-dev (= 1.4.16-1), libollamaweb-dev (= 1.4.16-1), libocrpc-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libollmchat-dev_1.4.15-1_amd64.deb
-Size: 46320
-SHA256: 99abaf43aa048b2b349513eaaf7db4d237ae688f7a18af7eb2f470dcf21750f9
-SHA1: eedc357ea1fb880a9660ba2091e5f8608e058c73
-MD5sum: b04b9e66e303e32d401282c23759392d
+Filename: pool/main/o/ollmchat/libollmchat-dev_1.4.16-1_amd64.deb
+Size: 47114
+SHA256: 7bc6e43da40e38f5ef8891e9a549751c6d93db5272c74ee0b2b74ca6b1cb8f05
+SHA1: 65354463c44f5bd671e268adc83be180dfbda598
+MD5sum: f9d4ba09e7d2ecc5e154db1e009bab43
 Description: Development files for libollmchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -995,22 +995,22 @@ Description: Development files for libollmchat
 
 Package: libollmchat1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 1830
-Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.76.0), libjson-glib-1.0-0 (>= 1.5.2), libllama0 (>= 8681+dfsg), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.15-1), libocmarkdown1 (= 1.4.15-1), libollamaweb1 (= 1.4.15-1), libocrpc1 (= 1.4.15-1)
+Installed-Size: 1834
+Depends: libc6 (>= 2.14), libgee-0.8-2 (>= 0.14.0), libglib2.0-0t64 (>= 2.76.0), libjson-glib-1.0-0 (>= 1.5.2), libllama0 (>= 8681+dfsg), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9), libocsqlite1 (= 1.4.16-1), libocmarkdown1 (= 1.4.16-1), libollamaweb1 (= 1.4.16-1), libocrpc1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libollmchat1_1.4.15-1_amd64.deb
-Size: 410680
-SHA256: 81d3bf24002b3510d21827437e1ed7b01bb20f97f6a9d585bbb5e20912f70cd9
-SHA1: bb4edf9de1b977e9a0906740e4ae437572148bb3
-MD5sum: 9c55335ef030a61f99d7c7354d84b95a
+Filename: pool/main/o/ollmchat/libollmchat1_1.4.16-1_amd64.deb
+Size: 411566
+SHA256: 7a77ce79e2fc7ea0800dbe92dc8aff294edf95feb39e56f3a2c4a1187c520477
+SHA1: 6dd5cf0d203519ae2c943211c7abec9e64de734b
+MD5sum: 0bbf1a56ef1108029beee4f28a74afa2
 Description: Base library for Ollama/OpenAI API access
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1020,22 +1020,22 @@ Description: Base library for Ollama/OpenAI API access
 
 Package: libollmchatgtk-dev
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 94
-Depends: libollmchatgtk1 (= 1.4.15-1), libollmchat-dev (= 1.4.15-1), libocmarkdowngtk-dev (= 1.4.15-1)
+Depends: libollmchatgtk1 (= 1.4.16-1), libollmchat-dev (= 1.4.16-1), libocmarkdowngtk-dev (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libdevel
-Filename: pool/main/o/ollmchat/libollmchatgtk-dev_1.4.15-1_amd64.deb
-Size: 17220
-SHA256: 47c3cf9a93f0c88cdcce05e6edaad8fba0a460a0ef0ab2ba7e151d3a10f9ac47
-SHA1: f55e6b86801eb0d00d84e4d0df391bdace0bac55
-MD5sum: 87e0fefdf2d02cd8d138efe4a51dad64
+Filename: pool/main/o/ollmchat/libollmchatgtk-dev_1.4.16-1_amd64.deb
+Size: 17960
+SHA256: 5617d343e5324ca04710692b9a4d132624da8d3d620a7bab7623a081ae64681a
+SHA1: 44eaaebba84f03e8957799907899c62af53d3932
+MD5sum: 0fa5e3bef7a6c34baca0c833d7794c04
 Description: Development files for libollmchatgtk
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1044,22 +1044,22 @@ Description: Development files for libollmchatgtk
 
 Package: libollmchatgtk1
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 238
-Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.0.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libollmchat1 (= 1.4.15-1), libocmarkdown1 (= 1.4.15-1), libocmarkdowngtk1 (= 1.4.15-1)
+Depends: libc6 (>= 2.4), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.76.0), libgtk-4-1 (>= 4.0.0), libjson-glib-1.0-0 (>= 1.5.2), libsecret-1-0 (>= 0.7), libollmchat1 (= 1.4.16-1), libocmarkdown1 (= 1.4.16-1), libocmarkdowngtk1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: libs
-Filename: pool/main/o/ollmchat/libollmchatgtk1_1.4.15-1_amd64.deb
-Size: 74232
-SHA256: b390fdae466d3c08bdf7f763c49d21607f407f3502b517dd7c1ad05ee5e21291
-SHA1: 89449c70c436f5dc6a3d7f3e3e6ec1334a3b77f3
-MD5sum: d47317f5657ee52221cbfcd69a350ef9
+Filename: pool/main/o/ollmchat/libollmchatgtk1_1.4.16-1_amd64.deb
+Size: 75012
+SHA256: fae65d1acad11014267ff6a7a025f926c1e2da73e52bdb862fc1723221086630
+SHA1: b2fe75b6ae8e1c891e631f004c8097f3a9c24859
+MD5sum: ad0ecf327a0b38488176ebdd224defe4
 Description: GTK chat widget library for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1492,21 +1492,21 @@ Description: WebKitGTK 6.0 runtime with WebDriver interactions (parallel install
 Original-Maintainer: Debian WebKit Maintainers <pkg-webkit-maintainers@lists.alioth.debian.org>
 
 Package: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 5533
-Depends: libadwaita-1-0 (>= 1.6~beta), libc6 (>= 2.38), libgee-0.8-2 (>= 0.14.0), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.80.0), libgnutls30t64 (>= 3.7.2), libgtk-4-1 (>= 4.12.0), libjson-glib-1.0-0 (>= 1.5.2), libsqlite3-0 (>= 3.5.9), libtree-sitter0.25 (>= 0.19), libollmchat1 (= 1.4.15-1), libollmchatgtk1 (= 1.4.15-1), liboccoder1 (= 1.4.15-1), liboctools1 (= 1.4.15-1), libocmcp1 (= 1.4.15-1), libocvector2-1 (= 1.4.15-1), libocfiles1 (= 1.4.15-1), libocrpc1 (= 1.4.15-1), libocsqlite1 (= 1.4.15-1), libocmarkdown1 (= 1.4.15-1), libocmarkdowngtk1 (= 1.4.15-1), libollamaweb1 (= 1.4.15-1), libochf1 (= 1.4.15-1), libocwebkit1 (= 1.4.15-1), libocbwrap1 (= 1.4.15-1)
+Depends: libadwaita-1-0 (>= 1.6~beta), libc6 (>= 2.38), libgee-0.8-2 (>= 0.14.0), libgit2-glib-1.0-0 (>= 0.22.8), libglib2.0-0t64 (>= 2.80.0), libgnutls30t64 (>= 3.7.2), libgtk-4-1 (>= 4.12.0), libjson-glib-1.0-0 (>= 1.5.2), libsqlite3-0 (>= 3.5.9), libtree-sitter0.25 (>= 0.19), libollmchat1 (= 1.4.16-1), libollmchatgtk1 (= 1.4.16-1), liboccoder1 (= 1.4.16-1), liboctools1 (= 1.4.16-1), libocmcp1 (= 1.4.16-1), libocvector2-1 (= 1.4.16-1), libocfiles1 (= 1.4.16-1), libocrpc1 (= 1.4.16-1), libocsqlite1 (= 1.4.16-1), libocmarkdown1 (= 1.4.16-1), libocmarkdowngtk1 (= 1.4.16-1), libollamaweb1 (= 1.4.16-1), libochf1 (= 1.4.16-1), libocwebkit1 (= 1.4.16-1), libocbwrap1 (= 1.4.16-1)
 Recommends: bubblewrap, ollmchat-tools
 Conflicts: ollmchat-remote-only
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: gnome
-Filename: pool/main/o/ollmchat/ollmchat_1.4.15-1_amd64.deb
-Size: 673204
-SHA256: c5709bd934547adfc8eb79463395ff6ff8f64869ca9c6416270afa65ee8d18dc
-SHA1: 1583dc5f07ea9b038e11f5555ee7526cdc0b0dda
-MD5sum: 6b8c2664a0f568af6b7b318c3288c39e
+Filename: pool/main/o/ollmchat/ollmchat_1.4.16-1_amd64.deb
+Size: 673904
+SHA256: 5b8d693998086ec3fefa05814641e650841b3de84969eaad18f3490279c71a20
+SHA1: e91e043138574e3c03b9b43bebb00d9df1b47328
+MD5sum: df04b9a25091ec49045c1552978ae544
 Description: OLLMchat - LLM chat application
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1521,18 +1521,18 @@ Description: OLLMchat - LLM chat application
 
 Package: ollmchat-doc
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 872
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: doc
-Filename: pool/main/o/ollmchat/ollmchat-doc_1.4.15-1_amd64.deb
-Size: 727968
-SHA256: 1508d2e5039cfab4b70272fd4d535ff3f1ae33f994e81a671526ceaa464fff4e
-SHA1: 442df172e980457dee01e1324632f939ce7c375b
-MD5sum: 78a8cd00b2d322110dd7d568e90f1735
+Filename: pool/main/o/ollmchat/ollmchat-doc_1.4.16-1_amd64.deb
+Size: 728388
+SHA256: d5efed2c482413fc63372a52393e9288b99e15de5efe074a64814809afa6619f
+SHA1: 719664e2af81cc154f6e3d6b3b328e1cec76b145
+MD5sum: a6bf5e90a17470162f0ed5925eda3563
 Description: Example and test executables for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1542,7 +1542,7 @@ Description: Example and test executables for OLLMchat
 
 Package: ollmchat-remote-only
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 19356
@@ -1551,11 +1551,11 @@ Conflicts: libocbwrap-dev, libocbwrap1, liboccoder-dev, liboccoder1, libocfiles-
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: gnome
-Filename: pool/main/o/ollmchat/ollmchat-remote-only_1.4.15-1_amd64.deb
-Size: 3538686
-SHA256: 2e6fb8422a1def9f60adefe2544b94726b378185106fb30a0e8d3ce2079b1d9f
-SHA1: 5ec43c8d1820ecaccffb6ed521887e5beb479b3d
-MD5sum: 4bd8b082b17e2e48d897d25d3f99356f
+Filename: pool/main/o/ollmchat/ollmchat-remote-only_1.4.16-1_amd64.deb
+Size: 3540196
+SHA256: 8b7db34ac8f743a2322295301048b25729e8e80f09b2826d0b39e75a9bad15c8
+SHA1: 8688044ab10682054628ac57a72f9a5c35ef5668
+MD5sum: 46c8d41d0e3b216e1d36afe189805bbe
 Description: OLLMchat - LLM chat application (remote backends only)
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
@@ -1570,22 +1570,22 @@ Description: OLLMchat - LLM chat application (remote backends only)
 
 Package: ollmchat-tools
 Source: ollmchat
-Version: 1.4.15-1
+Version: 1.4.16-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 49
-Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.12.0), libocmarkdown1 (= 1.4.15-1)
+Depends: libc6 (>= 2.34), libglib2.0-0t64 (>= 2.12.0), libocmarkdown1 (= 1.4.16-1)
 Conflicts: ollmchat-remote-only
 Breaks: ollmchat (<< 1.3.0-1)
 Replaces: ollmchat (<< 1.3.0-1)
 Homepage: https://github.com/roojs/OLLMchat
 Priority: optional
 Section: utils
-Filename: pool/main/o/ollmchat/ollmchat-tools_1.4.15-1_amd64.deb
-Size: 15604
-SHA256: cbbc3bca12d113f7f57c128a9f931108fd563fe8b0219dc1a643aea37bfdc23a
-SHA1: f3399ae89395a7ecf8ff720317c3034869487cd4
-MD5sum: 3ed1aac3a9a10a433ab00da7ff1fbb37
+Filename: pool/main/o/ollmchat/ollmchat-tools_1.4.16-1_amd64.deb
+Size: 16352
+SHA256: 30956375130a68bdd09c77f98bce22cc2188043721d893e4e504eba453a12d07
+SHA1: 11b724eb34f2d229fef2413c30f2bdd43e9c13b0
+MD5sum: 293ddfcfcc6f935d2e3a7ec053b55fc5
 Description: Command-line tools for OLLMchat
  OLLMchat is a GTK chat application with LLM access, tool integration,
  and embeddable libraries for other applications.
