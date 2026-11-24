@@ -1,6 +1,6 @@
 Package: argusrm-agent
 Source: argusrm
-Version: 0.1.46-1
+Version: 0.1.47-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 370
@@ -11,11 +11,11 @@ Replaces: argusrm-agent-cli
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-agent_0.1.46-1_amd64.deb
-Size: 115516
-SHA256: 40afb9c26c30d8bf5227893394027ad91cea5459358874a297cab77430cab410
-SHA1: 5832177e4347a131a6fdb8c794fccf7c0de5397c
-MD5sum: 72077fc032d9fecf90cf169fe11e1ec8
+Filename: pool/main/a/argusrm/argusrm-agent_0.1.47-1_amd64.deb
+Size: 114902
+SHA256: af377794a1154a4c04321a411bc04e4a5bb3e8231cc48bda408703050403f910
+SHA1: 71b653da907f172019c8765e488f5ede4f4f7570
+MD5sum: c1c8c8dd9e298f22c8471ed6bf6bc587
 Description: Argus Remote Manager command-line agent
  This package installs the agent on a managed Linux machine. The command
  is argusrm-agent. It does not use GTK. Registration from the command
@@ -24,7 +24,7 @@ Description: Argus Remote Manager command-line agent
 
 Package: argusrm-controller
 Source: argusrm
-Version: 0.1.46-1
+Version: 0.1.47-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 988
@@ -32,11 +32,11 @@ Depends: libocrpc1, libocsqlite1, libadwaita-1-0 (>= 1.7~alpha), libavahi-common
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-controller_0.1.46-1_amd64.deb
-Size: 300510
-SHA256: 91fb15ed528cd0161d09aa3cd2f530d9efd0a721eb7fd1479837f1186f02c5d4
-SHA1: 9fbf9c6b45b1881024dbe1d2a850c2ef18019344
-MD5sum: 1a9394f13f87624a9165e459234c7c9c
+Filename: pool/main/a/argusrm/argusrm-controller_0.1.47-1_amd64.deb
+Size: 299788
+SHA256: 8889f8a74afdc3c1c80c62c85b67abcdd70ce22534789ce91609cf98b66c1c70
+SHA1: 3b7ff9ed8047af7c26fb1678ff4659a45ffd9d16
+MD5sum: 8f05ada61e8f088deb23fdd07f4c84d2
 Description: Argus Remote Manager controller
  This package contains the desktop controller. It enrolls with an Argus
  Remote Manager server and opens the management window. Registration on
@@ -44,20 +44,20 @@ Description: Argus Remote Manager controller
 
 Package: argusrm-server
 Source: argusrm
-Version: 0.1.46-1
+Version: 0.1.47-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 1185
+Installed-Size: 1189
 Depends: libocrpc1, libocsqlite1, libosinfo-bin, osinfo-db, libc6 (>= 2.34), libgee-0.8-2 (>= 0.10.1), libgit2-glib-1.0-0 (>= 0.26.2), libglib2.0-0t64 (>= 2.60.0), libgnutls30t64 (>= 3.7.2), libjson-glib-1.0-0 (>= 1.5.2), libnftables1 (>= 1.0.2), libnl-3-200 (>= 3.2.21), libnl-route-3-200 (>= 3.7.0), libsoup-3.0-0 (>= 3.1.3), libsqlite3-0 (>= 3.5.9)
 Recommends: avahi-daemon
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-server_0.1.46-1_amd64.deb
-Size: 327662
-SHA256: 656868cbc40bd003cc71265823bb551903b7e0f1db6b47160fcb9011458fad8b
-SHA1: b1da3109537810698dc96e9e554d3b9d566d72f5
-MD5sum: 39e50a815777b489683ea4c2307d1ea2
+Filename: pool/main/a/argusrm/argusrm-server_0.1.47-1_amd64.deb
+Size: 327498
+SHA256: 03afa183e215c51859fe7216b1c3819847b55bb88ebd2a416e5d37cb5261b675
+SHA1: f4161a0f1ded136ca1b7cd302258acb05f6644ed
+MD5sum: 74bacac0561e6260266ea4d0e9969d8f
 Description: Argus Remote Manager server
  Argus Remote Manager enrolls managed machines, provides authenticated
  downloads, and coordinates remote management operations. This package
@@ -1552,17 +1552,17 @@ Description: SSH host manager and terminal for GNOME
  Ásbrú config import, port forwards, and local PTY sessions.
 
 Package: thunderbird-mozilla-build
-Version: 160.0-0ubuntu1
+Version: 161.0-0ubuntu1
 Maintainer: Daniel Folkinshteyn <nanotube@users.sourceforge.net>
 Architecture: amd64
 Provides: mail-reader, thunderbird
 Priority: optional
 Section: mail
-Filename: pool/main/t/thunderbird-mozilla-build/thunderbird-mozilla-build_160.0-0ubuntu1_amd64.deb
-Size: 88016088
-SHA256: 83666d5612cfae3448061666f09f3fab3bf59168c6845e25a4ee3334c973fcbe
-SHA1: 204f9a9635bfa10d343dda667bea4b0bc88b8f66
-MD5sum: 84e4027bf5de944eab2420f4f0a5098b
+Filename: pool/main/t/thunderbird-mozilla-build/thunderbird-mozilla-build_161.0-0ubuntu1_amd64.deb
+Size: 91679860
+SHA256: 648759d04c3f9e49216d42cb177c208a98f88434bde1d3f79224263dc0a39eb6
+SHA1: 72368c7c53b645352082a9f8aaf652b0b9288818
+MD5sum: 0509550fc05cb7bf224de00b76a581dc
 Description: Mozilla Thunderbird, official Mozilla build, packaged for Ubuntu by the Ubuntuzilla project.
  This is the unmodified Mozilla release binary of Thunderbird, packaged into a .deb by the Ubuntuzilla project.
  .

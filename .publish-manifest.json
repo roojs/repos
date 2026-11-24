@@ -788,7 +788,7 @@
       }
     },
     "webkitgtk-automation": {
-      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver6;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver5;webkit2gtk-2.52.6-0ubuntu0.26.04.1-webdriver6;webkit2gtk-2.54.0-1-deb13u3-webdriver1",
+      "tag": "webkit2gtk-2.50.4-0ubuntu0.25.04.1-webdriver6;webkit2gtk-2.52.3-0ubuntu0.25.10.1-webdriver5;webkit2gtk-2.52.6-0ubuntu0.26.04.2-webdriver7;webkit2gtk-2.54.3-1-deb13u1-webdriver2",
       "packages": {
         "libwebkitgtk-6.0-webdriver-dev_2.50.4-0ubuntu0.25.04.1+webdriver6_amd64.deb": {
           "sha256": "7004fd11bf2b810aa3609dea6806bfc20ee1ccc1164cc43c37b59d380735941b",
@@ -814,26 +814,26 @@
             "questing"
           ]
         },
-        "libwebkitgtk-6.0-webdriver-dev_2.52.6-0ubuntu0.26.04.1+webdriver6_amd64.deb": {
-          "sha256": "f7281907f4b7012c52d5dd03d1107a59ce45f5beb5ea5f12e34f58f831d6694e",
+        "libwebkitgtk-6.0-webdriver-dev_2.52.6-0ubuntu0.26.04.2+webdriver7_amd64.deb": {
+          "sha256": "de076c73c1f8d4d64dad9fc4a97ebaa7d70e42661f516e3c7456b2eec2a394d2",
           "suites": [
             "resolute"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.52.6-0ubuntu0.26.04.1+webdriver6_amd64.deb": {
-          "sha256": "f70f3c546676e9a2317ab2b0e77fc9db3e6722056783a22e7cbd35e486b2dba6",
+        "libwebkitgtk-6.0-webdriver4_2.52.6-0ubuntu0.26.04.2+webdriver7_amd64.deb": {
+          "sha256": "ffcf453c928d28be5fbd84bc35d10666480bbe2b4d95df393e2c36ae6cf28858",
           "suites": [
             "resolute"
           ]
         },
-        "libwebkitgtk-6.0-webdriver-dev_2.54.0-1.deb13u3+webdriver1_amd64.deb": {
-          "sha256": "d37e33544b336b8e3e5b9977d728c289c117451f54a10539530394907d83e6b3",
+        "libwebkitgtk-6.0-webdriver-dev_2.54.3-1.deb13u1+webdriver2_amd64.deb": {
+          "sha256": "d7257fba013342f88358a3959f079c8847b2e93341e0667952a38cf0346130c5",
           "suites": [
             "trixie"
           ]
         },
-        "libwebkitgtk-6.0-webdriver4_2.54.0-1.deb13u3+webdriver1_amd64.deb": {
-          "sha256": "40f4401514c531722ca56863d5d0fbc4f5a41b8582bdaa74a3a445c14f81c4b2",
+        "libwebkitgtk-6.0-webdriver4_2.54.3-1.deb13u1+webdriver2_amd64.deb": {
+          "sha256": "8c1ea93e7b9758dc16d7369db80a7e3e2dedb584678b0e008d780ac6e1fd2745",
           "suites": [
             "trixie"
           ]
@@ -864,10 +864,10 @@
       }
     },
     "ubuntuzilla": {
-      "tag": "v160.0",
+      "tag": "v161.0",
       "packages": {
-        "thunderbird-mozilla-build_160.0-0ubuntu1_amd64.deb": {
-          "sha256": "83666d5612cfae3448061666f09f3fab3bf59168c6845e25a4ee3334c973fcbe",
+        "thunderbird-mozilla-build_161.0-0ubuntu1_amd64.deb": {
+          "sha256": "648759d04c3f9e49216d42cb177c208a98f88434bde1d3f79224263dc0a39eb6",
           "suites": [
             "trixie",
             "plucky",
@@ -1106,10 +1106,10 @@
       }
     },
     "argusrm": {
-      "tag": "v0.1.46",
+      "tag": "v0.1.47",
       "packages": {
-        "argusrm-agent_0.1.46-1_amd64.deb": {
-          "sha256": "40afb9c26c30d8bf5227893394027ad91cea5459358874a297cab77430cab410",
+        "argusrm-agent_0.1.47-1_amd64.deb": {
+          "sha256": "af377794a1154a4c04321a411bc04e4a5bb3e8231cc48bda408703050403f910",
           "suites": [
             "trixie",
             "plucky",
@@ -1117,8 +1117,8 @@
             "resolute"
           ]
         },
-        "argusrm-controller_0.1.46-1_amd64.deb": {
-          "sha256": "91fb15ed528cd0161d09aa3cd2f530d9efd0a721eb7fd1479837f1186f02c5d4",
+        "argusrm-controller_0.1.47-1_amd64.deb": {
+          "sha256": "8889f8a74afdc3c1c80c62c85b67abcdd70ce22534789ce91609cf98b66c1c70",
           "suites": [
             "trixie",
             "plucky",
@@ -1126,8 +1126,8 @@
             "resolute"
           ]
         },
-        "argusrm-server_0.1.46-1_amd64.deb": {
-          "sha256": "656868cbc40bd003cc71265823bb551903b7e0f1db6b47160fcb9011458fad8b",
+        "argusrm-server_0.1.47-1_amd64.deb": {
+          "sha256": "03afa183e215c51859fe7216b1c3819847b55bb88ebd2a416e5d37cb5261b675",
           "suites": [
             "trixie",
             "plucky",
@@ -1858,31 +1858,31 @@
       }
     },
     "argusrm": {
-      "tag": "v0.1.46",
+      "tag": "v0.1.47",
       "packages": {
-        "argusrm-agent-0.1.46-1.fc44.x86_64.rpm": {
-          "sha256": "9e7794c5f73a79a58f02a7b95f72668709424407daa15fd9a861ecc3559c9475",
+        "argusrm-agent-0.1.47-1.fc44.x86_64.rpm": {
+          "sha256": "66ea0b69d36ba97f85862e0c261b22650afa261658efc5b1530c2d3fdb5afc09",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "argusrm-agent-gtk-0.1.46-1.fc44.x86_64.rpm": {
-          "sha256": "9231be52f0f2f7b6cd9af115aa8b5c74f0fa12beaceb7d42d4244c88eec930b8",
+        "argusrm-agent-gtk-0.1.47-1.fc44.x86_64.rpm": {
+          "sha256": "b33c2967e1bb6aa0848f96205242cfcecb4e14f935d4b429b06fac0d97c7942b",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "argusrm-controller-0.1.46-1.fc44.x86_64.rpm": {
-          "sha256": "82f2708c4157b065e23879ad308a4c9223414327c103f153fba09e80b58fe349",
+        "argusrm-controller-0.1.47-1.fc44.x86_64.rpm": {
+          "sha256": "6a1c5e47454b8fd6b47236079976d532653da85ddc98562e98f902753d94b0da",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "argusrm-server-0.1.46-1.fc44.x86_64.rpm": {
-          "sha256": "76b13cc301b8b050bf1d7c33e8ac26996e724ec0ff774f5ff06bfd7fab028064",
+        "argusrm-server-0.1.47-1.fc44.x86_64.rpm": {
+          "sha256": "325845057b8144e83b6bc7d0e8561e82e5b466a0bf2af7a68febccebdd9c71c3",
           "arch": "x86_64",
           "fedora": [
             44
