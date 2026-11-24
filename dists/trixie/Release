@@ -1,19 +1,19 @@
 Origin: roojs
 Label: roojs
 Codename: trixie
-Date: Sun, 22 Nov 2026 14:03:01 UTC
+Date: Tue, 24 Nov 2026 08:57:59 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 9f611b825674cffeee6ecc3110163fc1 76496 main/binary-amd64/Packages
- 7182efeb308b9af9dfb437c3892ba40c 16490 main/binary-amd64/Packages.gz
+ 5c922c126664544b10be1f900274a612 67701 main/binary-amd64/Packages
+ 13a7497db7ebdbf52562dfb9da15c2a4 15285 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
 SHA1:
- 7bffa46ec1509a40940286347a050d668ba990b6 76496 main/binary-amd64/Packages
- 91f45b41412f9b2fecfbbb139f13025b8360cd6f 16490 main/binary-amd64/Packages.gz
+ f5c0408bd8e0203b5bdd34dc91971a6d063613b9 67701 main/binary-amd64/Packages
+ fc99d9ce7cdf6cef3f0cd6cd027566fefda598d0 15285 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
 SHA256:
- 466f36b53ff2ccda3d4cb8ecc4f57b49c22d7306d6211aa5ddddc184d504a2a7 76496 main/binary-amd64/Packages
- 9ad33a3d00bbfc4484606eda893c64c9bde9ae411c37d2302ee71e87fd7eef81 16490 main/binary-amd64/Packages.gz
+ 44bc8bf0aaf69cb397abd83699fc141adf1543e4ba57545b7e60d790dbd766cd 67701 main/binary-amd64/Packages
+ 11d57a84abbc625355189d48aaf6fdb05c4eb33488fa1e4526bd17bf462fa9d6 15285 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
