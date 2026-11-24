@@ -308,7 +308,9 @@ pool_skip_name() {
   local name="$1"
   [[ "$name" == python3-* ]] && return 0
   [[ "$name" == *-examples || "$name" == *-tests || "$name" == *-tools ]] && return 0
-  [[ "$name" == libggml0-backend-hip ]] && return 0
+  # SONAME bumps rename this (libggml0-backend-hip → libggml1-backend-hip).
+  # The .deb is over GitHub's 100MB limit, and OLLMchat must not install it.
+  [[ "$name" == libggml*-backend-hip ]] && return 0
   return 1
 }
 
