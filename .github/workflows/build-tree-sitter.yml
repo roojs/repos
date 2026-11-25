@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-deb:
@@ -13,14 +13,8 @@ jobs:
       changed: ${{ steps.build.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Cache parser checkouts
-        uses: actions/cache@v4
         with:
-          path: cache/tree-sitter
-          key: tree-sitter-checkouts-v1-${{ hashFiles('config/tree-sitter.json') }}
-          restore-keys: |
-            tree-sitter-checkouts-v1-
+          persist-credentials: false
 
       - name: Download prior release
         id: prior
@@ -68,14 +62,8 @@ jobs:
       changed: ${{ steps.build.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Cache parser checkouts
-        uses: actions/cache@v4
         with:
-          path: cache/tree-sitter
-          key: tree-sitter-checkouts-v1-${{ hashFiles('config/tree-sitter.json') }}
-          restore-keys: |
-            tree-sitter-checkouts-v1-
+          persist-credentials: false
 
       - name: Install build dependencies
         run: |
@@ -97,9 +85,7 @@ jobs:
 
       - name: Build RPM packages
         id: build
-        run: |
-          git config --global --add safe.directory '*'
-          php scripts/tree-sitter-packages.php --rpm
+        run: php scripts/tree-sitter-packages.php --rpm
         env:
           TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
           TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output-rpm
@@ -121,14 +107,8 @@ jobs:
       changed: ${{ steps.build.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Cache parser checkouts
-        uses: actions/cache@v4
         with:
-          path: cache/tree-sitter
-          key: tree-sitter-checkouts-v1-${{ hashFiles('config/tree-sitter.json') }}
-          restore-keys: |
-            tree-sitter-checkouts-v1-
+          persist-credentials: false
 
       - name: Install build dependencies
         run: |
@@ -151,9 +131,7 @@ jobs:
 
       - name: Build openSUSE RPM packages
         id: build
-        run: |
-          git config --global --add safe.directory '*'
-          php scripts/tree-sitter-packages.php --suse
+        run: php scripts/tree-sitter-packages.php --suse
         env:
           TREE_SITTER_BASE_DIR: ${{ github.workspace }}/cache/tree-sitter
           TREE_SITTER_OUTPUT_DIR: ${{ github.workspace }}/cache/output-suse-rpm
@@ -171,8 +149,12 @@ jobs:
     needs: [build-deb, build-rpm, build-suse-rpm]
     if: needs.build-deb.outputs.changed == 'true' || needs.build-rpm.outputs.changed == 'true' || needs.build-suse-rpm.outputs.changed == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Download deb artifacts
         uses: actions/download-artifact@v4

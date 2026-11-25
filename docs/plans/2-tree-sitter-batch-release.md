@@ -47,23 +47,24 @@ Checklist: `docs/guide-to-writing-plans.md`
 
 ## Pins
 
-- 🔷 `tag` in `config/tree-sitter.json` is optional.
-- 🔷 Set `tag` when we know a later tree does not build (or after CI fails).
-- 🔷 Omit `tag` (or leave it empty) to follow `main` / `master`.
+- 🔷 Every parser needs `commit`: the full 40-character SHA to build. The builder refuses a parser without one.
+- 🔷 `tag` is optional. When set, that upstream tag must still point at `commit`; it also sets the package version.
+- 🔷 Without `tag`, the upstream default branch (or `branch`, when set) must still be at `commit`.
+- 🔷 When upstream moves the tag or branch, the build stops. Review the new upstream commit, then update `commit`.
+- 🔷 Grammar modules a grammar requires (`tree-sitter-c` for cpp, `tree-sitter-bash` for rpmspec) are pinned the same way under `grammar_dependencies`. They are never installed from npm.
+- 🔷 `grammar.js` runs as a Node program during `tree-sitter generate`. Only pinned commits may reach that step.
+- 🔷 The build jobs get a read-only token. Only the release job, which uploads the built artifacts, can write.
 - 🔷 Do not watch GitHub Releases for unpinned parsers. A lot of them have none.
-- 🔷 A pinned `tag` is also the build identity. Same tag as last release means skip the build.
-- 💩 ⏳ Starting `tag` values can be the local deb versions above, for parsers that already failed on later trees. The rest can start unpinned.
-- 🔷 ⏳ Cache checkouts between runs.
+- 🔷 The pinned `commit` is the build identity. Same commit as last release means skip the build.
+- 🔷 Every run starts from fresh checkouts. Checkouts are not cached between runs.
 
 ## Incremental build
 
-- 🔷 Each parser has a **source identity**:
-  - Pinned: the `tag` string from config.
-  - Unpinned: the `main` / `master` commit SHA after fetch.
+- 🔷 Each parser has a **source identity**: the `commit` SHA from config.
 - 🔷 Each parser has a **built identity** recorded in the latest `tree-sitter-*` release manifest.
 - 🔷 Skip build when built identity equals source identity.
-- 🔷 For pinned parsers this is almost always a skip after the first successful build.
-- 🔷 Unpinned parsers rebuild only when upstream HEAD moves.
+- 🔷 This is almost always a skip after the first successful build.
+- 🔷 A parser rebuilds only when its `commit` pin changes.
 - 🔷 Unchanged `.deb`s are copied from the prior `tree-sitter-*` release, not rebuilt.
 - 🔷 A new dated release always ships the full parser set: reused `.deb`s plus any freshly built ones.
 - 🔷 One `ubuntu-24.04` build produces `.deb`s shared across all APT suites. No suite-specific rebuilds.
