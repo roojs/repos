@@ -24,7 +24,10 @@ sudo apt install -y \
  * This script automates building Debian packages for Tree-sitter parsers
  * from various GitHub repositories.
  * 
- * Usage: php build-tree-sitter-packages.php [--install] [--clean]
+ * Every parser is fetched into a fresh checkout of the full commit SHA pinned
+ * in config/tree-sitter.json.
+ * 
+ * Usage: php build-tree-sitter-packages.php [--install]
  */
 
 class TreeSitterPackageBuilder {
@@ -34,7 +37,6 @@ class TreeSitterPackageBuilder {
     private string $baseDir;
     private string $outputDir;
     private bool $installPackages = false;
-    private bool $cleanBeforeBuild = false;
     private string $onlyParser = '';
     private bool $buildDeb = true;
     private bool $buildRpm = false;
@@ -125,7 +127,7 @@ class TreeSitterPackageBuilder {
     }
     
     private function parseArguments(): void {
-        $options = getopt('', ['install', 'clean', 'help', 'list', 'only:', 'rpm', 'suse', 'deb']);
+        $options = getopt('', ['install', 'help', 'list', 'only:', 'rpm', 'suse', 'deb']);
         
         if (isset($options['help'])) {
             $this->showHelp();
@@ -138,7 +140,6 @@ class TreeSitterPackageBuilder {
         }
         
         $this->installPackages = isset($options['install']);
-        $this->cleanBeforeBuild = isset($options['clean']);
         if (isset($options['only'])) {
             $this->onlyParser = $options['only'];
         }
@@ -174,7 +175,6 @@ class TreeSitterPackageBuilder {
         echo "Usage: php " . basename(__FILE__) . " [OPTIONS]\n\n";
         echo "Options:\n";
         echo "  --install     Install packages after building\n";
-        echo "  --clean       Clean before building (removes existing directories)\n";
         echo "  --list        List available parsers\n";
         echo "  --only=ID     Build only the parser with this config id\n";
         echo "  --rpm         Build Fedora RPM packages (default: Debian .deb)\n";
@@ -214,8 +214,6 @@ class TreeSitterPackageBuilder {
 
         echo "Starting build process for " . count($parsers) . " parsers...\n";
         echo "Output directory: {$this->outputDir}\n\n";
-
-        $this->configureGitSafeDirectories();
         
         $startTime = microtime(true);
         
@@ -260,133 +258,14 @@ class TreeSitterPackageBuilder {
     private function buildPackage(array $parser): array {
         $repoDir = $this->baseDir . '/' . $parser['name'];
         $buildDir = $repoDir . '/build';
-        
-        // Clean if requested
-        if ($this->cleanBeforeBuild && is_dir($repoDir)) {
-            echo "  Cleaning: Removing existing directory...\n";
-            $this->executeCommand("rm -rf " . escapeshellarg($repoDir), true);
-            echo "  ✓ Directory removed\n";
-        }
-        
-        // Clone or update repository
-        if (!is_dir($repoDir)) {
-            echo "  Fetching: Cloning repository from {$parser['repo']}...\n";
-            $this->executeCommand(
-                "git clone " . escapeshellarg($parser['repo']) . " " . escapeshellarg($repoDir),
-                true
-            );
-            echo "  ✓ Repository cloned successfully\n";
-        } else {
-            echo "  Fetching: Updating existing repository...\n";
-            // Reset any local changes first
-            $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git reset --hard",
-                true
-            );
-            
-            // Checkout master/main first to ensure we're on a branch (not a tag)
-            // Check current branch/HEAD state
-            $currentBranch = trim($this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git symbolic-ref --short HEAD 2>/dev/null || echo 'DETACHED'",
-                false
-            ));
-            
-            if ($currentBranch === 'DETACHED' || empty($currentBranch)) {
-                echo "    Currently on detached HEAD, checking out master/main...\n";
-                
-                // Check which branch exists (master or main)
-                $masterExists = false;
-                $mainExists = false;
-                exec("cd " . escapeshellarg($repoDir) . " && git show-ref --verify --quiet refs/heads/master 2>/dev/null", $output, $returnCode);
-                if ($returnCode === 0) {
-                    $masterExists = true;
-                }
-                exec("cd " . escapeshellarg($repoDir) . " && git show-ref --verify --quiet refs/heads/main 2>/dev/null", $output, $returnCode);
-                if ($returnCode === 0) {
-                    $mainExists = true;
-                }
-                
-                // Checkout the branch that exists
-                if ($masterExists) {
-                    $this->executeCommand(
-                        "cd " . escapeshellarg($repoDir) . " && git checkout master",
-                        true
-                    );
-                    echo "    ✓ Checked out master\n";
-                } elseif ($mainExists) {
-                    $this->executeCommand(
-                        "cd " . escapeshellarg($repoDir) . " && git checkout main",
-                        true
-                    );
-                    echo "    ✓ Checked out main\n";
-                } else {
-                    // No master or main branch - try to checkout the default branch from remote
-                    $defaultBranch = trim($this->executeCommand(
-                        "cd " . escapeshellarg($repoDir) . " && git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo ''",
-                        false
-                    ));
-                    if (!empty($defaultBranch)) {
-                        $this->executeCommand(
-                            "cd " . escapeshellarg($repoDir) . " && git checkout " . escapeshellarg($defaultBranch),
-                            true
-                        );
-                        echo "    ✓ Checked out {$defaultBranch}\n";
-                    } else {
-                        echo "    Warning: No master/main branch found, staying on current HEAD\n";
-                    }
-                }
-            }
-            
-            $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git fetch --tags",
-                true
-            );
-            $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git pull",
-                true
-            );
-            echo "  ✓ Repository updated successfully\n";
-        }
-        
-        // Track which tag/version we're using for package versioning
+
         $packageVersion = null;
-
-        if (!empty($parser['tag'])) {
-            $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git fetch --tags",
-                true
-            );
-            $resolvedTag = $this->findMatchingTag($repoDir, $parser['tag']);
-            if ($resolvedTag === null) {
-                throw new Exception(
-                    "No git tag found matching pin '{$parser['tag']}' in {$parser['repo']}. " .
-                    "Remove the pin to track main/master, or set a tag that exists in the repo."
-                );
-            }
-            $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git checkout " . escapeshellarg($resolvedTag),
-                true
-            );
-            if ($resolvedTag !== $parser['tag']) {
-                echo "  ✓ Checked out pinned tag: {$resolvedTag} (config pin: {$parser['tag']})\n";
-            } else {
-                echo "  ✓ Checked out pinned tag: {$parser['tag']}\n";
-            }
+        $resolvedTag = $this->checkoutPinnedCommit($repoDir, $parser, $parser['name']);
+        if ($resolvedTag !== null) {
             $packageVersion = $this->extractVersionFromTag($resolvedTag) ?? $parser['tag'];
-        } else {
-            $this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git fetch && (git checkout main || git checkout master) && git pull",
-                true
-            );
-            echo "  ✓ Checked out default branch\n";
         }
-
-        $identity = !empty($parser['tag'])
-            ? $parser['tag']
-            : trim($this->executeCommand(
-                "cd " . escapeshellarg($repoDir) . " && git rev-parse HEAD",
-                false
-            ));
+        $currentCommit = $parser['commit'];
+        $identity = $currentCommit;
 
         if (
             isset($this->priorManifest[$parser['id']])
@@ -396,76 +275,6 @@ class TreeSitterPackageBuilder {
             if ($reused !== false) {
                 return $reused;
             }
-        }
-
-        // Get current commit ID
-        $currentCommit = trim($this->executeCommand(
-            "cd " . escapeshellarg($repoDir) . " && git rev-parse HEAD",
-            false
-        ));
-
-        // Check if package already exists for this commit
-        $commitFile = $repoDir . '/debian_package_commit.txt';
-        echo "  Checking for existing package...\n";
-        echo "    Commit file: {$commitFile}\n";
-        echo "    Current commit: {$currentCommit}\n";
-
-        if (file_exists($commitFile)) {
-            $savedCommit = trim(file_get_contents($commitFile));
-            echo "    Saved commit: {$savedCommit}\n";
-
-            if ($savedCommit === $currentCommit) {
-                $packageName = 'lib' . $parser['name'];
-                $existingPackages = [];
-                if ($this->buildDeb) {
-                    $existingPackages = array_merge(
-                        $existingPackages,
-                        glob($this->outputDir . '/' . $packageName . '-*.deb') ?: []
-                    );
-                }
-                if ($this->buildRpm || $this->buildSuseRpm) {
-                    $existingPackages = array_merge(
-                        $existingPackages,
-                        glob($this->outputDir . '/' . $packageName . '-*.rpm') ?: []
-                    );
-                }
-
-                if (!empty($existingPackages)) {
-                    echo "  ✓ Skipping: Package already built for commit {$currentCommit}\n";
-                    echo "    Found existing packages: " . count($existingPackages) . "\n";
-                    foreach ($existingPackages as $pkg) {
-                        echo "      - " . basename($pkg) . "\n";
-                    }
-                    $manifestEntry = ['identity' => $identity, 'deb' => '', 'rpm' => '', 'suse_rpm' => ''];
-                    foreach ($existingPackages as $pkg) {
-                        if (substr($pkg, -4) === '.deb') {
-                            $manifestEntry['deb'] = $pkg;
-                        } elseif (substr($pkg, -4) === '.rpm') {
-                            if ($this->isSuseRpmFilename(basename($pkg))) {
-                                $manifestEntry['suse_rpm'] = $pkg;
-                            } else {
-                                $manifestEntry['rpm'] = $pkg;
-                            }
-                        }
-                    }
-                    $this->builtManifest['parsers'][$parser['id']] = $manifestEntry;
-                    return [
-                        'success' => true,
-                        'package_files' => $existingPackages,
-                        'build_dir' => $buildDir,
-                        'repo_dir' => $repoDir,
-                        'skipped' => true,
-                        'identity' => $identity,
-                    ];
-                } else {
-                    echo "    Commit matches but package files missing, will rebuild\n";
-                }
-            } else {
-                echo "    Commit changed: saved={$savedCommit}, current={$currentCommit}\n";
-            }
-        } else {
-            echo "    No saved commit file found at: {$commitFile}\n";
-            echo "    Will build new package\n";
         }
 
         $this->changed = true;
@@ -498,45 +307,6 @@ class TreeSitterPackageBuilder {
             $this->createPackageJson($repoDir, $parser, $packageVersion);
         }
         
-        // Install npm grammar dependencies (e.g. tree-sitter-c for tree-sitter-cpp).
-        // Use --ignore-scripts: only JS modules are needed for `tree-sitter generate`.
-        if (file_exists($repoDir . '/package.json')) {
-            $packageJson = json_decode(file_get_contents($repoDir . '/package.json'), true);
-            $allDeps = array_merge(
-                $packageJson['dependencies'] ?? [],
-                $packageJson['devDependencies'] ?? []
-            );
-
-            $grammarDeps = [];
-            $localDeps = [];
-            foreach ($allDeps as $depName => $depVersion) {
-                if (strpos($depName, 'tree-sitter-') !== 0 || $depName === 'tree-sitter-cli') {
-                    continue;
-                }
-                $depRepoDir = $this->baseDir . '/' . $depName;
-                if (is_dir($depRepoDir) && file_exists($depRepoDir . '/package.json')) {
-                    echo "    Found local {$depName}, will link instead of downloading\n";
-                    $localDeps[$depName] = $depRepoDir;
-                } else {
-                    $grammarDeps[$depName] = $depVersion;
-                }
-            }
-
-            if (!empty($grammarDeps) || !empty($localDeps)) {
-                echo "  Installing npm grammar dependencies...\n";
-                $packages = [];
-                foreach ($grammarDeps as $depName => $depVersion) {
-                    $packages[] = escapeshellarg($depName . '@' . $depVersion);
-                }
-                foreach ($localDeps as $depName => $depPath) {
-                    $packages[] = escapeshellarg($depName . '@file:' . $depPath);
-                }
-                $installCmd = "cd " . escapeshellarg($repoDir) . " && npm install --ignore-scripts --no-save " . implode(' ', $packages);
-                $this->executeCommand($installCmd, true);
-                echo "  ✓ Grammar dependencies installed\n";
-            }
-        }
-        
         // Create build directory
         echo "  Setting up: Creating build directory...\n";
         $this->createDirectory($buildDir);
@@ -546,8 +316,8 @@ class TreeSitterPackageBuilder {
         
         // Build all grammars
         $builtLibraries = [];
-        foreach ($grammarDirs as $grammarDir) {
-            $this->installGrammarNpmDependencies($grammarDir);
+        foreach (array_unique(array_merge([$repoDir], $grammarDirs)) as $npmDir) {
+            $this->installGrammarNpmDependencies($parser, $npmDir);
         }
         foreach ($grammarDirs as $grammarDir) {
             $grammarName = basename($grammarDir);
@@ -769,78 +539,24 @@ CONTROL;
     
     private function generateRulesFile(array $parser, array $builtLibraries = []): string {
         $packageName = $parser['name'];
-        $languageName = $parser['language'];
-        
-        // Build rules - simplified approach that works for both single and multi-grammar
-        // We'll use a simpler script that finds and builds all grammars
-        // In Makefiles, each line is a separate shell command, so we need proper continuation
-        $buildRules = <<<BUILDRULES
-	set -e; \
-	if command -v tree-sitter >/dev/null 2>&1; then \
-		TS_BIN=tree-sitter; \
-	else \
-		cd build && npm init -y >/dev/null 2>&1 && npm install tree-sitter-cli ../ >/dev/null 2>&1; \
-		TS_BIN="npx tree-sitter"; \
-	fi; \
-	cd build; \
-	if [ -f ../grammar.js ]; then \
-		cd .. && \$\$TS_BIN generate >/dev/null 2>&1; \
-		if [ -f src/parser.c ]; then cp src/parser.c build/parser_{$languageName}.c; \
-		elif [ -f parser.c ]; then cp parser.c build/parser_{$languageName}.c; fi; \
-		if [ -f src/scanner.c ]; then cp src/scanner.c build/scanner_{$languageName}.c; \
-		elif [ -f scanner.c ]; then cp scanner.c build/scanner_{$languageName}.c; fi; \
-		cd build; \
-	fi; \
-	for subdir in ../*/grammar.js; do \
-		if [ -f "\$\$subdir" ]; then \
-			grammar_name=\$\$(basename \$\$(dirname "\$\$subdir")); \
-			# Normalize language name: remove "tree-sitter-" prefix if present \
-			lang_name=\$\$grammar_name; \
-			if echo "\$\$lang_name" | grep -q "^tree-sitter-"; then \
-				lang_name=\$\$(echo "\$\$lang_name" | sed 's/^tree-sitter-//'); \
-			fi; \
-			cd \$\$(dirname "\$\$subdir") && (npm install --ignore-scripts >/dev/null 2>&1 || true) && \$\$TS_BIN generate >/dev/null 2>&1; \
-			if [ -f src/parser.c ]; then cp src/parser.c ../build/parser_\$\$lang_name.c; \
-			elif [ -f parser.c ]; then cp parser.c ../build/parser_\$\$lang_name.c; fi; \
-			if [ -f src/scanner.c ]; then cp src/scanner.c ../build/scanner_\$\$lang_name.c; \
-			elif [ -f scanner.c ]; then cp scanner.c ../build/scanner_\$\$lang_name.c; fi; \
-			cd ../build; \
-		fi; \
-	done; \
-	for parser_c in parser*.c; do \
-		if [ -f "\$\$parser_c" ]; then \
-			lang_name=\$\$(echo "\$\$parser_c" | sed 's/parser_//; s/\.c\$\$//'); \
-			so_name="tree_sitter_parser_\$\$lang_name.so"; \
-			scanner_c=""; \
-			if [ -f scanner_\$\$lang_name.c ]; then \
-				scanner_c="scanner_\$\$lang_name.c"; \
-			fi; \
-			if [ -n "\$\$scanner_c" ]; then \
-				include_dir=""; \
-				if [ -d "../\$\$lang_name/src/tree_sitter" ]; then include_dir="-I../\$\$lang_name/src"; \
-				elif [ -d "../src/tree_sitter" ]; then include_dir="-I../src"; fi; \
-				gcc -shared -fPIC -I/usr/include/tree-sitter \$\$include_dir -o "\$\$so_name" "\$\$parser_c" "\$\$scanner_c" -ltree-sitter >/dev/null 2>&1 || true; \
-			else \
-				gcc -shared -fPIC -I/usr/include/tree-sitter -o "\$\$so_name" "\$\$parser_c" -ltree-sitter >/dev/null 2>&1 || true; \
-			fi; \
-		fi; \
-	done
-BUILDRULES;
-        
+
+        // build/ already holds the libraries compiled from the pinned checkout.
+        // The rules only package them, so no grammar code or npm install runs
+        // inside dpkg-buildpackage.
         return <<<RULES
 #!/usr/bin/make -f
 %:
 	dh \$@ --builddirectory=build
 
 override_dh_auto_clean:
-	rm -rf build
-	# Don't call dh_auto_clean - it tries to auto-detect build systems and fails
+	# Keep build/: it holds the libraries compiled from the pinned commit
+	true
 
 override_dh_auto_configure:
-	mkdir -p build
+	true
 
 override_dh_auto_build:
-{$buildRules}
+	true
 
 override_dh_auto_test:
 	# Skip auto-test detection to avoid python-distutils errors
@@ -1253,11 +969,6 @@ PKGCONFIG;
         }
     }
     
-    private function configureGitSafeDirectories() {
-        exec('git config --global --add safe.directory ' . escapeshellarg($this->baseDir) . ' 2>/dev/null');
-        exec('git config --global --add safe.directory ' . escapeshellarg('*') . ' 2>/dev/null');
-    }
-
     private function readTreeSitterVersionFromBinary(string $path) {
         exec(escapeshellarg($path) . ' --version 2>/dev/null', $output, $returnCode);
         if ($returnCode === 0 && !empty($output) && preg_match('/tree-sitter\s+([\d.]+)/', $output[0], $matches)) {
@@ -1412,19 +1123,115 @@ PKGCONFIG;
     }
     
     /**
-     * Find directories containing grammar.js files (source grammars only, not generated grammar.json)
-     * Returns array of directory paths (root first, then subdirectories)
+     * Grammar files are executed by `tree-sitter generate`, so grammar modules
+     * they require (tree-sitter-c for tree-sitter-cpp, ...) are not installed
+     * from npm. Each one must have a `grammar_dependencies` entry in
+     * config/tree-sitter.json with its own commit pin, and is checked out into
+     * node_modules from that commit.
      */
-    private function installGrammarNpmDependencies(string $grammarDir) {
+    private function installGrammarNpmDependencies(array $parser, string $grammarDir) {
         if (!file_exists($grammarDir . '/package.json')) {
             return;
         }
 
-        echo "  Installing npm dependencies in " . basename($grammarDir) . "...\n";
+        $packageJson = json_decode(file_get_contents($grammarDir . '/package.json'), true);
+        $allDeps = array_merge(
+            $packageJson['dependencies'] ?? [],
+            $packageJson['devDependencies'] ?? []
+        );
+        $pinnedDeps = $parser['grammar_dependencies'] ?? [];
+
+        foreach (array_keys($allDeps) as $depName) {
+            if (strpos($depName, 'tree-sitter-') !== 0 || $depName === 'tree-sitter-cli') {
+                continue;
+            }
+            if (!isset($pinnedDeps[$depName]) || !is_array($pinnedDeps[$depName])) {
+                throw new Exception(
+                    "{$parser['name']} depends on grammar {$depName}. " .
+                    "Pin it under grammar_dependencies.{$depName} (repo and full commit SHA) in config/tree-sitter.json."
+                );
+            }
+            echo "  Fetching pinned grammar dependency {$depName}...\n";
+            $this->checkoutPinnedCommit(
+                $grammarDir . '/node_modules/' . $depName,
+                $pinnedDeps[$depName],
+                "{$parser['name']} dependency {$depName}"
+            );
+        }
+    }
+
+    /**
+     * Fetch $spec['repo'] into a fresh repository at $dir and check out exactly
+     * $spec['commit'].
+     *
+     * The upstream tag (when `tag` is set) or branch (`branch`, else the remote
+     * HEAD) must still resolve to that commit, so a moved ref stops the build
+     * until someone reviews the change and updates the pin. Nothing is fetched
+     * after the checkout, so the tree that runs is the pinned commit.
+     *
+     * Returns the resolved tag name, or null when no tag is configured.
+     */
+    private function checkoutPinnedCommit(string $dir, array $spec, string $label) {
+        $commit = $spec['commit'] ?? '';
+        if (!is_string($commit) || !preg_match('/^[0-9a-f]{40}$/', $commit)) {
+            throw new Exception(
+                "{$label} is not pinned: set \"commit\" to a full 40-character commit SHA in config/tree-sitter.json."
+            );
+        }
+        $repo = $spec['repo'] ?? '';
+        if (!is_string($repo) || $repo === '' || $repo[0] === '-') {
+            throw new Exception("{$label} has no valid \"repo\" in config/tree-sitter.json.");
+        }
+
+        if (file_exists($dir) || is_link($dir)) {
+            $this->executeCommand("rm -rf " . escapeshellarg($dir), true);
+        }
+        $this->executeCommand("git init --quiet " . escapeshellarg($dir), true);
+        $git = "git -C " . escapeshellarg($dir);
+
+        echo "  Fetching: {$repo} (pinned commit {$commit})\n";
+        $resolvedTag = null;
+        if (!empty($spec['tag'])) {
+            $this->executeCommand(
+                "{$git} fetch --quiet --no-tags --depth=1 " . escapeshellarg($repo) . " " .
+                escapeshellarg('+refs/tags/*:refs/tags/*'),
+                true
+            );
+            $resolvedTag = $this->findMatchingTag($dir, $spec['tag']);
+            if ($resolvedTag === null) {
+                throw new Exception("No git tag found matching pin '{$spec['tag']}' for {$label} in {$repo}.");
+            }
+            $pinnedRef = 'refs/tags/' . $resolvedTag;
+            $refLabel = "tag {$resolvedTag}";
+        } else {
+            $remoteRef = !empty($spec['branch']) ? 'refs/heads/' . $spec['branch'] : 'HEAD';
+            $pinnedRef = 'refs/pinned/upstream';
+            $this->executeCommand(
+                "{$git} fetch --quiet --no-tags --depth=1 " . escapeshellarg($repo) . " " .
+                escapeshellarg('+' . $remoteRef . ':' . $pinnedRef),
+                true
+            );
+            $refLabel = !empty($spec['branch']) ? "branch {$spec['branch']}" : 'the default branch';
+        }
+
+        $upstreamCommit = trim($this->executeCommand(
+            "{$git} rev-parse --verify --quiet " . escapeshellarg($pinnedRef . '^{commit}'),
+            false
+        ));
+        if ($upstreamCommit !== $commit) {
+            throw new Exception(
+                "{$label}: upstream {$refLabel} is at {$upstreamCommit}, but config/tree-sitter.json pins {$commit}. " .
+                "Review the upstream change and update the pin before building."
+            );
+        }
+
         $this->executeCommand(
-            "cd " . escapeshellarg($grammarDir) . " && npm install --ignore-scripts",
+            "{$git} -c advice.detachedHead=false checkout --quiet --detach " . escapeshellarg($commit),
             true
         );
+        echo "  ✓ Checked out {$commit} ({$refLabel})\n";
+
+        return $resolvedTag;
     }
 
     private function findScannerSource(string $grammarDir) {
@@ -1506,6 +1313,10 @@ PKGCONFIG;
         );
     }
 
+    /**
+     * Find directories containing grammar.js files (source grammars only, not generated grammar.json)
+     * Returns array of directory paths (root first, then subdirectories)
+     */
     private function findGrammarDirectories(string $repoDir): array {
         $grammarDirs = [];
         

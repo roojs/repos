@@ -5,89 +5,116 @@
       "id": "vala",
       "name": "tree-sitter-vala",
       "repo": "https://github.com/vala-lang/tree-sitter-vala",
-      "language": "vala"
+      "language": "vala",
+      "commit": "dff1b1cf0c80ce625902b90359dbd50be6bfdbde"
     },
     {
       "id": "rust",
       "name": "tree-sitter-rust",
       "repo": "https://github.com/tree-sitter/tree-sitter-rust",
       "language": "rust",
-      "tag": "0.20.4"
+      "tag": "0.20.4",
+      "commit": "afb6000a71fb9dff3f47f90d412ec080ae12bbb4"
     },
     {
       "id": "python",
       "name": "tree-sitter-python",
       "repo": "https://github.com/tree-sitter/tree-sitter-python",
       "language": "python",
-      "tag": "0.20.4"
+      "tag": "0.20.4",
+      "commit": "c01fb4e38587e959b9058b8cd34b9e6a3068c827"
     },
     {
       "id": "javascript",
       "name": "tree-sitter-javascript",
       "repo": "https://github.com/tree-sitter/tree-sitter-javascript",
       "language": "javascript",
-      "tag": "0.20.4"
+      "tag": "0.20.4",
+      "commit": "de1e682289a417354df5b4437a3e4f92e0722a0f"
     },
     {
       "id": "java",
       "name": "tree-sitter-java",
       "repo": "https://github.com/tree-sitter/tree-sitter-java",
       "language": "java",
-      "tag": "0.20.2"
+      "tag": "0.20.2",
+      "commit": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
     },
     {
       "id": "cpp",
       "name": "tree-sitter-cpp",
       "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
       "language": "cpp",
-      "tag": "0.20.5"
+      "tag": "0.20.5",
+      "commit": "e0c1678a78731e78655b7d953efb4daecf58be46",
+      "grammar_dependencies": {
+        "tree-sitter-c": {
+          "repo": "https://github.com/tree-sitter/tree-sitter-c",
+          "tag": "0.20.8",
+          "commit": "25ca2718aacaf0feda8b0709471332f303a0cef5"
+        }
+      }
     },
     {
       "id": "c-sharp",
       "name": "tree-sitter-c-sharp",
       "repo": "https://github.com/tree-sitter/tree-sitter-c-sharp",
       "language": "c_sharp",
-      "tag": "0.20.0"
+      "tag": "0.20.0",
+      "commit": "7a47daeaf0d410dd1a91c97b274bb7276dd96605"
     },
     {
       "id": "php",
       "name": "tree-sitter-php",
       "repo": "https://github.com/tree-sitter/tree-sitter-php",
       "language": "php",
-      "tag": "0.20.0"
+      "tag": "0.20.0",
+      "commit": "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9"
     },
     {
       "id": "ruby",
       "name": "tree-sitter-ruby",
       "repo": "https://github.com/tree-sitter/tree-sitter-ruby",
       "language": "ruby",
-      "tag": "0.20.1"
+      "tag": "0.20.1",
+      "commit": "7a010836b74351855148818d5cb8170dc4df8e6a"
     },
     {
       "id": "bash",
       "name": "tree-sitter-bash",
       "repo": "https://github.com/tree-sitter/tree-sitter-bash",
       "language": "bash",
-      "tag": "0.20.5"
+      "tag": "0.20.5",
+      "commit": "d1a1a3fe7189fdab5bd29a54d1df4a5873db5cb1"
     },
     {
       "id": "markdown",
       "name": "tree-sitter-markdown",
       "repo": "https://github.com/tree-sitter-grammars/tree-sitter-markdown",
-      "language": "markdown"
+      "language": "markdown",
+      "commit": "41ff24a6c775492c543b09228aeb98d1cd2b3a0f"
     },
     {
       "id": "go",
       "name": "tree-sitter-go",
       "repo": "https://github.com/tree-sitter/tree-sitter-go",
       "language": "go",
-      "tag": "0.20.0"
+      "tag": "0.20.0",
+      "commit": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
     },
     {
       "id": "rpmspec",
       "name": "tree-sitter-rpmspec",
       "repo": "https://gitlab.com/cryptomilk/tree-sitter-rpmspec",
-      "language": "rpmspec"
+      "language": "rpmspec",
+      "commit": "ea82a3995d079055fa08133319a1f22aa68c5b4d",
+      "grammar_dependencies": {
+        "tree-sitter-bash": {
+          "repo": "https://github.com/tree-sitter/tree-sitter-bash",
+          "tag": "0.25.1",
+          "commit": "a06c2e4415e9bc0346c6b86d401879ffb44058f7"
+        }
+      }
     }
   ]
 }
