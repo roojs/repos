@@ -34,12 +34,12 @@ jobs:
 
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           path: main
 
       - name: Checkout gh-pages
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: gh-pages
           fetch-depth: 0
@@ -120,10 +120,12 @@ jobs:
 
       - name: Import GPG key for reprepro
         if: steps.fetch-debs.outputs.found == 'true' || steps.fetch-rpms.outputs.found == 'true'
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+        env:
+          APT_GPG_PRIVATE_KEY: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          APT_GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
+        run: |
+          chmod +x main/scripts/import-signing-key.sh
+          main/scripts/import-signing-key.sh
 
       - name: Prune packages no longer in manifest
         id: prune
@@ -226,8 +228,13 @@ jobs:
           chmod +x main/scripts/generate-index-html.sh
           main/scripts/generate-index-html.sh "${GITHUB_WORKSPACE}/pages"
 
+      - name: Remove signing key from job keyring
+        run: |
+          chmod +x main/scripts/remove-signing-key.sh
+          main/scripts/remove-signing-key.sh
+
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
         with:
           commit_message: "chore: update package repositories"
           branch: gh-pages
