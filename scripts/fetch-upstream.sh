@@ -187,6 +187,15 @@ pool_libc_fits() {
   dpkg --compare-versions "$suite_libc" ge "$need"
 }
 
+pool_strip_epoch() {
+  local ver="$1"
+  if [[ "$ver" =~ ^[0-9]+:(.*)$ ]]; then
+    printf '%s\n' "${BASH_REMATCH[1]}"
+  else
+    printf '%s\n' "$ver"
+  fi
+}
+
 pool_depends_for_filename() {
   local name="$1" arch="$2" filename="$3" pool="$4"
   local idx sid_ver ver staged depends
@@ -194,7 +203,7 @@ pool_depends_for_filename() {
   ver="$(pool_filename_version "$name" "$arch" "$filename")"
   idx="$(pool_sid_index "$arch")"
   sid_ver="$(pool_index_package_version "$idx" "$name")"
-  if [[ -n "$sid_ver" && "$ver" == "$sid_ver" ]]; then
+  if [[ -n "$sid_ver" && "$ver" == "$(pool_strip_epoch "$sid_ver")" ]]; then
     pool_index_depends "$idx" "$name"
     return 0
   fi
@@ -215,7 +224,7 @@ pool_depends_for_filename() {
 pool_effective_libc_need_for_filename() {
   local name="$1" arch="$2" filename="$3" pool="$4"
   local cache_key="${filename}#libc"
-  local depends need dep_name dep_ver child_pool child_file child_need max_need
+  local depends need dep_name dep_op dep_ver child_pool child_file child_need max_need
 
   if [[ -n "${pool_libc_cache[$cache_key]:-}" ]]; then
     printf '%s\n' "${pool_libc_cache[$cache_key]}"
@@ -230,9 +239,9 @@ pool_effective_libc_need_for_filename() {
     [[ "$dep_op" == "=" ]] || continue
     [[ -n "$dep_name" && -n "$dep_ver" ]] || continue
     pool_never_republish "$dep_name" && continue
-    child_pool="$(pool_url_for_package "$dep_name" "$arch")" || continue
-    child_file="${dep_name}_${dep_ver}_${arch}.deb"
-    child_need="$(pool_effective_libc_need_for_filename "$dep_name" "$arch" "$child_file" "$child_pool")" || continue
+    child_pool="$(pool_url_for_package "$dep_name" "$arch")" || child_pool="$pool"
+    child_file="${dep_name}_$(pool_strip_epoch "$dep_ver")_${arch}.deb"
+    child_need="$(pool_effective_libc_need_for_filename "$dep_name" "$arch" "$child_file" "$child_pool")" || return 1
     if [[ -z "$max_need" ]] || dpkg --compare-versions "$child_need" gt "$max_need"; then
       max_need="$child_need"
     fi
@@ -343,12 +352,13 @@ pool_suite_imported_package_version() {
 # True when a walked dependency should not be imported because upstream already
 # ships it. Returns false (do not skip) when upstream is older than a version pin.
 pool_skip_upstream_package() {
-  local suite="$1" arch="$2" name="$3" op="${4:-}" ver="${5:-}" upstream_ver ggml_ver
-  if [[ "$name" == libggml0-backend-* ]]; then
+  local suite="$1" arch="$2" name="$3" op="${4:-}" ver="${5:-}" upstream_ver ggml_pkg ggml_ver
+  if [[ "$name" == libggml*-backend-* ]]; then
     if ! pool_suite_has_package "$suite" "$arch" "$name"; then
       return 1
     fi
-    ggml_ver="$(pool_suite_imported_package_version libggml0 "$suite" "$arch")" || return 0
+    ggml_pkg="${name%%-backend-*}"
+    ggml_ver="$(pool_suite_imported_package_version "$ggml_pkg" "$suite" "$arch")" || return 0
     upstream_ver="$(pool_suite_package_version "$suite" "$arch" "$name")" || return 0
     if dpkg --compare-versions "$upstream_ver" lt "$ggml_ver"; then
       return 1
@@ -431,12 +441,16 @@ pool_relation_packages_from_raw() {
 # Uses the sid Packages index where possible; downloads at most one .deb per pick.
 pool_pick_deb() {
   local pool="$1" name="$2" arch="$3" suite_libc="$4" op="${5:-}" ver="${6:-}" suite="${7:-}"
-  local filename deb_ver need chosen="" staged
+  local filename deb_ver cmp_ver="" need chosen="" staged
+
+  if [[ -n "$ver" ]]; then
+    cmp_ver="$(pool_strip_epoch "$ver")"
+  fi
 
   while IFS= read -r filename; do
     [[ -n "$filename" ]] || continue
     deb_ver="$(pool_filename_version "$name" "$arch" "$filename")"
-    if [[ -n "$op" && -n "$ver" ]] && ! dpkg --compare-versions "$deb_ver" "$op" "$ver"; then
+    if [[ -n "$op" && -n "$cmp_ver" ]] && ! dpkg --compare-versions "$deb_ver" "$op" "$cmp_ver"; then
       continue
     fi
     need="$(pool_libc_need_for_filename "$name" "$arch" "$filename" "$pool")" || continue
@@ -464,12 +478,16 @@ pool_pick_deb() {
 # True when some pool revision of this package fits the suite libc (index only).
 pool_pick_deb_exists() {
   local pool="$1" name="$2" arch="$3" suite_libc="$4" op="${5:-}" ver="${6:-}" suite="${7:-}"
-  local filename deb_ver need
+  local filename deb_ver cmp_ver="" need
+
+  if [[ -n "$ver" ]]; then
+    cmp_ver="$(pool_strip_epoch "$ver")"
+  fi
 
   while IFS= read -r filename; do
     [[ -n "$filename" ]] || continue
     deb_ver="$(pool_filename_version "$name" "$arch" "$filename")"
-    if [[ -n "$op" && -n "$ver" ]] && ! dpkg --compare-versions "$deb_ver" "$op" "$ver"; then
+    if [[ -n "$op" && -n "$cmp_ver" ]] && ! dpkg --compare-versions "$deb_ver" "$op" "$cmp_ver"; then
       continue
     fi
     need="$(pool_libc_need_for_filename "$name" "$arch" "$filename" "$pool")" || continue
@@ -961,13 +979,49 @@ pool_previous_missing_allowlisted_suites() {
   while IFS= read -r suite; do
     [[ -n "$suite" ]] || continue
     if ! jq -e --arg s "$suite" '
-      [.packages[]?.suites[]?] | index($s) != null
+      [.packages | to_entries[] | select((.value.suites // []) | index($s) != null) | .key]
+      | any(test("-dev_") | not)
     ' <<< "$prev_repo" >/dev/null; then
-      echo "Previous index missing allowlisted suite ${suite}; re-fetching pool." >&2
+      echo "Previous index missing runtime package for allowlisted suite ${suite}; re-fetching pool." >&2
       return 0
     fi
   done <<< "$allowlisted"
   return 1
+}
+
+# Keep previously published packages for allowlisted suites that got nothing from
+# the live Debian pool (e.g. Debian dropped older glibc builds), as long as that
+# suite previously had a runtime library (not just an orphaned -dev).
+pool_merge_missing_suites_from_previous() {
+  local packages="$1" prev_repo="$2" allowlisted="$3" suite
+  [[ -n "$prev_repo" ]] || {
+    printf '%s\n' "$packages"
+    return 0
+  }
+  while IFS= read -r suite; do
+    [[ -n "$suite" ]] || continue
+    if jq -e --arg s "$suite" '[.[]?.suites[]?] | index($s) != null' <<< "$packages" >/dev/null; then
+      continue
+    fi
+    if ! jq -e --arg s "$suite" '
+      [.packages | to_entries[] | select((.value.suites // []) | index($s) != null) | .key]
+      | any(test("-dev_") | not)
+    ' <<< "$prev_repo" >/dev/null; then
+      continue
+    fi
+    echo "Keeping previously published pool packages for ${suite}: live Debian pool has no fitting build." >&2
+    packages="$(jq --arg s "$suite" --argjson prev "$prev_repo" '
+      reduce ($prev.packages | to_entries[] | select((.value.suites // []) | index($s) != null)) as $item (
+        .;
+        if has($item.key) then
+          .[$item.key].suites = ((.[$item.key].suites + [$s]) | unique)
+        else
+          . + {($item.key): {sha256: $item.value.sha256, suites: [$s]}}
+        end
+      )
+    ' <<< "$packages")"
+  done <<< "$allowlisted"
+  printf '%s\n' "$packages"
 }
 
 pool_should_skip() {
@@ -1276,7 +1330,7 @@ while IFS= read -r repo; do
     shopt -s nullglob
     for file in "${repo_dir}"/*.deb; do
       [[ -f "$file" ]] || continue
-      if [[ "$(basename "$file")" == libllama0_* ]]; then
+      if [[ "$(basename "$file")" == libllama[0-9]*_* ]]; then
         tag="$(dpkg-deb -f "$file" Version)"
         break
       fi
@@ -1389,6 +1443,10 @@ while IFS= read -r repo; do
         <<< "$packages")"
     fi
   done
+
+  if [[ -n "$pool" ]]; then
+    packages="$(pool_merge_missing_suites_from_previous "$packages" "$(previous_repo_json "$repo")" "$suites")"
+  fi
 
   if [[ "$packages" == "{}" ]]; then
     continue

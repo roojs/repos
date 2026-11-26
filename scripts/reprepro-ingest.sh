@@ -21,6 +21,9 @@ if [[ -n "$config" && -f "$config" ]]; then
   owner="$(jq -r '.owner' "$config")"
   while IFS= read -r repo; do
     [[ -n "$repo" ]] || continue
+    if jq -e --arg repo "$repo" '.projects[] | select(.repo == $repo) | (.pool // "") != ""' "$config" >/dev/null; then
+      continue
+    fi
     tag="$(jq -r --arg repo "$repo" '.[$repo].tag // empty' "$index")"
     [[ -n "$tag" ]] || continue
     mkdir -p "${incoming}/${repo}"
