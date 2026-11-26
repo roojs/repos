@@ -88,48 +88,6 @@ Description: IBus speech dictation engine using sherpa-onnx
  .
  ASR model weights are not included (~440 MB); download via Preferences.
 
-Package: libllama-dev
-Source: llama.cpp
-Version: 1:1.0.0+dfsg-1~exp1
-Architecture: amd64
-Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 184
-Depends: libllama1 (= 1:1.0.0+dfsg-1~exp1), libggml-dev (>= 1.0.0)
-Breaks: llama.cpp (<< 5882+dfsg-3~exp1)
-Replaces: llama.cpp (<< 5882+dfsg-3~exp1)
-Multi-Arch: same
-Homepage: https://github.com/ggml-org/llama.cpp/
-Priority: optional
-Section: libdevel
-Filename: pool/main/l/llama.cpp/libllama-dev_1.0.0+dfsg-1~exp1_amd64.deb
-Size: 44928
-SHA256: a924f0792f3646df9c0d4a8b441ee95063e69e194b43a6730972b4b67f83668e
-SHA1: f35fa2c92e2357dbb1b2b10ef47c7ea7269b62bb
-MD5sum: 34e7daf63c17f2a52bda0472d1c74733
-Description: LLM inference in C/C++ - headers and development files
- The main goal of llama.cpp is to enable LLM inference with minimal setup and
- state-of-the-art performance on a wide range of hardware - locally and in the
- cloud.
- .
-  * Plain C/C++ implementation without any dependencies
-  * Apple silicon is a first-class citizen - optimized via ARM NEON, Accelerate
-    and Metal frameworks
-  * AVX, AVX2, AVX512 and AMX support for x86 architectures
-  * 1.5-bit, 2-bit, 3-bit, 4-bit, 5-bit, 6-bit, and 8-bit integer quantization
-    for faster inference and reduced memory use
-  * Custom CUDA kernels for running LLMs on NVIDIA GPUs (support for AMD GPUs
-    via HIP and Moore Threads MTT GPUs via MUSA)
-  * Vulkan and SYCL backend support
-  * CPU+GPU hybrid inference to partially accelerate models larger than the
-    total VRAM capacity
- .
- The compute functionality is provided by ggml. By default, ggml's CPU backend
- is installed, but there are many other backends for CPUs and GPUs.
- .
- This package provides the llama.cpp library headers and development files.
- Note that these libraries are not yet stable, so they are installed to
- private directories for now.
-
 Package: libocbwrap-dev
 Source: ollmchat
 Version: 1.4.17-1+plucky

@@ -714,14 +714,6 @@
             "resolute"
           ]
         },
-        "libllama-dev_1.0.0+dfsg-1~exp1_amd64.deb": {
-          "sha256": "a924f0792f3646df9c0d4a8b441ee95063e69e194b43a6730972b4b67f83668e",
-          "suites": [
-            "trixie",
-            "plucky",
-            "questing"
-          ]
-        },
         "libllama0_0.9.0+dfsg-1_amd64.deb": {
           "sha256": "faae6f042dc6e4b6a4a4f1c161123158bbf0ffa4c5431abfc686ee4d88898f60",
           "suites": [
