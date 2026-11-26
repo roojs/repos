@@ -71,6 +71,44 @@ jobs:
             echo "found=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Restore llama.cpp 10271 for older suites from gh-pages history
+        if: steps.fetch-debs.outputs.found == 'true'
+        run: |
+          set -euo pipefail
+          idx="${GITHUB_WORKSPACE}/pages/incoming-debs/.package-index.json"
+          dest="${GITHUB_WORKSPACE}/pages/incoming-debs/llama.cpp"
+          mkdir -p "$dest"
+          missing_suites=()
+          for s in trixie plucky questing; do
+            if ! jq -e --arg s "$s" '
+              [.["llama.cpp"].packages // {} | to_entries[]
+               | select((.value.suites // []) | index($s) != null) | .key]
+              | any(test("-dev_") | not)
+            ' "$idx" >/dev/null; then
+              missing_suites+=("$s")
+            fi
+          done
+          if [[ "${#missing_suites[@]}" -eq 0 ]]; then
+            exit 0
+          fi
+          suites_json="$(printf '%s\n' "${missing_suites[@]}" | jq -R . | jq -s -c .)"
+          for p in \
+            pool/main/l/llama.cpp/libllama0_10271+dfsg-1_amd64.deb \
+            pool/main/l/llama.cpp/libllama-dev_10271+dfsg-1_amd64.deb \
+            pool/main/g/ggml/libggml0_0.18.1-1_amd64.deb \
+            pool/main/g/ggml/libggml-dev_0.18.1-1_amd64.deb \
+            pool/main/g/ggml/libggml0-backend-blas_0.18.1-1_amd64.deb \
+            pool/main/g/ggml/libggml0-backend-rpc_0.18.1-1_amd64.deb \
+            pool/main/g/ggml/libggml0-backend-vulkan_0.18.1-1_amd64.deb; do
+            base="$(basename "$p")"
+            git -C "${GITHUB_WORKSPACE}/pages" show "9880863:${p}" > "${dest}/${base}"
+            sha="$(sha256sum "${dest}/${base}" | awk '{print $1}')"
+            jq --arg f "$base" --arg sha "$sha" --argjson suites "$suites_json" '
+              .["llama.cpp"].packages[$f] = {sha256: $sha, suites: $suites}
+            ' "$idx" > "${idx}.tmp"
+            mv "${idx}.tmp" "$idx"
+          done
+
       - name: Download upstream .rpm release assets
         id: fetch-rpms
         working-directory: main
