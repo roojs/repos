@@ -4,26 +4,26 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: trixie
-Date: Thu, 26 Nov 2026 08:21:43 UTC
+Date: Thu, 26 Nov 2026 08:28:47 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
 MD5Sum:
- 77169f249b6b7f90cea0431069f6a43e 65846 main/binary-amd64/Packages
- a0d2c7affff4d10db1a1f5765371ec8b 14427 main/binary-amd64/Packages.gz
+ f9c82e36fd40c52fa04617cf2e0529b9 75706 main/binary-amd64/Packages
+ 3dedba8d429f3c6115adc62b99b5545b 16568 main/binary-amd64/Packages.gz
  15e6b13d549a04d1ab31262d0efe0fc5 119 main/binary-amd64/Release
 SHA1:
- 532599affd5b96c7bfad105886ce264c85776219 65846 main/binary-amd64/Packages
- 28adcb973066084be30253afb32f5f4f3bb3c706 14427 main/binary-amd64/Packages.gz
+ 04bd733b6c6e50694b0d268616fb49bc0a63419b 75706 main/binary-amd64/Packages
+ 7bdfad2ec16eaea89e9be38e7b813c8f4a124878 16568 main/binary-amd64/Packages.gz
  d9825599bf36520e3980724ae4c7c95bd378a76b 119 main/binary-amd64/Release
 SHA256:
- d000b26a1757c22f57af25a89beed1ea48a0c3cff20aef93e0c26fbdfada4a6e 65846 main/binary-amd64/Packages
- 9c0989865584940ec10720c758630ddd0d726f27ef75fc568a5e1eef77099879 14427 main/binary-amd64/Packages.gz
+ cf7cbbc67079f3764de17c1f3fa2e8c319dc654272137df43d7052994967a76e 75706 main/binary-amd64/Packages
+ c71a7c37c2c9f1b77a855ea194159ee9f4b8473e3059637dabd7abf7c5db93e9 16568 main/binary-amd64/Packages.gz
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCawfsGAAKCRADhhQ8Yzk0
-cOTeAQDLioYK9aC3KHVW5oa2fhUJAEzD9mGH4lipBfUOOwETEwEAyF+hSE05x0ZX
-2SGJDF4YmXbHEMY5JkE5wXoP1H+fQw8=
-=StbQ
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCawftwAAKCRADhhQ8Yzk0
+cM49AP0XSg4enDiZLqWrr6NH1yvOexGnQJDaXOc+t9X023/AcAEAiWxgs4U5YmKX
+VdSY+HMDH5vgPwzuIOEsr8m7Nhugpg4=
+=fqvI
 -----END PGP SIGNATURE-----

@@ -725,6 +725,62 @@
           "suites": [
             "resolute"
           ]
+        },
+        "libllama0_10271+dfsg-1_amd64.deb": {
+          "sha256": "31e408cf608c27755dc3ec4e61e5ecc5ec65e7c28321e2dcc83df32e1d254930",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libllama-dev_10271+dfsg-1_amd64.deb": {
+          "sha256": "9e4ec2d1482d3f95725025fd5be6da89739973022b817d171a1b6fd259898d79",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0_0.18.1-1_amd64.deb": {
+          "sha256": "bbfbfa4edb0271cc204a6d72e454d349697389ea4b04610a200d1af0ce510868",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml-dev_0.18.1-1_amd64.deb": {
+          "sha256": "8eefaa5c748ed9096c805e5129b8bf7c99fdaa2af621688403044feac9ece5d0",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-blas_0.18.1-1_amd64.deb": {
+          "sha256": "c57a68863f49c2c4db2ad732aabc788c9d3afbe1ff8d6c4e1543d8e354bbad3a",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-rpc_0.18.1-1_amd64.deb": {
+          "sha256": "b42627ace2a8a3f3c58763ac67ce3b7388a376a6cdbd947c8a574de79c7a9ec1",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
+        },
+        "libggml0-backend-vulkan_0.18.1-1_amd64.deb": {
+          "sha256": "22d6c18eb31d714e7fd866cea6449268aecdb587d554bad55780299228afc569",
+          "suites": [
+            "trixie",
+            "plucky",
+            "questing"
+          ]
         }
       }
     },
