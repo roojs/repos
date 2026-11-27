@@ -4,7 +4,7 @@ Hash: SHA512
 Origin: roojs
 Label: roojs
 Codename: trixie
-Date: Fri, 27 Nov 2026 01:28:30 UTC
+Date: Fri, 27 Nov 2026 01:57:54 UTC
 Architectures: amd64
 Components: main
 Description: Official APT repository for roojs packages
@@ -22,8 +22,8 @@ SHA256:
  44920f36c8d1f6ab673dc5cbae64fc9fcfbad8012d93969bfb8d2e95ea3c2cd0 119 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCawjcvwAKCRADhhQ8Yzk0
-cKsLAP9tJF6SQnObEfB6U7YZMi9zOJFlmcZaQVB5v9Tsr9Ei1QD/YYX1OuHt4tzA
-EdoBAnKs3u/xcJU4IQDy1/eVjzwjxAg=
-=BbmQ
+iHUEARYKAB0WIQS/C3FDZ+cTSZdvpl4DhhQ8Yzk0cAUCawjjowAKCRADhhQ8Yzk0
+cDnZAQCtZeY2GJIr54ngn3ZuTGgr/eCUdn9DVECuZtSiOwOqxwEA5Nv6WsgLu5Kd
+52BvGxlxmCW90ieEJVm8k2si53wZ4A4=
+=58RI
 -----END PGP SIGNATURE-----
