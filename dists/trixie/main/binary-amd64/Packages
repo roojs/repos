@@ -1,9 +1,9 @@
 Package: argusrm-agent
 Source: argusrm
-Version: 0.1.62-1
+Version: 0.1.64-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 374
+Installed-Size: 382
 Depends: libocrpc1, libocsqlite1, libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.80.0), libjson-glib-1.0-0 (>= 1.5.2), libnl-3-200 (>= 3.2.7), libnl-route-3-200 (>= 3.7.0), libsoup-3.0-0 (>= 3.0.3), libsqlite3-0 (>= 3.5.9)
 Recommends: avahi-daemon
 Breaks: argusrm-agent-cli
@@ -11,11 +11,11 @@ Replaces: argusrm-agent-cli
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-agent_0.1.62-1_amd64.deb
-Size: 115028
-SHA256: 26c67855360ff8466f2a1e0c7f2f6205daaa196992f03ca63e76528584c5b42d
-SHA1: 0f57f8c83729e826958af868c50af55700b15ca8
-MD5sum: e7eea4649984a806b29442c30d63df9f
+Filename: pool/main/a/argusrm/argusrm-agent_0.1.64-1_amd64.deb
+Size: 116366
+SHA256: 71b7ded11d0fe9fca97e1d20f85b31a2fc41fbb555f2abd6228976816956eee1
+SHA1: 43e08ba6f4d4b0e6f00d86b76daa77d9cda16e64
+MD5sum: 572e110b752072716f8204b0851e2995
 Description: Argus Remote Manager command-line agent
  This package installs the agent on a managed Linux machine. The command
  is argusrm-agent. It does not use GTK. Registration from the command
@@ -24,19 +24,19 @@ Description: Argus Remote Manager command-line agent
 
 Package: argusrm-controller
 Source: argusrm
-Version: 0.1.62-1
+Version: 0.1.64-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
-Installed-Size: 1052
-Depends: libocrpc1, libocsqlite1, libadwaita-1-0 (>= 1.7~alpha), libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libfreerdp3-3 (>= 3.0.0), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.64.0), libgtk-4-1 (>= 4.9.2), libjson-glib-1.0-0 (>= 1.5.2), libnl-3-200 (>= 3.2.7), libnl-route-3-200 (>= 3.7.0), libpango-1.0-0 (>= 1.14.0), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 2.4.0), libsqlite3-0 (>= 3.5.9), libwinpr3-3 (>= 3.0.0), libxlsxwriter8 (>= 1.1.8)
+Installed-Size: 1064
+Depends: libocrpc1, libocsqlite1, libadwaita-1-0 (>= 1.7~alpha), libavahi-common3 (>= 0.6.16), libavahi-gobject0 (>= 0.6.22), libc6 (>= 2.34), libfreerdp-client3-3 (>= 3.0.0), libfreerdp3-3 (>= 3.0.0), libgee-0.8-2 (>= 0.8.3), libglib2.0-0t64 (>= 2.64.0), libgtk-4-1 (>= 4.9.2), libjson-glib-1.0-0 (>= 1.5.2), libnl-3-200 (>= 3.2.7), libnl-route-3-200 (>= 3.7.0), libpango-1.0-0 (>= 1.14.0), libsecret-1-0 (>= 0.7), libsoup-3.0-0 (>= 2.4.0), libsqlite3-0 (>= 3.5.9), libwinpr3-3 (>= 3.0.0), libxlsxwriter8 (>= 1.1.8)
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-controller_0.1.62-1_amd64.deb
-Size: 321494
-SHA256: b37639437251f3c203d56ed95ad3c949aa1428f11eb8324c892af0e80e1d6d23
-SHA1: 6b48aa88250f085f9ead92de60cc55cf0a4641c8
-MD5sum: ccb20810ffc1e5769a3142382c0d4134
+Filename: pool/main/a/argusrm/argusrm-controller_0.1.64-1_amd64.deb
+Size: 324442
+SHA256: 294dd5348d638c1574c74b10fbb75ad19b03565c584f1f885b915899ef5ee3d3
+SHA1: 7ca8584440d7aad00b979916137153d0bcd1a492
+MD5sum: 84f3b7798a1485a75b8c9deeb03b6c65
 Description: Argus Remote Manager controller
  This package contains the desktop controller. It enrolls with an Argus
  Remote Manager server and opens the management window. Registration on
@@ -44,7 +44,7 @@ Description: Argus Remote Manager controller
 
 Package: argusrm-server
 Source: argusrm
-Version: 0.1.62-1
+Version: 0.1.64-1
 Architecture: amd64
 Maintainer: Alan Knowles <alan@roojs.com>
 Installed-Size: 1237
@@ -53,11 +53,11 @@ Recommends: avahi-daemon
 Homepage: https://github.com/roojs/argusrm
 Priority: optional
 Section: admin
-Filename: pool/main/a/argusrm/argusrm-server_0.1.62-1_amd64.deb
-Size: 342994
-SHA256: e7dbc21f615d03ad6ce5ab7bee31dbd8cde2b70726dda45b96705b4c9827eb77
-SHA1: 69da56c3c23ba92261259a5bb3438f9786bfbe55
-MD5sum: c909265ffa75e757577e0e7b791f2e55
+Filename: pool/main/a/argusrm/argusrm-server_0.1.64-1_amd64.deb
+Size: 342658
+SHA256: 0fac53979afa311252f523ef577332c3d56913716f2a547c34fe2bc593e99dba
+SHA1: 92f21a5aef324ffaa1be45ae689ab6f121997960
+MD5sum: f873d000c7b392f1195f7b3144921ba5
 Description: Argus Remote Manager server
  Argus Remote Manager enrolls managed machines, provides authenticated
  downloads, and coordinates remote management operations. This package
