@@ -90,22 +90,22 @@ Description: IBus speech dictation engine using sherpa-onnx
 
 Package: libggml-dev
 Source: ggml
-Version: 1.0.0-1
+Version: 1.1.1-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 246
-Depends: libggml1 (= 1.0.0-1)
+Installed-Size: 248
+Depends: libggml1 (= 1.1.1-2)
 Breaks: libggml, libggml-blas, libggml-cpu, libggml-hip, libggml-vulkan
 Replaces: libggml, libggml-blas, libggml-cpu, libggml-hip, libggml-vulkan
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libdevel
-Filename: pool/main/g/ggml/libggml-dev_1.0.0-1_amd64.deb
-Size: 47320
-SHA256: b4edb0feae5a4401e955191d6130aa36fe0d1297d153ddddf30bb163d3d30bf3
-SHA1: ae682d566a80e4c716c330f9dd0cdc69e464eea9
-MD5sum: e742c3c67c55db40db785a8b506564ab
+Filename: pool/main/g/ggml/libggml-dev_1.1.1-2_amd64.deb
+Size: 47952
+SHA256: 8af4990430afc2a7d2329aebb2f4f35424d79dd03df155c614f5ebaee9aa435f
+SHA1: 586421bbf7ca7fd4f7ea0e6079e18bb684a5f645
+MD5sum: d0afea6ffe9baf329c3d5a8bf01c1776
 Description: Tensor library for machine learning - development files
  ggml is a tensor library for machine learning with the following features:
  .
@@ -122,149 +122,12 @@ Description: Tensor library for machine learning - development files
  .
  This package provides the development files.
 
-Package: libggml0
-Source: ggml
-Version: 0.29.0-1
-Architecture: amd64
-Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 16077
-Depends: libc6 (>= 2.43), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libstdc++6 (>= 11)
-Suggests: libggml0-backend-blas, libggml0-backend-cuda, libggml0-backend-hip, libggml0-backend-rpc, libggml0-backend-vulkan
-Breaks: libggml, libggml0-backend-cpu
-Replaces: libggml, libggml0-backend-cpu
-Multi-Arch: same
-Homepage: https://github.com/ggml-org/ggml
-Priority: optional
-Section: libs
-Filename: pool/main/g/ggml/libggml0_0.29.0-1_amd64.deb
-Size: 1746956
-SHA256: cfd9a3e27fb3e0df423541fb62d087e6ab8a97a7787dc90ee767165f3946ac57
-SHA1: 8c05fab1be7e17f395a00b889eea109ee2c0f719
-MD5sum: 0d64609ba11aad5e673a2164aba8dd4f
-Description: Tensor library for machine learning - libraries
- ggml is a tensor library for machine learning with the following features:
- .
-  * Low-level cross-platform implementation
-  * Integer quantization support
-  * Broad hardware support
-  * Automatic differentiation
-  * ADAM and L-BFGS optimizers
-  * No third-party dependencies
-  * Zero memory allocations during runtime
- .
- On Debian, ggml is shipped as a package that depends on one of the CPU or
- GPU backends.
- .
- This package provides the main libraries, and the CPU backend.
-
-Package: libggml0-backend-blas
-Source: ggml
-Version: 0.29.0-1
-Architecture: amd64
-Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 69
-Depends: libggml0 (= 0.29.0-1), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
-Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
-Provides: libggml0-backend (= 0.29.0-1)
-Multi-Arch: same
-Homepage: https://github.com/ggml-org/ggml
-Priority: optional
-Section: libs
-Filename: pool/main/g/ggml/libggml0-backend-blas_0.29.0-1_amd64.deb
-Size: 23472
-SHA256: 1a76400d18aabd7aa0aca4825030d38fa0cc5aba1ef8084ea6675d97be7544c5
-SHA1: 21a8e2998e684a2ee7a89c39f8ba34dc2c9ca276
-MD5sum: c4f97f3bdefced465adb9e921b947885
-Description: Tensor library for machine learning - BLAS backend
- ggml is a tensor library for machine learning with the following features:
- .
-  * Low-level cross-platform implementation
-  * Integer quantization support
-  * Broad hardware support
-  * Automatic differentiation
-  * ADAM and L-BFGS optimizers
-  * No third-party dependencies
-  * Zero memory allocations during runtime
- .
- On Debian, ggml is shipped as a package that depends on one of the CPU or
- GPU backends.
- .
- This package provides the BLAS backend.
-
-Package: libggml0-backend-rpc
-Source: ggml
-Version: 0.29.0-1
-Architecture: amd64
-Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 281
-Depends: libggml0 (= 0.29.0-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 12)
-Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
-Provides: libggml0-backend (= 0.29.0-1)
-Multi-Arch: same
-Homepage: https://github.com/ggml-org/ggml
-Priority: optional
-Section: libs
-Filename: pool/main/g/ggml/libggml0-backend-rpc_0.29.0-1_amd64.deb
-Size: 89820
-SHA256: d52ace14df20d5bbc7b9968929f2838ed4d765e97dfcb633b557fd96124fca0e
-SHA1: fc334d1b6737b18acf3736cf521be13a497b8ce3
-MD5sum: 565582ec9c9b661075b99a76f22e2ec6
-Description: Tensor library for machine learning - RPC backend
- ggml is a tensor library for machine learning with the following features:
- .
-  * Low-level cross-platform implementation
-  * Integer quantization support
-  * Broad hardware support
-  * Automatic differentiation
-  * ADAM and L-BFGS optimizers
-  * No third-party dependencies
-  * Zero memory allocations during runtime
- .
- On Debian, ggml is shipped as a package that depends on one of the CPU or
- GPU backends.
- .
- This package provides the RPC backend.
-
-Package: libggml0-backend-vulkan
-Source: ggml
-Version: 0.29.0-1
-Architecture: amd64
-Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 41505
-Depends: libggml0 (= 0.29.0-1), libc6 (>= 2.43), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
-Suggests: mesa-vulkan-drivers, nvidia-vulkan-icd
-Provides: libggml0-backend (= 0.29.0-1)
-Multi-Arch: same
-Homepage: https://github.com/ggml-org/ggml
-Priority: optional
-Section: libs
-Filename: pool/main/g/ggml/libggml0-backend-vulkan_0.29.0-1_amd64.deb
-Size: 4408192
-SHA256: 3b45ed94860987c75f6955c9bbab2f5a5f1480b60a9198c775025770d713a81c
-SHA1: 055740ac4828d9d768a9ea42b6b36102e4086d5f
-MD5sum: 35ef97f3a8ece03e9ffaba4debf867cd
-Description: Tensor library for machine learning - Vulkan backend
- ggml is a tensor library for machine learning with the following features:
- .
-  * Low-level cross-platform implementation
-  * Integer quantization support
-  * Broad hardware support
-  * Automatic differentiation
-  * ADAM and L-BFGS optimizers
-  * No third-party dependencies
-  * Zero memory allocations during runtime
- .
- On Debian, ggml is shipped as a package that depends on one of the CPU or
- GPU backends.
- .
- This package provides the Vulkan backend.
-
 Package: libggml1
 Source: ggml
-Version: 1.0.0-1
+Version: 1.1.1-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 16173
+Installed-Size: 16605
 Depends: libc6 (>= 2.43), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libstdc++6 (>= 11)
 Suggests: libggml1-backend-blas, libggml1-backend-cuda, libggml1-backend-hip, libggml1-backend-rpc, libggml1-backend-vulkan
 Breaks: libggml, libggml1-backend-cpu
@@ -273,11 +136,11 @@ Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml1_1.0.0-1_amd64.deb
-Size: 1755156
-SHA256: a31967576259664c72ef750bad6bfa6940a59364c58362e8bbcdc44f38fc064e
-SHA1: c21d1b850b2d1e07f7eccf0a1a24a8017c0e166b
-MD5sum: fc1e40c8cd81f207ae35e618340aaff5
+Filename: pool/main/g/ggml/libggml1_1.1.1-2_amd64.deb
+Size: 1837196
+SHA256: 65f17782d6ec41e0e5291e56d039d5b70a608f59966ec6442d6a818209279ee5
+SHA1: 789bd4f0e441f3b3175e040f70c2211ca9ed6a62
+MD5sum: 628331c6b6c8da617246c69c81e2aadd
 Description: Tensor library for machine learning - libraries
  ggml is a tensor library for machine learning with the following features:
  .
@@ -296,22 +159,22 @@ Description: Tensor library for machine learning - libraries
 
 Package: libggml1-backend-blas
 Source: ggml
-Version: 1.0.0-1
+Version: 1.1.1-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
 Installed-Size: 69
-Depends: libggml1 (= 1.0.0-1), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
+Depends: libggml1 (= 1.1.1-2), libblas3 | libblas.so.3, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libstdc++6 (>= 11)
 Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
-Provides: libggml1-backend (= 1.0.0-1)
+Provides: libggml1-backend (= 1.1.1-2)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml1-backend-blas_1.0.0-1_amd64.deb
-Size: 23824
-SHA256: 45270e422df3944c5fee71a29e4c6ed810e2f2325008b79bda574aa06f904708
-SHA1: 7fbe40593963ae412a7762c116603c0990e5ce75
-MD5sum: 3dc13c97712e22b9abc1131ac3a0ab96
+Filename: pool/main/g/ggml/libggml1-backend-blas_1.1.1-2_amd64.deb
+Size: 24016
+SHA256: 13d3f9d7c09ad974a4e1b3ae289632c17b209c47def3f5db4b30b7fabd71fbb3
+SHA1: fef2fc279888234ce390044b4ca600a842e17eb7
+MD5sum: 158a76d4b892c26f139c0532b858314e
 Description: Tensor library for machine learning - BLAS backend
  ggml is a tensor library for machine learning with the following features:
  .
@@ -330,22 +193,22 @@ Description: Tensor library for machine learning - BLAS backend
 
 Package: libggml1-backend-rpc
 Source: ggml
-Version: 1.0.0-1
+Version: 1.1.1-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
 Installed-Size: 277
-Depends: libggml1 (= 1.0.0-1), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 12)
+Depends: libggml1 (= 1.1.1-2), libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 12)
 Recommends: libopenblas0 | libblis4 | libmkl-rt | libblas3
-Provides: libggml1-backend (= 1.0.0-1)
+Provides: libggml1-backend (= 1.1.1-2)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml1-backend-rpc_1.0.0-1_amd64.deb
-Size: 91508
-SHA256: 0f04803685701790cd7ffe8de419923c0dda3b991f1ecfbcc7ce76f88f9c5c1a
-SHA1: caef4a1ea2a4e8dc193e2487508724895885156e
-MD5sum: 757f44443b00bb9a07f5bc01c01222de
+Filename: pool/main/g/ggml/libggml1-backend-rpc_1.1.1-2_amd64.deb
+Size: 91588
+SHA256: c853cc29de02f5a897874a25a29c1c5dd95a8380bfc4305a2bce4f5b0208d3d2
+SHA1: 52366e66fa697b734796471696a283fead8b7070
+MD5sum: cb3a01561c2ffe1c36447efa2e59b46f
 Description: Tensor library for machine learning - RPC backend
  ggml is a tensor library for machine learning with the following features:
  .
@@ -364,22 +227,22 @@ Description: Tensor library for machine learning - RPC backend
 
 Package: libggml1-backend-vulkan
 Source: ggml
-Version: 1.0.0-1
+Version: 1.1.1-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 41621
-Depends: libggml1 (= 1.0.0-1), libc6 (>= 2.43), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
+Installed-Size: 44373
+Depends: libggml1 (= 1.1.1-2), libc6 (>= 2.43), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1), libvulkan1 (>= 1.2.131.2)
 Suggests: mesa-vulkan-drivers, nvidia-vulkan-icd
-Provides: libggml1-backend (= 1.0.0-1)
+Provides: libggml1-backend (= 1.1.1-2)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/ggml
 Priority: optional
 Section: libs
-Filename: pool/main/g/ggml/libggml1-backend-vulkan_1.0.0-1_amd64.deb
-Size: 4427984
-SHA256: 0ae3463fa609856582c042598fa9df1faef9a5026ccc4a2b13a69f31c4dff193
-SHA1: 663c7ee198604daff42cad54ea4b05eda7d1f777
-MD5sum: ede36e87682994542a33637341f74a24
+Filename: pool/main/g/ggml/libggml1-backend-vulkan_1.1.1-2_amd64.deb
+Size: 4636756
+SHA256: 5ecd27532a5e36e8f1d0725daea311ffd97a5e92d91435c49dc17c807fc5addf
+SHA1: 7c4300ac0adc713a840f411aa003cc7b8e34a4f0
+MD5sum: 8a62b584aa166ec7fccbfaa118afe4ba
 Description: Tensor library for machine learning - Vulkan backend
  ggml is a tensor library for machine learning with the following features:
  .
@@ -398,22 +261,22 @@ Description: Tensor library for machine learning - Vulkan backend
 
 Package: libllama-dev
 Source: llama.cpp
-Version: 1:1.0.0+dfsg-1
+Version: 1:1.1.0+dfsg-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 184
-Depends: libllama1 (= 1:1.0.0+dfsg-1), libggml-dev (>= 1.0.0)
+Installed-Size: 195
+Depends: libllama1 (= 1:1.1.0+dfsg-2), libggml-dev (>= 1.1.1)
 Breaks: llama.cpp (<< 5882+dfsg-3~exp1)
 Replaces: llama.cpp (<< 5882+dfsg-3~exp1)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/llama.cpp/
 Priority: optional
 Section: libdevel
-Filename: pool/main/l/llama.cpp/libllama-dev_1.0.0+dfsg-1_amd64.deb
-Size: 44948
-SHA256: 9cb61861baad6ef8ef05500b9f39bdb7dc4eb4dfc5a56150f42189464bf983a9
-SHA1: ed0a41e6c6c0c1ab51f66d519d6e9cd40dea9d72
-MD5sum: af4d8f9a3750432804b23ad94200a7c8
+Filename: pool/main/l/llama.cpp/libllama-dev_1.1.0+dfsg-2_amd64.deb
+Size: 47600
+SHA256: 05d2ac88a9e3ad285b422d9b4a807ff7b08f0be6f3a53de99c7bd65befd8d845
+SHA1: f7c4d4355f93e4423fa43f27b4c6814d97dab81c
+MD5sum: f0d6185dc6469ccd0e4f646711eee204
 Description: LLM inference in C/C++ - headers and development files
  The main goal of llama.cpp is to enable LLM inference with minimal setup and
  state-of-the-art performance on a wide range of hardware - locally and in the
@@ -482,22 +345,22 @@ Description: LLM inference in C/C++ - libraries
 
 Package: libllama1
 Source: llama.cpp
-Version: 1:1.0.0+dfsg-1
+Version: 1:1.1.0+dfsg-2
 Architecture: amd64
 Maintainer: Debian Deep Learning Team <debian-ai@lists.debian.org>
-Installed-Size: 13097
-Depends: libc6 (>= 2.43), libgcc-s1 (>= 3.4), libggml1 (>= 1.0.0), libssl3t64 (>= 3.4.0), libstdc++6 (>= 14)
+Installed-Size: 14381
+Depends: libc6 (>= 2.43), libgcc-s1 (>= 3.4), libggml1 (>= 1.1.1), libssl3t64 (>= 3.4.0), libstdc++6 (>= 14)
 Breaks: llama.cpp (<< 5882+dfsg-3~exp1)
 Replaces: llama.cpp (<< 5882+dfsg-3~exp1)
 Multi-Arch: same
 Homepage: https://github.com/ggml-org/llama.cpp/
 Priority: optional
 Section: libs
-Filename: pool/main/l/llama.cpp/libllama1_1.0.0+dfsg-1_amd64.deb
-Size: 3621112
-SHA256: a2af530cd3463c6394b0fe39a61e0786cc68c5f175518b6ad3c8cf1c26c8572e
-SHA1: 620beb9468b5feec48fdae28eedcb8929c24924e
-MD5sum: 5ff9cf655a149c5003677010882ebac9
+Filename: pool/main/l/llama.cpp/libllama1_1.1.0+dfsg-2_amd64.deb
+Size: 4023916
+SHA256: 08b932fb21d2bc73d3e1f11f2ac09994adec52741863789b7c4b4304524ae5a6
+SHA1: 36b2b9d3e614fb1e7e8378721a338555a6fe3f26
+MD5sum: d7560011ca138e04d8256017fdb028bd
 Description: LLM inference in C/C++ - libraries
  The main goal of llama.cpp is to enable LLM inference with minimal setup and
  state-of-the-art performance on a wide range of hardware - locally and in the
