@@ -1324,10 +1324,10 @@
       }
     },
     "argusrm": {
-      "tag": "v0.1.69",
+      "tag": "v0.1.70",
       "packages": {
-        "argusrm-agent_0.1.69-1_amd64.deb": {
-          "sha256": "da56ca337b46702301fe6dfea9a0069278eff76ebc7f325ca6ff132451f6209a",
+        "argusrm-agent_0.1.70-1_amd64.deb": {
+          "sha256": "6a9e44a27eb30caf1c2a9a79fdb9e7fa5543fc9bc767301ad65486e9327d02f0",
           "suites": [
             "trixie",
             "plucky",
@@ -1335,8 +1335,8 @@
             "resolute"
           ]
         },
-        "argusrm-controller_0.1.69-1_amd64.deb": {
-          "sha256": "e0c2393344a2a8c6d8d309bc3d3b89db98ef37a0cb06a4a6b4ed05b4d0b2156c",
+        "argusrm-controller_0.1.70-1_amd64.deb": {
+          "sha256": "3f16ab7558d9124c56f369380482c2fa22558046c0eced7160568dbe5b90bfb5",
           "suites": [
             "trixie",
             "plucky",
@@ -1344,8 +1344,8 @@
             "resolute"
           ]
         },
-        "argusrm-server_0.1.69-1_amd64.deb": {
-          "sha256": "0109a6a4e0720ac33fd3560c9450c04831e5fa94e7a1167bfe20f79c29dea191",
+        "argusrm-server_0.1.70-1_amd64.deb": {
+          "sha256": "da091706a33d16bf0516d7416ce9cb0892b85bd579066e9200845dc65404887d",
           "suites": [
             "trixie",
             "plucky",
@@ -2076,31 +2076,31 @@
       }
     },
     "argusrm": {
-      "tag": "v0.1.69",
+      "tag": "v0.1.70",
       "packages": {
-        "argusrm-agent-0.1.69-1.fc44.x86_64.rpm": {
-          "sha256": "8b3c0464bab9fae9bf955981407ae58f3a7223e45af7c40d52b09417c8bc9df3",
+        "argusrm-agent-0.1.70-1.fc44.x86_64.rpm": {
+          "sha256": "67d871f70d06f952f993433f91f7ce8af052cbbda6c69401d7124543546a46fa",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "argusrm-agent-gtk-0.1.69-1.fc44.x86_64.rpm": {
-          "sha256": "2bebbfc10a8aad78e2c31ec2317e22bd09d0b22fbf2c81ad421054c2cd0d49e4",
+        "argusrm-agent-gtk-0.1.70-1.fc44.x86_64.rpm": {
+          "sha256": "92964cdb98d54987e2a8e0143547271c3a40e0beee221ee7da5392dd095a34c5",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "argusrm-controller-0.1.69-1.fc44.x86_64.rpm": {
-          "sha256": "7c0d81dfaab3ddc1068c9bbabfe972f7bb09ccfd071422b05819cd8e0ce6c4e0",
+        "argusrm-controller-0.1.70-1.fc44.x86_64.rpm": {
+          "sha256": "f9f79d46ab0dd12ee4a3e15a861263b43eeaf44e6217a25ade56964d54e6257a",
           "arch": "x86_64",
           "fedora": [
             44
           ]
         },
-        "argusrm-server-0.1.69-1.fc44.x86_64.rpm": {
-          "sha256": "72f74a14692de8cbc0de1c2fadca503292888148aba75bc1b29b5f12cb93a814",
+        "argusrm-server-0.1.70-1.fc44.x86_64.rpm": {
+          "sha256": "37f90d29469b6fa90f1feccf3d10f03786cbda3793f5f1b585167be0167a5501",
           "arch": "x86_64",
           "fedora": [
             44
